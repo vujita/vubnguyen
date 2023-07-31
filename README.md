@@ -54,5 +54,4 @@ cp .env.example .env
 pnpm db:push
 ```
 ## Deployment
-
-TODO: buy a domain and setup with vercel
+[vubnguyen.com](https://vubnguyen.com)
