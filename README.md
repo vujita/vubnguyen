@@ -1,5 +1,7 @@
 # vubnguyen
 
+[![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
+
 - This is a mono repo is inspired from [t3](https://create.t3.gg/) stack
 - The major deviation is using [turborepo](https://turbo.build/) for a mono repo setup for future project extensions
 
@@ -8,6 +10,7 @@
 There are 2 prescribed way of running this repository, either with [github codespaces](https://github.com/features/codespaces) or locally
 
 <!-- TODO: Add more visuals to this -->
+
 ### github codespaces
 
 Github codespaces can be running locally
