@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
 import daisyui from "daisyui";
-
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [""],
@@ -8,8 +7,7 @@ const config: Config = {
     extend: {},
     plugins: [daisyui],
   },
-  daisyui: {
-  }
-}
+  daisyui: {},
+};
 
-export default config
+export default config;

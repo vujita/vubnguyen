@@ -1,15 +1,17 @@
 # vubnguyen
 
-- This is a mono repo is inspired from [t3](https://create.t3.gg/) stackand
+- This is a mono repo is inspired from [t3](https://create.t3.gg/) stack
 - The major deviation is using [turborepo](https://turbo.build/) for a mono repo setup for future project extensions
 
 ## Installation
 
 There are 2 prescribed way of running this repository, either with [github codespaces](https://github.com/features/codespaces) or locally
 
+<!-- TODO: Add more visuals to this -->
 ### github codespaces
 
 Github codespaces can be running locally
+
 - Install [docker](https://www.docker.com/). [Instructions on mac](https://docs.docker.com/desktop/install/mac-install/#install-and-run-docker-desktop-on-mac)
 - Install [vscode](https://code.visualstudio.com/)
 - Open in this folder in a [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers)
@@ -19,6 +21,7 @@ You can also run it in the repository by creating a code space off a branch, or 
 ### local setup
 
 Install [nvm](https://github.com/nvm-sh/nvm), and run
+
 ```bash
   nvm install
   nvm use
@@ -73,4 +76,5 @@ packages
 ```
 
 ## Deployment
+
 [vubnguyen.com](https://vubnguyen.com)

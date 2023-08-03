@@ -1,8 +1,9 @@
 import Discord from "@auth/core/providers/discord";
 import type { DefaultSession } from "@auth/core/types";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "@vujita/db";
 import NextAuth from "next-auth";
+
+import { prisma } from "@vujita/db";
 
 import { env } from "./env.mjs";
 

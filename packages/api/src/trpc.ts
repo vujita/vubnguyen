@@ -7,11 +7,12 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { initTRPC, TRPCError } from "@trpc/server";
+import superjson from "superjson";
+import { ZodError } from "zod";
+
 import { auth } from "@vujita/auth";
 import type { Session } from "@vujita/auth";
 import { prisma } from "@vujita/db";
-import superjson from "superjson";
-import { ZodError } from "zod";
 
 /**
  * 1. CONTEXT
