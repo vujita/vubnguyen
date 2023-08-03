@@ -1,7 +1,7 @@
 # Submit a feature request or bug report
 
 Before you submit an issue, check to see if it has [already been reported][1].
-Any questions should be directed to @nguyenervu.
+Any questions should be directed to @vujita.
 
 ---
 

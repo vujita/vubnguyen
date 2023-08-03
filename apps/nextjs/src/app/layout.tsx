@@ -11,18 +11,18 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "vubnguyen",
+  description: "A website for Vu Nguyen",
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
+    title: "Vu Nguyen personsal website",
+    description: "A website for Vu Nguyen",
+    url: "https://vubnguyen.com",
+    siteName: "vubnguyen.com",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
+    site: "@Vu_Man_Chu",
+    creator: "@Vu_Man_Chu",
   },
 };
 

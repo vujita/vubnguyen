@@ -14,6 +14,9 @@ importers:
       '@manypkg/cli':
         specifier: ^0.21.0
         version: 0.21.0
+      husky:
+        specifier: ^8.0.3
+        version: 8.0.3
       prettier:
         specifier: ^3.0.0
         version: 3.0.0
@@ -2435,6 +2438,12 @@ packages:
 
   /http-cache-semantics@4.1.1:
     resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
+    dev: false
+
+  /husky@8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: false
 
   /ignore@5.2.4:
