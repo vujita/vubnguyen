@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "vubnguyen*": ["./src/*"]
     },
     "plugins": [{ "name": "next" }],
     "strict": true

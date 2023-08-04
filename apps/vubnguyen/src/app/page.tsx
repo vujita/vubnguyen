@@ -1,8 +1,8 @@
 import { Suspense } from "react";
+import { SignIn, SignOut } from "vubnguyencomponents/auth";
 
 import { auth } from "@vujita/auth";
 
-import { SignIn, SignOut } from "~/components/auth";
 import { CreatePostForm, PostList } from "./posts";
 
 export default function HomePage() {
