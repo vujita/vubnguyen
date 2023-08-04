@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 
 import "vubnguyenstyles/globals.css";
 
-import { TRPCReactProvider } from "./providers";
+import type { ReactNode } from "react";
+import { TRPCReactProvider } from "vubnguyenapp/providers";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   title: "vubnguyen",
   description: "A website for Vu Nguyen",
   openGraph: {
-    title: "Vu Nguyen personsal website",
+    title: "Vu Nguyen personal website",
     description: "A website for Vu Nguyen",
     url: "https://vubnguyen.com",
     siteName: "vubnguyen.com",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout(props: { children: React.ReactNode }) {
+export default function Layout(props: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={["font-sans", fontSans.variable].join(" ")}>
