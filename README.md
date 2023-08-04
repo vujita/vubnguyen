@@ -51,7 +51,7 @@ pnpm db:push
 
 ## sso setup
 
-- Discrd: [create a discord application](https://discord.com/developers/applications) and add client/secret to your .env file
+- Discord: [create a discord application](https://discord.com/developers/applications) and add client/secret to your .env file
 
 ## Folder structure
 
