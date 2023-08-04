@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-import { api } from "~/utils/api";
-import type { RouterOutputs } from "~/utils/api";
+import { api } from "vubnguyenutils/api";
+import type { RouterOutputs } from "vubnguyenutils/api";
 
 export function CreatePostForm() {
   const context = api.useContext();
