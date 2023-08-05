@@ -1,3 +1,4 @@
+name: prisma migrate
 on:
   push:
     branches: [main]
