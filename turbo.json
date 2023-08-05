@@ -10,6 +10,10 @@
       "inputs": ["prisma/schema.prisma"],
       "cache": false
     },
+    "db:migrate": {
+      "inputs": ["prisma/schema.prisma"],
+      "cache": false
+    },
     "dev": {
       "persistent": true,
       "cache": false
@@ -25,9 +29,6 @@
       "dependsOn": ["^build"]
     },
     "clean": {
-      "cache": false
-    },
-    "//#clean": {
       "cache": false
     },
     "type-check": {

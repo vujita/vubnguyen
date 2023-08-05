@@ -55,3 +55,5 @@ jobs:
 
       - name: Check workspaces
         run: pnpm manypkg check
+      - name: Check prettier
+        run: pnpm run check
