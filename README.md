@@ -1,6 +1,7 @@
 # vubnguyen
 
 [![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
+[![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
 
 - This is a mono repo is inspired from [t3](https://create.t3.gg/) stack
 - The major deviation is using [turborepo](https://turbo.build/) for a mono repo setup for future project extensions
