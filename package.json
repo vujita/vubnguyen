@@ -11,6 +11,7 @@
     "clean:workspaces": "turbo clean",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push db:generate",
+    "db:migrate": "pnpm --filter db migrate",
     "db:migrate:deploy": "pnpm --filter db migrate deploy",
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
@@ -18,7 +19,6 @@
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "type-check": "turbo type-check",
-    "postinstall": "turbo run build lint:fix",
     "prepare": "husky install"
   },
   "dependencies": {
