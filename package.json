@@ -15,6 +15,7 @@
     "db:migrate:deploy": "pnpm --filter db migrate deploy",
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
+    "dev:vubnguyen": "turbo dev --filter vubnguyen",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
