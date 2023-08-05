@@ -1,22 +1,17 @@
-name: CI
-
 on:
-  pull_request:
-    branches: ["*"]
   push:
-    branches: ["main"]
-  merge_group:
-
+    branches: [main]
+    paths:
+      - "./prisma/**/*.*"
 # You can leverage Vercel Remote Caching with Turbo to speed up your builds
 # @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  DATABASE_URL: ${{ secrets.DATABASE_PROD_URL }}
 
 jobs:
-  build-lint:
-    env:
-      DATABASE_URL: file:./db.sqlite
+  prima-migration:
     runs-on: ubuntu-latest
 
     steps:
@@ -53,5 +48,5 @@ jobs:
       - name: Build, lint and type-check
         run: pnpm turbo build lint type-check
 
-      - name: Check workspaces
-        run: pnpm manypkg check
+      - name: Push changes Prisma Client
+        run: pnpm run db:push
