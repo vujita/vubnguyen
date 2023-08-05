@@ -46,5 +46,5 @@ jobs:
       - name: Build, lint and type-check
         run: pnpm turbo build lint type-check
 
-      - name: Push changes Prisma Client
-        run: pnpm run db:push
+      - name: Run prisma migrations
+        run: pnpm run db:migrate:deploy
