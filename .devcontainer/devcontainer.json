@@ -39,7 +39,7 @@
   "postCreateCommand": "chmod +x scripts/postInstall.sh && ./scripts/postInstall.sh",
   "customizations": {
     "vscode": {
-      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers"],
+      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "vscodevim.vim"],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
