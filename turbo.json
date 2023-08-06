@@ -20,7 +20,7 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build", "^db:generate"],
+      "dependsOn": ["^build", "db:generate"],
       "outputs": [".next/**", ".expo/**"]
     },
     "lint": {

@@ -9,70 +9,70 @@ importers:
   .:
     dependencies:
       '@ianvs/prettier-plugin-sort-imports':
-        specifier: ^4.1.0
+        specifier: 4.1.0
         version: 4.1.0(prettier@3.0.0)
       '@manypkg/cli':
-        specifier: ^0.21.0
+        specifier: 0.21.0
         version: 0.21.0
       husky:
-        specifier: ^8.0.3
+        specifier: 8.0.3
         version: 8.0.3
       lint-staged:
-        specifier: ^13.2.3
+        specifier: 13.2.3
         version: 13.2.3
       prettier:
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
       prettier-plugin-tailwindcss:
-        specifier: ^0.4.1
+        specifier: 0.4.1
         version: 0.4.1(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier@3.0.0)
       turbo:
-        specifier: ^1.10.9
+        specifier: 1.10.9
         version: 1.10.9
       typescript:
-        specifier: ^5.1.6
+        specifier: 5.1.6
         version: 5.1.6
 
   apps/vubnguyen:
     dependencies:
       '@t3-oss/env-nextjs':
-        specifier: ^0.6.0
+        specifier: 0.6.0
         version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
       '@tanstack/react-query':
-        specifier: ^4.29.23
+        specifier: 4.29.23
         version: 4.29.23(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-devtools':
-        specifier: ^4.29.23
+        specifier: 4.29.23
         version: 4.29.23(@tanstack/react-query@4.29.23)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-next-experimental':
         specifier: 5.0.0-alpha.80
         version: 5.0.0-alpha.80(@tanstack/react-query@4.29.23)(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
-        specifier: ^10.34.0
+        specifier: 10.34.0
         version: 10.34.0(@trpc/server@10.34.0)
       '@trpc/next':
-        specifier: ^10.34.0
+        specifier: 10.34.0
         version: 10.34.0(@tanstack/react-query@4.29.23)(@trpc/client@10.34.0)(@trpc/react-query@10.34.0)(@trpc/server@10.34.0)(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/react-query':
-        specifier: ^10.34.0
+        specifier: 10.34.0
         version: 10.34.0(@tanstack/react-query@4.29.23)(@trpc/client@10.34.0)(@trpc/server@10.34.0)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: ^10.34.0
+        specifier: 10.34.0
         version: 10.34.0
       '@vujita/api':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../../packages/api
       '@vujita/auth':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../../packages/auth
       '@vujita/db':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../../packages/db
       clsx:
-        specifier: ^2.0.0
+        specifier: 2.0.0
         version: 2.0.0
       next:
-        specifier: ^13.4.10
+        specifier: 13.4.10
         version: 13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: 18.2.0
@@ -84,94 +84,94 @@ importers:
         specifier: 1.13.1
         version: 1.13.1
       zod:
-        specifier: ^3.21.4
+        specifier: 3.21.4
         version: 3.21.4
     devDependencies:
       '@types/node':
-        specifier: ^18.16.19
+        specifier: 18.16.19
         version: 18.16.19
       '@types/react':
-        specifier: ^18.2.15
+        specifier: 18.2.15
         version: 18.2.15
       '@types/react-dom':
-        specifier: ^18.2.7
+        specifier: 18.2.7
         version: 18.2.7
       '@vujita/eslint-config':
-        specifier: ^0.2.0
+        specifier: 0.2.0
         version: link:../../packages/config/eslint
       '@vujita/tailwind-config':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../../packages/config/tailwind
       autoprefixer:
-        specifier: ^10.4.14
+        specifier: 10.4.14
         version: 10.4.14(postcss@8.4.26)
       dotenv-cli:
-        specifier: ^7.2.1
+        specifier: 7.2.1
         version: 7.2.1
       eslint:
-        specifier: ^8.45.0
+        specifier: 8.45.0
         version: 8.45.0
       postcss:
-        specifier: ^8.4.26
+        specifier: 8.4.26
         version: 8.4.26
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
       typescript:
-        specifier: ^5.1.6
+        specifier: 5.1.6
         version: 5.1.6
 
   packages/api:
     dependencies:
       '@trpc/client':
-        specifier: ^10.34.0
+        specifier: 10.34.0
         version: 10.34.0(@trpc/server@10.34.0)
       '@trpc/server':
-        specifier: ^10.34.0
+        specifier: 10.34.0
         version: 10.34.0
       '@vujita/auth':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../auth
       '@vujita/db':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../db
       superjson:
         specifier: 1.13.1
         version: 1.13.1
       zod:
-        specifier: ^3.21.4
+        specifier: 3.21.4
         version: 3.21.4
     devDependencies:
       '@vujita/eslint-config':
-        specifier: ^0.2.0
+        specifier: 0.2.0
         version: link:../config/eslint
       eslint:
-        specifier: ^8.45.0
+        specifier: 8.45.0
         version: 8.45.0
       typescript:
-        specifier: ^5.1.6
+        specifier: 5.1.6
         version: 5.1.6
 
   packages/auth:
     dependencies:
       '@auth/core':
-        specifier: ^0.9.0
+        specifier: 0.9.0
         version: 0.9.0
       '@auth/prisma-adapter':
-        specifier: ^1.0.1
+        specifier: 1.0.1
         version: 1.0.1(@prisma/client@5.0.0)
       '@t3-oss/env-nextjs':
-        specifier: ^0.6.0
+        specifier: 0.6.0
         version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
       '@vujita/db':
-        specifier: ^0.1.0
+        specifier: 0.1.0
         version: link:../db
       next:
-        specifier: ^13.4.10
+        specifier: 13.4.10
         version: 13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: ^0.0.0-manual.83c4ebd1
-        version: 0.0.0-manual.b53ca00b(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.0.0-manual.83c4ebd1
+        version: 0.0.0-manual.83c4ebd1(next@13.4.10)(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -179,69 +179,69 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       zod:
-        specifier: ^3.21.4
+        specifier: 3.21.4
         version: 3.21.4
     devDependencies:
       '@vujita/eslint-config':
-        specifier: ^0.2.0
+        specifier: 0.2.0
         version: link:../config/eslint
       eslint:
-        specifier: ^8.45.0
+        specifier: 8.45.0
         version: 8.45.0
       typescript:
-        specifier: ^5.1.6
+        specifier: 5.1.6
         version: 5.1.6
 
   packages/config/eslint:
     dependencies:
       '@next/eslint-plugin-next':
-        specifier: ^13.4.10
+        specifier: 13.4.10
         version: 13.4.10
       '@types/eslint':
-        specifier: ^8.44.0
+        specifier: 8.44.0
         version: 8.44.0
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.1.0
+        specifier: 6.1.0
         version: 6.1.0(@typescript-eslint/parser@6.1.0)(eslint@8.45.0)(typescript@5.1.6)
       '@typescript-eslint/parser':
-        specifier: ^6.1.0
+        specifier: 6.1.0
         version: 6.1.0(eslint@8.45.0)(typescript@5.1.6)
       eslint-config-prettier:
-        specifier: ^8.8.0
+        specifier: 8.8.0
         version: 8.8.0(eslint@8.45.0)
       eslint-config-turbo:
-        specifier: ^1.10.9
+        specifier: 1.10.9
         version: 1.10.9(eslint@8.45.0)
       eslint-plugin-import:
-        specifier: ^2.27.5
+        specifier: 2.27.5
         version: 2.27.5(@typescript-eslint/parser@6.1.0)(eslint@8.45.0)
       eslint-plugin-jsx-a11y:
-        specifier: ^6.7.1
+        specifier: 6.7.1
         version: 6.7.1(eslint@8.45.0)
       eslint-plugin-react:
-        specifier: ^7.33.0
+        specifier: 7.33.0
         version: 7.33.0(eslint@8.45.0)
       eslint-plugin-react-hooks:
-        specifier: ^4.6.0
+        specifier: 4.6.0
         version: 4.6.0(eslint@8.45.0)
     devDependencies:
       eslint:
-        specifier: ^8.45.0
+        specifier: 8.45.0
         version: 8.45.0
       typescript:
-        specifier: ^5.1.6
+        specifier: 5.1.6
         version: 5.1.6
 
   packages/config/tailwind:
     devDependencies:
       autoprefixer:
-        specifier: ^10.4.14
+        specifier: 10.4.14
         version: 10.4.14(postcss@8.4.26)
       daisyui:
-        specifier: ^3.5.0
+        specifier: 3.5.0
         version: 3.5.0
       postcss:
-        specifier: ^8.4.26
+        specifier: 8.4.26
         version: 8.4.26
       tailwindcss:
         specifier: 3.3.2
@@ -250,17 +250,17 @@ importers:
   packages/db:
     dependencies:
       '@prisma/client':
-        specifier: ^5.0.0
+        specifier: 5.0.0
         version: 5.0.0(prisma@5.0.0)
     devDependencies:
       dotenv-cli:
-        specifier: ^7.2.1
+        specifier: 7.2.1
         version: 7.2.1
       prisma:
-        specifier: ^5.0.0
+        specifier: 5.0.0
         version: 5.0.0
       typescript:
-        specifier: ^5.1.6
+        specifier: 5.1.6
         version: 5.1.6
 
 packages:
@@ -314,19 +314,6 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/nextjs@0.0.0-manual.179c08d4(next@13.4.10)(react@18.2.0):
-    resolution: {integrity: sha512-HVuDgb6xlYLV5mHTGc0Pycg8BlwtcvjvS+54QXEbOBpA5tulzKxAH8QlCoKj5R9XHW9hP9DiCnvXyVV9x2N+jA==}
-    peerDependencies:
-      next: ^13.4.6
-      react: ^18.2.0
-    dependencies:
-      '@auth/core': 0.0.0-manual.8fcd46b0
-      next: 13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-    transitivePeerDependencies:
-      - nodemailer
-    dev: false
-
   /@auth/prisma-adapter@1.0.1(@prisma/client@5.0.0):
     resolution: {integrity: sha512-sBp9l/jVr7l9y7rp2Pv6eoP7i8X2CgRNE3jDWJ0B/u+HnKRofXflD1cldPqRSAkJhqH3UxhVtMTEijT9FoofmQ==}
     peerDependencies:
@@ -336,13 +323,6 @@ packages:
       '@prisma/client': 5.0.0(prisma@5.0.0)
     transitivePeerDependencies:
       - nodemailer
-    dev: false
-
-  /@babel/code-frame@7.21.4:
-    resolution: {integrity: sha512-LYvhNKfwWSPpocw8GI7gpK2nq3HSDuEPC/uSYaALSJu9xjsalaaYFOq0Pwt5KmVqwEbZlDu81aLXwBOmD/Fv9g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/highlight': 7.18.6
     dev: false
 
   /@babel/code-frame@7.22.5:
@@ -380,16 +360,6 @@ packages:
       - supports-color
     dev: false
 
-  /@babel/generator@7.22.3:
-    resolution: {integrity: sha512-C17MW4wlk//ES/CJDL51kPNwl+qiBQyN7b9SKyVp11BLGFeSPoVaHrv+MNt8jwQFhQWowW88z1eeBx3pFz9v8A==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.4
-      '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.18
-      jsesc: 2.5.2
-    dev: false
-
   /@babel/generator@7.22.9:
     resolution: {integrity: sha512-KtLMbmicyuK2Ak/FTCJVbDnkN1SlT8/kceFTiuDiiRUUSMnHMidxSCdG4ndkTOHHpoomWe/4xkvHkEOncwjYIw==}
     engines: {node: '>=6.9.0'}
@@ -414,22 +384,9 @@ packages:
       semver: 6.3.1
     dev: false
 
-  /@babel/helper-environment-visitor@7.22.1:
-    resolution: {integrity: sha512-Z2tgopurB/kTbidvzeBrc2To3PUP/9i5MUe+fU6QJCQDyPwSH2oRapkLw3KGECDYSjhQZCNxEvNvZlLw8JjGwA==}
-    engines: {node: '>=6.9.0'}
-    dev: false
-
   /@babel/helper-environment-visitor@7.22.5:
     resolution: {integrity: sha512-XGmhECfVA/5sAt+H+xpSg0mfrHq6FzNr9Oxh7PSEBBRUb/mL7Kz3NICXb194rCqAEdxkhPT1a88teizAFyvk8Q==}
     engines: {node: '>=6.9.0'}
-    dev: false
-
-  /@babel/helper-function-name@7.21.0:
-    resolution: {integrity: sha512-HfK1aMRanKHpxemaY2gqBmL04iAPOPRj7DxtNbiDOrJK+gdwkiNRVpCpUJYbUT+aZyemKN8brqTOxzCaG6ExRg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/template': 7.21.9
-      '@babel/types': 7.22.4
     dev: false
 
   /@babel/helper-function-name@7.22.5:
@@ -438,13 +395,6 @@ packages:
     dependencies:
       '@babel/template': 7.22.5
       '@babel/types': 7.22.5
-    dev: false
-
-  /@babel/helper-hoist-variables@7.18.6:
-    resolution: {integrity: sha512-UlJQPkFqFULIcyW5sbzgbkxn2FKRgwWiRexcuaR8RNJRy8+LLveqPjwZV/bwrLZCN0eUHD/x8D0heK1ozuoo6Q==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.4
     dev: false
 
   /@babel/helper-hoist-variables@7.22.5:
@@ -482,13 +432,6 @@ packages:
       '@babel/types': 7.22.5
     dev: false
 
-  /@babel/helper-split-export-declaration@7.18.6:
-    resolution: {integrity: sha512-bde1etTx6ZyTmobl9LLMMQsaizFVZrquTEHOqKeQESMKo4PlObf+8+JA25ZsIpZhT/WEd39+vOdLXAFG/nELpA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.4
-    dev: false
-
   /@babel/helper-split-export-declaration@7.22.6:
     resolution: {integrity: sha512-AsUnxuLhRYsisFiaJwvp1QF+I3KjD5FOxut14q/GzovUe6orHLesW2C7d754kRm53h5gqrz6sFl6sxc4BVtE/g==}
     engines: {node: '>=6.9.0'}
@@ -496,18 +439,8 @@ packages:
       '@babel/types': 7.22.5
     dev: false
 
-  /@babel/helper-string-parser@7.21.5:
-    resolution: {integrity: sha512-5pTUx3hAJaZIdW99sJ6ZUUgWq/Y+Hja7TowEnLNMm1VivRgZQL3vpBY3qUACVsvw+yQU6+YgfBVmcbLaZtrA1w==}
-    engines: {node: '>=6.9.0'}
-    dev: false
-
   /@babel/helper-string-parser@7.22.5:
     resolution: {integrity: sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==}
-    engines: {node: '>=6.9.0'}
-    dev: false
-
-  /@babel/helper-validator-identifier@7.19.1:
-    resolution: {integrity: sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==}
     engines: {node: '>=6.9.0'}
     dev: false
 
@@ -532,15 +465,6 @@ packages:
       - supports-color
     dev: false
 
-  /@babel/highlight@7.18.6:
-    resolution: {integrity: sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.19.1
-      chalk: 2.4.2
-      js-tokens: 4.0.0
-    dev: false
-
   /@babel/highlight@7.22.5:
     resolution: {integrity: sha512-BSKlD1hgnedS5XRnGOljZawtag7H1yPfQp0tdNJCHoH6AZ+Pcm9VvkrK59/Yy593Ypg0zMxH2BxD1VPYUQ7UIw==}
     engines: {node: '>=6.9.0'}
@@ -548,14 +472,6 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       chalk: 2.4.2
       js-tokens: 4.0.0
-    dev: false
-
-  /@babel/parser@7.22.4:
-    resolution: {integrity: sha512-VLLsx06XkEYqBtE5YGPwfSGwfrjnyPP5oiGty3S8pQLFDFLaS8VwWSIxkTXpcvr5zeYLE6+MBNl2npl/YnfofA==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.22.4
     dev: false
 
   /@babel/parser@7.22.7:
@@ -573,15 +489,6 @@ packages:
       regenerator-runtime: 0.13.11
     dev: false
 
-  /@babel/template@7.21.9:
-    resolution: {integrity: sha512-MK0X5k8NKOuWRamiEfc3KEJiHMTkGZNUjzMipqCGDDc6ijRl/B7RGSKVGncu4Ro/HdyzzY6cmoXuKI2Gffk7vQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.21.4
-      '@babel/parser': 7.22.4
-      '@babel/types': 7.22.4
-    dev: false
-
   /@babel/template@7.22.5:
     resolution: {integrity: sha512-X7yV7eiwAxdj9k94NEylvbVHLiVG1nvzCV2EAowhxLTwODV1jl9UzZ48leOC0sH7OnuHrIkllaBgneUykIcZaw==}
     engines: {node: '>=6.9.0'}
@@ -589,24 +496,6 @@ packages:
       '@babel/code-frame': 7.22.5
       '@babel/parser': 7.22.7
       '@babel/types': 7.22.5
-    dev: false
-
-  /@babel/traverse@7.22.4:
-    resolution: {integrity: sha512-Tn1pDsjIcI+JcLKq1AVlZEr4226gpuAQTsLMorsYg9tuS/kG7nuwwJ4AB8jfQuEgb/COBwR/DqJxmoiYFu5/rQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.21.4
-      '@babel/generator': 7.22.3
-      '@babel/helper-environment-visitor': 7.22.1
-      '@babel/helper-function-name': 7.21.0
-      '@babel/helper-hoist-variables': 7.18.6
-      '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.22.4
-      '@babel/types': 7.22.4
-      debug: 4.3.4
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@babel/traverse@7.22.8:
@@ -625,15 +514,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@babel/types@7.22.4:
-    resolution: {integrity: sha512-Tx9x3UBHTTsMSW85WB2kphxYQVvrZ/t1FxD88IpSgIjiUJlCm9z+xWIDwyo1vffTwSqteqyznB8ZE9vYYk16zA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.21.5
-      '@babel/helper-validator-identifier': 7.19.1
-      to-fast-properties: 2.0.0
     dev: false
 
   /@babel/types@7.22.5:
@@ -705,12 +585,12 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.22.9
-      '@babel/generator': 7.22.3
-      '@babel/parser': 7.22.4
-      '@babel/traverse': 7.22.4
-      '@babel/types': 7.22.4
+      '@babel/generator': 7.22.9
+      '@babel/parser': 7.22.7
+      '@babel/traverse': 7.22.8
+      '@babel/types': 7.22.5
       prettier: 3.0.0
-      semver: 7.5.1
+      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -758,7 +638,7 @@ packages:
       package-json: 6.5.0
       parse-github-url: 1.0.2
       sembear: 0.5.2
-      semver: 6.3.0
+      semver: 6.3.1
       spawndamnit: 2.0.0
       validate-npm-package-name: 3.0.0
     dev: false
@@ -1075,15 +955,11 @@ packages:
     resolution: {integrity: sha512-gsF+c/0XOguWgaOgvFs+xnnRqt9GwgTvIks36WpE6ueeI4KCEHHd8K/CKHqhOqrJKsYH8m27kRzQEvWXAwXUTw==}
     dependencies:
       '@types/estree': 1.0.1
-      '@types/json-schema': 7.0.11
+      '@types/json-schema': 7.0.12
     dev: false
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
-    dev: false
-
-  /@types/json-schema@7.0.11:
-    resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: false
 
   /@types/json-schema@7.0.12:
@@ -2038,7 +1914,7 @@ packages:
       minimatch: 3.1.2
       object.values: 1.1.6
       resolve: 1.22.2
-      semver: 6.3.0
+      semver: 6.3.1
       tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
@@ -2068,7 +1944,7 @@ packages:
       minimatch: 3.1.2
       object.entries: 1.1.6
       object.fromentries: 2.0.6
-      semver: 6.3.0
+      semver: 6.3.1
     dev: false
 
   /eslint-plugin-react-hooks@4.6.0(eslint@8.45.0):
@@ -3029,22 +2905,19 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next-auth@0.0.0-manual.b53ca00b(next@13.4.10)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-hV/FhWoNGwpLe/+eaBVCDx4SBiauNuwA4fIT5DacSY0KrobcC6rvWQkL89WQZZKh3EpYqOefFkiXRkHNz90miw==}
+  /next-auth@0.0.0-manual.83c4ebd1(next@13.4.10)(react@18.2.0):
+    resolution: {integrity: sha512-6nUXtVrZqTWvVz2NhUB/xbMyzxUSQycQWOquACwdpk63AcnZ3g01v+W0UX9paqkGIdqLPtI/pL6rA2N+MT58SQ==}
     peerDependencies:
-      next: ^13.4.5
+      next: ^13.4.6
       nodemailer: ^6.6.5
-      react: ^17.0.2 || ^18
-      react-dom: ^17.0.2 || ^18
+      react: ^18.2.0
     peerDependenciesMeta:
       nodemailer:
         optional: true
     dependencies:
       '@auth/core': 0.0.0-manual.8fcd46b0
-      '@auth/nextjs': 0.0.0-manual.179c08d4(next@13.4.10)(react@18.2.0)
       next: 13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /next@13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0):
@@ -3711,22 +3584,9 @@ packages:
       semver: 6.3.1
     dev: false
 
-  /semver@6.3.0:
-    resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
-    hasBin: true
-    dev: false
-
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
-    dev: false
-
-  /semver@7.5.1:
-    resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
     dev: false
 
   /semver@7.5.4:

@@ -11,17 +11,17 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@trpc/client": "^10.34.0",
-    "@trpc/server": "^10.34.0",
-    "@vujita/auth": "^0.1.0",
-    "@vujita/db": "^0.1.0",
+    "@trpc/client": "10.34.0",
+    "@trpc/server": "10.34.0",
+    "@vujita/auth": "0.1.0",
+    "@vujita/db": "0.1.0",
     "superjson": "1.13.1",
-    "zod": "^3.21.4"
+    "zod": "3.21.4"
   },
   "devDependencies": {
-    "@vujita/eslint-config": "^0.2.0",
-    "eslint": "^8.45.0",
-    "typescript": "^5.1.6"
+    "@vujita/eslint-config": "0.2.0",
+    "eslint": "8.45.0",
+    "typescript": "5.1.6"
   },
   "eslintConfig": {
     "root": true,
