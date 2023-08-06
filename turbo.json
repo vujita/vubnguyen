@@ -11,7 +11,7 @@
       "cache": false
     },
     "db:migrate:deploy": {
-      "dependsOn": ["build", "^db:generate"],
+      "dependsOn": ["build", "db:generate"],
       "inputs": ["prisma/schema.prisma"],
       "cache": false
     },
