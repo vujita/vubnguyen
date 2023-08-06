@@ -4,3 +4,4 @@
 pnpm manypkg fix
 pnpm lint-staged
 pnpm run check
+pnpm manypkg fix
