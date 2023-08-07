@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "vubnguyenstyles/globals.css";
+import "vubnguyen/styles/globals.css";
 
 import type { ReactNode } from "react";
-import { TRPCReactProvider } from "vubnguyenapp/providers";
+
+import cn from "@vujita/classnames";
+
+import { TRPCReactProvider } from "./providers";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
 export default function Layout(props: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={["font-sans", fontSans.variable].join(" ")}>
+      <body className={cn("font-sans", fontSans.variable)}>
         <TRPCReactProvider>{props.children}</TRPCReactProvider>
       </body>
     </html>

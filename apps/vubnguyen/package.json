@@ -34,6 +34,7 @@
     "@types/node": "18.16.19",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "@vujita/classnames": "0.1.0",
     "@vujita/eslint-config": "0.2.0",
     "@vujita/tailwind-config": "0.1.0",
     "autoprefixer": "10.4.14",

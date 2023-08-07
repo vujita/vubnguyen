@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { api } from "vubnguyenutils/api";
-import type { RouterOutputs } from "vubnguyenutils/api";
+import { api } from "vubnguyen/utils/api";
+
+import type { RouterOutputs } from "@vujita/api";
 
 export function CreatePostForm() {
   const context = api.useContext();

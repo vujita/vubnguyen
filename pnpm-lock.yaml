@@ -93,6 +93,9 @@ importers:
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
+      '@vujita/classnames':
+        specifier: 0.1.0
+        version: link:../../packages/classnames
       '@vujita/eslint-config':
         specifier: 0.2.0
         version: link:../../packages/config/eslint
