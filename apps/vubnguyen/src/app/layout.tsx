@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "vubnguyen/styles/globals.css";
 
 import type { ReactNode } from "react";
+import { Header } from "vubnguyen/components/Header";
 
 import cn from "@vujita/classnames";
 
@@ -32,9 +33,14 @@ export const metadata: Metadata = {
 
 export default function Layout(props: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark:bg-black dark:text-white">
       <body className={cn("font-sans", fontSans.variable)}>
-        <TRPCReactProvider>{props.children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <main>
+            <Header />
+            {props.children}
+          </main>
+        </TRPCReactProvider>
       </body>
     </html>
   );
