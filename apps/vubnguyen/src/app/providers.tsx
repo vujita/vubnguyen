@@ -8,7 +8,7 @@ import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experime
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { SessionProvider } from "next-auth/react";
 import superjson from "superjson";
-import { api } from "vubnguyenutils/api";
+import { api } from "vubnguyen/utils/api";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url

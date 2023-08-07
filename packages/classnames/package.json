@@ -1,24 +1,18 @@
 {
-  "name": "@vujita/api",
-  "private": true,
+  "name": "@vujita/classnames",
   "version": "0.1.0",
-  "main": "./index.ts",
-  "types": "./index.ts",
-  "license": "MIT",
+  "description": "a utility to merge classnames for tailwind and manage conflicts",
+  "main": "index.ts",
+  "types": "index.ts",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {
-    "@trpc/client": "10.34.0",
-    "@trpc/server": "10.34.0",
-    "@vujita/auth": "0.1.0",
-    "@vujita/db": "0.1.0",
-    "superjson": "1.13.1",
-    "zod": "3.21.4"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@vujita/eslint-config": "0.2.0",
     "eslint": "8.45.0",
@@ -29,5 +23,9 @@
     "extends": [
       "@vujita/eslint-config/base"
     ]
+  },
+  "dependencies": {
+    "clsx": "2.0.0",
+    "tailwind-merge": "1.14.0"
   }
 }

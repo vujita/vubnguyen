@@ -68,9 +68,6 @@ importers:
       '@vujita/db':
         specifier: 0.1.0
         version: link:../../packages/db
-      clsx:
-        specifier: 2.0.0
-        version: 2.0.0
       next:
         specifier: 13.4.10
         version: 13.4.10(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
@@ -96,6 +93,9 @@ importers:
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
+      '@vujita/classnames':
+        specifier: 0.1.0
+        version: link:../../packages/classnames
       '@vujita/eslint-config':
         specifier: 0.2.0
         version: link:../../packages/config/eslint
@@ -181,6 +181,25 @@ importers:
       zod:
         specifier: 3.21.4
         version: 3.21.4
+    devDependencies:
+      '@vujita/eslint-config':
+        specifier: 0.2.0
+        version: link:../config/eslint
+      eslint:
+        specifier: 8.45.0
+        version: 8.45.0
+      typescript:
+        specifier: 5.1.6
+        version: 5.1.6
+
+  packages/classnames:
+    dependencies:
+      clsx:
+        specifier: 2.0.0
+        version: 2.0.0
+      tailwind-merge:
+        specifier: 1.14.0
+        version: 1.14.0
     devDependencies:
       '@vujita/eslint-config':
         specifier: 0.2.0
@@ -3837,6 +3856,10 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /tailwind-merge@1.14.0:
+    resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
+    dev: false
 
   /tailwindcss@3.3.2:
     resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
