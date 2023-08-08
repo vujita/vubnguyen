@@ -1,6 +1,8 @@
-import { Suspense } from "react";
 import type { FC } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
+import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { auth } from "@vujita/auth";
 import cn from "@vujita/classnames";
@@ -43,7 +45,15 @@ export const Header: FC = async () => {
               )}
             </div>
           </button>
-          {session ? <Link href="/api/auth/signout">SignOut</Link> : <Link href="/api/auth/signin">SignIn</Link>}
+          {session ? (
+            <Link href="/api/auth/signout">
+              <FontAwesomeIcon icon={faSignOut} className="w-[32px] text-gray-400" />
+            </Link>
+          ) : (
+            <Link href="/api/auth/signin">
+              <FontAwesomeIcon icon={faSignIn} className="w-[32px] text-gray-400" />
+            </Link>
+          )}
         </div>
       </div>
     </header>
