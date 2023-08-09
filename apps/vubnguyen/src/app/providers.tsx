@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
 import superjson from "superjson";
 import { api } from "vubnguyen/utils/api";
 
@@ -44,15 +45,17 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
   );
 
   return (
-    <SessionProvider>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryStreamedHydration>
-          <api.Provider client={trpcClient} queryClient={queryClient}>
-            {props.children}
-          </api.Provider>
-        </ReactQueryStreamedHydration>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </SessionProvider>
+    <ThemeProvider attribute="class">
+      <SessionProvider>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryStreamedHydration>
+            <api.Provider client={trpcClient} queryClient={queryClient}>
+              {props.children}
+            </api.Provider>
+          </ReactQueryStreamedHydration>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </SessionProvider>
+    </ThemeProvider>
   );
 }
