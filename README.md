@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
 [![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
+[![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
 - This is a mono repo is inspired from [t3](https://create.t3.gg/) stack
 - The major deviation is using [turborepo](https://turbo.build/) for a mono repo setup for future project extensions
