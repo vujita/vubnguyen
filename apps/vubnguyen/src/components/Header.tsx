@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { auth } from "@vujita/auth";
 import cn from "@vujita/classnames";
 
+import ThemeSwitcher from "./theme-switcher";
+
 export const Header: FC = async () => {
   const session = await auth();
   return (
@@ -34,26 +36,21 @@ export const Header: FC = async () => {
           </button>
         </Suspense>
         <div className="flex items-center space-x-2 md:order-2">
-          <button type="button" className={cn("mr-3 flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 md:mr-0")}>
-            <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+          <ThemeSwitcher />
+          <div className={cn("mr-3 flex rounded-full bg-gray-800 md:mr-0")}>
+            <div className="relative	h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
               {session?.user.image ? (
-                <img className="h-10 w-10 rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500" src={session.user.image} alt="Bordered avatar"></img>
+                <img className="h-10 w-10 rounded-full" src={session.user.image} alt="Bordered avatar"></img>
               ) : (
                 <svg className="absolute -left-1 h-12 w-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
                 </svg>
               )}
             </div>
-          </button>
-          {session ? (
-            <Link href="/api/auth/signout">
-              <FontAwesomeIcon icon={faSignOut} className="w-[32px] text-gray-400" />
-            </Link>
-          ) : (
-            <Link href="/api/auth/signin">
-              <FontAwesomeIcon icon={faSignIn} className="w-[32px] text-gray-400" />
-            </Link>
-          )}
+          </div>
+          <Link href={session ? "/api/auth/signout" : "/api/auth/signin"} className="h-[32px]">
+            <FontAwesomeIcon icon={session ? faSignOut : faSignIn} className="h-[32px] w-[32px] text-gray-400" />
+          </Link>
         </div>
       </div>
     </header>
