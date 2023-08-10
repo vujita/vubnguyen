@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function Layout(props: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn("font-sans", fontSans.variable)}>
+      <body className={cn("font-sans", fontSans.variable, "transition-colors duration-300")}>
         <TRPCReactProvider>
           <main>
             <Header />
