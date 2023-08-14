@@ -1,5 +1,6 @@
 {
   "name": "@vujita/classnames",
+  "private": true,
   "version": "0.1.0",
   "description": "a utility to merge classnames for tailwind and manage conflicts",
   "main": "index.ts",
@@ -14,14 +15,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vujita/eslint-config": "0.2.0",
     "eslint": "8.45.0",
+    "eslint-config-vujita": "0.0.1",
     "typescript": "5.1.6"
   },
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@vujita/eslint-config/base"
+      "eslint-config-vujita/base"
     ]
   },
   "dependencies": {

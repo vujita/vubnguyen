@@ -1,30 +1,28 @@
 {
   "name": "create-t3-turbo",
   "private": true,
-  "engines": {
-    "node": ">=v18.16.0"
-  },
-  "packageManager": "pnpm@8.6.9",
   "scripts": {
     "build": "turbo build",
+    "check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "pnpx turbo clean",
     "db:generate": "turbo db:generate",
-    "db:push": "turbo db:push db:generate",
     "db:migrate": "pnpm --filter db migrate",
     "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo db:push db:generate",
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
     "dev:vubnguyen": "turbo dev --filter vubnguyen",
-    "check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
-    "type-check": "turbo type-check",
+    "prepare": "husky install",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish",
     "reinstall": "pnpm run clean:workspaces && pnpm run clean && pnpm i && pnpm turbo build lint:fix",
-    "prepare": "husky install"
+    "type-check": "turbo type-check"
   },
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "@ianvs/prettier-plugin-sort-imports": "4.1.0",
     "@manypkg/cli": "0.21.0",
     "eslint-plugin-prettier": "5.0.0",
@@ -34,5 +32,9 @@
     "prettier-plugin-tailwindcss": "0.4.1",
     "turbo": "1.10.9",
     "typescript": "5.1.6"
+  },
+  "packageManager": "pnpm@8.6.9",
+  "engines": {
+    "node": ">=v18.16.0"
   }
 }
