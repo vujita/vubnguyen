@@ -60,7 +60,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
 
       - name: Publish
-        run: pnpm run publish-packages --version ${{ env.RELEASE_TYPE }}
+        run: |
+          pnpm lerna version ${{ env.RELEASE_TYPE }} --no-private
+          pnpm lerna publish from-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
