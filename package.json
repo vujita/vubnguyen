@@ -17,16 +17,15 @@
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "prepare": "husky install",
-    "publish-packages": "turbo run build lint && changeset version && changeset publish",
     "reinstall": "pnpm run clean:workspaces && pnpm run clean && pnpm i && pnpm turbo build lint:fix",
     "type-check": "turbo type-check"
   },
   "dependencies": {
-    "@changesets/cli": "^2.26.2",
     "@ianvs/prettier-plugin-sort-imports": "4.1.0",
     "@manypkg/cli": "0.21.0",
     "eslint-plugin-prettier": "5.0.0",
     "husky": "8.0.3",
+    "lerna": "7.1.5",
     "lint-staged": "13.2.3",
     "prettier": "3.0.0",
     "prettier-plugin-tailwindcss": "0.4.1",
