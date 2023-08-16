@@ -72,13 +72,13 @@ importers:
         specifier: 10.34.0
         version: 10.34.0
       '@vujita/api':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../../packages/api
       '@vujita/auth':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../../packages/auth
       '@vujita/db':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../../packages/db
       next:
         specifier: 13.4.10
@@ -109,10 +109,10 @@ importers:
         specifier: 18.2.7
         version: 18.2.7
       '@vujita/classnames':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../../packages/classnames
       '@vujita/tailwind-config':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../../packages/config/tailwind
       autoprefixer:
         specifier: 10.4.14
@@ -124,7 +124,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.1
+        specifier: '*'
         version: link:../../packages/config/eslint
       postcss:
         specifier: 8.4.26
@@ -145,10 +145,10 @@ importers:
         specifier: 10.34.0
         version: 10.34.0
       '@vujita/auth':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../auth
       '@vujita/db':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../db
       superjson:
         specifier: 1.13.1
@@ -161,7 +161,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.1
+        specifier: '*'
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
@@ -179,7 +179,7 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
       '@vujita/db':
-        specifier: 0.1.0
+        specifier: '*'
         version: link:../db
       next:
         specifier: 13.4.10
@@ -201,7 +201,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.1
+        specifier: '*'
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
@@ -220,7 +220,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.1
+        specifier: '*'
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6

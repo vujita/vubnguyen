@@ -1,7 +1,7 @@
 {
   "name": "@vujita/tailwind-config",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.3-alpha.0",
   "main": "index.ts",
   "license": "MIT",
   "files": [

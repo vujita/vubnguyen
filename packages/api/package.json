@@ -1,7 +1,7 @@
 {
   "name": "@vujita/api",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.3-alpha.0",
   "main": "./index.ts",
   "types": "./index.ts",
   "license": "MIT",
@@ -14,14 +14,14 @@
   "dependencies": {
     "@trpc/client": "10.34.0",
     "@trpc/server": "10.34.0",
-    "@vujita/auth": "0.1.0",
-    "@vujita/db": "0.1.0",
+    "@vujita/auth": "*",
+    "@vujita/db": "*",
     "superjson": "1.13.1",
     "zod": "3.21.4"
   },
   "devDependencies": {
     "eslint": "8.45.0",
-    "eslint-config-vujita": "0.0.1",
+    "eslint-config-vujita": "*",
     "typescript": "5.1.6"
   },
   "eslintConfig": {
