@@ -1,6 +1,6 @@
 # [vubnguyen.com](https://vubnguyen.com)
 
-[![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
+[![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
 [![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
 [![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
