@@ -1,4 +1,4 @@
-# vubnguyen
+# [vubnguyen.com](https://vubnguyen.com)
 
 [![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
 [![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
@@ -79,7 +79,3 @@ packages
   └─ db
       └─ Typesafe db calls using Prisma
 ```
-
-## Deployment
-
-[vubnguyen.com](https://vubnguyen.com)
