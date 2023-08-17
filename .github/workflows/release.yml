@@ -74,6 +74,7 @@ jobs:
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "vujita@users.noreply.github.com"
+          pnpm manypkg fix
           git add .
           git commit --amend --no-edit
           git push -f && git push --tags -f

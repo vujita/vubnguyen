@@ -124,7 +124,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.4-alpha.0
+        specifier: 0.0.5-alpha.0
         version: link:../../packages/config/eslint
       postcss:
         specifier: 8.4.26
@@ -161,7 +161,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.4-alpha.0
+        specifier: 0.0.5-alpha.0
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
@@ -201,7 +201,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.4-alpha.0
+        specifier: 0.0.5-alpha.0
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
@@ -220,7 +220,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.4-alpha.0
+        specifier: 0.0.5-alpha.0
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
