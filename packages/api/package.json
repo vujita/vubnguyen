@@ -14,14 +14,14 @@
   "dependencies": {
     "@trpc/client": "10.34.0",
     "@trpc/server": "10.34.0",
-    "@vujita/auth": "*",
-    "@vujita/db": "*",
+    "@vujita/auth": "0.0.3-alpha.0",
+    "@vujita/db": "0.0.3-alpha.0",
     "superjson": "1.13.1",
     "zod": "3.21.4"
   },
   "devDependencies": {
     "eslint": "8.45.0",
-    "eslint-config-vujita": "*",
+    "eslint-config-vujita": "0.0.4-alpha.0",
     "typescript": "5.1.6"
   },
   "eslintConfig": {
