@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
+import Signature from "../components/signature";
 import { PostList } from "./posts";
-import Signature from "./signature";
 
 export const dynamic = "force-dynamic";
 
