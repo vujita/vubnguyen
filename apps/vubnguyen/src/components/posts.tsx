@@ -33,11 +33,24 @@ export function CreatePostForm() {
         await context.post.all.invalidate();
       }}
     >
-      <input className="mb-2 rounded bg-gray-100 p-2 dark:bg-white/10 dark:text-white" onChange={(e) => setTitle(e.target.value)} placeholder="Title" value={title} />
+      <input
+        className="mb-2 rounded bg-gray-100 p-2 dark:bg-white/10 dark:text-white"
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+        value={title}
+      />
       {!!error?.data?.zodError?.fieldErrors.title && <span className="mb-2 text-red-500">{error.data.zodError.fieldErrors.title}</span>}
-      <input className="mb-2 rounded bg-gray-100 p-2 dark:bg-white/10 dark:text-white" onChange={(e) => setContent(e.target.value)} placeholder="Content" value={content} />
+      <input
+        className="mb-2 rounded bg-gray-100 p-2 dark:bg-white/10 dark:text-white"
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Content"
+        value={content}
+      />
       {!!error?.data?.zodError?.fieldErrors.content && <span className="mb-2 text-red-500">{error.data.zodError.fieldErrors.content}</span>}
-      <button className="rounded bg-pink-400 p-2 font-bold" type="submit">
+      <button
+        className="rounded bg-pink-400 p-2 font-bold"
+        type="submit"
+      >
         {"Create"}
       </button>
     </form>
@@ -56,7 +69,12 @@ export function PostList() {
         <div className="flex h-[40vh] justify-center overflow-y-auto px-4 text-2xl">
           <div className="flex w-full flex-col gap-4">
             {posts.map((p) => {
-              return <PostCard key={p.id} post={p} />;
+              return (
+                <PostCard
+                  key={p.id}
+                  post={p}
+                />
+              );
             })}
           </div>
         </div>

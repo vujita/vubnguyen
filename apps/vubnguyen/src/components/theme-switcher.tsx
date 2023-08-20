@@ -22,7 +22,13 @@ const ThemeSwitcher = () => {
     return null;
   }
 
-  return <FontAwesomeIcon className="h-[32px] w-[32px] text-gray-400" icon={isLightTheme ? faMoon : faSun} onClick={() => setTheme(isLightTheme ? "dark" : "light")} />;
+  return (
+    <FontAwesomeIcon
+      className="h-[32px] w-[32px] text-gray-400"
+      icon={isLightTheme ? faMoon : faSun}
+      onClick={() => setTheme(isLightTheme ? "dark" : "light")}
+    />
+  );
 };
 
 export default ThemeSwitcher;
