@@ -49,7 +49,10 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
       <SessionProvider>
         <QueryClientProvider client={queryClient}>
           <ReactQueryStreamedHydration>
-            <api.Provider client={trpcClient} queryClient={queryClient}>
+            <api.Provider
+              client={trpcClient}
+              queryClient={queryClient}
+            >
               {props.children}
             </api.Provider>
           </ReactQueryStreamedHydration>
