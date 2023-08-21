@@ -99,6 +99,7 @@ export const Header: FC = async () => {
           <Link
             className="h-[32px]"
             href={session ? "/api/auth/signout" : "/api/auth/signin"}
+            prefetch={false}
           >
             <FontAwesomeIcon
               className="h-[32px] w-[32px] text-gray-400"

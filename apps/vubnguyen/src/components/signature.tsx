@@ -36,7 +36,6 @@ export const Signature: FC = () => {
       className="h-[200px] md:h-[400px]"
       fill="none"
       viewBox="0 0 852 902"
-      width="852"
       xmlns="http://www.w3.org/2000/svg"
     >
       <motion.path
