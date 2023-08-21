@@ -12,7 +12,7 @@ import cn from "@vujita/classnames";
 import ThemeSwitcher from "./theme-switcher";
 
 export const Header: FC = async () => {
-  const session: Session | null = await auth();
+  const session = (await auth()) as Session | null;
   return (
     <header className="bg-white-900 fixed w-full border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
@@ -75,7 +75,7 @@ export const Header: FC = async () => {
           <ThemeSwitcher />
           <div className={cn("mr-3 flex rounded-full bg-gray-800 md:mr-0")}>
             <div className="relative	h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-              {session.user.image ? (
+              {session?.user.image ? (
                 <img
                   alt="Bordered avatar"
                   className="h-10 w-10 rounded-full"
