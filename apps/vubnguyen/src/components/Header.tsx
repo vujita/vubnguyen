@@ -5,13 +5,14 @@ import Link from "next/link";
 import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import type { Session } from "@vujita/auth";
 import { auth } from "@vujita/auth";
 import cn from "@vujita/classnames";
 
 import ThemeSwitcher from "./theme-switcher";
 
 export const Header: FC = async () => {
-  const session = await auth();
+  const session: Session | null = await auth();
   return (
     <header className="bg-white-900 fixed w-full border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
