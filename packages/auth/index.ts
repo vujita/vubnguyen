@@ -27,12 +27,6 @@ export const {
   CSRF_experimental,
 } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  providers: [
-    Discord({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
-    }),
-  ],
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -56,4 +50,10 @@ export const {
     //   return !!auth?.user
     // }
   },
+  providers: [
+    Discord({
+      clientId: env.DISCORD_CLIENT_ID,
+      clientSecret: env.DISCORD_CLIENT_SECRET,
+    }),
+  ],
 });

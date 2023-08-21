@@ -16,18 +16,18 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "vubnguyen",
   description: "A website for Vu Nguyen",
   openGraph: {
-    title: "Vu Nguyen personal website",
     description: "A website for Vu Nguyen",
-    url: "https://vubnguyen.com",
     siteName: "vubnguyen.com",
+    title: "Vu Nguyen personal website",
+    url: "https://vubnguyen.com",
   },
+  title: "vubnguyen",
   twitter: {
     card: "summary_large_image",
-    site: "@Vu_Man_Chu",
     creator: "@Vu_Man_Chu",
+    site: "@Vu_Man_Chu",
   },
 };
 

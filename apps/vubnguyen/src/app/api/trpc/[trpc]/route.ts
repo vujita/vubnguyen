@@ -25,10 +25,10 @@ export function OPTIONS() {
 
 async function handler(req: Request) {
   const response = await fetchRequestHandler({
-    endpoint: "/api/trpc",
-    router: appRouter,
-    req,
     createContext: () => createTRPCContext(),
+    endpoint: "/api/trpc",
+    req,
+    router: appRouter,
   });
 
   setCorsHeaders(response);
