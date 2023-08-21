@@ -65,3 +65,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
+
+      # Push repository changes
+      - name: Push changes to repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CI_COMMIT_AUTHOR: Continuous Integration
+        run: |
+          rm pnpm-lock.yaml
+          pnpm i
+          git add .
+          git commit --amend --no-edit
+          git push -f && git push --tags -f
