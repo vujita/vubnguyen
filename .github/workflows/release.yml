@@ -62,21 +62,6 @@ jobs:
       - name: Publish
         run: |
           pnpm lerna publish ${{ env.RELEASE_TYPE }} --no-private -y
-          pnpm manypkg fix
-          pnpm i
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
-
-      # Push repository changes
-      - name: Push changes to repository
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CI_COMMIT_AUTHOR: Continuous Integration
-        run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "vujita@users.noreply.github.com"
-          pnpm manypkg fix
-          git add .
-          git commit --amend --no-edit
-          git push -f && git push --tags -f
