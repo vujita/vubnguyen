@@ -25,8 +25,8 @@ export function CreatePostForm() {
       onSubmit={async (e) => {
         e.preventDefault();
         await createPost({
-          title,
           content,
+          title,
         });
         setTitle("");
         setContent("");

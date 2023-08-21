@@ -5,10 +5,6 @@ import type { SVGMotionProps } from "framer-motion";
 import { motion } from "framer-motion";
 
 const svgVariant = {
-  start: {
-    opacity: 0,
-    pathLength: 0,
-  },
   finished: {
     opacity: 1,
     pathLength: 1,
@@ -19,15 +15,19 @@ const svgVariant = {
       repeatDelay: 1,
     },
   },
+  start: {
+    opacity: 0,
+    pathLength: 0,
+  },
 };
 
 const pathProps: SVGMotionProps<SVGPathElement> = {
   animate: "finished",
+  className: "stroke-gray-800 dark:stroke-gray-200",
   initial: "start",
   strokeLinecap: "round",
   strokeWidth: "25",
   variants: svgVariant,
-  className: "stroke-gray-800 dark:stroke-gray-200",
 };
 
 export const Signature: FC = () => {

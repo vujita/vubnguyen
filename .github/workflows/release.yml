@@ -62,6 +62,8 @@ jobs:
       - name: Publish
         run: |
           pnpm lerna publish ${{ env.RELEASE_TYPE }} --no-private -y
+          rm pnpm-lock
+          pnpm i
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}

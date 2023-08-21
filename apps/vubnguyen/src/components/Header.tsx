@@ -74,12 +74,12 @@ export const Header: FC = async () => {
           <ThemeSwitcher />
           <div className={cn("mr-3 flex rounded-full bg-gray-800 md:mr-0")}>
             <div className="relative	h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-              {session?.user.image ? (
+              {session.user.image ? (
                 <img
                   alt="Bordered avatar"
                   className="h-10 w-10 rounded-full"
                   src={session.user.image}
-                ></img>
+                />
               ) : (
                 <svg
                   className="absolute -left-1 h-12 w-12 text-gray-400"
@@ -90,7 +90,7 @@ export const Header: FC = async () => {
                     clipRule="evenodd"
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                     fillRule="evenodd"
-                  ></path>
+                  />
                 </svg>
               )}
             </div>

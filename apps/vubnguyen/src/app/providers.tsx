@@ -32,7 +32,6 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
 
   const [trpcClient] = useState(() =>
     api.createClient({
-      transformer: superjson,
       links: [
         loggerLink({
           enabled: (opts) => process.env.NODE_ENV === "development" || (opts.direction === "down" && opts.result instanceof Error),
@@ -41,6 +40,7 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
           url: `${getBaseUrl()}/api/trpc`,
         }),
       ],
+      transformer: superjson,
     }),
   );
 
