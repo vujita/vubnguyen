@@ -2,6 +2,14 @@
   "name": "eslint-config-vujita",
   "version": "0.0.6-alpha.4",
   "license": "MIT",
+  "homepage": "https://github.com/vujita/vubnguyen#readme",
+  "bugs": {
+    "url": "https://github.com/vujita/vubnguyen/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vujita/vubnguyen"
+  },
   "publishConfig": {
     "access": "public"
   },

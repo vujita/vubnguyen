@@ -4,8 +4,18 @@
 [![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
 [![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
-- This is a mono repo is inspired from [t3](https://create.t3.gg/) stack
-- The major deviation is using [turborepo](https://turbo.build/) for a mono repo setup for future project extensions
+## Inspiration
+
+This is a mono repo is inspired from [t3](https://create.t3.gg/) stack.
+The major deviation is using [turborepo](https://turbo.build/) for a mono repo setup for future project extensions
+
+I also want to be able to host my personal portfolio site and any packages that.
+
+I may want to publish for future use in other projects, like
+
+- eslint-config
+- common utilities
+- any ui libraries I may create
 
 ## Installation
 
