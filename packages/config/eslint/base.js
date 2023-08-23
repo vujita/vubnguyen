@@ -28,6 +28,7 @@ const config = {
     "@typescript-eslint/prefer-ts-expect-error": "error",
     "@typescript-eslint/type-annotation-spacing": "error",
     "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    indent: "off", // Let pretteir handle this
     "prettier/prettier": [
       "error",
       {},
