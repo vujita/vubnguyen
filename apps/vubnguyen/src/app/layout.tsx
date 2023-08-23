@@ -4,9 +4,8 @@ import { Inter } from "next/font/google";
 import "vubnguyen/styles/globals.css";
 
 import type { ReactNode } from "react";
+import cn from "vu-ui/dist/classnames";
 import { Header } from "vubnguyen/components/Header";
-
-import cn from "@vujita/classnames";
 
 import { TRPCReactProvider } from "./providers";
 
