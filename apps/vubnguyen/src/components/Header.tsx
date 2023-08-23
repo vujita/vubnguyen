@@ -4,10 +4,10 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import cn from "vu-ui/dist/classnames";
 
 import type { Session } from "@vujita/auth";
 import { auth } from "@vujita/auth";
-import cn from "@vujita/classnames";
 
 import ThemeSwitcher from "./theme-switcher";
 
@@ -75,7 +75,7 @@ export const Header: FC = async () => {
         <div className="flex items-center space-x-2 md:order-2">
           <ThemeSwitcher />
           <div className={cn("mr-3 flex rounded-full bg-gray-800 md:mr-0")}>
-            <div className="relative	h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+            <div className="relative h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
               {session?.user.image ? (
                 <img
                   alt="Bordered avatar"

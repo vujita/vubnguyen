@@ -3,6 +3,6 @@ packages:
   - apps/vubnguyen
   - packages/api
   - packages/auth
-  - packages/classnames
   - packages/db
   - packages/config/*
+  - packages/vu-ui
