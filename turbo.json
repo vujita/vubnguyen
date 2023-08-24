@@ -21,7 +21,7 @@
     },
     "build": {
       "dependsOn": ["^build", "db:generate"],
-      "outputs": [".next/**", ".expo/**"]
+      "outputs": [".next/**", ".expo/**", "dist/**"]
     },
     "lint": {
       "dependsOn": ["^build"]
@@ -33,7 +33,7 @@
       "cache": false
     },
     "type-check": {
-      "dependsOn": ["^db:generate", "build"],
+      "dependsOn": ["db:generate", "build"],
       "cache": false
     }
   },
