@@ -27,7 +27,8 @@
       "dependsOn": ["^build"]
     },
     "lint:fix": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["src/**"]
     },
     "clean": {
       "cache": false
