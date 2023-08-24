@@ -21,7 +21,7 @@
     },
     "build": {
       "dependsOn": ["^build", "db:generate"],
-      "outputs": [".next/**", ".expo/**", "dist/**"]
+      "outputs": [".next/**", ".expo/**", "dist/**", "storybook-static/**"]
     },
     "lint": {
       "dependsOn": ["^build"]
