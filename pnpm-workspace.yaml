@@ -5,4 +5,4 @@ packages:
   - packages/auth
   - packages/db
   - packages/config/*
-  - packages/vu-ui
+  - packages/vujita-ui

@@ -124,7 +124,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.6-alpha.5
+        specifier: 0.0.6-alpha.7
         version: link:../../packages/config/eslint
       postcss:
         specifier: 8.4.26
@@ -135,9 +135,9 @@ importers:
       typescript:
         specifier: 5.1.6
         version: 5.1.6
-      vu-ui:
-        specifier: 0.0.6-alpha.5
-        version: link:../../packages/vu-ui
+      vujita-ui:
+        specifier: 0.0.6-alpha.7
+        version: link:../../packages/vujita-ui
 
   packages/api:
     dependencies:
@@ -164,7 +164,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.6-alpha.5
+        specifier: 0.0.6-alpha.7
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
@@ -204,7 +204,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.6-alpha.5
+        specifier: 0.0.6-alpha.7
         version: link:../config/eslint
       typescript:
         specifier: 5.1.6
@@ -284,7 +284,7 @@ importers:
         specifier: 5.1.6
         version: 5.1.6
 
-  packages/vu-ui:
+  packages/vujita-ui:
     dependencies:
       clsx:
         specifier: 2.0.0
@@ -297,7 +297,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: 0.0.6-alpha.5
+        specifier: ^0.0.6-alpha.7
         version: link:../config/eslint
       tsup:
         specifier: 7.2.0
