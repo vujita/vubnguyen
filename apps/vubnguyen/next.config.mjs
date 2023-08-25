@@ -4,11 +4,14 @@ import "@vujita/auth/env.mjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  /** We already do linting and typechecking as separate tasks in CI */
+  eslint: { ignoreDuringBuilds: true },
+
+  output: "standalone",
+
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@vujita/api", "@vujita/auth", "@vujita/db"],
-  /** We already do linting and typechecking as separate tasks in CI */
-  eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 };
 
