@@ -28,7 +28,7 @@
     "@vujita/db": "0.0.3-alpha.0",
     "framer-motion": "10.16.0",
     "next": "13.4.10",
-    "next-themes": "^0.2.1",
+    "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "1.13.1",
