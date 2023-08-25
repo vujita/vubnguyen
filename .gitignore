@@ -49,6 +49,3 @@ yarn-error.log*
 
 # turbo
 .turbo
-
-#storybook
-storybook-static

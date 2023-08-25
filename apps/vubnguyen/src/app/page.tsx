@@ -1,5 +1,3 @@
-import { PostList } from "vubnguyen/components/posts";
-
 import Signature from "../components/signature";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +10,6 @@ export default function HomePage() {
         <Signature />
       </div>
       <div className="p-4 text-center text-3xl text-blue-500 md:text-7xl">{"Coming soon!"}</div>
-      <PostList />
     </div>
   );
 }
