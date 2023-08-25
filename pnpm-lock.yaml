@@ -42,27 +42,6 @@ importers:
         specifier: 5.1.6
         version: 5.1.6
 
-  apps/storybook:
-    devDependencies:
-      '@xarc/run':
-        specifier: 1.1.1
-        version: 1.1.1
-      eslint:
-        specifier: 8.45.0
-        version: 8.45.0
-      eslint-config-vujita:
-        specifier: ^0.0.6-alpha.7
-        version: link:../../packages/config/eslint
-      rimraf:
-        specifier: 5.0.1
-        version: 5.0.1
-      tsup:
-        specifier: 7.2.0
-        version: 7.2.0(typescript@5.1.6)
-      typescript:
-        specifier: 5.1.6
-        version: 5.1.6
-
   apps/vubnguyen:
     dependencies:
       '@fortawesome/free-solid-svg-icons':
@@ -111,7 +90,7 @@ importers:
         specifier: 13.4.10
         version: 13.4.10(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       next-themes:
-        specifier: ^0.2.1
+        specifier: 0.2.1
         version: 0.2.1(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: 18.2.0
@@ -324,7 +303,7 @@ importers:
         specifier: 8.45.0
         version: 8.45.0
       eslint-config-vujita:
-        specifier: ^0.0.6-alpha.7
+        specifier: 0.0.6-alpha.7
         version: link:../config/eslint
       rimraf:
         specifier: 5.0.1
@@ -2516,7 +2495,7 @@ packages:
       minipass-pipeline: 1.2.4
       p-map: 4.0.0
       ssri: 10.0.5
-      tar: 6.1.11
+      tar: 6.1.15
       unique-filename: 3.0.0
     dev: false
 
@@ -5237,7 +5216,7 @@ packages:
       redent: 3.0.0
       trim-newlines: 3.0.1
       type-fest: 0.18.1
-      yargs-parser: 20.2.4
+      yargs-parser: 20.2.9
     dev: false
 
   /merge-stream@2.0.0:
@@ -5580,7 +5559,7 @@ packages:
       npmlog: 6.0.2
       rimraf: 3.0.2
       semver: 7.5.4
-      tar: 6.1.11
+      tar: 6.1.15
       which: 2.0.2
     transitivePeerDependencies:
       - supports-color
@@ -6093,7 +6072,7 @@ packages:
       read-package-json-fast: 3.0.2
       sigstore: 1.9.0
       ssri: 10.0.5
-      tar: 6.1.11
+      tar: 6.1.15
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -7341,6 +7320,18 @@ packages:
       yallist: 4.0.0
     dev: false
 
+  /tar@6.1.15:
+    resolution: {integrity: sha512-/zKt9UyngnxIT/EAGYuxaMYgOIJiP81ab9ZfkILq4oNLPFX50qyYmu7jRj9qeXoxmJHjGlbH0+cm2uy1WCs10A==}
+    engines: {node: '>=10'}
+    dependencies:
+      chownr: 2.0.0
+      fs-minipass: 2.1.0
+      minipass: 5.0.0
+      minizlib: 2.1.2
+      mkdirp: 1.0.4
+      yallist: 4.0.0
+    dev: false
+
   /temp-dir@1.0.0:
     resolution: {integrity: sha512-xZFXEGbG7SNC3itwBzI3RYjq/cEhBkx2hJuKGIUOcEULmkQExXiHat2z/qkISYsuR+IKumhEfKKbV5qXmhICFQ==}
     engines: {node: '>=4'}
@@ -7981,6 +7972,11 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /yargs-parser@20.2.9:
+    resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
+    engines: {node: '>=10'}
+    dev: false
+
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -7996,7 +7992,7 @@ packages:
       require-directory: 2.1.1
       string-width: 4.2.3
       y18n: 5.0.8
-      yargs-parser: 20.2.4
+      yargs-parser: 20.2.9
     dev: false
 
   /yargs@17.7.2:

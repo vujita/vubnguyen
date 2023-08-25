@@ -1,5 +1,6 @@
 {
   "github": {
     "silent": true
-  }
+  },
+  "excludeFiles": "{*.cache,node_modules,public,app}/**"
 }
