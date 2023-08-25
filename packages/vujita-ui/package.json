@@ -20,7 +20,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsup",
+    "build:clean": "rimraf dist",
+    "build:tsup": "tsup",
+    "build": "xrun -s build:clean build:tsup",
     "dev": "tsup --watch",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
@@ -32,8 +34,10 @@
     "tailwind-merge": "1.14.0"
   },
   "devDependencies": {
+    "@xarc/run": "1.1.1",
     "eslint": "8.45.0",
     "eslint-config-vujita": "^0.0.6-alpha.7",
+    "rimraf": "5.0.1",
     "tsup": "7.2.0",
     "typescript": "5.1.6"
   },
