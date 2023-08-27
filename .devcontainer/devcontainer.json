@@ -16,10 +16,6 @@
   },
   "dockerComposeFile": "docker-compose.yml",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "nodeGypDependencies": true,
-      "version": "18.16.0"
-    },
     "ghcr.io/devcontainers-contrib/features/postgres-asdf:1": {
       "version": "latest"
     },
@@ -29,12 +25,16 @@
     "ghcr.io/devcontainers-contrib/features/turborepo-npm:1": {
       "version": "latest"
     },
-    "ghcr.io/devcontainers/features/sshd:1": {},
     "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-      "plugins": "ssh-agent npm",
       "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/git",
+      "plugins": "ssh-agent npm",
       "username": "node"
-    }
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "18.16.0"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {}
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},

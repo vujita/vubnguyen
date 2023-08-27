@@ -3,26 +3,29 @@
   "globalDependencies": ["**/.env", "tsconfig.json"],
   "globalEnv": ["CI", "DATABASE_URL", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "EXPO_ROUTER_APP_ROOT", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "NODE_ENV", "SKIP_ENV_VALIDATION", "VERCEL", "VERCEL_URL"],
   "pipeline": {
-    "db:generate": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
-    },
-    "db:push": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
-    },
-    "db:migrate:deploy": {
-      "dependsOn": ["build", "db:generate"],
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
-    },
-    "dev": {
-      "persistent": true,
-      "cache": false
-    },
     "build": {
       "dependsOn": ["^build", "db:generate"],
       "outputs": [".next/**", ".expo/**", "dist/**"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false,
+      "inputs": ["prisma/schema.prisma"]
+    },
+    "db:migrate:deploy": {
+      "cache": false,
+      "dependsOn": ["build", "db:generate"],
+      "inputs": ["prisma/schema.prisma"]
+    },
+    "db:push": {
+      "cache": false,
+      "inputs": ["prisma/schema.prisma"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
     },
     "lint": {
       "dependsOn": ["^build"]
@@ -31,12 +34,9 @@
       "dependsOn": ["^build"],
       "outputs": ["src/**"]
     },
-    "clean": {
-      "cache": false
-    },
     "type-check": {
-      "dependsOn": ["db:generate", "build"],
-      "cache": false
+      "cache": false,
+      "dependsOn": ["db:generate", "build"]
     }
   }
 }

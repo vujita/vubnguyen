@@ -4,8 +4,8 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@vujita/"],
-      "enabled": false
+      "enabled": false,
+      "matchPackagePatterns": ["^@vujita/"]
     }
   ],
   "rangeStrategy": "bump",

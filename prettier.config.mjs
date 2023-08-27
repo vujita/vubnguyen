@@ -11,6 +11,7 @@ const config = {
   plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json"],
   singleAttributePerLine: true,
   tailwindConfig: "./packages/config/tailwind",
+  jsonRecursiveSort: true,
 };
 
 export default config;
