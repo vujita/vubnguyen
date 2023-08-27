@@ -1,5 +1,4 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
       "name": "Next.js",
@@ -9,5 +8,6 @@
       "cwd": "${workspaceFolder}/apps/nextjs/",
       "skipFiles": ["<node_internals>/**"]
     }
-  ]
+  ],
+  "version": "0.2.0"
 }

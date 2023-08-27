@@ -1,10 +1,20 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node-postgres
 {
-  "name": "Node.js & PostgreSQL",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "vscodevim.vim"],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        }
+      }
+    }
+  },
   "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "nodeGypDependencies": true,
@@ -31,23 +41,13 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // This can be used to network with other containers or with the host.
   "forwardPorts": [3000, 5432, 8080],
+  "name": "Node.js & PostgreSQL",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "chmod +x scripts/postInstall.sh && ./scripts/postInstall.sh",
   // Configure tool-specific properties.
   // "customizations": {},
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   "remoteUser": "root",
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x scripts/postInstall.sh && ./scripts/postInstall.sh",
-  "customizations": {
-    "vscode": {
-      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "vscodevim.vim"],
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        "terminal.integrated.profiles.linux": {
-          "zsh": {
-            "path": "/bin/zsh"
-          }
-        }
-      }
-    }
-  }
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }

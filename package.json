@@ -13,6 +13,7 @@
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
     "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",
+    "dev:storybook": "turbo dev --filter storybook",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
@@ -29,6 +30,7 @@
     "lerna": "7.1.5",
     "lint-staged": "13.2.3",
     "prettier": "3.0.0",
+    "prettier-plugin-sort-json": "3.0.1",
     "prettier-plugin-tailwindcss": "0.4.1",
     "turbo": "1.10.9",
     "typescript": "5.1.6"
