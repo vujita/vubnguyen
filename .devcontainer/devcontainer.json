@@ -3,7 +3,7 @@
 {
   "customizations": {
     "vscode": {
-      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "vscodevim.vim"],
+      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "asvetliakov.vscode-neovim"],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
@@ -40,7 +40,7 @@
   // "features": {},
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // This can be used to network with other containers or with the host.
-  "forwardPorts": [3000, 5432, 8080],
+  "forwardPorts": [3000, 5432, 8080, 6006],
   "name": "Node.js & PostgreSQL",
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "chmod +x scripts/postInstall.sh && ./scripts/postInstall.sh",
