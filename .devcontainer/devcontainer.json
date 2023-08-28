@@ -1,42 +1,6 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node-postgres
 {
-  "name": "Node.js & PostgreSQL",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "nodeGypDependencies": true,
-      "version": "18.16.0"
-    },
-    "ghcr.io/devcontainers-contrib/features/postgres-asdf:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/prisma:2": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/turborepo-npm:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/sshd:1": {},
-    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-      "plugins": "ssh-agent npm",
-      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/git",
-      "username": "node"
-    }
-  },
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {},
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // This can be used to network with other containers or with the host.
-  "forwardPorts": [3000, 5432, 8080],
-  // Configure tool-specific properties.
-  // "customizations": {},
-  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  "remoteUser": "root",
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x scripts/postInstall.sh && ./scripts/postInstall.sh",
   "customizations": {
     "vscode": {
       "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "vscodevim.vim"],
@@ -49,5 +13,41 @@
         }
       }
     }
-  }
+  },
+  "dockerComposeFile": "docker-compose.yml",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/postgres-asdf:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/prisma:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/turborepo-npm:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/git",
+      "plugins": "ssh-agent npm",
+      "username": "node"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "18.16.0"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {}
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or with the host.
+  "forwardPorts": [3000, 5432, 8080],
+  "name": "Node.js & PostgreSQL",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "chmod +x scripts/postInstall.sh && ./scripts/postInstall.sh",
+  // Configure tool-specific properties.
+  // "customizations": {},
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "root",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }

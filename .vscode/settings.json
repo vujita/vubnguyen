@@ -1,4 +1,7 @@
 {
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
@@ -6,13 +9,18 @@
     "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
   "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.format.enable": true,
   "eslint.rules.customizations": [
     {
       "rule": "*",
       "severity": "warn"
     }
   ],
+  "eslint.run": "onSave",
   "eslint.workingDirectories": [
     {
       "pattern": "apps/*/"
@@ -21,19 +29,11 @@
       "pattern": "packages/*/"
     }
   ],
-  "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "editor.tabSize": 2,
-  "eslint.format.enable": true,
-  "eslint.run": "onSave",
-  "tailwindCSS.emmetCompletions": true,
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

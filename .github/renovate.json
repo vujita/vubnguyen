@@ -1,13 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automerge": true,
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@vujita/"],
-      "enabled": false
+      "enabled": false,
+      "matchPackagePatterns": ["^@vujita/"]
     }
   ],
-  "updateInternalDeps": true,
   "rangeStrategy": "bump",
-  "automerge": true
+  "updateInternalDeps": true
 }
