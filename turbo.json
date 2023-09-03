@@ -5,7 +5,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["db:generate", "^build"],
-      "outputs": [".next/**", ".expo/**", "dist/**"]
+      "outputs": [".next/**", ".expo/**", "dist/**", "storybook-static/**"]
     },
     "clean": {
       "cache": false
