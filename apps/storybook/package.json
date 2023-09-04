@@ -4,8 +4,12 @@
   "private": true,
   "description": "storybook app",
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "clean": "xrun -s build:clean",
+    "dev": "xrun dev:tailwind dev:storybook",
+    "dev:tailwind": "tailwindcss -i ./src/tailwind.css -o ./src/tailwind.generated.css --watch",
+    "dev:storybook": "storybook dev -p 6006",
     "build": "xrun -s build:clean build:storybook",
+    "build:tailwind": "tailwindcss -i ./src/tailwind.css -o ./src/tailwind.generated.css",
     "build:clean": "rimraf storybook-static",
     "build:storybook": "storybook build"
   },
@@ -31,8 +35,10 @@
     "react-dom": "18.2.0",
     "rimraf": "5.0.1",
     "storybook": "7.3.2",
+    "tailwindcss": "3.3.2",
     "tsup": "7.2.0",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "vujita-ui": "0.0.6-alpha.7"
   },
   "eslintConfig": {
     "extends": [
