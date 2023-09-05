@@ -192,9 +192,6 @@ importers:
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
-      '@vujita/tailwind-config':
-        specifier: 0.0.3-alpha.0
-        version: link:../../packages/config/tailwind
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.26)
@@ -333,18 +330,6 @@ importers:
       typescript:
         specifier: 5.1.6
         version: 5.1.6
-
-  packages/config/tailwind:
-    devDependencies:
-      autoprefixer:
-        specifier: 10.4.14
-        version: 10.4.14(postcss@8.4.26)
-      postcss:
-        specifier: 8.4.26
-        version: 8.4.26
-      tailwindcss:
-        specifier: 3.3.2
-        version: 3.3.2
 
   packages/db:
     dependencies:

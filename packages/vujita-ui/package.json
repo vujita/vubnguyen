@@ -17,6 +17,8 @@
     "access": "public"
   },
   "files": [
+    "postcss.config.cjs",
+    "tailwind.config.ts",
     "dist"
   ],
   "scripts": {

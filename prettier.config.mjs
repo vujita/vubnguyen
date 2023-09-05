@@ -1,7 +1,7 @@
 /** @typedef  {import("prettier").Config} PrettierConfig */
 /** @typedef {import("prettier-plugin-tailwindcss").PluginOptions} TailwindConfig */
 /** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig */
-/** @typedef {import("prettier-plugin-sort-json")} SortJson */
+/** @typedef {import("prettier-plugin-sort-json").parsers} SortJson */
 
 /** @type { PrettierConfig | SortImportsConfig | TailwindConfig |SortJson} */
 const config = {
@@ -10,7 +10,7 @@ const config = {
   importOrderTypeScriptVersion: "4.4.0",
   plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json"],
   singleAttributePerLine: true,
-  tailwindConfig: "./packages/config/tailwind",
+  tailwindConfig: "./packages/vujita-ui/tailwind.config.ts",
   jsonRecursiveSort: true,
 };
 
