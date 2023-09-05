@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
-
-import baseConfig from "@vujita/tailwind-config";
+import baseConfig from "vujita-ui/tailwind.config";
 
 export default {
   content: ["./src/**/*.{ts,tsx}"],
