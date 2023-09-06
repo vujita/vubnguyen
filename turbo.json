@@ -23,6 +23,10 @@
       "cache": false,
       "inputs": ["prisma/schema.prisma"]
     },
+    "deploy:chromatic": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

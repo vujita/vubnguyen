@@ -5,13 +5,16 @@
   "description": "storybook app",
   "scripts": {
     "clean": "xrun -s build:clean",
+    "deploy:chromatic": "xrun -s build chromatic",
+    "chromatic": "pnpm with-env chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
     "dev": "xrun dev:tailwind dev:storybook",
     "dev:tailwind": "tailwindcss -i ./src/tailwind.css -o ./src/tailwind.generated.css --watch",
     "dev:storybook": "storybook dev -p 6006",
-    "build": "xrun -s build:clean build:storybook",
+    "build": "xrun -s build:clean build-storybook",
     "build:tailwind": "tailwindcss -i ./src/tailwind.css -o ./src/tailwind.generated.css",
     "build:clean": "rimraf storybook-static",
-    "build:storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "with-env": "dotenv -e ../../.env --"
   },
   "author": "Vu Nguyen",
   "license": "ISC",
@@ -28,6 +31,8 @@
     "@storybook/react-webpack5": "7.3.2",
     "@storybook/testing-library": "0.2.0",
     "@xarc/run": "1.1.1",
+    "chromatic": "7.0.0",
+    "dotenv": "16.3.1",
     "eslint": "8.45.0",
     "eslint-config-vujita": "0.0.6-alpha.7",
     "eslint-plugin-storybook": "0.6.13",
