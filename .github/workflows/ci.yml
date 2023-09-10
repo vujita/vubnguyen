@@ -43,13 +43,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install deps (with cache)
-        run: pnpm install
-
-      - name: Generate Prisma Client
-        run: pnpm turbo db:generate
+        run: pnpm install --frozen-lockfile
 
       - name: Build, lint and type-check
-        run: pnpm turbo build lint type-check
+        run: pnpm turbo db:generate build lint type-check
 
       - name: Check workspaces
         run: pnpm manypkg check
