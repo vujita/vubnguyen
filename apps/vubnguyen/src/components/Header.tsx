@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cn from "vujita-ui/dist/classnames";
+import cn from "vujita-ui/classnames";
 
 import type { Session } from "@vujita/auth";
 import { auth } from "@vujita/auth";

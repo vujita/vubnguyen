@@ -5,7 +5,7 @@ import "vubnguyen/styles/globals.css";
 
 import type { ReactNode } from "react";
 import { Header } from "vubnguyen/components/Header";
-import cn from "vujita-ui/dist/classnames";
+import classnames from "vujita-ui/classnames";
 
 import { TRPCReactProvider } from "./providers";
 
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 export default function Layout(props: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn("font-sans", fontSans.variable, "transition-colors duration-300")}>
+      <body className={classnames("font-sans", fontSans.variable, "transition-colors duration-300")}>
         <TRPCReactProvider>
           <main>
             <Header />
