@@ -7,10 +7,10 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { initTRPC, TRPCError } from "@trpc/server";
+import { getServerSession } from "next-auth/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { auth } from "@vujita/auth";
 import type { Session } from "@vujita/auth";
 import { prisma } from "@vujita/db";
 
@@ -50,7 +50,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  */
 export const createTRPCContext = async () => {
   // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await auth();
+  const session = await getServerSession();
 
   return createInnerTRPCContext({
     session,
