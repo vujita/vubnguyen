@@ -5,7 +5,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["db:generate", "^build"],
-      "outputs": [".next/**", ".expo/**", "dist/**", "storybook-static/**"]
+      "outputs": [".next/**", ".expo/**", "dist/**", "storybook-static/**", "*.ts", "*.d.ts", "*.d.mts", "*.mts", "*.js", "*.map"]
     },
     "clean": {
       "cache": false
@@ -43,7 +43,6 @@
       "persistent": true
     },
     "type-check": {
-      "cache": false,
       "dependsOn": ["db:generate", "build"]
     }
   }
