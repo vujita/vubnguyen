@@ -1,7 +1,7 @@
+import Discord from "@auth/core/providers/discord";
 import type { DefaultSession } from "@auth/core/types";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
-import Discord from "next-auth/providers/discord";
 
 import { prisma } from "@vujita/db";
 
@@ -21,9 +21,11 @@ declare module "next-auth" {
   }
 }
 
-// TODO: Find a better way to type this
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-export const handlers = NextAuth({
+export const {
+  handlers: { GET, POST },
+  auth,
+  CSRF_experimental,
+} = NextAuth({
   adapter: PrismaAdapter(prisma),
   callbacks: {
     session: ({ session, user }) => ({
@@ -54,5 +56,4 @@ export const handlers = NextAuth({
       clientSecret: env.DISCORD_CLIENT_SECRET,
     }),
   ],
-  secret: env.NEXTAUTH_SECRET,
 });
