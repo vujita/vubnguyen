@@ -1,7 +1,7 @@
-import Discord from "@auth/core/providers/discord";
-import type { DefaultSession } from "@auth/core/types";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import NextAuth from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import NextAuth, { getServerSession } from "next-auth";
+import type { NextAuthOptions } from "next-auth";
+import Discord from "next-auth/providers/discord";
 
 import { prisma } from "@vujita/db";
 
@@ -13,19 +13,7 @@ export type { Session } from "next-auth";
 export const providers = ["discord"] as const;
 export type OAuthProviders = (typeof providers)[number];
 
-declare module "next-auth" {
-  interface Session {
-    user: {
-      id: string;
-    } & DefaultSession["user"];
-  }
-}
-
-export const {
-  handlers: { GET, POST },
-  auth,
-  CSRF_experimental,
-} = NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   callbacks: {
     session: ({ session, user }) => ({
@@ -56,4 +44,7 @@ export const {
       clientSecret: env.DISCORD_CLIENT_SECRET,
     }),
   ],
-});
+};
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+export const handlers = NextAuth(authOptions);
+export const auth = async () => getServerSession(authOptions);

@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react";
 
 import type { OAuthProviders } from "@vujita/auth";
-import { CSRF_experimental } from "@vujita/auth";
 
 export function SignIn({ provider, ...props }: { provider: OAuthProviders } & ComponentProps<"button">) {
   return (
@@ -13,7 +12,6 @@ export function SignIn({ provider, ...props }: { provider: OAuthProviders } & Co
         {...props}
         type="submit"
       />
-      <CSRF_experimental />
     </form>
   );
 }
@@ -28,7 +26,6 @@ export function SignOut(props: ComponentProps<"button">) {
         {...props}
         type="submit"
       />
-      <CSRF_experimental />
     </form>
   );
 }
