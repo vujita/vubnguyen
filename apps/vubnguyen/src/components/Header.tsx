@@ -6,13 +6,12 @@ import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "vujita-ui/classnames";
 
-import type { Session } from "@vujita/auth";
 import { auth } from "@vujita/auth";
 
 import ThemeSwitcher from "./theme-switcher";
 
 export const Header: FC = async () => {
-  const session = (await auth()) as Session | null;
+  const session = await auth();
 
   return (
     <header className="bg-white-900 fixed w-full border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
@@ -76,7 +75,7 @@ export const Header: FC = async () => {
           <ThemeSwitcher />
           <div className={cn("mr-3 flex rounded-full bg-gray-800 md:mr-0")}>
             <div className="relative h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-              {session?.user.image ? (
+              {session?.user?.image ? (
                 <img
                   alt="Bordered avatar"
                   className="h-10 w-10 rounded-full"

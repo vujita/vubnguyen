@@ -18,6 +18,7 @@
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "prepare": "husky install",
+    "preview": "turbo build && turbo preview",
     "reinstall": "pnpm run clean:workspaces && pnpm run clean && pnpm i && pnpm turbo build lint:fix",
     "type-check": "turbo type-check"
   },

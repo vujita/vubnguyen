@@ -38,6 +38,10 @@
       "dependsOn": ["^build"],
       "outputs": ["src/**"]
     },
+    "preview": {
+      "cache": false,
+      "persistent": true
+    },
     "type-check": {
       "cache": false,
       "dependsOn": ["db:generate", "build"]
