@@ -1,8 +1,7 @@
 import type { Config } from "tailwindcss";
-import baseConfig from "vujita-ui/tailwind.config";
+import vujitaUiPreset from "vujita-ui/tailwind.preset";
 
 export default {
-  content: ["./src/**/*.{ts,tsx}"],
-  darkMode: "class",
-  presets: [baseConfig],
+  content: ["./src/**/*.{ts,tsx}", "../../packages/vujita-ui/src/**/*.{ts,tsx}"],
+  presets: [vujitaUiPreset],
 } satisfies Config;

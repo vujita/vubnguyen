@@ -63,7 +63,7 @@ cp .env.example .env
 pnpm db:push
 ```
 
-## sso setup
+## auth setup
 
 - Discord: [create a discord application](https://discord.com/developers/applications) and add client/secret to your .env file
 

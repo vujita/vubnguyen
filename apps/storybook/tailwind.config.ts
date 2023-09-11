@@ -1,9 +1,8 @@
 import type { Config } from "tailwindcss";
-import baseConfig from "vujita-ui/tailwind.config";
+import vujitaUiPreset from "vujita-ui/tailwind.preset";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}", "./stories/**/*.{ts,tsx}", "../../../packages/**/*.{ts,tsx}"],
-  darkMode: "class",
-  presets: [baseConfig],
+  presets: [vujitaUiPreset],
 };
 export default config;

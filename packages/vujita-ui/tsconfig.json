@@ -2,9 +2,14 @@
   "compilerOptions": {
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "jsx": "preserve",
     "module": "commonjs" /* Specify what module code is generated. */,
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
+    "paths": {
+      "@/components/*": ["./src/*"],
+      "@/lib/*": ["./src/lib/*"]
+    },
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "strict": true /* Enable all strict type-checking options. */,
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */

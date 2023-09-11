@@ -14,7 +14,7 @@
     "dev": "turbo dev --parallel",
     "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",
     "dev:storybook": "turbo dev --filter storybook",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore --ignore-path .eslintignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "prepare": "husky install",

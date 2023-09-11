@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { faEllipsis, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCallback, useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
+const className = "h-[32px] w-[32px] text-gray-400";
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const isLightTheme = theme === "light";
   const [mounted, setMounted] = useState(false);
+  const onToggle = useCallback(() => {
+    setTheme(isLightTheme ? "dark" : "light");
+  }, [isLightTheme, setTheme]);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -17,21 +20,19 @@ const ThemeSwitcher = () => {
       setTheme("light");
     }
   }, [theme, setTheme]);
-  // We won't be able to detect the users localStorage for theme
-  if (!mounted) {
+  // We won't be able to detect the users localStorage for theme, by default assume light theme
+  if (!mounted || isLightTheme) {
     return (
-      <FontAwesomeIcon
-        className="h-[32px] w-[32px] text-gray-400"
-        icon={faEllipsis}
+      <Moon
+        className={className}
+        onClick={onToggle}
       />
     );
   }
-
   return (
-    <FontAwesomeIcon
-      className="h-[32px] w-[32px] text-gray-400"
-      icon={isLightTheme ? faMoon : faSun}
-      onClick={() => setTheme(isLightTheme ? "dark" : "light")}
+    <Sun
+      className={className}
+      onClick={onToggle}
     />
   );
 };
