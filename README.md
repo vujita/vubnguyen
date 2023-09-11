@@ -4,6 +4,8 @@
 [![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
 [![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
+A [storybook](https://vujita.github.io/vubnguyen/) instance is demo of created components by [vujita-ui](https://www.npmjs.com/package/vujita-ui)
+
 ## Inspiration
 
 This is a mono repo is inspired from [t3](https://create.t3.gg/) stack.
