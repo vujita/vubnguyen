@@ -4,6 +4,8 @@
 [![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
 [![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
+A [storybook](https://vujita.github.io/vubnguyen/) instance is demo of created components by [vujita-ui](https://www.npmjs.com/package/vujita-ui)
+
 ## Inspiration
 
 This is a mono repo is inspired from [t3](https://create.t3.gg/) stack.
@@ -74,11 +76,13 @@ pnpm db:push
 .vscode
   └─ Recommended extensions and settings for VSCode users
 apps
-  └─ next.js
-      ├─ Next.js 13
-      ├─ React 18
-      ├─ Tailwind CSS
-      └─ E2E Typesafe API Server & Client
+  └─ vubnguyen
+  |   ├─ Next.js 13
+  |   ├─ React 18
+  |   ├─ Tailwind CSS
+  |   └─ E2E Typesafe API Server & Client
+  └─ storybook
+      └─ storybook to demo
 packages
   ├─ api
   |   └─ tRPC v10 router definition
@@ -87,5 +91,8 @@ packages
   ├─ config
   |   └─ Shared Tailwind & Eslint configs
   └─ db
-      └─ Typesafe db calls using Prisma
+  |  └─ Typesafe db calls using Prisma
+  └─ vujita-ui
+      └─ A ui library based on React/Tailwind/Class Variance Authority
+      └─ TBA....
 ```
