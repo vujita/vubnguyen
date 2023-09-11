@@ -74,11 +74,13 @@ pnpm db:push
 .vscode
   └─ Recommended extensions and settings for VSCode users
 apps
-  └─ next.js
-      ├─ Next.js 13
-      ├─ React 18
-      ├─ Tailwind CSS
-      └─ E2E Typesafe API Server & Client
+  └─ vubnguyen
+  |   ├─ Next.js 13
+  |   ├─ React 18
+  |   ├─ Tailwind CSS
+  |   └─ E2E Typesafe API Server & Client
+  └─ storybook
+      └─ storybook to demo
 packages
   ├─ api
   |   └─ tRPC v10 router definition
@@ -87,5 +89,8 @@ packages
   ├─ config
   |   └─ Shared Tailwind & Eslint configs
   └─ db
-      └─ Typesafe db calls using Prisma
+  |  └─ Typesafe db calls using Prisma
+  └─ vujita-ui
+      └─ A ui library based on React/Tailwind/Class Variance Authority
+      └─ TBA....
 ```
