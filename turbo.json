@@ -31,6 +31,10 @@
       "cache": false,
       "persistent": true
     },
+    "e2e": {
+      "dependsOn": ["build"],
+      "outputs": ["playwright-report/**"]
+    },
     "lint": {
       "dependsOn": ["^build"]
     },
@@ -42,6 +46,7 @@
       "cache": false,
       "persistent": true
     },
+    "test": {},
     "type-check": {
       "dependsOn": ["db:generate", "build"]
     }

@@ -1,6 +1,8 @@
 *.md
 packages/vujita-ui/*.js
 packages/vujita-ui/*.d.ts
+packages/vujita-ui/*.ts
+packages/vujita-ui/*.mts
 packages/vujita-ui/*.d.mts
 packages/vujita-ui/*.mjs
 

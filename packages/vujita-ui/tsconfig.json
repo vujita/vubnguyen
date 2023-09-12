@@ -9,5 +9,5 @@
     "strict": true /* Enable all strict type-checking options. */,
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
   },
-  "include": ["src", "tsup.config.ts", "tailwind.config.ts"]
+  "include": ["src", "tsup.config.ts", "tailwind.config.ts", "jest.config.ts"]
 }
