@@ -19,7 +19,11 @@
     "lint:fix": "turbo lint:fix && manypkg fix",
     "prepare": "husky install",
     "preview": "turbo build && turbo preview",
-    "reinstall": "pnpm run clean:workspaces && pnpm run clean && pnpm i && pnpm turbo build lint:fix",
+    "reinstall": "xrun -s clean:workspaces clean && pnpm install --frozen-lockfile",
+    "postreinstall": "xrun test:all",
+    "test": "turbo test",
+    "test:all": "turbo build lint test e2e",
+    "test:e2e": "turbo e2e",
     "type-check": "turbo type-check"
   },
   "dependencies": {

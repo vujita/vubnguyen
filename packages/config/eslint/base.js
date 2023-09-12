@@ -40,6 +40,14 @@ const config = {
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error",
   },
+  overrides: [
+    {
+      files: ["*.test.js", "*.test.jsx", "*.test.ts", "*.test.tsx"],
+      rules: {
+        "@typescript-eslint/no-unsafe-call": 1,
+      },
+    },
+  ],
 };
 
 module.exports = config;

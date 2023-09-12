@@ -11,6 +11,7 @@
     "preview": "pnpm with-env next start",
     "start": "pnpm with-env next start",
     "type-check": "tsc --noEmit",
+    "e2e": "pnpm with-env playwright test",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
+    "@playwright/test": "1.37.1",
     "@types/node": "18.16.19",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",

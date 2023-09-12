@@ -4,7 +4,7 @@
   "private": true,
   "description": "storybook app",
   "scripts": {
-    "clean": "xrun -s build:clean",
+    "clean": "git clean -xdf .next .turbo node_modules",
     "deploy:chromatic": "xrun -s build chromatic",
     "chromatic": "pnpm with-env chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
     "dev": "xrun dev:tailwind dev:storybook",
