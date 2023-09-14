@@ -8,10 +8,10 @@ const config = {
   importOrder: ["^(react/(.*)$)|^(react$)|^(react-native(.*)$)", "^(next/(.*)$)|^(next$)", "^(expo(.*)$)|^(expo$)", "<THIRD_PARTY_MODULES>", "", "^@vujita/(.*)$", "", "^~/utils/(.*)$", "^~/components/(.*)$", "^~/styles/(.*)$", "^~/(.*)$", "^[./]"],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
+  jsonRecursiveSort: true,
   plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json"],
   singleAttributePerLine: true,
   tailwindConfig: "./packages/vujita-ui/tailwind.config.ts",
-  jsonRecursiveSort: true,
 };
 
 export default config;
