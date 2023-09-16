@@ -3,7 +3,7 @@
 {
   "customizations": {
     "vscode": {
-      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "asvetliakov.vscode-neovim"],
+      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "asvetliakov.vscode-neovim", "yoavbls.pretty-ts-errors", "Prisma.prisma", "bradlc.vscode-tailwindcss", "esbenp.prettier-vscode"],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
