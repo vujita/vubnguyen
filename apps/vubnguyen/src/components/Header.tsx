@@ -1,10 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import type { FC } from "react";
 import { Suspense } from "react";
 import Link from "next/link";
 import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cn from "vujita-ui/classnames";
+import { Avatar } from "vujita-ui/src/avatar";
 
 import { auth } from "@vujita/auth";
 
@@ -14,7 +13,7 @@ export const Header: FC = async () => {
   const session = await auth();
 
   return (
-    <header className="bg-white-900 fixed w-full border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
+    <header className="bg-white-900 fixed w-full select-none border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
         <Suspense
           fallback={
@@ -73,36 +72,18 @@ export const Header: FC = async () => {
         </Suspense>
         <div className="flex items-center space-x-2 md:order-2">
           <ThemeSwitcher />
-          <div className={cn("mr-3 flex rounded-full bg-gray-800 md:mr-0")}>
-            <div className="relative h-10 w-10 select-none overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-              {session?.user?.image ? (
-                <img
-                  alt="Bordered avatar"
-                  className="h-10 w-10 rounded-full"
-                  src={session.user.image}
-                />
-              ) : (
-                <svg
-                  className="absolute -left-1 h-12 w-12 text-gray-400"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    fillRule="evenodd"
-                  />
-                </svg>
-              )}
-            </div>
-          </div>
+          <Avatar
+            className="flexBasis mr-3"
+            placeholderText={session?.user?.name ?? "?"}
+            src={session?.user?.image}
+          />
           <Link
-            className="h-[32px]"
+            className="h-[28] w-[28]"
             href={session ? "/api/auth/signout" : "/api/auth/signin"}
             prefetch={false}
           >
             <FontAwesomeIcon
-              className="h-[32px] w-[32px] text-gray-400"
+              className="h-[28px] w-[28px] text-gray-400"
               icon={session ? faSignOut : faSignIn}
             />
           </Link>
