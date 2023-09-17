@@ -13,7 +13,9 @@
     "build": "xrun -s build:clean build-storybook",
     "build:tailwind": "tailwindcss -i ./src/tailwind.css -o ./src/tailwind.generated.css",
     "build:clean": "rimraf storybook-static",
-    "build-storybook": "storybook build",
+    "build:storybook": "storybook build",
+    "copy:verceljson": "cp vercel.json storybook-static/vercel.json",
+    "build-storybook": "xrun -s build:storybook copy:verceljson",
     "with-env": "dotenv -e ../../.env --"
   },
   "author": "Vu Nguyen",
