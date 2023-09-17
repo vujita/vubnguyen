@@ -1,40 +1,91 @@
 "use client";
 
-import * as React from "react";
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { forwardRef, useState } from "react";
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 
-import { cn } from "./classnames";
+import type { ClassValue } from "./classnames";
+import cn from "./classnames";
+import type { Maybe } from "./type-helpers";
 
-export type AvatarProps = React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>;
+/** TODO: options, also add storybook story
+ * state options
+ * online/offline
+ * border: boolean
+ */
 
-const Avatar = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Root>, AvatarProps>(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Root
-    ref={ref}
-    className={cn("relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full", className)}
-    {...props}
-  />
-));
-Avatar.displayName = AvatarPrimitive.Root.displayName;
+const backgroundColor = {
+  gray: "bg-gray-300 dark:bg-gray-600",
+} as const;
 
-export type AvatarImageProps = React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>;
+export const placeHolderVariants = cva("overflow-clip text-center select-none", {
+  variants: {
+    backgroundColor,
+  },
+});
 
-export const AvatarImage = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Image>, AvatarImageProps>(({ className, ...props }, ref) => {
+export const avatarVariants = cva("relative flex items-center justify-center overflow-hidden border-width-2", {
+  defaultVariants: {
+    backgroundColor: "gray",
+    border: false,
+    shape: "rounded",
+    size: "sm",
+  },
+  variants: {
+    backgroundColor,
+    border: {
+      false: [],
+      true: [],
+    },
+    shape: {
+      rounded: "rounded-full",
+      square: "",
+    },
+    size: {
+      lg: ["h-32 w-32"],
+      md: ["h-16 w-16"],
+      sm: ["h-8 w-8"],
+      xs: ["h-4 w-4"],
+    },
+  },
+});
+
+export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "color" | "className">, VariantProps<typeof avatarVariants> {
+  className?: ClassValue;
+  imgClassName?: ClassValue;
+  imgProps?: Omit<React.HTMLAttributes<HTMLImageElement>, "src" | "className">;
+  placeholderText?: Maybe<string>;
+  src?: Maybe<string>;
+}
+
+export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+  const { border = false, backgroundColor = "gray", imgClassName, imgProps, src, placeholderText, ...divProps } = props;
+  const divClassNames = avatarVariants({
+    backgroundColor,
+    border,
+  });
+  const [showPlaceholder, setShowPlaceholder] = useState(!src);
   return (
-    <AvatarPrimitive.Image
+    <div
+      {...divProps}
+      className={divClassNames}
       ref={ref}
-      className={cn("aspect-square h-full w-full", className)}
-      {...props}
-    />
+    >
+      {src && (
+        <img
+          aria-label="Avatar photo"
+          {...imgProps}
+          className={cn(imgClassName)}
+          src={src}
+          onLoad={() => {
+            setShowPlaceholder(false);
+          }}
+          onError={() => {
+            setShowPlaceholder(true);
+          }}
+        />
+      )}
+      {showPlaceholder && <div className={placeHolderVariants({ backgroundColor })}>{placeholderText}</div>}
+    </div>
   );
 });
-AvatarImage.displayName = AvatarPrimitive.Image.displayName;
-
-export type AvatarFallbackProps = React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>;
-export const AvatarFallback = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Fallback>, AvatarFallbackProps>(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Fallback
-    ref={ref}
-    className={cn("bg-muted flex h-full w-full items-center justify-center rounded-full", className)}
-    {...props}
-  />
-));
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;

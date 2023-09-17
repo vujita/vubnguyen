@@ -364,9 +364,6 @@ importers:
 
   packages/vujita-ui:
     dependencies:
-      '@radix-ui/react-avatar':
-        specifier: ^1.0.3
-        version: 1.0.3(react-dom@18.2.0)(react@18.2.0)
       class-variance-authority:
         specifier: 0.7.0
         version: 0.7.0
@@ -4326,28 +4323,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@radix-ui/react-avatar@1.0.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-9ToF7YNex3Ste45LrAeTlKtONI9yVRt/zOS158iilIkW5K/Apeyb/TUQlcEFTEFvWr8Kzdi2ZYrm1/suiXPajQ==}
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.22.11
-      '@radix-ui/react-context': 1.0.1(react@18.2.0)
-      '@radix-ui/react-primitive': 1.0.3(react-dom@18.2.0)(react@18.2.0)
-      '@radix-ui/react-use-callback-ref': 1.0.1(react@18.2.0)
-      '@radix-ui/react-use-layout-effect': 1.0.1(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@radix-ui/react-collection@1.0.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-3SzW+0PW7yBBoQlT8wNcGtaxaD0XSu0uLUFgrtHY08Acx05TaHaOmVLR73c0j/cqpDy53KBMO7s0dx2wmOIDIA==}
     peerDependencies:
@@ -4381,6 +4356,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.11
       react: 18.2.0
+    dev: true
 
   /@radix-ui/react-context@1.0.1(react@18.2.0):
     resolution: {integrity: sha512-ebbrdFoYTcuZ0v4wG5tedGnp9tzcV8awzsxYph7gXUyvnNLuTIcCk1q17JEbnVhXAKG9oX3KtchwiMIAYp9NLg==}
@@ -4393,6 +4369,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.11
       react: 18.2.0
+    dev: true
 
   /@radix-ui/react-direction@1.0.1(react@18.2.0):
     resolution: {integrity: sha512-RXcvnXgyvYvBEOhCBuddKecVkoMiI10Jcm5cTI7abJRAHYfFxeu+FBQs/DvdxSYucxR5mna0dNsL6QFlds5TMA==}
@@ -4542,6 +4519,7 @@ packages:
       '@radix-ui/react-slot': 1.0.2(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: true
 
   /@radix-ui/react-roving-focus@1.0.4(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-2mUg5Mgcu001VkGy+FfzZyzbmuUWzgWkj3rvv4yu+mLw03+mTzbxZHvfcGyFp2b8EkQeMkpRQ5FiA2Vr2O6TeQ==}
@@ -4640,6 +4618,7 @@ packages:
       '@babel/runtime': 7.22.11
       '@radix-ui/react-compose-refs': 1.0.1(react@18.2.0)
       react: 18.2.0
+    dev: true
 
   /@radix-ui/react-toggle-group@1.0.4(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Uaj/M/cMyiyT9Bx6fOZO0SAG4Cls0GptBWiBmBxofmDbNVnYYoyRWj/2M/6VCi/7qcXFWnHhRUfdfZFvvkuu8A==}
@@ -4723,6 +4702,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.11
       react: 18.2.0
+    dev: true
 
   /@radix-ui/react-use-controllable-state@1.0.1(react@18.2.0):
     resolution: {integrity: sha512-Svl5GY5FQeN758fWKrjM6Qb7asvXeiZltlT4U2gVfl8Gx5UAv2sMR0LWo8yhsIZh2oQ0eFdZ59aoOOMV7b47VA==}
@@ -4763,6 +4743,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.11
       react: 18.2.0
+    dev: true
 
   /@radix-ui/react-use-previous@1.0.1(react@18.2.0):
     resolution: {integrity: sha512-cV5La9DPwiQ7S0gf/0qiD6YgNqM5Fk97Kdrlc5yBcrF3jyEZQwm7vYFqMo4IfeHgJXsRaMvLABFtd0OVEmZhDw==}
