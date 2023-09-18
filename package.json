@@ -18,7 +18,7 @@
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "prepare": "husky install",
-    "preview": "turbo build && turbo preview",
+    "preview": "turbo preview",
     "reinstall": "xrun -s clean:workspaces clean && pnpm install --frozen-lockfile",
     "postreinstall": "xrun test:all",
     "test": "turbo test",

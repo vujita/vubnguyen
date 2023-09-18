@@ -2,7 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-    "jsx": "preserve",
+    "jsx": "react",
     "module": "commonjs" /* Specify what module code is generated. */,
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
@@ -14,5 +14,5 @@
     "strict": true /* Enable all strict type-checking options. */,
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
   },
-  "include": ["src", "tsup.config.ts", "tailwind.config.ts", "jest.config.ts"]
+  "include": ["src", "tsup.config.ts", "tailwind.config.ts", "jest.config.ts", "test"]
 }
