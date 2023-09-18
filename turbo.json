@@ -44,7 +44,6 @@
       "outputs": ["src/**"]
     },
     "preview": {
-      "cache": false,
       "dependsOn": ["build"],
       "persistent": true
     },
