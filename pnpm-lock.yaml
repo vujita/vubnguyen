@@ -410,6 +410,12 @@ importers:
       jest-environment-jsdom:
         specifier: 29.6.4
         version: 29.6.4
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
       rimraf:
         specifier: 5.0.1
         version: 5.0.1

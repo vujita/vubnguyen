@@ -30,8 +30,14 @@
     "clean": "rimraf .turbo node_modules",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
+    "postinstall": "xrun build",
+    "prepare": "xrun build",
     "type-check": "tsc --noEmit",
     "test": "jest"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   },
   "dependencies": {
     "class-variance-authority": "0.7.0",
@@ -51,6 +57,8 @@
     "eslint-config-vujita": "0.0.6-alpha.7",
     "jest": "29.6.4",
     "jest-environment-jsdom": "29.6.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "rimraf": "5.0.1",
     "tailwindcss": "3.3.2",
     "ts-node": "10.9.1",

@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
 
@@ -14,14 +14,8 @@ import type { Maybe } from "./type-helpers";
  * border: boolean
  */
 
-const backgroundColor = {
-  gray: "bg-gray-300 dark:bg-gray-600",
-} as const;
-
-export const placeHolderVariants = cva("overflow-clip text-center select-none", {
-  variants: {
-    backgroundColor,
-  },
+const placeHolderVariants = cva("overflow-clip text-center select-none ", {
+  variants: {},
 });
 
 export const avatarVariants = cva("relative flex items-center justify-center overflow-hidden border-width-2", {
@@ -32,7 +26,9 @@ export const avatarVariants = cva("relative flex items-center justify-center ove
     size: "sm",
   },
   variants: {
-    backgroundColor,
+    backgroundColor: {
+      gray: "bg-gray-300 dark:bg-gray-600",
+    },
     border: {
       false: [],
       true: [],
@@ -50,16 +46,16 @@ export const avatarVariants = cva("relative flex items-center justify-center ove
   },
 });
 
-export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "color" | "className">, VariantProps<typeof avatarVariants> {
+export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "color" | "className" | "placeholder">, VariantProps<typeof avatarVariants> {
   className?: ClassValue;
   imgClassName?: ClassValue;
   imgProps?: Omit<React.HTMLAttributes<HTMLImageElement>, "src" | "className">;
-  placeholderText?: Maybe<string>;
+  placeholder?: Maybe<React.ReactNode>;
   src?: Maybe<string>;
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { border = false, backgroundColor = "gray", imgClassName, imgProps, src, placeholderText, ...divProps } = props;
+  const { border = false, backgroundColor, imgClassName, imgProps, src, placeholder, ...divProps } = props;
   const divClassNames = avatarVariants({
     backgroundColor,
     border,
@@ -75,7 +71,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
         <img
           aria-label="Avatar photo"
           {...imgProps}
-          className={cn(imgClassName)}
+          className={cn(["h-full w-full object-cover"], imgClassName)}
           src={src}
           onLoad={() => {
             setShowPlaceholder(false);
@@ -85,7 +81,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
           }}
         />
       )}
-      {showPlaceholder && <div className={placeHolderVariants({ backgroundColor })}>{placeholderText}</div>}
+      {showPlaceholder && <div className={placeHolderVariants({})}>{placeholder}</div>}
     </div>
   );
 });

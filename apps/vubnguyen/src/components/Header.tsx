@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Avatar } from "vujita-ui/src/avatar";
+import { Avatar } from "vujita-ui/avatar";
 
 import { auth } from "@vujita/auth";
 
@@ -74,7 +74,7 @@ export const Header: FC = async () => {
           <ThemeSwitcher />
           <Avatar
             className="flexBasis mr-3"
-            placeholderText={session?.user?.name ?? "?"}
+            placeholder={session?.user?.name ?? "?"}
             src={session?.user?.image}
           />
           <Link

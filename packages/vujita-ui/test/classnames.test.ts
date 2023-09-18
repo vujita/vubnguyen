@@ -1,4 +1,4 @@
-import classnames from "./classnames";
+import classnames from "../src/classnames";
 
 describe("classnames", () => {
   it("should join classnames", () => {
