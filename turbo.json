@@ -11,8 +11,8 @@
       "cache": false
     },
     "db:generate": {
-      "inputs": ["prisma/schema.prisma"],
-      "outputs": ["./../../node_modules/@prisma/client"]
+      "cache": false,
+      "inputs": ["prisma/schema.prisma"]
     },
     "db:migrate:deploy": {
       "cache": false,
