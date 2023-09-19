@@ -1,1 +1,1 @@
-module.exports = require("vujita-ui/postcss.cjs");
+module.exports = require("vujita-ui/postcss.config.cjs");
