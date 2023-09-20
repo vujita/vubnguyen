@@ -1,7 +1,5 @@
 packages:
-  - apps/expo
   - apps/vubnguyen
-  - apps/storybook
   - packages/api
   - packages/auth
   - packages/db

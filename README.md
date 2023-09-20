@@ -81,8 +81,6 @@ apps
   |   ├─ React 18
   |   ├─ Tailwind CSS
   |   └─ E2E Typesafe API Server & Client
-  └─ storybook
-      └─ storybook to demo
 packages
   ├─ api
   |   └─ tRPC v10 router definition
@@ -94,5 +92,6 @@ packages
   |  └─ Typesafe db calls using Prisma
   └─ vujita-ui
       └─ A ui library based on React/Tailwind/Class Variance Authority
+      └─ a component library storybook
       └─ TBA....
 ```
