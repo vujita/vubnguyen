@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -30,10 +31,18 @@ const ThemeSwitcher = () => {
     );
   }
   return (
-    <Sun
-      className={className}
-      onClick={onToggle}
-    />
+    <AnimatePresence>
+      <motion.span
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+      >
+        <Sun
+          className={className}
+          onClick={onToggle}
+        />
+      </motion.span>
+    </AnimatePresence>
   );
 };
 
