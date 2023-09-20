@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
 
@@ -14,8 +14,16 @@ import type { Maybe } from "./type-helpers";
  * border: boolean
  */
 
-const placeHolderVariants = cva("overflow-clip text-center select-none ", {
-  variants: {},
+const placeHolderVariants = cva("overflow-clip text-center select-none", {
+  variants: {
+    size: {
+      lg: ["text-lg"],
+      md: ["text-sm"],
+      sm: ["text-sm"],
+      xlg: ["text-lg"],
+      xs: ["text-xs"],
+    },
+  },
 });
 
 export const avatarVariants = cva("relative flex items-center justify-center overflow-hidden border-width-2", {
@@ -38,10 +46,11 @@ export const avatarVariants = cva("relative flex items-center justify-center ove
       square: "",
     },
     size: {
-      lg: ["h-32 w-32"],
+      lg: ["h-24 w-24"],
       md: ["h-16 w-16"],
-      sm: ["h-8 w-8"],
-      xs: ["h-4 w-4"],
+      sm: ["h-12 w-12"],
+      xlg: ["h-32 w-32"],
+      xs: ["h-8 w-8"],
     },
   },
 });
@@ -55,12 +64,18 @@ export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const { border = false, backgroundColor, imgClassName, imgProps, src, placeholder, ...divProps } = props;
+  const { border = false, backgroundColor, imgClassName, imgProps, size, shape, src, placeholder, ...divProps } = props;
   const divClassNames = avatarVariants({
     backgroundColor,
     border,
+    shape,
+    size,
   });
   const [showPlaceholder, setShowPlaceholder] = useState(!src);
+  useEffect(() => {
+    setShowPlaceholder(!src);
+  }, [src]);
+
   return (
     <div
       {...divProps}
@@ -81,7 +96,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
           }}
         />
       )}
-      {showPlaceholder && <div className={placeHolderVariants({})}>{placeholder}</div>}
+      {showPlaceholder && <div className={placeHolderVariants({ size })}>{placeholder}</div>}
     </div>
   );
 });
