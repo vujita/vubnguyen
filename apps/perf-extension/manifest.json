@@ -1,0 +1,12 @@
+{
+  "content_scripts": [
+    {
+      "js": ["src/content.tsx"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ],
+  "manifest_version": 3,
+  "name": "Perf introspector!!!",
+  "options_page": "src/options.html",
+  "version": "0.0.1"
+}
