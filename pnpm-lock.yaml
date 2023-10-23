@@ -53,6 +53,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      vujita-ui:
+        specifier: 0.0.6-alpha.7
+        version: link:../../packages/vujita-ui
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: 1.0.14
@@ -72,9 +75,18 @@ importers:
       '@vitejs/plugin-react':
         specifier: 4.0.3
         version: 4.0.3(vite@4.4.5)
+      autoprefixer:
+        specifier: 10.4.14
+        version: 10.4.14(postcss@8.4.26)
       eslint-config-vujita:
         specifier: 0.0.6-alpha.7
         version: link:../../packages/config/eslint
+      postcss:
+        specifier: 8.4.26
+        version: 8.4.26
+      tailwindcss:
+        specifier: 3.3.2
+        version: 3.3.2(ts-node@10.9.1)
       typescript:
         specifier: 5.1.6
         version: 5.1.6
