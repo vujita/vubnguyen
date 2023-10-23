@@ -12,6 +12,7 @@
     "db:push": "turbo db:push db:generate",
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
+    "dev:extension": "turbo dev --filter perf-extension",
     "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",
     "format": "prettier --write \"**/*.{css,js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore --ignore-path .eslintignore",
     "lint": "turbo lint && manypkg check",

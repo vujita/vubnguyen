@@ -82,21 +82,23 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
       className={divClassNames}
       ref={ref}
     >
-      {src && (
+      {src ? (
         <img
           aria-label="Avatar photo"
           {...imgProps}
           className={cn(["h-full w-full object-cover"], imgClassName)}
-          src={src}
-          onLoad={() => {
-            setShowPlaceholder(false);
-          }}
           onError={() => {
             setShowPlaceholder(true);
           }}
+          onLoad={() => {
+            setShowPlaceholder(false);
+          }}
+          src={src}
         />
-      )}
-      {showPlaceholder && <div className={placeHolderVariants({ size })}>{placeholder}</div>}
+      ) : null}
+      {showPlaceholder ? <div className={placeHolderVariants({ size })}>{placeholder}</div> : null}
     </div>
   );
 });
+
+Avatar.displayName = "Avatar";

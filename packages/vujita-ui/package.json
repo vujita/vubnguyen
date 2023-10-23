@@ -85,6 +85,7 @@
     "root": true,
     "extends": [
       "eslint-config-vujita/base",
+      "eslint-config-vujita/react",
       "plugin:storybook/recommended"
     ],
     "overrides": [
