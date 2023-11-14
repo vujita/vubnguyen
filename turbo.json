@@ -1,7 +1,7 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["**/.env", "tsconfig.json"],
-  "globalEnv": ["CI", "DATABASE_URL", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "EXPO_ROUTER_APP_ROOT", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "NODE_ENV", "SKIP_ENV_VALIDATION", "VERCEL", "VERCEL_URL"],
+  "globalEnv": ["CI", "DATABASE_URL", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "HOST", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "NODE_ENV", "SKIP_ENV_VALIDATION", "VERCEL", "VERCEL_URL"],
   "pipeline": {
     "build": {
       "dependsOn": ["db:generate", "^build"],
