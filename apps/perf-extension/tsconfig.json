@@ -19,6 +19,7 @@
     "target": "ES2020",
     "useDefineForClassFields": true
   },
-  "include": ["src"],
+  "extends": "../../tsconfig.json",
+  "include": ["src", "tailwind.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
