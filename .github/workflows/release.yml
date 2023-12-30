@@ -22,7 +22,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
 
-      - name: Setup Node 18
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: ".nvmrc"
