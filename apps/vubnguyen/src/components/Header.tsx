@@ -14,7 +14,7 @@ export const Header: FC = async () => {
 
   return (
     <header className="bg-white-900 fixed w-full select-none border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
-      <div className="mx-auto flex flex-wrap items-center justify-between p-4">
+      <div className="mx-auto flex flex-wrap items-center justify-between p-2">
         <Suspense
           fallback={
             <button
