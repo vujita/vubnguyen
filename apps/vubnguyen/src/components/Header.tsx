@@ -75,6 +75,7 @@ export const Header: FC = async () => {
           <Avatar
             className="flexBasis mr-3"
             placeholder={session?.user?.name ?? "?"}
+            size="xs"
             src={session?.user?.image}
           />
           <Link
