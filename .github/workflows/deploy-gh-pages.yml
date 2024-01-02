@@ -14,7 +14,7 @@ env:
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  build-lint:
+  deploy-storybook:
     env:
       DATABASE_URL: file:./db.sqlite
     runs-on: ubuntu-latest
@@ -47,8 +47,8 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install --frozen-lockfile
 
-      - name: Build, lint and type-check
-        run: pnpm turbo db:generate build lint type-check
+      - name: Build
+        run: pnpm turbo build
 
       - name: Check workspaces
         run: pnpm manypkg check
