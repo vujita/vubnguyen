@@ -15,7 +15,9 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@prisma/client": "5.0.0"
+    "@prisma/client": "5.0.0",
+    "drizzle-kit": "0.20.9",
+    "drizzle-orm": "0.29.3"
   },
   "devDependencies": {
     "dotenv-cli": "7.2.1",
