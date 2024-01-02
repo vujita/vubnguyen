@@ -29,6 +29,11 @@
     },
     "dev": {
       "cache": false,
+      "dependsOn": ["^build"],
+      "persistent": true
+    },
+    "dev:storybook": {
+      "cache": false,
       "dependsOn": ["db:generate", "^build"],
       "persistent": true
     },

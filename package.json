@@ -13,6 +13,7 @@
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
     "dev:extension": "turbo dev --filter perf-extension",
+    "dev:storybook": "turbo dev:storybook --parallel",
     "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",
     "format": "prettier --write \"**/*.{css,js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore --ignore-path .eslintignore",
     "lint": "turbo lint && manypkg check",
