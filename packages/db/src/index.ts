@@ -1,6 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 
+import "./env";
+
 export * from "@prisma/client";
+export { db } from "./db";
+export * as schema from "./schema";
 
 const globalForPrisma = globalThis as { prisma?: PrismaClient };
 
