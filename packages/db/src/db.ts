@@ -12,13 +12,15 @@ const globalForDb = globalThis as unknown as {
   db: ReturnType<typeof drizzle<typeof schema>> | undefined;
 };
 
+const isProd = process.env.NODE_ENV === "production";
 export const db: PostgresJsDatabase<typeof schema> =
   globalForDb.db ??
   drizzle(queryClient, {
+    logger: !isProd,
     schema,
   });
 
-if (process.env.NODE_ENV !== "production") {
+if (isProd) {
   globalForDb.db = db;
 }
 

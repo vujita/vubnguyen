@@ -1,6 +1,5 @@
 import type { Config } from "drizzle-kit";
 
-console.log("DATABASE_URL", process.env.DATABASE_URL);
 export default {
   dbCredentials: {
     connectionString: process.env.DATABASE_URL!,

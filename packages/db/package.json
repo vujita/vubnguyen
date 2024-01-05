@@ -11,7 +11,7 @@
     "db:migrate:deploy": "pnpm with-env prisma migrate deploy",
     "db:generate": "pnpm with-env drizzle-kit generate:pg",
     "db:push": "pnpm with-env prisma db push --skip-generate",
-    "dev": "pnpm with-env prisma studio --port 5556",
+    "dev": "pnpm with-env drizzle-kit studio --port 5556",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
