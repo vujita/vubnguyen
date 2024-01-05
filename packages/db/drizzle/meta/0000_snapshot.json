@@ -6,11 +6,50 @@
   },
   "dialect": "pg",
   "enums": {},
-  "id": "23a2f4a3-4ccf-4e36-805d-0f68a3a5d04d",
+  "id": "45da5439-543a-4edf-baee-a66d7545ac99",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "schemas": {},
   "tables": {
-    "Account": {
+    "VerificationToken": {
+      "columns": {
+        "expires": {
+          "name": "expires",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "timestamp(3)"
+        },
+        "identifier": {
+          "name": "identifier",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "token": {
+          "name": "token",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "foreignKeys": {},
+      "indexes": {
+        "VerificationToken_identifier_token_key": {
+          "columns": ["identifier", "token"],
+          "isUnique": true,
+          "name": "VerificationToken_identifier_token_key"
+        },
+        "VerificationToken_token_key": {
+          "columns": ["token"],
+          "isUnique": true,
+          "name": "VerificationToken_token_key"
+        }
+      },
+      "name": "VerificationToken",
+      "schema": "",
+      "uniqueConstraints": {}
+    },
+    "account": {
       "columns": {
         "access_token": {
           "name": "access_token",
@@ -23,12 +62,6 @@
           "notNull": false,
           "primaryKey": false,
           "type": "integer"
-        },
-        "id": {
-          "name": "id",
-          "notNull": true,
-          "primaryKey": true,
-          "type": "text"
         },
         "id_token": {
           "name": "id_token",
@@ -85,30 +118,29 @@
           "type": "text"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "account_provider_providerAccountId_pk": {
+          "columns": ["provider", "providerAccountId"],
+          "name": "account_provider_providerAccountId_pk"
+        }
+      },
       "foreignKeys": {
-        "Account_userId_User_id_fk": {
+        "account_userId_user_id_fk": {
           "columnsFrom": ["userId"],
           "columnsTo": ["id"],
-          "name": "Account_userId_User_id_fk",
+          "name": "account_userId_user_id_fk",
           "onDelete": "cascade",
-          "onUpdate": "cascade",
-          "tableFrom": "Account",
-          "tableTo": "User"
+          "onUpdate": "no action",
+          "tableFrom": "account",
+          "tableTo": "user"
         }
       },
-      "indexes": {
-        "Account_provider_providerAccountId_key": {
-          "columns": ["provider", "providerAccountId"],
-          "isUnique": true,
-          "name": "Account_provider_providerAccountId_key"
-        }
-      },
-      "name": "Account",
+      "indexes": {},
+      "name": "account",
       "schema": "",
       "uniqueConstraints": {}
     },
-    "Post": {
+    "post": {
       "columns": {
         "content": {
           "name": "content",
@@ -117,10 +149,11 @@
           "type": "text"
         },
         "id": {
+          "default": "gen_random_uuid()",
           "name": "id",
           "notNull": true,
           "primaryKey": true,
-          "type": "text"
+          "type": "uuid"
         },
         "title": {
           "name": "title",
@@ -132,28 +165,22 @@
       "compositePrimaryKeys": {},
       "foreignKeys": {},
       "indexes": {},
-      "name": "Post",
+      "name": "post",
       "schema": "",
       "uniqueConstraints": {}
     },
-    "Session": {
+    "session": {
       "columns": {
         "expires": {
           "name": "expires",
           "notNull": true,
           "primaryKey": false,
-          "type": "timestamp(3)"
-        },
-        "id": {
-          "name": "id",
-          "notNull": true,
-          "primaryKey": true,
-          "type": "text"
+          "type": "timestamp"
         },
         "sessionToken": {
           "name": "sessionToken",
           "notNull": true,
-          "primaryKey": false,
+          "primaryKey": true,
           "type": "text"
         },
         "userId": {
@@ -165,32 +192,26 @@
       },
       "compositePrimaryKeys": {},
       "foreignKeys": {
-        "Session_userId_User_id_fk": {
+        "session_userId_user_id_fk": {
           "columnsFrom": ["userId"],
           "columnsTo": ["id"],
-          "name": "Session_userId_User_id_fk",
+          "name": "session_userId_user_id_fk",
           "onDelete": "cascade",
-          "onUpdate": "cascade",
-          "tableFrom": "Session",
-          "tableTo": "User"
+          "onUpdate": "no action",
+          "tableFrom": "session",
+          "tableTo": "user"
         }
       },
-      "indexes": {
-        "Session_sessionToken_key": {
-          "columns": ["sessionToken"],
-          "isUnique": true,
-          "name": "Session_sessionToken_key"
-        }
-      },
-      "name": "Session",
+      "indexes": {},
+      "name": "session",
       "schema": "",
       "uniqueConstraints": {}
     },
-    "User": {
+    "user": {
       "columns": {
         "email": {
           "name": "email",
-          "notNull": false,
+          "notNull": true,
           "primaryKey": false,
           "type": "text"
         },
@@ -198,7 +219,7 @@
           "name": "emailVerified",
           "notNull": false,
           "primaryKey": false,
-          "type": "timestamp(3)"
+          "type": "timestamp"
         },
         "id": {
           "name": "id",
@@ -221,24 +242,18 @@
       },
       "compositePrimaryKeys": {},
       "foreignKeys": {},
-      "indexes": {
-        "User_email_key": {
-          "columns": ["email"],
-          "isUnique": true,
-          "name": "User_email_key"
-        }
-      },
-      "name": "User",
+      "indexes": {},
+      "name": "user",
       "schema": "",
       "uniqueConstraints": {}
     },
-    "VerificationToken": {
+    "verification_token": {
       "columns": {
         "expires": {
           "name": "expires",
           "notNull": true,
           "primaryKey": false,
-          "type": "timestamp(3)"
+          "type": "timestamp"
         },
         "identifier": {
           "name": "identifier",
@@ -253,21 +268,15 @@
           "type": "text"
         }
       },
-      "compositePrimaryKeys": {},
-      "foreignKeys": {},
-      "indexes": {
-        "VerificationToken_identifier_token_key": {
+      "compositePrimaryKeys": {
+        "verification_token_identifier_token_pk": {
           "columns": ["identifier", "token"],
-          "isUnique": true,
-          "name": "VerificationToken_identifier_token_key"
-        },
-        "VerificationToken_token_key": {
-          "columns": ["token"],
-          "isUnique": true,
-          "name": "VerificationToken_token_key"
+          "name": "verification_token_identifier_token_pk"
         }
       },
-      "name": "VerificationToken",
+      "foreignKeys": {},
+      "indexes": {},
+      "name": "verification_token",
       "schema": "",
       "uniqueConstraints": {}
     }

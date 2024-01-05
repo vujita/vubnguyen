@@ -6,4 +6,5 @@ apt install chromium
 pnpm playwright install
 pnpm playwright install-deps
 cp .env.example .env
-pnpm run db:migrate:deploy
+pnpm run db:migrate
+pnpm run db:push

@@ -1,17 +1,2 @@
-import { PrismaClient } from "@prisma/client";
-
-import "./env";
-
-export * from "@prisma/client";
 export { db } from "./db";
 export * as schema from "./schema";
-
-const globalForPrisma = globalThis as { prisma?: PrismaClient };
-
-export const prisma =
-  globalForPrisma.prisma ??
-  new PrismaClient({
-    log: process.env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
-  });
-
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

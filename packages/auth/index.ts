@@ -1,9 +1,9 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth, { getServerSession } from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import Discord from "next-auth/providers/discord";
 
-import { prisma } from "@vujita/db";
+import { db } from "@vujita/db";
 
 import { env } from "./env.mjs";
 
@@ -14,7 +14,7 @@ export const providers = ["discord"] as const;
 export type OAuthProviders = (typeof providers)[number];
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: DrizzleAdapter(db) as NextAuthOptions["adapter"],
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -47,4 +47,7 @@ export const authOptions: NextAuthOptions = {
 };
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const handlers = NextAuth(authOptions);
+/**
+ * Get current session, this is for server components
+ */
 export const auth = async () => getServerSession(authOptions);
