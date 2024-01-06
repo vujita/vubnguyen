@@ -1,13 +1,13 @@
+import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
+
+import { db, schema } from "@vujita/db";
 
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const postRouter = createTRPCRouter({
-  all: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.post.findMany({ orderBy: { id: "desc" } });
-  }),
-  byId: publicProcedure.input(z.object({ id: z.string() })).query(({ ctx, input }) => {
-    return ctx.prisma.post.findFirst({ where: { id: input.id } });
+  all: publicProcedure.query(() => {
+    return db.query.post.findMany({ orderBy: [desc(schema.post.id)] });
   }),
   create: publicProcedure
     .input(
@@ -16,10 +16,10 @@ export const postRouter = createTRPCRouter({
         title: z.string().min(1),
       }),
     )
-    .mutation(({ ctx, input }) => {
-      return ctx.prisma.post.create({ data: input });
+    .mutation(({ input }) => {
+      return db.insert(schema.post).values(input);
     }),
-  delete: publicProcedure.input(z.string()).mutation(({ ctx, input }) => {
-    return ctx.prisma.post.delete({ where: { id: input } });
+  delete: publicProcedure.input(z.string()).mutation(({ input }) => {
+    return db.delete(schema.post).where(eq(schema.post.id, input));
   }),
 });

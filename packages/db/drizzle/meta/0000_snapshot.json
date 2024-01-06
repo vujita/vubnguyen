@@ -1,0 +1,285 @@
+{
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  },
+  "dialect": "pg",
+  "enums": {},
+  "id": "45da5439-543a-4edf-baee-a66d7545ac99",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "schemas": {},
+  "tables": {
+    "VerificationToken": {
+      "columns": {
+        "expires": {
+          "name": "expires",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "timestamp(3)"
+        },
+        "identifier": {
+          "name": "identifier",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "token": {
+          "name": "token",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "foreignKeys": {},
+      "indexes": {
+        "VerificationToken_identifier_token_key": {
+          "columns": ["identifier", "token"],
+          "isUnique": true,
+          "name": "VerificationToken_identifier_token_key"
+        },
+        "VerificationToken_token_key": {
+          "columns": ["token"],
+          "isUnique": true,
+          "name": "VerificationToken_token_key"
+        }
+      },
+      "name": "VerificationToken",
+      "schema": "",
+      "uniqueConstraints": {}
+    },
+    "account": {
+      "columns": {
+        "access_token": {
+          "name": "access_token",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "integer"
+        },
+        "id_token": {
+          "name": "id_token",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "provider": {
+          "name": "provider",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "providerAccountId": {
+          "name": "providerAccountId",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "refresh_token": {
+          "name": "refresh_token",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "scope": {
+          "name": "scope",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "session_state": {
+          "name": "session_state",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "token_type": {
+          "name": "token_type",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "type": {
+          "name": "type",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "userId": {
+          "name": "userId",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {
+        "account_provider_providerAccountId_pk": {
+          "columns": ["provider", "providerAccountId"],
+          "name": "account_provider_providerAccountId_pk"
+        }
+      },
+      "foreignKeys": {
+        "account_userId_user_id_fk": {
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
+          "name": "account_userId_user_id_fk",
+          "onDelete": "cascade",
+          "onUpdate": "no action",
+          "tableFrom": "account",
+          "tableTo": "user"
+        }
+      },
+      "indexes": {},
+      "name": "account",
+      "schema": "",
+      "uniqueConstraints": {}
+    },
+    "post": {
+      "columns": {
+        "content": {
+          "name": "content",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "id": {
+          "default": "gen_random_uuid()",
+          "name": "id",
+          "notNull": true,
+          "primaryKey": true,
+          "type": "uuid"
+        },
+        "title": {
+          "name": "title",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "foreignKeys": {},
+      "indexes": {},
+      "name": "post",
+      "schema": "",
+      "uniqueConstraints": {}
+    },
+    "session": {
+      "columns": {
+        "expires": {
+          "name": "expires",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "timestamp"
+        },
+        "sessionToken": {
+          "name": "sessionToken",
+          "notNull": true,
+          "primaryKey": true,
+          "type": "text"
+        },
+        "userId": {
+          "name": "userId",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "foreignKeys": {
+        "session_userId_user_id_fk": {
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
+          "name": "session_userId_user_id_fk",
+          "onDelete": "cascade",
+          "onUpdate": "no action",
+          "tableFrom": "session",
+          "tableTo": "user"
+        }
+      },
+      "indexes": {},
+      "name": "session",
+      "schema": "",
+      "uniqueConstraints": {}
+    },
+    "user": {
+      "columns": {
+        "email": {
+          "name": "email",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "emailVerified": {
+          "name": "emailVerified",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "timestamp"
+        },
+        "id": {
+          "name": "id",
+          "notNull": true,
+          "primaryKey": true,
+          "type": "text"
+        },
+        "image": {
+          "name": "image",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "name": {
+          "name": "name",
+          "notNull": false,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "foreignKeys": {},
+      "indexes": {},
+      "name": "user",
+      "schema": "",
+      "uniqueConstraints": {}
+    },
+    "verification_token": {
+      "columns": {
+        "expires": {
+          "name": "expires",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "timestamp"
+        },
+        "identifier": {
+          "name": "identifier",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        },
+        "token": {
+          "name": "token",
+          "notNull": true,
+          "primaryKey": false,
+          "type": "text"
+        }
+      },
+      "compositePrimaryKeys": {
+        "verification_token_identifier_token_pk": {
+          "columns": ["identifier", "token"],
+          "name": "verification_token_identifier_token_pk"
+        }
+      },
+      "foreignKeys": {},
+      "indexes": {},
+      "name": "verification_token",
+      "schema": "",
+      "uniqueConstraints": {}
+    }
+  },
+  "version": "5"
+}

@@ -4,7 +4,7 @@
   "globalEnv": ["CI", "DATABASE_URL", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "HOST", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "NODE_ENV", "SKIP_ENV_VALIDATION", "VERCEL", "VERCEL_URL"],
   "pipeline": {
     "build": {
-      "dependsOn": ["db:generate", "^build"],
+      "dependsOn": ["^build"],
       "outputs": [".next/**", ".expo/**", "dist/**", "storybook-static/**", "*.ts", "*.d.ts", "*.d.mts", "*.mts", "*.js", "*.map"]
     },
     "clean": {
@@ -12,16 +12,15 @@
     },
     "db:generate": {
       "cache": false,
-      "inputs": ["prisma/schema.prisma"]
+      "outputs": ["src/**"]
     },
-    "db:migrate:deploy": {
+    "db:migrate": {
       "cache": false,
-      "dependsOn": ["build", "db:generate"],
-      "inputs": ["prisma/schema.prisma"]
+      "dependsOn": ["^db:generate"]
     },
     "db:push": {
       "cache": false,
-      "inputs": ["prisma/schema.prisma"]
+      "dependsOn": ["^db:generate"]
     },
     "deploy:chromatic": {
       "cache": false,
@@ -34,7 +33,7 @@
     },
     "dev:storybook": {
       "cache": false,
-      "dependsOn": ["db:generate", "^build"],
+      "dependsOn": ["^build"],
       "persistent": true
     },
     "e2e": {
@@ -54,7 +53,7 @@
     },
     "test": {},
     "type-check": {
-      "dependsOn": ["db:generate", "build"]
+      "dependsOn": ["^db:generate", "^build"]
     }
   }
 }

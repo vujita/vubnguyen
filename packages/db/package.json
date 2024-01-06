@@ -2,24 +2,28 @@
   "name": "@vujita/db",
   "private": true,
   "version": "0.0.3-alpha.0",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "migrate": "pnpm with-env prisma migrate --",
-    "db:migrate:deploy": "pnpm with-env prisma migrate deploy",
-    "db:generate": "pnpm with-env prisma generate",
-    "db:push": "pnpm with-env prisma db push --skip-generate",
-    "dev": "pnpm with-env prisma studio --port 5556",
+    "db:drop": "pnpm with-env drizzle-kit drop",
+    "db:migrate": "pnpm with-env tsx src/migrate.ts",
+    "db:push": "pnpm with-env drizzle-kit push:pg",
+    "db:generate": "pnpm with-env drizzle-kit generate:pg",
+    "dev": "pnpm with-env drizzle-kit studio --port 5556",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@prisma/client": "5.0.0"
+    "@auth/core": "0.19.1",
+    "drizzle-kit": "0.20.9",
+    "drizzle-orm": "0.29.3",
+    "postgres": "3.4.3"
   },
   "devDependencies": {
     "dotenv-cli": "7.2.1",
-    "prisma": "5.0.0",
+    "pg": "8.11.3",
+    "tsx": "4.7.0",
     "typescript": "5.1.6"
   }
 }

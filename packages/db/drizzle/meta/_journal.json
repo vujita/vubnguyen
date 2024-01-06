@@ -1,0 +1,13 @@
+{
+  "dialect": "pg",
+  "entries": [
+    {
+      "breakpoints": true,
+      "idx": 0,
+      "tag": "0000_glossy_russian",
+      "version": "5",
+      "when": 1704567324409
+    }
+  ],
+  "version": "5"
+}

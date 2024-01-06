@@ -1,7 +1,7 @@
 # [vubnguyen.com](https://vubnguyen.com)
 
 [![CI](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vujita/vubnguyen/actions/workflows/ci.yml)
-[![prisma migrate](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/prisma-migrations.yml)
+
 [![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
 A [storybook](https://vujita.github.io/vubnguyen/) instance is demo of created components by [vujita-ui](https://www.npmjs.com/package/vujita-ui)
@@ -59,7 +59,7 @@ pnpm i
 # There is an `.env.example` in the root directory you can use for reference
 cp .env.example .env
 
-# Push the Prisma schema to your database
+# Push the drizzle schema to your database
 pnpm db:push
 ```
 
@@ -89,7 +89,7 @@ packages
   ├─ config
   |   └─ Shared Tailwind & Eslint configs
   └─ db
-  |  └─ Typesafe db calls using Prisma
+  |  └─ Typesafe db calls using drizzle
   └─ vujita-ui
       └─ A ui library based on React/Tailwind/Class Variance Authority
       └─ a component library storybook

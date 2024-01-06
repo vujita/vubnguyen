@@ -16,6 +16,7 @@
     "@trpc/server": "10.34.0",
     "@vujita/auth": "0.0.3-alpha.0",
     "@vujita/db": "0.0.3-alpha.0",
+    "drizzle-orm": "0.29.3",
     "superjson": "1.13.1",
     "zod": "3.22.3"
   },

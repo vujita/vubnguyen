@@ -12,7 +12,6 @@ import { ZodError } from "zod";
 
 import { auth } from "@vujita/auth";
 import type { Session } from "@vujita/auth";
-import { prisma } from "@vujita/db";
 
 /**
  * 1. CONTEXT
@@ -38,7 +37,6 @@ interface CreateContextOptions {
  */
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
-    prisma,
     session: opts.session,
   };
 };
