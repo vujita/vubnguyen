@@ -25,8 +25,8 @@
   "scripts": {
     "build:clean": "rimraf ./*.mjs ./*.js ./*.mts ./*.d.ts ./*.map storybook-static",
     "build:tsup": "tsup",
-    "build": "xrun -s build:clean build:tsup build-storybook",
-    "build-storybook": "pnpm storybook build",
+    "build": "xrun -s build:clean build:tsup",
+    "build:storybook": "pnpm storybook build",
     "dev": "xrun dev:tsup",
     "dev:storybook": "storybook dev -p 6006",
     "dev:tsup": "tsup --watch",
