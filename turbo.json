@@ -5,7 +5,11 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", ".expo/**", "dist/**", "storybook-static/**", "*.ts", "*.d.ts", "*.d.mts", "*.mts", "*.js", "*.map"]
+      "outputs": [".next/**", ".expo/**", "dist/**", "*.ts", "*.d.ts", "*.d.mts", "*.mts", "*.js", "*.map"]
+    },
+    "build:storybook": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
     },
     "clean": {
       "cache": false
@@ -29,6 +33,11 @@
     "dev": {
       "cache": false,
       "dependsOn": ["^build"],
+      "persistent": true
+    },
+    "dev:preview": {
+      "cache": false,
+      "dependsOn": ["build"],
       "persistent": true
     },
     "dev:storybook": {

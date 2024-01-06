@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "build:storybook": "turbo build:storybook",
     "check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore --ignore-path .eslintignore",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "pnpx turbo clean",
@@ -11,6 +12,7 @@
     "db:push": "turbo db:push",
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
+    "dev:preview": "turbo dev:preview",
     "dev:db": "turbo dev --filter db",
     "dev:extension": "turbo dev --filter perf-extension",
     "dev:storybook": "turbo dev:storybook --parallel",
