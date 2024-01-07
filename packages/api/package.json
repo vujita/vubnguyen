@@ -1,15 +1,21 @@
 {
   "name": "@vujita/api",
-  "private": true,
   "version": "0.0.3-alpha.0",
+  "private": true,
+  "license": "MIT",
   "main": "./index.ts",
   "types": "./index.ts",
-  "license": "MIT",
   "scripts": {
     "clean": "rimraf .turbo node_modules",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "type-check": "tsc --noEmit"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-vujita/base"
+    ],
+    "root": true
   },
   "dependencies": {
     "@trpc/client": "10.34.0",
@@ -25,11 +31,5 @@
     "eslint-config-vujita": "0.0.6-alpha.7",
     "rimraf": "5.0.1",
     "typescript": "5.1.6"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "eslint-config-vujita/base"
-    ]
   }
 }

@@ -9,7 +9,7 @@ const config = {
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
   jsonRecursiveSort: true,
-  plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json"],
+  plugins: ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss", "prettier-plugin-sort-json", "prettier-plugin-packagejson"],
   singleAttributePerLine: true,
   tailwindConfig: "./packages/vujita-ui/tailwind.config.ts",
 };
