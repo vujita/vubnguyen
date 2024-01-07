@@ -9,7 +9,7 @@ env:
   DATABASE_URL: ${{ secrets.DATABASE_PROD_URL }}
 
 jobs:
-  prima-migration:
+  db-migration:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +38,15 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install deps (with cache)
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
 
       - name: Run db migration
-        run: pnpm run db:migrate
+        run: pnpm turbo run db:migrate --cache-dir=.turbo
