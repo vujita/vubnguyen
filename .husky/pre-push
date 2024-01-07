@@ -3,3 +3,4 @@
 
 pnpm manypkg check
 pnpm turbo run build lint type-check test e2e
+pnpm run check
