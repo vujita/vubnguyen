@@ -48,7 +48,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}-ci
+          key: ${{ runner.os }}-turbo-vubnguyen-ci
           restore-keys: |
             ${{ runner.os }}-turbo-
 
