@@ -61,7 +61,7 @@
     },
     "test": {},
     "type-check": {
-      "dependsOn": ["^db:generate", "^build"]
+      "dependsOn": ["^build"]
     }
   }
 }
