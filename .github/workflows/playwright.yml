@@ -8,10 +8,10 @@ on:
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-  DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
 jobs:
   test-e2e:
     env:
+      DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
       NEXTAUTH_URL: http://localhost:3000
       NEXTAUTH_SECRET: supersecret
       DISCORD_CLIENT_ID: STUBBED_ID
@@ -45,16 +45,27 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install --frozen-lockfile
 
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
-
       - name: Cache turbo build setup
         uses: actions/cache@v3
         with:
           path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          key: ${{ runner.os }}-turbo-${{ github.sha }}-playwright
           restore-keys: |
             ${{ runner.os }}-turbo-
+
+      - name: turbo build
+        run: pnpm turbo run build --cache-dir=.turbo
+
+      - uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - run: pnpm exec playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: pnpm exec playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
 
       - name: Run Playwright tests
         run: pnpm turbo run e2e --cache-dir=.turbo
