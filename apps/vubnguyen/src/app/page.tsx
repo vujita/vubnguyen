@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { PostList } from "vubnguyen/components/posts";
+import { Skeleton } from "vujita-ui/skeleton";
 
 import Signature from "../components/signature";
 
@@ -13,7 +14,14 @@ export default function HomePage() {
         <Signature />
       </div>
       <div className="p-4 text-center text-3xl text-blue-500 md:text-7xl">{"Coming soon!"}</div>
-      <Suspense>
+      <Suspense
+        fallback={
+          <Skeleton
+            className="h-32"
+            width="full"
+          />
+        }
+      >
         <PostList />
       </Suspense>
     </div>
