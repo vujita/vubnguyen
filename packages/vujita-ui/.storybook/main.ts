@@ -13,7 +13,11 @@ const config: StorybookConfig = {
   addons: [getAbsolutePath("@storybook/addon-links"), getAbsolutePath("@storybook/addon-essentials"), getAbsolutePath("@storybook/addon-onboarding"), getAbsolutePath("@storybook/addon-interactions")],
   framework: {
     name: getAbsolutePath("@storybook/react-webpack5"),
-    options: {},
+    options: {
+      builder: {
+        useSWC: true,
+      },
+    },
   },
   docs: {
     autodocs: "tag",
