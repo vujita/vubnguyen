@@ -57,8 +57,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: "html",
 
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: 0,
 
   testDir: "./e2e",
 
@@ -74,6 +73,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: "pnpm run dev:preview",
+    ignoreHTTPSErrors: true,
     reuseExistingServer: !process.env.CI,
     url: "http://127.0.0.1:3000",
   },
