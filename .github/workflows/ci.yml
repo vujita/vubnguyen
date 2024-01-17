@@ -8,8 +8,8 @@ on:
 # You can leverage Vercel Remote Caching with Turbo to speed up your builds
 # @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
 env:
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  # TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  # TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
 
 jobs:
@@ -23,34 +23,22 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install deps (with cache)
-        run: pnpm install --frozen-lockfile --ignore-scripts
-
-      - name: Cache turbo build setup
+      - name: Cache turbo setup
         uses: actions/cache@v3
         with:
           path: .turbo
-          key: ${{ runner.os }}-turbo-vubnguyen-ci
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install deps (with cache)
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build
         run: pnpm turbo run build --cache-dir=.turbo
