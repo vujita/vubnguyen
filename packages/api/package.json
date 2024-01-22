@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@trpc/client": "10.34.0",
-    "@trpc/server": "10.34.0",
+    "@trpc/server": "10.45.0",
     "@vujita/auth": "0.0.3-alpha.0",
     "@vujita/db": "0.0.3-alpha.0",
     "drizzle-orm": "0.29.3",
