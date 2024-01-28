@@ -8,6 +8,7 @@
       "outputs": [".next/**", ".expo/**", "dist/**", "*.ts", "*.d.ts", "*.d.mts", "*.mts", "*.js", "*.map"]
     },
     "build:storybook": {
+      "dependsOn": ["build"],
       "outputs": ["storybook-static/**"]
     },
     "clean": {
