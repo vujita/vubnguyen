@@ -1,9 +1,21 @@
 name: Playwright Tests
+
 on:
+  workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.pull_request.head.sha || github.sha }}
+  cancel-in-progress: true
 
 jobs:
   test-e2e:
