@@ -10,20 +10,20 @@ on:
 jobs:
   deploy-storybook:
     env:
-      DATABASE_URL: file:./db.sqlite
+      DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Cache turbo setup
+      - name: Cache turbo build setup
         uses: actions/cache@v3
         with:
           path: .turbo
-          key: ${{ runner.os }}-turbo-
+          key: ${{ runner.os }}-turbo-gh-page-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-turbo-
+            ${{ runner.os }}-turbo-gh-page-
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
@@ -38,6 +38,9 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build
+        run: pnpm turbo run build --cache-dir=.turbo
+
+      - name: Build storybook
         run: pnpm turbo build:storybook --cache-dir=.turbo
 
       - name: Deploy to GH Pages 🚀
