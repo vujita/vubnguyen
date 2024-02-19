@@ -36,7 +36,7 @@
     "@manypkg/cli": "0.21.0",
     "@xarc/run": "1.1.1",
     "eslint-plugin-prettier": "5.0.0",
-    "husky": "8.0.3",
+    "husky": "9.0.11",
     "lerna": "7.1.5",
     "lint-staged": "13.2.3",
     "prettier": "3.0.0",
