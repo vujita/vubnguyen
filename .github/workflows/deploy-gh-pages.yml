@@ -40,8 +40,8 @@ jobs:
       - name: Build
         run: pnpm turbo run build --cache-dir=.turbo
 
-      - name: Build storybook
-        run: pnpm turbo build:storybook --cache-dir=.turbo
+      - name: Build storybook(no cache)
+        run: pnpm turbo build:storybook
 
       - name: Deploy to GH Pages 🚀
         uses: peaceiris/actions-gh-pages@v3
