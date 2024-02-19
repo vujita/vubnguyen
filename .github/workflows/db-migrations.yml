@@ -22,7 +22,7 @@ jobs:
           path: .turbo
           key: ${{ runner.os }}-turbo-db-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-turbo-
+            ${{ runner.os }}-turbo-db-
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4

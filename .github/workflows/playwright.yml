@@ -36,7 +36,7 @@ jobs:
           path: .turbo
           key: ${{ runner.os }}-turbo-playwright-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-turbo-
+            ${{ runner.os }}-turbo-playwright-
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
