@@ -18,6 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Cache turbo setup
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
 
@@ -40,14 +48,6 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
       - run: pnpm exec playwright install-deps
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-
-      - name: Cache turbo setup
-        uses: actions/cache@v3
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
 
       - name: turbo build
         run: pnpm turbo run build --cache-dir=.turbo
