@@ -33,7 +33,7 @@
     "@trpc/client": "10.34.0",
     "@trpc/next": "10.34.0",
     "@trpc/react-query": "10.34.0",
-    "@trpc/server": "10.34.0",
+    "@trpc/server": "10.45.1",
     "@vujita/api": "0.0.3-alpha.0",
     "@vujita/auth": "0.0.3-alpha.0",
     "@vujita/db": "0.0.3-alpha.0",
@@ -48,7 +48,7 @@
     "zod": "3.22.3"
   },
   "devDependencies": {
-    "@playwright/test": "1.37.1",
+    "@playwright/test": "1.41.2",
     "@types/node": "18.16.19",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
