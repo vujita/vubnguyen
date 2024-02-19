@@ -2,9 +2,10 @@
 
 echo "post install script"
 pnpm install
-apt install chromium
+apt install chromium -y
 pnpm playwright install
 pnpm playwright install-deps
 cp .env.example .env
 pnpm run db:migrate
-pnpm run db:push
+chmod +x ./codespace-postinstall.sh
+# pnpm run db:push

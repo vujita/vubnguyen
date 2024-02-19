@@ -2,6 +2,32 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node-postgres
 {
   "customizations": {
+    "codespaces": {
+      "repositories": {
+        "anishathalye/dotbot": {
+          "permissions": "read-all"
+        },
+        "junegunn/fzf": {
+          "permissions": "read-all"
+        },
+        "nvm-sh/nvm": {
+          "permissions": "read-all"
+        },
+        "permissions": "read-all",
+        "powerline/fonts": {
+          "permissions": "read-all"
+        },
+        "tmux-plugins/tpm": {
+          "permissions": "read-all"
+        },
+        "vujita/dotfiles": {
+          "permissions": "read-all"
+        },
+        "zplug/zplug": {
+          "permissions": "read-all"
+        }
+      }
+    },
     "vscode": {
       "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens", "formulahendry.auto-rename-tag", "ms-vscode-remote.remote-containers", "asvetliakov.vscode-neovim"],
       "settings": {
