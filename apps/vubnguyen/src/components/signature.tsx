@@ -1,8 +1,7 @@
 "use client";
 
-import type { FC } from "react";
-import type { SVGMotionProps } from "framer-motion";
-import { motion } from "framer-motion";
+import { type FC } from "react";
+import { motion, type SVGMotionProps } from "framer-motion";
 
 const svgVariant = {
   finished: {

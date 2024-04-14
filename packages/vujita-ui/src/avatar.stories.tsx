@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 
-import type { AvatarProps } from "./avatar";
-import { Avatar } from "./avatar";
+import { Avatar, type AvatarProps } from "./avatar";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {

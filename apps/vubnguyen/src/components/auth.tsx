@@ -1,6 +1,6 @@
-import type { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 
-import type { OAuthProviders } from "@vujita/auth";
+import { type OAuthProviders } from "@vujita/auth";
 
 export function SignIn({ provider, ...props }: { provider: OAuthProviders } & ComponentProps<"button">) {
   return (
