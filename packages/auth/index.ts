@@ -1,6 +1,5 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import NextAuth, { getServerSession } from "next-auth";
-import type { NextAuthOptions } from "next-auth";
+import NextAuth, { getServerSession, type NextAuthOptions } from "next-auth";
 import Discord from "next-auth/providers/discord";
 
 import { db } from "@vujita/db";

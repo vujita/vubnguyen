@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { api } from "vubnguyen/utils/api";
 
-import type { RouterOutputs } from "@vujita/api";
+import { type RouterOutputs } from "@vujita/api";
 
 export function CreatePostForm() {
   const context = api.useContext();

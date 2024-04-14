@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
 import tailwindAnimate from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
 
