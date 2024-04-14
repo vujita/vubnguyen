@@ -1,9 +1,7 @@
 import React from "react";
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import cn from "./classnames";
-import type { ClassValue } from "./classnames";
+import cn, { type ClassValue } from "./classnames";
 
 const skeleton = cva("bg-primary/10 animate-pulse rounded-md", {
   variants: {

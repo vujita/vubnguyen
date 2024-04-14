@@ -1,12 +1,10 @@
 "use client";
 
 import React, { forwardRef, useEffect, useState } from "react";
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import type { ClassValue } from "./classnames";
-import cn from "./classnames";
-import type { Maybe } from "./type-helpers";
+import cn, { type ClassValue } from "./classnames";
+import { type Maybe } from "./type-helpers";
 
 /** TODO: options, also add storybook story
  * state options
