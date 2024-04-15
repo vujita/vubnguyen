@@ -53,15 +53,36 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build
-        run: pnpm turbo run build --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: pnpm turbo run build --cache-dir=.turbo
+          on_retry_command: pnpm turbo run build --cache-dir=.turbo --force
 
       - name: Build Storybook
-        run: pnpm turbo run build:storybook --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: pnpm turbo run build:storybook --cache-dir=.turbo
+          on_retry_command: pnpm turbo run build:storybook --cache-dir=.turbo --force
+
       - name: Lint
-        run: pnpm turbo run build lint type-check test --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          command: pnpm turbo run build lint type-check test --cache-dir=.turbo
+          max_attempts: 3
+          on_retry_command: pnpm turbo run build lint type-check test --cache-dir=.turbo --force
 
       - name: Type-check
-        run: pnpm turbo run type-check --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          command: pnpm turbo run type-check --cache-dir=.turbo
+          max_attempts: 3
+          on_retry_command: pnpm turbo run type-check --cache-dir=.turbo --force
 
       - name: Test
         run: pnpm turbo run test --cache-dir=.turbo
