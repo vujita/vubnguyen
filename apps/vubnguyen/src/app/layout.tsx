@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import { type Metadata } from "next";
 import { Inter } from "@next/font/google";
 
 import "vubnguyen/styles/globals.css";
 
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Header } from "vubnguyen/components/Header";
 import classnames from "vujita-ui/classnames";
 

@@ -1,5 +1,4 @@
-import type { FC } from "react";
-import { Suspense } from "react";
+import { Suspense, type FC } from "react";
 import Link from "next/link";
 import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
