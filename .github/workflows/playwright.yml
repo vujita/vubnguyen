@@ -55,6 +55,11 @@ jobs:
       - run: pnpm exec playwright install-deps
         if: steps.playwright-cache.outputs.cache-hit == 'true'
 
+      - name: Create env file
+        run: |
+          touch .env
+          echo DATABASE_URL=${DATABASE_URL} >> .env
+
       - name: turbo build
         run: pnpm turbo run build
 
