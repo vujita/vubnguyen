@@ -22,9 +22,10 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Node 18
+        uses: actions/setup-node@v4
         with:
+          cache: "pnpm"
           node-version-file: ".nvmrc"
 
       - name: Get pnpm store directory
