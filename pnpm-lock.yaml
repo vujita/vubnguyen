@@ -163,8 +163,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       superjson:
-        specifier: 1.13.1
-        version: 1.13.1
+        specifier: 2.2.1
+        version: 2.2.1
       vujita-ui:
         specifier: 0.0.6-alpha.7
         version: link:../../packages/vujita-ui
@@ -224,8 +224,8 @@ importers:
         specifier: 0.29.3
         version: 0.29.3(pg@8.11.3)(postgres@3.4.3)
       superjson:
-        specifier: 1.13.1
-        version: 1.13.1
+        specifier: 2.2.1
+        version: 2.2.1
       zod:
         specifier: 3.22.3
         version: 3.22.3
