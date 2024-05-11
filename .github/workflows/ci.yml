@@ -20,8 +20,8 @@ concurrency:
 # You can leverage Vercel Remote Caching with Turbo to speed up your builds
 # @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
 env:
-  # TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  # TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
   CI: true
 jobs:
@@ -31,14 +31,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Cache turbo build setup
-        uses: actions/cache@v3
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
@@ -53,18 +45,39 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build
-        run: pnpm turbo run build --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: pnpm turbo run build
+          on_retry_command: pnpm turbo run build --force
 
       - name: Build Storybook
-        run: pnpm turbo run build:storybook --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          command: pnpm turbo run build:storybook
+          on_retry_command: pnpm turbo run build:storybook --force
+
       - name: Lint
-        run: pnpm turbo run build lint type-check test --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          command: pnpm turbo run build lint type-check test
+          max_attempts: 3
+          on_retry_command: pnpm turbo run build lint type-check test --force
 
       - name: Type-check
-        run: pnpm turbo run type-check --cache-dir=.turbo
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          command: pnpm turbo run type-check
+          max_attempts: 3
+          on_retry_command: pnpm turbo run type-check --force
 
       - name: Test
-        run: pnpm turbo run test --cache-dir=.turbo
+        run: pnpm turbo run test
 
       - name: Check workspaces
         run: pnpm manypkg check

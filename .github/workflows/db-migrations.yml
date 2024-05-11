@@ -36,5 +36,10 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install --frozen-lockfile --ignore-scripts
 
+      - name: Create env file
+        run: |
+          touch .env
+          echo DATABASE_URL=${DATABASE_URL} >> .env
+
       - name: Run db migration
         run: pnpm turbo run db:migrate
