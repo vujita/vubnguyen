@@ -10,8 +10,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { auth } from "@vujita/auth";
-import type { Session } from "@vujita/auth";
+import { auth, type Session } from "@vujita/auth";
 
 /**
  * 1. CONTEXT
