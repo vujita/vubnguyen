@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "rm -rf .next && pnpm with-env next build",
-    "clean": "git clean -xdf .next .turbo node_modules",
+    "clean": "git clean -xdf .next node_modules",
     "dev": "pnpm with-env next dev",
     "dev:preview": "pnpm with-env next start",
     "e2e": "pnpm with-env playwright test",
@@ -39,12 +39,12 @@
     "@vujita/db": "0.0.3-alpha.0",
     "framer-motion": "10.16.0",
     "lucide-react": "0.276.0",
-    "next": "13.5.1",
+    "next": "14.2.3",
     "next-auth": "4.24.5",
     "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "superjson": "1.13.1",
+    "superjson": "2.2.1",
     "vujita-ui": "0.0.6-alpha.7",
     "zod": "3.22.3"
   },

@@ -6,7 +6,7 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "clean": "rimraf .turbo node_modules",
+    "clean": "rimraf node_modules",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "type-check": "tsc --noEmit"
@@ -21,7 +21,7 @@
     "@auth/drizzle-adapter": "0.3.13",
     "@t3-oss/env-nextjs": "0.6.0",
     "@vujita/db": "0.0.3-alpha.0",
-    "next": "13.5.1",
+    "next": "14.2.3",
     "next-auth": "4.24.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",

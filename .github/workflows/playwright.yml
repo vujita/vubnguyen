@@ -20,6 +20,8 @@ concurrency:
 jobs:
   test-e2e:
     env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
       NEXTAUTH_URL: http://localhost:3000
       NEXTAUTH_SECRET: supersecret
@@ -30,19 +32,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache turbo build setup
-        uses: actions/cache@v3
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-playwright-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-playwright-
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           cache: "pnpm"
@@ -61,11 +55,16 @@ jobs:
       - run: pnpm exec playwright install-deps
         if: steps.playwright-cache.outputs.cache-hit == 'true'
 
+      - name: Create env file
+        run: |
+          touch .env
+          echo DATABASE_URL=${DATABASE_URL} >> .env
+
       - name: turbo build
-        run: pnpm turbo run build --cache-dir=.turbo
+        run: pnpm turbo run build
 
       - name: Run Playwright tests
-        run: pnpm turbo run e2e --cache-dir=.turbo
+        run: pnpm turbo run e2e
 
       - uses: actions/upload-artifact@v3
         if: always()
