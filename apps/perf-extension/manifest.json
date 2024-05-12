@@ -8,8 +8,13 @@
       "matches": ["https://*/*", "http://*/*"]
     }
   ],
+  "description": "New new performancetool",
+  "icons": {
+    "16": "src/assets/icons/icon_16x16.png",
+    "32": "src/assets/icons/icon_32x32.png",
+    "64": "src/assets/icons/icon_64x64.png"
+  },
   "manifest_version": 3,
-  "name": "Perf introspector!!!",
-  "options_page": "src/options.html",
-  "version": "0.0.1"
+  "name": "newnew-performancetool",
+  "version": "1.0.9"
 }
