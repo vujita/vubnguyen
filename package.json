@@ -5,7 +5,7 @@
     "build": "turbo build",
     "build:storybook": "turbo build:storybook",
     "check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json,html}\"",
-    "clean:modules": "git clean -xdf node_modules",
+    "clean": "git clean -xdf node_modules",
     "clean:workspaces": "pnpx turbo clean",
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
