@@ -13,7 +13,7 @@
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
     "dev:db": "turbo dev --filter db",
-    "dev:extension": "turbo dev --filter perf-extension",
+    "dev:extension": "turbo dev --filter newnew-performancetool",
     "dev:preview": "turbo dev:preview",
     "dev:storybook": "turbo dev:storybook --parallel",
     "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",

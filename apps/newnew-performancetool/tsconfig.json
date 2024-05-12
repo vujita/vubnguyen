@@ -12,6 +12,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "paths": {
+      "newnew-performancetool/src/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     /* Linting */
