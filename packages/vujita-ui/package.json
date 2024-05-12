@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "build": "xrun -s build:clean build:tsup",
-    "build:clean": "rimraf ./*.mjs ./*.js ./*.mts ./*.d.ts ./*.map storybook-static",
+    "build:clean": "rimraf ./*.mjs ./*.js ./*.mts ./*.d.ts ./*.map storybook-static coverage ./*.css",
     "build:storybook": "storybook build",
     "build:tsup": "tsup",
     "clean:modules": "(.*)",
