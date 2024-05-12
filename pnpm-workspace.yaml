@@ -1,8 +1,4 @@
 packages:
-  - apps/vubnguyen
-  - apps/perf-extension
-  - packages/api
-  - packages/auth
-  - packages/db
+  - apps/*
+  - packages/*
   - packages/config/*
-  - packages/vujita-ui
