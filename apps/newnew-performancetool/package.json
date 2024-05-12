@@ -1,6 +1,6 @@
 {
-  "name": "perf-extension",
-  "version": "1.0.9",
+  "name": "newnew-performancetool",
+  "version": "1.0.11",
   "private": true,
   "type": "module",
   "scripts": {
