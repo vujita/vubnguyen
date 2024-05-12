@@ -56,9 +56,15 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      tti-polyfill:
+        specifier: 0.2.2
+        version: 0.2.2
       vujita-ui:
         specifier: 0.0.6-alpha.7
         version: link:../../packages/vujita-ui
+      web-vitals:
+        specifier: 3.5.2
+        version: 3.5.2
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: 1.0.14
@@ -72,6 +78,9 @@ importers:
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
+      '@types/tti-polyfill':
+        specifier: 0.2.4
+        version: 0.2.4
       '@typescript-eslint/eslint-plugin':
         specifier: 6.1.0
         version: 6.1.0(@typescript-eslint/parser@6.1.0)(eslint@8.45.0)(typescript@5.4.5)
@@ -5695,6 +5704,10 @@ packages:
 
   /@types/tough-cookie@4.0.5:
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
+    dev: true
+
+  /@types/tti-polyfill@0.2.4:
+    resolution: {integrity: sha512-7/WoFdzKKNBSnZD/aCDt9meCg7wq/rpT2WUT7pyp7UPshTGJt6h7qGUUPYF4EB8zdFrT+4EpVwW6uHQ5niO5vQ==}
     dev: true
 
   /@types/unist@2.0.10:
@@ -15323,6 +15336,10 @@ packages:
       fsevents: 2.3.3
     dev: true
 
+  /tti-polyfill@0.2.2:
+    resolution: {integrity: sha512-URIoJxvsHThbQEJij29hIBUDHx9UNoBBCQVjy7L8PnzkqY8N6lsAI6h8JrT1Wt2lA0avus/DkuiJxd9qpfCpqw==}
+    dev: false
+
   /tuf-js@1.1.7:
     resolution: {integrity: sha512-i3P9Kgw3ytjELUfpuKVDNBJvk4u5bXL6gskv572mcevPbSKCV3zt3djhmlEQ65yERjIbOSncy7U4cQJaB1CBCg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -15870,6 +15887,10 @@ packages:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
     dependencies:
       defaults: 1.0.4
+
+  /web-vitals@3.5.2:
+    resolution: {integrity: sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==}
+    dev: false
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
