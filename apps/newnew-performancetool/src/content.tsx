@@ -1,5 +1,6 @@
-import { ttiStore } from "./stores/tti";
+import { webVitalsStore } from "./stores/web-vitals";
 
-ttiStore.subscribe(() => {
-  console.log("tti just occurred", ttiStore.getState());
+console.log("content script loaded", webVitalsStore);
+webVitalsStore.subscribe(() => {
+  console.log("web-vitals update", webVitalsStore.getState());
 });
