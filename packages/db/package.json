@@ -6,7 +6,7 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
-    "clean": "rm -rf node_modules",
+    "clean:modules": "(.*)",
     "db:drop": "pnpm with-env drizzle-kit drop",
     "db:generate": "pnpm with-env drizzle-kit generate:pg",
     "db:migrate": "pnpm with-env tsx src/migrate.ts",
