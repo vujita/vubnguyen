@@ -1,5 +1,5 @@
 import { ttiStore } from "./stores/tti";
 
-setInterval(() => {
-  console.log("tti", ttiStore.getState());
-}, 1000);
+ttiStore.subscribe(() => {
+  console.log("tti just occurred", ttiStore.getState());
+});
