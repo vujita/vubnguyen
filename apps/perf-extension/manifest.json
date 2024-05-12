@@ -16,5 +16,6 @@
   },
   "manifest_version": 3,
   "name": "newnew-performancetool",
+  "permissions": ["scripting", "activeTab"],
   "version": "1.0.9"
 }
