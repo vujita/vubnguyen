@@ -5,6 +5,9 @@ import { defineConfig } from "vite";
 import manifest from "./manifest.json";
 
 export default defineConfig({
+  build: {
+    emptyOutDir: true,
+  },
   plugins: [react(), crx({ manifest })],
   server: {
     port: 5173,
