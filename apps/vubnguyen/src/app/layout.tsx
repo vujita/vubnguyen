@@ -4,6 +4,7 @@ import { Inter } from "@next/font/google";
 import "vubnguyen/styles/globals.css";
 
 import { type ReactNode } from "react";
+import { GitSha } from "vubnguyen/components/git-sha";
 import { Header } from "vubnguyen/components/Header";
 import classnames from "vujita-ui/classnames";
 
@@ -40,6 +41,7 @@ export default function Layout(props: { children: ReactNode }) {
             {props.children}
           </main>
         </TRPCReactProvider>
+        <GitSha />
       </body>
     </html>
   );
