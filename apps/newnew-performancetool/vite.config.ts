@@ -4,16 +4,21 @@ import { defineConfig } from "vite";
 
 import manifest from "./manifest.json";
 
-export default defineConfig({
-  build: {
-    emptyOutDir: true,
-  },
-  plugins: [react(), crx({ manifest })],
-  server: {
-    port: 5173,
-    strictPort: true,
-    hmr: {
-      port: 5173,
+export default defineConfig(({ command, mode }) => {
+  console.log({ command, mode });
+  const isDev = mode === "development" && command === "serve";
+  return {
+    build: {
+      emptyOutDir: !isDev,
+      watch: isDev ? {} : undefined,
     },
-  },
+    plugins: [react(), crx({ manifest })],
+    server: {
+      hmr: {
+        port: 5173,
+      },
+      port: 5173,
+      strictPort: true,
+    },
+  };
 });
