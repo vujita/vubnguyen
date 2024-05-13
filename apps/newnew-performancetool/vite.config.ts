@@ -9,16 +9,16 @@ export default defineConfig(({ command, mode }) => {
   const isDev = mode === "development" && command === "serve";
   return {
     build: {
-      watch: isDev ? {} : undefined,
       emptyOutDir: !isDev,
+      watch: isDev ? {} : undefined,
     },
     plugins: [react(), crx({ manifest })],
     server: {
-      port: 5173,
-      strictPort: true,
       hmr: {
         port: 5173,
       },
+      port: 5173,
+      strictPort: true,
     },
   };
 });
