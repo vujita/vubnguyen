@@ -1,3 +1,4 @@
+import path from "path";
 import { crx } from "@crxjs/vite-plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -13,6 +14,11 @@ export default defineConfig(({ command, mode }) => {
       watch: isDev ? {} : undefined,
     },
     plugins: [react(), crx({ manifest })],
+    resolve: {
+      alias: {
+        "newnew-performancetool": path.resolve(__dirname),
+      },
+    },
     server: {
       hmr: {
         port: 5173,

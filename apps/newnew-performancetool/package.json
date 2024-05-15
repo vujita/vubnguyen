@@ -10,6 +10,19 @@
     "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "preview": "vite preview"
   },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-vujita/base",
+      "eslint-config-vujita/nextjs",
+      "eslint-config-vujita/react"
+    ],
+    "rules": {
+      "@typescript-eslint/no-unnecessary-condition": 0,
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "@typescript-eslint/no-unsafe-call": 0
+    },
+    "root": true
+  },
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0",
