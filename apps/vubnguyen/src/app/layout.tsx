@@ -1,13 +1,13 @@
 import { type Metadata } from "next";
 import { Inter } from "@next/font/google";
 
-import "vubnguyen/styles/globals.css";
+import "@vujita/vubnguyen/src/styles/globals.css";
 
 import { type ReactNode } from "react";
-import { Header } from "vubnguyen/components/Header";
 import classnames from "vujita-ui/classnames";
 
-import { TRPCReactProvider } from "./providers";
+import { TRPCReactProvider } from "@vujita/vubnguyen/src/app/providers";
+import { Header } from "@vujita/vubnguyen/src/components/Header";
 
 const fontSans = Inter({
   subsets: ["latin"],

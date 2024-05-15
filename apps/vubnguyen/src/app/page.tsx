@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import { PostList } from "vubnguyen/components/posts";
 import { Skeleton } from "vujita-ui/skeleton";
 
-import Signature from "../components/signature";
+import { PostList } from "@vujita/vubnguyen/src/components/posts";
+import Signature from "@vujita/vubnguyen/src/components/signature";
 
 export const dynamic = "force-dynamic";
 
