@@ -29,10 +29,6 @@ export const memoryStore = createStore<{
     if (!memory) {
       return;
     }
-    console.log({
-      currentMemory,
-      memory,
-    });
     const newMemory: MemorySnapshot[] = [
       ...currentMemory.memory,
       {
@@ -54,4 +50,4 @@ export const memoryStore = createStore<{
   };
 });
 
-export const useMemoryStates = useStore(memoryStore, (s) => s.memory);
+export const useMemoryStates = () => useStore(memoryStore, (s) => s.memory);
