@@ -38,7 +38,7 @@
     "@vujita/auth": "0.0.3-alpha.0",
     "@vujita/db": "0.0.3-alpha.0",
     "framer-motion": "10.16.0",
-    "lucide-react": "0.276.0",
+    "lucide-react": "0.378.0",
     "next": "14.2.3",
     "next-auth": "4.24.5",
     "next-themes": "0.2.1",

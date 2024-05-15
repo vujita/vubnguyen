@@ -160,8 +160,8 @@ importers:
         specifier: 10.16.0
         version: 10.16.0(react-dom@18.2.0)(react@18.2.0)
       lucide-react:
-        specifier: 0.276.0
-        version: 0.276.0(react@18.2.0)
+        specifier: 0.378.0
+        version: 0.378.0(react@18.2.0)
       next:
         specifier: 14.2.3
         version: 14.2.3(@babel/core@7.22.17)(@playwright/test@1.41.2)(react-dom@18.2.0)(react@18.2.0)
@@ -384,8 +384,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       lucide-react:
-        specifier: 0.276.0
-        version: 0.276.0(react@18.2.0)
+        specifier: 0.378.0
+        version: 0.378.0(react@18.2.0)
       tailwind-merge:
         specifier: 1.14.0
         version: 1.14.0
@@ -11669,8 +11669,8 @@ packages:
       es5-ext: 0.10.62
     dev: false
 
-  /lucide-react@0.276.0(react@18.2.0):
-    resolution: {integrity: sha512-ubP1Tyj67nsy84/ikelrFcjj7eEkD6hg9H/1Mhk22CGpbvPtEd3r8sMFQQ1YdpePx70Nt4oYIMfTPHZlag+ZLQ==}
+  /lucide-react@0.378.0(react@18.2.0):
+    resolution: {integrity: sha512-u6EPU8juLUk9ytRcyapkWI18epAv3RU+6+TC23ivjR0e+glWKBobFeSgRwOIJihzktILQuy6E0E80P2jVTDR5g==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
