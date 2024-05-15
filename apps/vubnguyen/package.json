@@ -8,8 +8,10 @@
     "dev": "pnpm with-env next dev",
     "dev:preview": "pnpm with-env next start",
     "e2e": "pnpm with-env playwright test",
-    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
-    "lint:fix": "pnpm lint -- --fix",
+    "lint": "pnpm next:lint",
+    "lint:fix": "pnpm next:lint:fix",
+    "next:lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
+    "next:lint:fix": "dotenv -v SKIP_ENV_VALIDATION=1 next lint --fix",
     "start": "pnpm with-env next start",
     "type-check": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
