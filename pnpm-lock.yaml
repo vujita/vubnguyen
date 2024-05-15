@@ -252,8 +252,8 @@ importers:
         specifier: 0.0.6-alpha.7
         version: link:../config/eslint
       rimraf:
-        specifier: 5.0.1
-        version: 5.0.1
+        specifier: 5.0.7
+        version: 5.0.7
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -292,8 +292,8 @@ importers:
         specifier: 0.0.6-alpha.7
         version: link:../config/eslint
       rimraf:
-        specifier: 5.0.1
-        version: 5.0.1
+        specifier: 5.0.7
+        version: 5.0.7
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -466,8 +466,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       rimraf:
-        specifier: 5.0.1
-        version: 5.0.1
+        specifier: 5.0.7
+        version: 5.0.7
       storybook:
         specifier: 7.3.2
         version: 7.3.2
@@ -14164,9 +14164,9 @@ packages:
       glob: 9.3.5
     dev: false
 
-  /rimraf@5.0.1:
-    resolution: {integrity: sha512-OfFZdwtd3lZ+XZzYP/6gTACubwFcHdLRqS9UX3UwpU2dnGQYkPFISRwvM3w9IiB2w7bW5qGo/uAwE4SmXXSKvg==}
-    engines: {node: '>=14'}
+  /rimraf@5.0.7:
+    resolution: {integrity: sha512-nV6YcJo5wbLW77m+8KjH8aB/7/rxQy9SZ0HY5shnwULfS+9nmTtVXAJET5NdZmCzA4fPI/Hm1wo/Po/4mopOdg==}
+    engines: {node: '>=14.18'}
     hasBin: true
     dependencies:
       glob: 10.3.10
