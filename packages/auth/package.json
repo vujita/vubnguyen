@@ -15,6 +15,9 @@
     "extends": [
       "eslint-config-vujita/base"
     ],
+    "rules": {
+      "no-relative-import-paths/no-relative-import-paths": "off"
+    },
     "root": true
   },
   "dependencies": {

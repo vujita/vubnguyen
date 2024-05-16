@@ -2,9 +2,8 @@
 
 import React, { forwardRef, useEffect, useState } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
-import cn, { type ClassValue } from "./classnames";
-import { type Maybe } from "./type-helpers";
+import cn, { type ClassValue } from "vujita-ui/src/classnames";
+import { type Maybe } from "vujita-ui/src/type-helpers";
 
 /** TODO: options, also add storybook story
  * state options

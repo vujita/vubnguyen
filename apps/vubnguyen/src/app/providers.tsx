@@ -8,7 +8,8 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import superjson from "superjson";
-import { api } from "vubnguyen/utils/api";
+
+import { api } from "@vujita/vubnguyen/src/utils/api";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url

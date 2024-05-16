@@ -1,7 +1,6 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
-import cn, { type ClassValue } from "./classnames";
+import cn, { type ClassValue } from "vujita-ui/src/classnames";
 
 const skeleton = cva("bg-primary/10 animate-pulse rounded-md", {
   variants: {
