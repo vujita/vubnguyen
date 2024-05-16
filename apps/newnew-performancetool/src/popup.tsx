@@ -1,4 +1,4 @@
-import "./index.css";
+import "newnew-performancetool/src/index.css";
 
 import { createRoot } from "react-dom/client";
 

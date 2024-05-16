@@ -1,5 +1,5 @@
-export { classnames, ClassValue, cn } from "./classnames";
-export * from "./avatar";
-export * from "./skeleton";
+export { classnames, ClassValue, cn } from "vujita-ui/src/classnames";
+export * from "vujita-ui/src/avatar";
+export * from "vujita-ui/src/skeleton";
 
-export { preset as default } from "./tailwind.preset";
+export { preset as default } from "vujita-ui/src/tailwind.preset";

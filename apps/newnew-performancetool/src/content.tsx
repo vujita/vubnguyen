@@ -1,7 +1,6 @@
+import { MemoryStats } from "newnew-performancetool/src/components/MemoryStats";
+import { webVitalsStore } from "newnew-performancetool/src/stores/web-vitals";
 import { createRoot } from "react-dom/client";
-
-import { MemoryStats } from "./components/MemoryStats";
-import { webVitalsStore } from "./stores/web-vitals";
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log("onMessage", {
