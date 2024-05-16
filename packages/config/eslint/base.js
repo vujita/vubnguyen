@@ -36,7 +36,7 @@ const config = {
   parserOptions: {
     project: true,
   },
-  plugins: ["@typescript-eslint", "import", "prettier", "sort-keys-fix", "typescript-sort-keys"],
+  plugins: ["@typescript-eslint", "import", "prettier", "sort-keys-fix", "typescript-sort-keys", "no-relative-import-paths"],
   reportUnusedDisableDirectives: true,
   rules: {
     "@typescript-eslint/consistent-type-imports": ["warn", { prefer: "type-imports", fixStyle: "separate-type-imports" }],
@@ -55,6 +55,7 @@ const config = {
     "@typescript-eslint/type-annotation-spacing": "error",
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
     "import/no-extraneous-dependencies": ["error", { includeInternal: true, includeTypes: true }],
+    "no-relative-import-paths/no-relative-import-paths": "error",
     indent: "off", // Let pretteir handle this
     "prettier/prettier": [
       "error",

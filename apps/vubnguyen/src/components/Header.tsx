@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar } from "vujita-ui/avatar";
 
 import { auth } from "@vujita/auth";
-
-import ThemeSwitcher from "./theme-switcher";
+import ThemeSwitcher from "@vujita/vubnguyen/src/components/theme-switcher";
 
 export const Header: FC = async () => {
   const session = await auth();

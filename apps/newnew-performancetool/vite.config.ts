@@ -3,6 +3,7 @@ import { crx } from "@crxjs/vite-plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
+// eslint-disable-next-line no-relative-import-paths/no-relative-import-paths
 import manifest from "./manifest.json";
 
 export default defineConfig(({ command, mode }) => {

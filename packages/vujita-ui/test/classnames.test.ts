@@ -1,4 +1,4 @@
-import classnames from "../src/classnames";
+import classnames from "vujita-ui/src/classnames";
 
 describe("classnames", () => {
   it("should join classnames", () => {
