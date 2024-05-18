@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react-dom": "18.3.1",
     "tti-polyfill": "0.2.2",
     "vujita-ui": "0.0.6-alpha.7",
     "web-vitals": "3.5.2",
@@ -35,7 +35,7 @@
     "@crxjs/vite-plugin": "1.0.14",
     "@types/chrome": "0.0.268",
     "@types/react": "18.2.77",
-    "@types/react-dom": "18.2.7",
+    "@types/react-dom": "18.3.0",
     "@types/tti-polyfill": "0.2.4",
     "@typescript-eslint/eslint-plugin": "6.1.0",
     "@typescript-eslint/parser": "6.1.0",
