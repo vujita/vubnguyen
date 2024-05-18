@@ -1,7 +1,3 @@
-// Importing env files here to validate on build
-import "./src/env.mjs";
-import "@vujita/auth/env.mjs";
-
 const ignoreList = ["node_modules/@swc/core-linux-x64-musl", "node_modules/@swc/core-linux-x64-gnu"];
 /**
  * @type {string[]}
