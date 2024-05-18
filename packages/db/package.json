@@ -16,7 +16,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@auth/core": "0.19.1",
+    "@auth/core": "0.31.0",
     "drizzle-kit": "0.21.1",
     "drizzle-orm": "0.29.3",
     "postgres": "3.4.3"
