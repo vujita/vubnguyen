@@ -370,6 +370,9 @@ importers:
       postgres:
         specifier: 3.4.3
         version: 3.4.3
+      zod:
+        specifier: 3.22.3
+        version: 3.22.3
     devDependencies:
       dotenv-cli:
         specifier: 7.2.1
