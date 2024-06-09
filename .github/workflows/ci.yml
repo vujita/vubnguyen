@@ -45,7 +45,7 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Add .env
-        run: echo "DATABASE_URL=$DATABASE_PREVIEW_URL" > .env
+        run: echo "DATABASE_URL=$DATABASE_URL" >> .env
 
       - name: Build
         uses: nick-fields/retry@v3
