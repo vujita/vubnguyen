@@ -46,17 +46,12 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - name: Create env file
-        run: |
-          touch .env
-          echo DATABASE_URL=${DATABASE_URL} >> .env
-
       - name: Build
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 20
           max_attempts: 3
-          command: pnpm turbo run build
+          command: pnpm turbo run build --force
           on_retry_command: pnpm turbo run build --force
 
       - name: Build Storybook
