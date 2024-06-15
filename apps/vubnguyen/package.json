@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "rm -rf .next && pnpm with-env next build",
+    "build": "xrun vubnguyen/build",
     "clean:modules": "(.*)",
     "dev": "pnpm with-env next dev",
     "dev:preview": "pnpm with-env next start",
