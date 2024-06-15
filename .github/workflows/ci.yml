@@ -24,6 +24,8 @@ env:
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
   DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
   CI: true
+  SKIP_ENV_VALIDATION: 1
+
 jobs:
   build-lint:
     runs-on: ubuntu-latest
