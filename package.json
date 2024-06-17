@@ -44,7 +44,7 @@
     "prettier": "3.0.0",
     "prettier-plugin-packagejson": "2.4.9",
     "prettier-plugin-sort-json": "3.0.1",
-    "prettier-plugin-tailwindcss": "0.4.1",
+    "prettier-plugin-tailwindcss": "0.6.4",
     "turbo": "1.10.14",
     "typescript": "5.4.5"
   },
