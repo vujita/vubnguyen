@@ -27,7 +27,7 @@
   "dependencies": {
     "@auth/core": "0.31.0",
     "drizzle-kit": "0.21.1",
-    "drizzle-orm": "0.29.3",
+    "drizzle-orm": "0.31.2",
     "postgres": "3.4.3",
     "zod": "3.22.3"
   },
