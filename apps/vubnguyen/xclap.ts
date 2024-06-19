@@ -8,6 +8,6 @@ const xrun = require("@xarc/run");
 const rimraf = require("rimraf");
 
 xrun.load("vubnguyen", {
-  build: xrun.serial("clean", xrun.exec("touch ../../.env"), xrun.exec("dotenv -e ../../.env -- next build")),
+  build: process.env.CI ? xrun.exec("next build") : xrun.serial("clean", xrun.exec("touch ../../.env"), xrun.exec("dotenv -e ../../.env -- next build")),
   clean: () => rimraf.sync(".next"),
 });

@@ -380,6 +380,9 @@ importers:
       dotenv-cli:
         specifier: 7.2.1
         version: 7.2.1
+      eslint-config-vujita:
+        specifier: 0.0.6-alpha.7
+        version: link:../config/eslint
       pg:
         specifier: 8.11.3
         version: 8.11.3
