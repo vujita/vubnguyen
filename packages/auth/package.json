@@ -21,7 +21,7 @@
     "root": true
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "0.3.13",
+    "@auth/drizzle-adapter": "1.2.0",
     "@t3-oss/env-nextjs": "0.6.0",
     "@vujita/db": "0.0.3-alpha.0",
     "next": "14.2.3",
