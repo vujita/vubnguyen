@@ -4,6 +4,11 @@ const envSchema = z.object({
   DATABASE_URL: z.string().trim().min(1).url(),
 });
 
-export const env = envSchema.parse(process.env);
+type ENV = z.TypeOf<typeof envSchema>;
+export const env: ENV = envSchema.safeParse(process.env).success
+  ? envSchema.parse(process.env)
+  : {
+      DATABASE_URL: "",
+    };
 
 export default env;
