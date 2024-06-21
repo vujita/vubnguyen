@@ -46,7 +46,7 @@
     "next": "14.2.3",
     "next-auth": "4.24.5",
     "next-themes": "0.2.1",
-    "react": "18.2.0",
+    "react": "18.3.1",
     "react-dom": "18.3.1",
     "superjson": "2.2.1",
     "vujita-ui": "0.0.6-alpha.7",
@@ -55,7 +55,7 @@
   "devDependencies": {
     "@playwright/test": "1.41.2",
     "@types/node": "18.16.19",
-    "@types/react": "18.2.77",
+    "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@xarc/run": "1.1.1",
     "autoprefixer": "10.4.19",
