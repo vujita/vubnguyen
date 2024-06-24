@@ -20,10 +20,8 @@
     "*.js"
   ],
   "scripts": {
-    "build": "xrun -s build:clean build:tsup",
-    "build:clean": "rimraf ./*.mjs ./*.js ./*.mts ./*.d.ts ./*.map storybook-static coverage ./*.css",
-    "build:storybook": "storybook build",
-    "build:tsup": "tsup",
+    "build": "xrun build:lib",
+    "build:storybook": "xrun storybook:build",
     "clean:modules": "(.*)",
     "dev": "xrun dev:tsup",
     "dev:storybook": "storybook dev -p 6006",
@@ -61,6 +59,16 @@
         ],
         "rules": {
           "@typescript-eslint/await-thenable": "off"
+        }
+      },
+      {
+        "files": "xclap.ts",
+        "rules": {
+          "@typescript-eslint/no-require-imports": "off",
+          "@typescript-eslint/no-unsafe-assignment": "off",
+          "@typescript-eslint/no-unsafe-call": "off",
+          "@typescript-eslint/no-unsafe-member-access": "off",
+          "@typescript-eslint/no-var-requires": "off"
         }
       }
     ],
