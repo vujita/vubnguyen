@@ -13,6 +13,7 @@
     "db:migrate": "turbo db:migrate",
     "db:push": "turbo db:push",
     "db:studio": "pnpm -F db dev",
+    "dedupe": "pnpm dedupe",
     "dev": "turbo dev --parallel",
     "dev:db": "turbo dev --filter db",
     "dev:extension": "turbo dev --filter newnew-performancetool",

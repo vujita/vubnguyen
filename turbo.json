@@ -1,5 +1,5 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
+  "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env", "tsconfig.json", "tsconfig.*.json", "pnpm-lock.yaml"],
   "globalEnv": ["CI", "DATABASE_URL", "DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET", "HOST", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "NODE_ENV", "SKIP_ENV_VALIDATION", "VERCEL", "VERCEL_URL"],
   "tasks": {
