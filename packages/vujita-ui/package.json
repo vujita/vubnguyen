@@ -89,7 +89,7 @@
     "@types/jest": "29.5.4",
     "@xarc/run": "1.1.1",
     "babel-jest": "29.6.4",
-    "chromatic": "7.0.0",
+    "chromatic": "11.5.4",
     "dotenv": "16.4.4",
     "eslint": "8.45.0",
     "eslint-config-vujita": "0.0.6-alpha.7",
