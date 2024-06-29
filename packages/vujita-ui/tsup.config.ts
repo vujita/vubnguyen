@@ -7,7 +7,7 @@ export default defineConfig({
   dts: true,
   entry: ["src/*"],
   format: ["cjs", "esm"],
-  outDir: ".",
+  outDir: "dist",
   plugins: [tailwind, autoprefixer],
   sourcemap: true,
   splitting: false,
