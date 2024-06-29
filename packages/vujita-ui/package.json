@@ -10,14 +10,24 @@
     "url": "https://github.com/vujita/vubnguyen"
   },
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.mjs",
-  "types": "index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./avatar": "./dist/avatar.js",
+    "./classnames": "./dist/classnames.js",
+    "./skeleton": "./dist/skeleton.js",
+    "./src/index.css": "./src/index.css",
+    "./postcss.config.cjs": "./postcss.config.cjs",
+    "./tailwind.preset": "./dist/tailwind.preset.js",
+    "./tailwind.config.ts": "./tailwind.config.ts"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "postcss.config.cjs",
     "tailwind.config.ts",
-    "*.mjs",
-    "*.js"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "xrun build:lib",

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "declaration": true /* Generates corresponding '.d.ts' file. */,
+    "declarationMap": true,
+    "noEmit": false,
+    "outDir": "dist"
+  },
+  "extends": "./tsconfig.json",
+  "include": ["src"]
+}
