@@ -4,11 +4,24 @@ import tailwind from "tailwindcss";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  dts: true,
+  dts: false,
   entry: ["src/*"],
   format: ["cjs", "esm"],
-  outDir: ".",
+  outDir: "dist",
+  outExtension({ format }) {
+    switch (format) {
+      case "cjs":
+        return {
+          js: ".cjs",
+        };
+      case "esm":
+      default:
+        return {
+          js: ".js",
+        };
+    }
+  },
   plugins: [tailwind, autoprefixer],
-  sourcemap: true,
+  sourcemap: false,
   splitting: false,
 });

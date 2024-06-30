@@ -43,6 +43,11 @@
       "dependsOn": ["build"],
       "persistent": true
     },
+    "dev:preview:storybook": {
+      "cache": false,
+      "dependsOn": ["build:storybook"],
+      "persistent": true
+    },
     "dev:storybook": {
       "cache": false,
       "dependsOn": ["^build"],
@@ -67,5 +72,6 @@
     "type-check": {
       "dependsOn": ["^build"]
     }
-  }
+  },
+  "ui": "stream"
 }
