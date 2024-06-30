@@ -457,8 +457,8 @@ importers:
         specifier: 29.6.4
         version: 29.6.4(@babel/core@7.22.17)
       chromatic:
-        specifier: 7.0.0
-        version: 7.0.0
+        specifier: 11.5.4
+        version: 11.5.4
       dotenv:
         specifier: 16.4.4
         version: 16.4.4
@@ -7215,9 +7215,17 @@ packages:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
 
-  /chromatic@7.0.0:
-    resolution: {integrity: sha512-ZPHRO/6v0jAKk0G1oW+HAngQmbq+opAVkgjy3Yx5Cvxvpfv+Y7zyfBuQ8KHewoNuIqLTfvRTbKzekqbGYT+7UQ==}
+  /chromatic@11.5.4:
+    resolution: {integrity: sha512-+J+CopeUSyGUIQJsU6X7CfvSmeVBs0j6LZ9AgF4+XTjI4pFmUiUXsTc00rH9x9W1jCppOaqDXv2kqJJXGDK3mA==}
     hasBin: true
+    peerDependencies:
+      '@chromatic-com/cypress': ^0.*.* || ^1.0.0
+      '@chromatic-com/playwright': ^0.*.* || ^1.0.0
+    peerDependenciesMeta:
+      '@chromatic-com/cypress':
+        optional: true
+      '@chromatic-com/playwright':
+        optional: true
     dev: true
 
   /chrome-trace-event@1.0.3:
