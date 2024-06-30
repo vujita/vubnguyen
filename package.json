@@ -18,6 +18,7 @@
     "dev:db": "turbo dev --filter db",
     "dev:extension": "turbo dev --filter newnew-performancetool",
     "dev:preview": "turbo dev:preview",
+    "dev:preview:storybook": "turbo dev:preview:storybook",
     "dev:storybook": "turbo dev:storybook --parallel",
     "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",
     "format": "prettier --write \"**/*.{css,js,cjs,mjs,ts,tsx,md,json,html}\"",
@@ -45,7 +46,7 @@
     "prettier": "3.0.0",
     "prettier-plugin-packagejson": "2.4.9",
     "prettier-plugin-sort-json": "3.0.1",
-    "prettier-plugin-tailwindcss": "0.6.4",
+    "prettier-plugin-tailwindcss": "0.6.5",
     "turbo": "2.0.4",
     "typescript": "5.4.5"
   },

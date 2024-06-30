@@ -10,22 +10,31 @@
     "url": "https://github.com/vujita/vubnguyen"
   },
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.mjs",
-  "types": "index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./avatar": "./dist/avatar.js",
+    "./classnames": "./dist/classnames.js",
+    "./skeleton": "./dist/skeleton.js",
+    "./src/index.css": "./src/index.css",
+    "./postcss.config.cjs": "./postcss.config.cjs",
+    "./tailwind.preset": "./dist/tailwind.preset.js",
+    "./tailwind.config.ts": "./tailwind.config.ts"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "postcss.config.cjs",
     "tailwind.config.ts",
-    "*.mjs",
-    "*.js"
+    "dist",
+    "src"
   ],
   "scripts": {
-    "build": "xrun -s build:clean build:tsup",
-    "build:clean": "rimraf ./*.mjs ./*.js ./*.mts ./*.d.ts ./*.map storybook-static coverage ./*.css",
-    "build:storybook": "storybook build",
-    "build:tsup": "tsup",
+    "build": "xrun build:lib",
+    "build:storybook": "xrun storybook:build",
     "clean:modules": "(.*)",
     "dev": "xrun dev:tsup",
+    "dev:preview:storybook": "pnpm http-server ./storybook-static -p 6006",
     "dev:storybook": "storybook dev -p 6006",
     "dev:tsup": "tsup --watch",
     "lint": "eslint .",
@@ -62,6 +71,16 @@
         "rules": {
           "@typescript-eslint/await-thenable": "off"
         }
+      },
+      {
+        "files": "xclap.ts",
+        "rules": {
+          "@typescript-eslint/no-require-imports": "off",
+          "@typescript-eslint/no-unsafe-assignment": "off",
+          "@typescript-eslint/no-unsafe-call": "off",
+          "@typescript-eslint/no-unsafe-member-access": "off",
+          "@typescript-eslint/no-var-requires": "off"
+        }
       }
     ],
     "root": true
@@ -94,6 +113,7 @@
     "eslint": "8.45.0",
     "eslint-config-vujita": "0.0.6-alpha.7",
     "eslint-plugin-storybook": "0.8.0",
+    "http-server": "14.1.1",
     "jest": "29.6.4",
     "jest-environment-jsdom": "29.6.4",
     "react": "18.3.1",
