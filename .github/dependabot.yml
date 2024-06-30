@@ -12,3 +12,8 @@ updates:
           - "@storybook/*"
           - "storybook-*"
           - "storybook"
+      trpc:
+        patterns:
+          - "@trpc/*"
+          - "@tanstack/react-query*"
+          - "@tanstack/query*"
