@@ -206,8 +206,8 @@ importers:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
       dotenv-cli:
-        specifier: 7.2.1
-        version: 7.2.1
+        specifier: 7.4.2
+        version: 7.4.2
       eslint:
         specifier: 8.45.0
         version: 8.45.0
@@ -378,8 +378,8 @@ importers:
         version: 3.22.3
     devDependencies:
       dotenv-cli:
-        specifier: 7.2.1
-        version: 7.2.1
+        specifier: 7.4.2
+        version: 7.4.2
       eslint-config-vujita:
         specifier: 0.0.6-alpha.7
         version: link:../config/eslint
@@ -8189,8 +8189,8 @@ packages:
       is-obj: 2.0.0
     dev: false
 
-  /dotenv-cli@7.2.1:
-    resolution: {integrity: sha512-ODHbGTskqRtXAzZapDPvgNuDVQApu4oKX8lZW7Y0+9hKA6le1ZJlyRS687oU9FXjOVEDU/VFV6zI125HzhM1UQ==}
+  /dotenv-cli@7.4.2:
+    resolution: {integrity: sha512-SbUj8l61zIbzyhIbg0FwPJq6+wjbzdn9oEtozQpZ6kW2ihCcapKVZj49oCT3oPM+mgQm+itgvUQcG5szxVrZTA==}
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
