@@ -67,5 +67,6 @@
     "type-check": {
       "dependsOn": ["^build"]
     }
-  }
+  },
+  "ui": "stream"
 }
