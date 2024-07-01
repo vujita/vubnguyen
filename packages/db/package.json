@@ -9,9 +9,9 @@
   "scripts": {
     "clean:modules": "(.*)",
     "db:drop": "pnpm with-env drizzle-kit drop",
-    "db:generate": "pnpm with-env drizzle-kit generate:pg",
-    "db:migrate": "pnpm with-env tsx src/migrate.ts",
-    "db:push": "pnpm with-env drizzle-kit push:pg",
+    "db:generate": "pnpm with-env drizzle-kit generate",
+    "db:migrate": "pnpm with-env drizzle-kit migrate",
+    "db:push": "pnpm with-env drizzle-kit push",
     "dev": "pnpm with-env drizzle-kit studio --port 5556",
     "with-env": "dotenv -e ../../.env --"
   },
