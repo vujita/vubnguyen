@@ -39,7 +39,7 @@
     "@types/tti-polyfill": "0.2.4",
     "@typescript-eslint/eslint-plugin": "6.1.0",
     "@typescript-eslint/parser": "6.1.0",
-    "@vitejs/plugin-react": "4.2.1",
+    "@vitejs/plugin-react": "4.3.1",
     "autoprefixer": "10.4.19",
     "eslint-config-vujita": "0.0.6-alpha.7",
     "postcss": "8.4.38",
