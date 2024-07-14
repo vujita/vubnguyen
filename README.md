@@ -4,7 +4,6 @@
 [![db migrate](https://github.com/vujita/vubnguyen/actions/workflows/db-migrations.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/db-migrations.yml)
 [![Deploy gh pages](https://github.com/vujita/vubnguyen/actions/workflows/deploy-gh-pages.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/deploy-gh-pages.yml)
 [![Playwright Tests](https://github.com/vujita/vubnguyen/actions/workflows/playwright.yml/badge.svg)](https://github.com/vujita/vubnguyen/actions/workflows/playwright.yml)
-[![wakatime](https://wakatime.com/badge/github/vujita/vubnguyen.svg)](https://wakatime.com/badge/github/vujita/vubnguyen)
 
 A [storybook](https://vujita.github.io/vubnguyen/) instance is demo of created components by [vujita-ui](https://www.npmjs.com/package/vujita-ui)
 
