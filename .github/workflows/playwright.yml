@@ -66,6 +66,12 @@ jobs:
       - name: Run Playwright tests
         run: pnpm turbo run e2e
 
+      - uses: daun/playwright-report-summary@v3
+        if: always()
+        with:
+          report-file: apps/vubnguyen/playwright-report/playwright-results.json
+          job-summary: true
+
       - uses: actions/upload-artifact@v3
         name: Upload Playwright report(vubnguyen)
         if: always()
