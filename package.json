@@ -20,7 +20,7 @@
     "dev:preview": "turbo dev:preview",
     "dev:preview:storybook": "turbo dev:preview:storybook",
     "dev:storybook": "turbo dev:storybook --parallel",
-    "dev:vubnguyen": "turbo dev --filter vubnguyen --filter vujita-ui",
+    "dev:vubnguyen": "turbo dev --filter @vujita/vubnguyen --filter vujita-ui",
     "format": "prettier --write \"**/*.{css,js,cjs,mjs,ts,tsx,md,json,html}\"",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
