@@ -55,7 +55,15 @@ export default defineConfig({
   ],
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [
+    ["html"],
+    [
+      "json",
+      {
+        outputFile: "playwright-report/playwright-results.json",
+      },
+    ],
+  ],
 
   retries: 0,
 
