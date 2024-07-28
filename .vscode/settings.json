@@ -31,7 +31,11 @@
   ],
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "tailwindCSS.emmetCompletions": true,
-  "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts",
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "tailwindCSS.experimental.configFile": "./packages/vujita-ui/tailwind.config.ts",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "typescript.enablePromptUseWorkspaceTsdk": true,
