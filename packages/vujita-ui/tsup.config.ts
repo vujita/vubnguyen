@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
 import { defineConfig } from "tsup";

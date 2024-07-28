@@ -8,6 +8,12 @@ const config = {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"],
     },
+    "import/resolver": {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ["./tsconfig.json"],
+      },
+    },
     // "import/resolver": {
     //   typescript: {
     //     alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
@@ -54,7 +60,8 @@ const config = {
     "@typescript-eslint/prefer-ts-expect-error": "error",
     "@typescript-eslint/type-annotation-spacing": "error",
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
-    "import/no-extraneous-dependencies": ["error", { includeInternal: true, includeTypes: true }],
+    // "import/no-extraneous-dependencies": ["warn", { includeInternal: true, includeTypes: true }],
+    "import/no-unresolved": "error",
     "no-relative-import-paths/no-relative-import-paths": "error",
     indent: "off", // Let pretteir handle this
     "prettier/prettier": [
