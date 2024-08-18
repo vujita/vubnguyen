@@ -19,6 +19,22 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "eslintConfig": {
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true,
+          "project": [
+            "./tsconfig.json"
+          ]
+        }
+      }
+    },
     "extends": [
       "eslint-config-vujita/base",
       "eslint-config-vujita/nextjs",
