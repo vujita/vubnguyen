@@ -119,7 +119,7 @@ importers:
         version: 6.5.2
       '@fortawesome/react-fontawesome':
         specifier: 0.2.0
-        version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.3.1)
+        version: 0.2.0(@fortawesome/fontawesome-svg-core@6.6.0)(react@18.3.1)
       '@next/font':
         specifier: 14.0.4
         version: 14.0.4(next@14.2.3)
@@ -2771,12 +2771,16 @@ packages:
     requiresBuild: true
     dev: false
 
-  /@fortawesome/fontawesome-svg-core@6.5.2:
-    resolution: {integrity: sha512-5CdaCBGl8Rh9ohNdxeeTMxIj8oc3KNBgIeLMvJosBMdslK/UnEB8rzyDRrbKdL1kDweqBPo4GT9wvnakHWucZw==}
+  /@fortawesome/fontawesome-common-types@6.6.0:
+    resolution: {integrity: sha512-xyX0X9mc0kyz9plIyryrRbl7ngsA9jz77mCZJsUkLl+ZKs0KWObgaEBoSgQiYWAsSmjz/yjl0F++Got0Mdp4Rw==}
     engines: {node: '>=6'}
-    requiresBuild: true
+    dev: false
+
+  /@fortawesome/fontawesome-svg-core@6.6.0:
+    resolution: {integrity: sha512-KHwPkCk6oRT4HADE7smhfsKudt9N/9lm6EJ5BVg0tD1yPA5hht837fB87F8pn15D8JfTqQOjhKTktwmLMiD7Kg==}
+    engines: {node: '>=6'}
     dependencies:
-      '@fortawesome/fontawesome-common-types': 6.5.2
+      '@fortawesome/fontawesome-common-types': 6.6.0
     dev: false
 
   /@fortawesome/free-solid-svg-icons@6.5.2:
@@ -2787,13 +2791,13 @@ packages:
       '@fortawesome/fontawesome-common-types': 6.5.2
     dev: false
 
-  /@fortawesome/react-fontawesome@0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.3.1):
+  /@fortawesome/react-fontawesome@0.2.0(@fortawesome/fontawesome-svg-core@6.6.0)(react@18.3.1):
     resolution: {integrity: sha512-uHg75Rb/XORTtVt7OS9WoK8uM276Ufi7gCzshVWkUJbHhh3svsUUeqXerrM96Wm7fRiDzfKRwSoahhMIkGAYHw==}
     peerDependencies:
       '@fortawesome/fontawesome-svg-core': ~1 || ~6
       react: '>=16.3'
     dependencies:
-      '@fortawesome/fontawesome-svg-core': 6.5.2
+      '@fortawesome/fontawesome-svg-core': 6.6.0
       prop-types: 15.8.1
       react: 18.3.1
     dev: false
@@ -6889,8 +6893,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /axios@1.6.3:
-    resolution: {integrity: sha512-fWyNdeawGam70jXSVlKl+SUNVcL6j6W79CuSIPfi6HnDUmSCH6gyUys/HrqHeA/wU0Az41rRgean494d0Jb+ww==}
+  /axios@1.7.4:
+    resolution: {integrity: sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==}
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
@@ -10197,7 +10201,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.4
+      uglify-js: 3.19.2
 
   /hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
@@ -12818,7 +12822,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.6.3
+      axios: 1.7.4
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -15943,8 +15947,8 @@ packages:
     resolution: {integrity: sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==}
     dev: true
 
-  /uglify-js@3.17.4:
-    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
+  /uglify-js@3.19.2:
+    resolution: {integrity: sha512-S8KA6DDI47nQXJSi2ctQ629YzwOVs+bQML6DAtvy0wgNdpi+0ySpQK0g2pxBq2xfF2z3YCscu7NNA8nXT9PlIQ==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
