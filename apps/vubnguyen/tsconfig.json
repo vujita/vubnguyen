@@ -12,7 +12,7 @@
     ],
     "strict": true
   },
-  "exclude": [],
+  "exclude": [".next/types/**/*.ts"],
   "extends": "../../tsconfig.json",
   "include": ["next-env.d.ts", "src", "*.ts", "*.mjs", "e2e", "xclap.ts", ".next/types/**/*.ts"]
 }
