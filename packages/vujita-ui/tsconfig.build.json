@@ -5,6 +5,7 @@
     "noEmit": false,
     "outDir": "dist"
   },
+  "exclude": ["src/tailwind.preset.ts"],
   "extends": "./tsconfig.json",
   "include": ["src"]
 }

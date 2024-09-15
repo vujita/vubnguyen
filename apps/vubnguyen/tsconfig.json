@@ -14,5 +14,5 @@
   },
   "exclude": [],
   "extends": "../../tsconfig.json",
-  "include": ["next-env.d.ts", "src", "*.ts", "*.mjs", ".next/types/**/*.ts", "e2e", "xclap.ts"]
+  "include": ["next-env.d.ts", "src", "*.ts", "*.mjs", "e2e", "xclap.ts", ".next/types/**/*.ts"]
 }

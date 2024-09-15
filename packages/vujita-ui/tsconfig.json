@@ -7,10 +7,11 @@
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "vujita-ui/*": ["./*"]
+      "vujita-ui/*": ["./*"],
+      "vujita-ui/src/*": ["./src/*"]
     },
     "strict": true /* Enable all strict type-checking options. */,
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
   },
-  "include": ["src", "tsup.config.ts", "tailwind.config.ts", "jest.config.ts", "test", "stories", "xclap.ts"]
+  "include": ["src", "tailwind.config.ts", "jest.config.ts", "test", "stories"]
 }

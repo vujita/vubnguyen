@@ -21,8 +21,7 @@
     "./tailwind.preset": "./dist/tailwind.preset.js",
     "./tailwind.config.ts": "./tailwind.config.ts"
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "postcss.config.cjs",
@@ -34,57 +33,16 @@
     "build": "xrun build:lib",
     "build:storybook": "xrun storybook:build",
     "clean:modules": "(.*)",
-    "dev": "xrun dev:tsup",
+    "dev": "xrun build:watch",
     "dev:preview:storybook": "pnpm http-server ./storybook-static -p 6006",
     "dev:storybook": "storybook dev -p 6006",
-    "dev:tsup": "tsup --watch",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prepare": "xrun build:tsup",
+    "prepare": "xrun build:lib",
     "storybook": "storybook dev -p 6006",
     "test": "jest",
     "type-check": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint-config-vujita/base",
-      "eslint-config-vujita/react",
-      "plugin:storybook/recommended"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "*.test.js",
-          "*.test.jsx",
-          "*.test.ts",
-          "*.test.tsx"
-        ],
-        "rules": {
-          "@typescript-eslint/no-unsafe-call": 1
-        }
-      },
-      {
-        "files": [
-          "*.stories.ts",
-          "*.stories.tsx"
-        ],
-        "rules": {
-          "@typescript-eslint/await-thenable": "off"
-        }
-      },
-      {
-        "files": "xclap.ts",
-        "rules": {
-          "@typescript-eslint/no-require-imports": "off",
-          "@typescript-eslint/no-unsafe-assignment": "off",
-          "@typescript-eslint/no-unsafe-call": "off",
-          "@typescript-eslint/no-unsafe-member-access": "off",
-          "@typescript-eslint/no-var-requires": "off"
-        }
-      }
-    ],
-    "root": true
   },
   "dependencies": {
     "class-variance-authority": "0.7.0",
@@ -123,8 +81,8 @@
     "storybook": "7.3.2",
     "tailwindcss": "3.3.2",
     "ts-node": "10.9.1",
+    "tsc-alias": "1.8.10",
     "tsconfig-paths-webpack-plugin": "4.1.0",
-    "tsup": "7.2.0",
     "typescript": "5.4.5"
   },
   "peerDependencies": {
