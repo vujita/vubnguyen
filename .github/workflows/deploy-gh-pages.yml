@@ -40,6 +40,13 @@ jobs:
       - name: Build storybook(no cache)
         run: pnpm turbo build:storybook
 
+      - name: Add vercel trigger script
+        run: |
+          mkdir packages/vujita-ui/storybook-static/apps
+          mkdir packages/vujita-ui/storybook-static/apps/vubnguyen
+          mkdir packages/vujita-ui/storybook-static/apps/vubnguyen/bin
+          cp apps/vubnguyen/bin/* ./packages/vujita-ui/storybook-static/apps/vubnguyen/bin
+
       - name: Deploy to GH Pages 🚀
         uses: peaceiris/actions-gh-pages@v3
         with:
