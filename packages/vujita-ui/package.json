@@ -30,7 +30,7 @@
     "src"
   ],
   "scripts": {
-    "build": "xrun build:lib",
+    "build": "xrun -s build:clean build:lib",
     "build:storybook": "xrun storybook:build",
     "clean:modules": "(.*)",
     "dev": "xrun build:watch",
@@ -38,7 +38,7 @@
     "dev:storybook": "storybook dev -p 6006",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prepare": "xrun build:lib",
+    "prepare": "xrun -s build:clean build:lib",
     "storybook": "storybook dev -p 6006",
     "test": "jest",
     "type-check": "tsc --noEmit",
