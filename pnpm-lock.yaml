@@ -71,7 +71,7 @@ importers:
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: 1.0.14
-        version: 1.0.14(vite@4.5.3)
+        version: 1.0.14(vite@4.5.5)
       '@types/chrome':
         specifier: 0.0.270
         version: 0.0.270
@@ -92,7 +92,7 @@ importers:
         version: 6.1.0(eslint@8.45.0)(typescript@5.4.5)
       '@vitejs/plugin-react':
         specifier: 4.3.1
-        version: 4.3.1(vite@4.5.3)
+        version: 4.3.1(vite@4.5.5)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -109,8 +109,8 @@ importers:
         specifier: 5.4.5
         version: 5.4.5
       vite:
-        specifier: 4.5.3
-        version: 4.5.3
+        specifier: 4.5.5
+        version: 4.5.5
 
   apps/vubnguyen:
     dependencies:
@@ -2042,7 +2042,7 @@ packages:
     dev: true
     optional: true
 
-  /@crxjs/vite-plugin@1.0.14(vite@4.5.3):
+  /@crxjs/vite-plugin@1.0.14(vite@4.5.5):
     resolution: {integrity: sha512-emOueVCqFRFmpcfT80Xsm4mfuFw9VSp5GY4eh5qeLDeiP81g0hddlobVQCo0pE2ZvNnWbyhLrXEYAaMAXjNL6A==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2062,9 +2062,9 @@ packages:
       picocolors: 1.0.1
       react-refresh: 0.13.0
       rollup: 2.79.1
-      vite: 4.5.3
+      vite: 4.5.5
     optionalDependencies:
-      '@vitejs/plugin-react': 4.3.1(vite@4.5.3)
+      '@vitejs/plugin-react': 4.3.1(vite@4.5.5)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6231,7 +6231,7 @@ packages:
       '@typescript-eslint/types': 6.1.0
       eslint-visitor-keys: 3.4.3
 
-  /@vitejs/plugin-react@4.3.1(vite@4.5.3):
+  /@vitejs/plugin-react@4.3.1(vite@4.5.5):
     resolution: {integrity: sha512-m/V2syj5CuVnaxcUJOQRel/Wr31FFXRFlnOoq1TVtkCxsY5veGMTEmpWHndrhB2U8ScHtCQB1e+4hWYExQc6Lg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -6242,7 +6242,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.24.7)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 4.5.3
+      vite: 4.5.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -16202,8 +16202,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.3:
-    resolution: {integrity: sha512-kQL23kMeX92v3ph7IauVkXkikdDRsYMGTVl5KY2E9OY4ONLvkHf04MDTbnfo6NKxZiDLWzVpP5oTa8hQD8U3dg==}
+  /vite@4.5.5:
+    resolution: {integrity: sha512-ifW3Lb2sMdX+WU91s3R0FyQlAyLxOzCSCP37ujw0+r5POeHPwe6udWVIElKQq8gk3t7b8rkmvqC6IHBpCff4GQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
