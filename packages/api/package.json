@@ -30,7 +30,7 @@
     "zod": "3.22.3"
   },
   "devDependencies": {
-    "eslint": "8.45.0",
+    "eslint": "9.25.1",
     "eslint-config-vujita": "0.0.6-alpha.7",
     "rimraf": "5.0.7",
     "typescript": "5.4.5"
