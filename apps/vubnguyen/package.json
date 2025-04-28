@@ -45,7 +45,7 @@
     "zod": "3.22.3"
   },
   "devDependencies": {
-    "@playwright/test": "1.41.2",
+    "@playwright/test": "1.52.0",
     "@types/node": "18.16.19",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
