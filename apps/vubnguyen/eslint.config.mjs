@@ -7,6 +7,7 @@ export default {
   },
   root: true,
   settings: {
+    "import/internal-regex": "^@vujita/",
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"],
     },
