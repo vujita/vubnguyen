@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const className = "h-[32px] w-[32px] text-gray-400";
-const ThemeSwitcher = () => {
+const ThemeSwitcher: FC = () => {
   const { theme, setTheme } = useTheme();
   const isLightTheme = theme === "light";
   const [mounted, setMounted] = useState(false);
