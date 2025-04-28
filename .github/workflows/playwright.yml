@@ -72,7 +72,7 @@ jobs:
           report-file: apps/vubnguyen/playwright-report/playwright-results.json
           job-summary: true
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload Playwright report(vubnguyen)
         if: always()
         with:
