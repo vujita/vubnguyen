@@ -71,7 +71,7 @@ importers:
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: 1.0.14
-        version: 1.0.14(vite@4.5.5)
+        version: 1.0.14(vite@4.5.14)
       '@types/chrome':
         specifier: 0.0.270
         version: 0.0.270
@@ -92,7 +92,7 @@ importers:
         version: 6.1.0(eslint@8.45.0)(typescript@5.8.3)
       '@vitejs/plugin-react':
         specifier: 4.3.1
-        version: 4.3.1(vite@4.5.5)
+        version: 4.3.1(vite@4.5.14)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -109,8 +109,8 @@ importers:
         specifier: 5.8.3
         version: 5.8.3
       vite:
-        specifier: 4.5.5
-        version: 4.5.5
+        specifier: 4.5.14
+        version: 4.5.14
 
   apps/vubnguyen:
     dependencies:
@@ -2045,7 +2045,7 @@ packages:
     dev: true
     optional: true
 
-  /@crxjs/vite-plugin@1.0.14(vite@4.5.5):
+  /@crxjs/vite-plugin@1.0.14(vite@4.5.14):
     resolution: {integrity: sha512-emOueVCqFRFmpcfT80Xsm4mfuFw9VSp5GY4eh5qeLDeiP81g0hddlobVQCo0pE2ZvNnWbyhLrXEYAaMAXjNL6A==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2065,9 +2065,9 @@ packages:
       picocolors: 1.0.1
       react-refresh: 0.13.0
       rollup: 2.79.1
-      vite: 4.5.5
+      vite: 4.5.14
     optionalDependencies:
-      '@vitejs/plugin-react': 4.3.1(vite@4.5.5)
+      '@vitejs/plugin-react': 4.3.1(vite@4.5.14)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6377,7 +6377,7 @@ packages:
       '@typescript-eslint/types': 6.1.0
       eslint-visitor-keys: 3.4.3
 
-  /@vitejs/plugin-react@4.3.1(vite@4.5.5):
+  /@vitejs/plugin-react@4.3.1(vite@4.5.14):
     resolution: {integrity: sha512-m/V2syj5CuVnaxcUJOQRel/Wr31FFXRFlnOoq1TVtkCxsY5veGMTEmpWHndrhB2U8ScHtCQB1e+4hWYExQc6Lg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -6388,7 +6388,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.24.7)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 4.5.5
+      vite: 4.5.14
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -14653,8 +14653,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /rollup@3.29.4:
-    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
+  /rollup@3.29.5:
+    resolution: {integrity: sha512-GVsDdsbJzzy4S/v3dqWPJ7EfvZJfCHiDqe80IyrF59LYuP+e6U1LJoUqeuqRbwAWoMNoXivMNeNAOf5E22VA1w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -16281,8 +16281,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@4.5.5:
-    resolution: {integrity: sha512-ifW3Lb2sMdX+WU91s3R0FyQlAyLxOzCSCP37ujw0+r5POeHPwe6udWVIElKQq8gk3t7b8rkmvqC6IHBpCff4GQ==}
+  /vite@4.5.14:
+    resolution: {integrity: sha512-+v57oAaoYNnO3hIu5Z/tJRZjq5aHM2zDve9YZ8HngVHbhk66RStobhb1sqPMIPEleV6cNKYK4eGrAbE9Ulbl2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -16311,7 +16311,7 @@ packages:
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.38
-      rollup: 3.29.4
+      rollup: 3.29.5
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
