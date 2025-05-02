@@ -10,6 +10,7 @@
       "vujita-ui/*": ["./*"],
       "vujita-ui/src/*": ["./src/*"]
     },
+    "skipLibCheck": true /* Skip type checking of all declaration files (*.d.ts). */,
     "strict": true /* Enable all strict type-checking options. */,
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
   },
