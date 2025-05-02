@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.52.0",
-    "@types/node": "18.16.19",
+    "@types/node": "22.15.3",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@xarc/run": "1.1.1",

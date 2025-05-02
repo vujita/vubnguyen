@@ -65,6 +65,7 @@
     "@storybook/react-webpack5": "7.6.7",
     "@storybook/test": "7.6.7",
     "@types/jest": "29.5.12",
+    "@types/node": "22.15.3",
     "@xarc/run": "1.1.1",
     "babel-jest": "29.6.4",
     "chromatic": "11.5.4",
