@@ -7,12 +7,7 @@ const ignoreList = ["node_modules/@swc/core-linux-x64-musl", "node_modules/@swc/
 const config = {
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
-  experimental: {
-    outputFileTracingExcludes: {
-      "*": [...ignoreList, ...ignoreList.map((p) => `./${p}`), ...ignoreList.map((p) => `../../${p}`)],
-    },
-    outputFileTracingIgnores: [...ignoreList, ...ignoreList.map((p) => `**${p.replaceAll("node_modules", "")}**`)],
-  },
+  experimental: {},
   outputFileTracing: true,
   // this includes files from the monorepo base two directories up
   reactStrictMode: true,
