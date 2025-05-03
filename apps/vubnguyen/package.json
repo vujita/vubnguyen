@@ -44,6 +44,7 @@
     "zod": "3.22.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "15.3.1",
     "@playwright/test": "1.52.0",
     "@types/node": "22.15.3",
     "@types/react": "19.1.2",
