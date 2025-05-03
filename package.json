@@ -2,6 +2,7 @@
   "name": "vubnguyen",
   "private": true,
   "scripts": {
+    "analyze:build:vubnguyen": "ANALYZE=true turbo build --filter @vujita/vubnguyen",
     "build": "turbo build",
     "build:extension": "turbo build --filter newnew-performancetool",
     "build:storybook": "turbo build:storybook",
