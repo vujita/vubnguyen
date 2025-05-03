@@ -29,7 +29,7 @@
     "tti-polyfill": "0.2.2",
     "vujita-ui": "0.0.6-alpha.7",
     "web-vitals": "3.5.2",
-    "zustand": "4.5.2"
+    "zustand": "5.0.4"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "1.0.14",
