@@ -1,4 +1,10 @@
-const ignoreList = ["node_modules/@swc/core-linux-x64-musl", "node_modules/@swc/core-linux-x64-gnu"];
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// })
+//
+// module.exports = withBundleAnalyzer(nextConfig)
 /**
  * @type {string[]}
  */
@@ -16,4 +22,6 @@ const config = {
   typescript: { ignoreBuildErrors: true },
 };
 
-export default config;
+export default withBundleAnalyzer({
+  enabled: true,
+})(config);
