@@ -21,8 +21,8 @@
     "root": true
   },
   "dependencies": {
-    "@trpc/client": "10.34.0",
-    "@trpc/server": "10.45.2",
+    "@trpc/client": "11.1.2",
+    "@trpc/server": "11.1.2",
     "@vujita/auth": "0.0.3-alpha.0",
     "@vujita/db": "0.0.3-alpha.0",
     "drizzle-orm": "0.31.2",
