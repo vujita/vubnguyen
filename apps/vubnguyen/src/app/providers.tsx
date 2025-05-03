@@ -37,6 +37,12 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
           enabled: (opts) => process.env.NODE_ENV === "development" || (opts.direction === "down" && opts.result instanceof Error),
         }),
         httpBatchLink({
+          fetch: (url, options) => {
+            return fetch(url, {
+              ...options,
+              credentials: "include",
+            });
+          },
           transformer: superjson,
           url: `${getBaseUrl()}/api/trpc`,
         }),

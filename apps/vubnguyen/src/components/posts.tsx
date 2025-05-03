@@ -12,10 +12,10 @@ export function CreatePostForm() {
   const [content, setContent] = useState("");
 
   const { mutateAsync: createPost, error } = api.post.create.useMutation({
-    async onSuccess() {
+    onSuccess() {
       setTitle("");
       setContent("");
-      await context.post.all.invalidate();
+      // await context.post.all.invalidate();
     },
   });
 
