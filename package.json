@@ -31,7 +31,7 @@
     "reinstall": "xrun -s clean:workspaces clean:modules && pnpm install --frozen-lockfile",
     "postreinstall": "xrun test:all",
     "test": "turbo test",
-    "test:all": "turbo build lint type-check test e2e",
+    "test:all": "turbo build build:storybook lint type-check test e2e",
     "test:e2e": "turbo e2e",
     "type-check": "turbo type-check"
   },
