@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 
 import "@vujita/vubnguyen/src/styles/globals.css";
 
