@@ -78,7 +78,7 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "react": "19.1.0",
-    "react-dom": "18.3.1",
+    "react-dom": "19.1.0",
     "rimraf": "5.0.7",
     "storybook": "8.6.12",
     "tailwindcss": "3.3.2",
