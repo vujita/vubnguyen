@@ -17,3 +17,7 @@ updates:
           - "@trpc/*"
           - "@tanstack/react-query*"
           - "@tanstack/query*"
+    ignore:
+      - dependency-name: "eslint:*"
+        # Ignore versions of Lodash that are equal to or greater than 1.0.0
+        versions: [">=9.0.0"]
