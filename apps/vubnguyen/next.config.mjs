@@ -1,10 +1,5 @@
 import withBundleAnalyzer from "@next/bundle-analyzer";
 
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true',
-// })
-//
-// module.exports = withBundleAnalyzer(nextConfig)
 /**
  * @type {string[]}
  */
@@ -18,10 +13,10 @@ const config = {
   // this includes files from the monorepo base two directories up
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
-  transpilePackages: ["@vujita/api", "@vujita/auth", "@vujita/db"],
+  transpilePackages: ["@vujita/api", "@vujita/auth", "@vujita/db", "vujita-ui"],
   typescript: { ignoreBuildErrors: true },
 };
 
 export default withBundleAnalyzer({
-  enabled: true,
+  enabled: process.env.ANALYZE === "true",
 })(config);

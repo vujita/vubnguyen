@@ -15,7 +15,6 @@ export function CreatePostForm() {
     onSuccess() {
       setTitle("");
       setContent("");
-      // await context.post.all.invalidate();
     },
   });
 
