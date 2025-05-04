@@ -1,10 +1,5 @@
-import { Suspense } from "react";
-import { Skeleton } from "vujita-ui/skeleton";
-
-import { PostList } from "@vujita/vubnguyen/src/components/posts";
+import { LazyPosts } from "@vujita/vubnguyen/src/components/posts/lazy-posts";
 import Signature from "@vujita/vubnguyen/src/components/signature";
-
-export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
@@ -14,16 +9,7 @@ export default function HomePage() {
         <Signature />
       </div>
       <div className="p-4 text-center text-3xl text-blue-500 md:text-7xl">{"Coming soon!"}</div>
-      <Suspense
-        fallback={
-          <Skeleton
-            className="h-32"
-            width="full"
-          />
-        }
-      >
-        <PostList />
-      </Suspense>
+      <LazyPosts />
     </div>
   );
 }

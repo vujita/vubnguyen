@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "moduleResolution": "bundler",
     "paths": {
-      "@vujita/vubnguyen/*": ["./*"]
+      "@vujita/vubnguyen/*": ["./*"],
+      "src/*": ["./src/*"]
     },
     "plugins": [
       {
