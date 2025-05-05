@@ -65,7 +65,7 @@
     "@storybook/react": "8.6.12",
     "@storybook/react-webpack5": "8.6.12",
     "@storybook/test": "8.6.12",
-    "@types/jest": "29.5.12",
+    "@types/jest": "29.5.14",
     "@types/node": "22.15.3",
     "@xarc/run": "1.1.1",
     "babel-jest": "29.6.4",
