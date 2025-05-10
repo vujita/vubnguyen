@@ -68,7 +68,7 @@
     "@types/jest": "29.5.14",
     "@types/node": "22.15.3",
     "@xarc/run": "1.1.1",
-    "babel-jest": "29.6.4",
+    "babel-jest": "29.7.0",
     "chromatic": "11.5.4",
     "dotenv": "16.4.4",
     "eslint": "8.45.0",
