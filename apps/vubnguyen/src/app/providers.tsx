@@ -38,10 +38,15 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
         }),
         httpBatchLink({
           fetch: (url, options) => {
-            return fetch(url, {
-              ...options,
+            const fetchOptions: RequestInit = {
               credentials: "include",
-            });
+            };
+
+            if (options) {
+              Object.assign(fetchOptions, options);
+            }
+
+            return fetch(url, fetchOptions);
           },
           transformer: superjson,
           url: `${getBaseUrl()}/api/trpc`,
