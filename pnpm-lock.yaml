@@ -124,23 +124,23 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(typescript@5.9.2)(zod@3.22.3)
       '@tanstack/react-query':
-        specifier: 5.87.1
-        version: 5.87.1(react@19.1.0)
+        specifier: 5.87.4
+        version: 5.87.4(react@19.1.0)
       '@tanstack/react-query-devtools':
-        specifier: 5.87.1
-        version: 5.87.1(@tanstack/react-query@5.87.1)(react@19.1.0)
+        specifier: 5.87.4
+        version: 5.87.4(@tanstack/react-query@5.87.4)(react@19.1.0)
       '@tanstack/react-query-next-experimental':
-        specifier: 5.87.1
-        version: 5.87.1(@tanstack/react-query@5.87.1)(next@15.4.7)(react@19.1.0)
+        specifier: 5.87.4
+        version: 5.87.4(@tanstack/react-query@5.87.4)(next@15.4.7)(react@19.1.0)
       '@trpc/client':
         specifier: 11.5.1
         version: 11.5.1(@trpc/server@11.5.1)(typescript@5.9.2)
       '@trpc/next':
         specifier: 11.5.1
-        version: 11.5.1(@tanstack/react-query@5.87.1)(@trpc/client@11.5.1)(@trpc/react-query@11.5.1)(@trpc/server@11.5.1)(next@15.4.7)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)
+        version: 11.5.1(@tanstack/react-query@5.87.4)(@trpc/client@11.5.1)(@trpc/react-query@11.5.1)(@trpc/server@11.5.1)(next@15.4.7)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)
       '@trpc/react-query':
         specifier: 11.5.1
-        version: 11.5.1(@tanstack/react-query@5.87.1)(@trpc/client@11.5.1)(@trpc/server@11.5.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)
+        version: 11.5.1(@tanstack/react-query@5.87.4)(@trpc/client@11.5.1)(@trpc/server@11.5.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)
       '@trpc/server':
         specifier: 11.5.1
         version: 11.5.1(typescript@5.9.2)
@@ -2729,8 +2729,8 @@ packages:
       eslint: 8.45.0
       eslint-visitor-keys: 3.4.3
 
-  /@eslint-community/eslint-utils@4.8.0(eslint@8.57.1):
-    resolution: {integrity: sha512-MJQFqrZgcW0UNYLGOuQpey/oTN59vyWwplvCGZztn1cKz9agZPPYpJB7h2OMmuu7VLqkvEjN8feFZJmxNF9D+Q==}
+  /@eslint-community/eslint-utils@4.9.0(eslint@8.57.1):
+    resolution: {integrity: sha512-ayVFHdtZ+hsq1t2Dy24wCmGXGe4q9Gu3smhLYALJrr473ZH27MsnSL+LKUlimp4BWJqMDMLmPpx/Q9R3OAlL4g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -4803,43 +4803,43 @@ packages:
       zod: 3.22.3
     dev: false
 
-  /@tanstack/query-core@5.87.1:
-    resolution: {integrity: sha512-HOFHVvhOCprrWvtccSzc7+RNqpnLlZ5R6lTmngb8aq7b4rc2/jDT0w+vLdQ4lD9bNtQ+/A4GsFXy030Gk4ollA==}
+  /@tanstack/query-core@5.87.4:
+    resolution: {integrity: sha512-uNsg6zMxraEPDVO2Bn+F3/ctHi+Zsk+MMpcN8h6P7ozqD088F6mFY5TfGM7zuyIrL7HKpDyu6QHfLWiDxh3cuw==}
     dev: false
 
-  /@tanstack/query-devtools@5.86.0:
-    resolution: {integrity: sha512-/JDw9BP80eambEK/EsDMGAcsL2VFT+8F5KCOwierjPU7QP8Wt1GT32yJpn3qOinBM8/zS3Jy36+F0GiyJp411A==}
+  /@tanstack/query-devtools@5.87.3:
+    resolution: {integrity: sha512-LkzxzSr2HS1ALHTgDmJH5eGAVsSQiuwz//VhFW5OqNk0OQ+Fsqba0Tsf+NzWRtXYvpgUqwQr4b2zdFZwxHcGvg==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.87.1(@tanstack/react-query@5.87.1)(react@19.1.0):
-    resolution: {integrity: sha512-YPuEub8RQrrsXOxoiMJn33VcGPIeuVINWBgLu9RLSQB8ueXaKlGLZ3NJkahGpbt2AbWf749FQ6R+1jBFk3kdCA==}
+  /@tanstack/react-query-devtools@5.87.4(@tanstack/react-query@5.87.4)(react@19.1.0):
+    resolution: {integrity: sha512-JYcnVJBBW1DCPyNGM0S2CyrLpe6KFiL2gpYd/k9tAp62Du7+Y27zkzd+dKFyxpFadYaTxsx4kUA7YvnkMLVUoQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.87.1
+      '@tanstack/react-query': ^5.87.4
       react: ^18 || ^19
     dependencies:
-      '@tanstack/query-devtools': 5.86.0
-      '@tanstack/react-query': 5.87.1(react@19.1.0)
+      '@tanstack/query-devtools': 5.87.3
+      '@tanstack/react-query': 5.87.4(react@19.1.0)
       react: 19.1.0
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.87.1(@tanstack/react-query@5.87.1)(next@15.4.7)(react@19.1.0):
-    resolution: {integrity: sha512-AeZRThgx9cLkcRfE8W+qasgoyPvO4aJafdxqz+uHvCskjDkNt5Y3FAxuqIb9By1Z6VhA9ktyAEUgI/nqJGABiw==}
+  /@tanstack/react-query-next-experimental@5.87.4(@tanstack/react-query@5.87.4)(next@15.4.7)(react@19.1.0):
+    resolution: {integrity: sha512-58nv1vqNzGpwsUG6C8hSOri7kT2TvzxQd5oz195FtQaNAeID0HIGNduvQBylxHeBxHaujuMksh/A+MxfbzZ5YQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.87.1
+      '@tanstack/react-query': ^5.87.4
       next: ^13 || ^14 || ^15
       react: ^18 || ^19
     dependencies:
-      '@tanstack/react-query': 5.87.1(react@19.1.0)
+      '@tanstack/react-query': 5.87.4(react@19.1.0)
       next: 15.4.7(@babel/core@7.22.17)(@playwright/test@1.52.0)(react-dom@19.1.0)(react@19.1.0)
       react: 19.1.0
     dev: false
 
-  /@tanstack/react-query@5.87.1(react@19.1.0):
-    resolution: {integrity: sha512-YKauf8jfMowgAqcxj96AHs+Ux3m3bWT1oSVKamaRPXSnW2HqSznnTCEkAVqctF1e/W9R/mPcyzzINIgpOH94qg==}
+  /@tanstack/react-query@5.87.4(react@19.1.0):
+    resolution: {integrity: sha512-T5GT/1ZaNsUXf5I3RhcYuT17I4CPlbZgyLxc/ZGv7ciS6esytlbjb3DgUFO6c8JWYMDpdjSWInyGZUErgzqhcA==}
     peerDependencies:
       react: ^18 || ^19
     dependencies:
-      '@tanstack/query-core': 5.87.1
+      '@tanstack/query-core': 5.87.4
       react: 19.1.0
     dev: false
 
@@ -4894,7 +4894,7 @@ packages:
       typescript: 5.9.2
     dev: false
 
-  /@trpc/next@11.5.1(@tanstack/react-query@5.87.1)(@trpc/client@11.5.1)(@trpc/react-query@11.5.1)(@trpc/server@11.5.1)(next@15.4.7)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2):
+  /@trpc/next@11.5.1(@tanstack/react-query@5.87.4)(@trpc/client@11.5.1)(@trpc/react-query@11.5.1)(@trpc/server@11.5.1)(next@15.4.7)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2):
     resolution: {integrity: sha512-MWb7Jqa0XYx0z2he7Eq7HSILc2z9oDqUtsbWz+S6LWCemewRSRzmG8UuoiZm+ICEoRa452RmqeQH1EYiPCWTUg==}
     peerDependencies:
       '@tanstack/react-query': ^5.59.15
@@ -4911,9 +4911,9 @@ packages:
       '@trpc/react-query':
         optional: true
     dependencies:
-      '@tanstack/react-query': 5.87.1(react@19.1.0)
+      '@tanstack/react-query': 5.87.4(react@19.1.0)
       '@trpc/client': 11.5.1(@trpc/server@11.5.1)(typescript@5.9.2)
-      '@trpc/react-query': 11.5.1(@tanstack/react-query@5.87.1)(@trpc/client@11.5.1)(@trpc/server@11.5.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)
+      '@trpc/react-query': 11.5.1(@tanstack/react-query@5.87.4)(@trpc/client@11.5.1)(@trpc/server@11.5.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)
       '@trpc/server': 11.5.1(typescript@5.9.2)
       next: 15.4.7(@babel/core@7.22.17)(@playwright/test@1.52.0)(react-dom@19.1.0)(react@19.1.0)
       react: 19.1.0
@@ -4921,7 +4921,7 @@ packages:
       typescript: 5.9.2
     dev: false
 
-  /@trpc/react-query@11.5.1(@tanstack/react-query@5.87.1)(@trpc/client@11.5.1)(@trpc/server@11.5.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2):
+  /@trpc/react-query@11.5.1(@tanstack/react-query@5.87.4)(@trpc/client@11.5.1)(@trpc/server@11.5.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2):
     resolution: {integrity: sha512-Y+e0Lp7na1LAjoYqtHVjxpfayOuvvnuchS723b4dsI/V0h3irBuI+bx38S3m7RgaIh/L1av1SldFrKIauk+r/A==}
     peerDependencies:
       '@tanstack/react-query': ^5.80.3
@@ -4931,7 +4931,7 @@ packages:
       react-dom: '>=18.2.0'
       typescript: '>=5.7.2'
     dependencies:
-      '@tanstack/react-query': 5.87.1(react@19.1.0)
+      '@tanstack/react-query': 5.87.4(react@19.1.0)
       '@trpc/client': 11.5.1(@trpc/server@11.5.1)(typescript@5.9.2)
       '@trpc/server': 11.5.1(typescript@5.9.2)
       react: 19.1.0
@@ -6582,7 +6582,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001741
-      electron-to-chromium: 1.5.214
+      electron-to-chromium: 1.5.215
       node-releases: 2.0.20
       update-browserslist-db: 1.1.3(browserslist@4.25.4)
     dev: true
@@ -7873,8 +7873,8 @@ packages:
     resolution: {integrity: sha512-UyiO82eb9dVOx8YO3ajDf9jz2kKyt98DEITRdeLPstOEuTlLzDA4Gyq5K9he71TQziU5jUVu2OAu5N48HmQiyQ==}
     dev: true
 
-  /electron-to-chromium@1.5.214:
-    resolution: {integrity: sha512-TpvUNdha+X3ybfU78NoQatKvQEm1oq3lf2QbnmCEdw+Bd9RuIAY+hJTvq1avzHM0f7EJfnH3vbCnbzKzisc/9Q==}
+  /electron-to-chromium@1.5.215:
+    resolution: {integrity: sha512-TIvGp57UpeNetj/wV/xpFNpWGb0b/ROw372lHPx5Aafx02gjTBtWnEEcaSX3W2dLM3OSdGGyHX/cHl01JQsLaQ==}
     dev: true
 
   /emittery@0.13.1:
@@ -8558,7 +8558,7 @@ packages:
     deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     dependencies:
-      '@eslint-community/eslint-utils': 4.8.0(eslint@8.57.1)
+      '@eslint-community/eslint-utils': 4.9.0(eslint@8.57.1)
       '@eslint-community/regexpp': 4.12.1
       '@eslint/eslintrc': 2.1.4
       '@eslint/js': 8.57.1
