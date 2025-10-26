@@ -7,7 +7,7 @@ const xrun = require("@xarc/run");
 
 xrun.load({
   "build:clean": xrun.exec("rimraf storybook-static coverage dist"),
-  "build:lib": xrun.serial(xrun.exec("tsc -p tsconfig.build.json"), xrun.exec("tsc-alias -p tsconfig.build.json"), xrun.exec("tailwind -i src/index.css -o dist/index.css")),
-  "build:watch": ["build:lib", xrun.concurrent(xrun.exec("tsc -p tsconfig.build.json --watch"), xrun.exec("tsc-alias -p tsconfig.build.json --watch"))],
+  "build:lib": xrun.serial(xrun.exec("tsdown"), xrun.exec("tailwind -i src/index.css -o dist/index.css")),
+  "build:watch": ["build:lib", xrun.exec("tsdown --watch")],
   "storybook:build": xrun.serial("build:lib", xrun.exec("storybook build")),
 });
