@@ -12,17 +12,34 @@
   "license": "MIT",
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.js",
-    "./avatar": "./dist/avatar.js",
-    "./classnames": "./dist/classnames.js",
-    "./skeleton": "./dist/skeleton.js",
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./avatar": {
+      "import": "./dist/avatar.mjs",
+      "require": "./dist/avatar.js"
+    },
+    "./classnames": {
+      "import": "./dist/classnames.mjs",
+      "require": "./dist/classnames.js"
+    },
+    "./skeleton": {
+      "import": "./dist/skeleton.mjs",
+      "require": "./dist/skeleton.js"
+    },
+    "./tailwind.preset": "./src/tailwind.preset.ts",
+    "./type-helpers": {
+      "import": "./dist/type-helpers.mjs",
+      "require": "./dist/type-helpers.js"
+    },
+    "./package.json": "./package.json",
     "./src/index.css": "./src/index.css",
-    "./postcss.config.cjs": "./postcss.config.cjs",
-    "./tailwind.preset": "./dist/tailwind.preset.js",
-    "./tailwind.config.ts": "./tailwind.config.ts"
+    "./postcss.config.cjs": "./postcss.config.cjs"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "postcss.config.cjs",
     "tailwind.config.ts",
@@ -85,6 +102,7 @@
     "ts-node": "10.9.1",
     "tsc-alias": "1.8.10",
     "tsconfig-paths-webpack-plugin": "4.2.0",
+    "tsdown": "0.15.10",
     "typescript": "5.9.2"
   },
   "peerDependencies": {

@@ -5,6 +5,6 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export { ClassValue, cn, cn as classnames };
-
+export { cn, cn as classnames };
+export type { ClassValue };
 export default cn;
