@@ -1,0 +1,24 @@
+{
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "description": "A Manifest V3 clone of the performance tool.",
+  "icons": {
+    "16": "icons/icon_16x16.png",
+    "32": "icons/icon_32x32.png",
+    "64": "icons/icon_64x64.png"
+  },
+  "manifest_version": 3,
+  "name": "Performance Tool V3",
+  "permissions": ["storage", "tabs"],
+  "version": "1.0.0"
+}
