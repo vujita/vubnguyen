@@ -74,7 +74,7 @@ importers:
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: 1.0.14
-        version: 1.0.14(vite@4.5.14(@types/node@22.15.3)(terser@5.44.1))
+        version: 1.0.14(vite@6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1))
       '@types/chrome':
         specifier: 0.0.270
         version: 0.0.270
@@ -95,7 +95,7 @@ importers:
         version: 8.48.0(eslint@8.45.0)(typescript@5.9.2)
       '@vitejs/plugin-react':
         specifier: 4.4.1
-        version: 4.4.1(vite@4.5.14(@types/node@22.15.3)(terser@5.44.1))
+        version: 4.4.1(vite@6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1))
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -112,8 +112,8 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
       vite:
-        specifier: 4.5.14
-        version: 4.5.14(@types/node@22.15.3)(terser@5.44.1)
+        specifier: 6.4.1
+        version: 6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1)
 
   apps/studio-vubnguyen:
     dependencies:
@@ -9701,11 +9701,6 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
 
-  rollup@3.29.5:
-    resolution: {integrity: sha512-GVsDdsbJzzy4S/v3dqWPJ7EfvZJfCHiDqe80IyrF59LYuP+e6U1LJoUqeuqRbwAWoMNoXivMNeNAOf5E22VA1w==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-
   rollup@4.53.3:
     resolution: {integrity: sha512-w8GmOxZfBmKknvdXU1sdM9NHcoQejwF/4mNgj2JuEEdRaHwwF12K7e9eXn1nLZ07ad+du76mkVsyeb2rKGllsA==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -10899,20 +10894,26 @@ packages:
       vite:
         optional: true
 
-  vite@4.5.14:
-    resolution: {integrity: sha512-+v57oAaoYNnO3hIu5Z/tJRZjq5aHM2zDve9YZ8HngVHbhk66RStobhb1sqPMIPEleV6cNKYK4eGrAbE9Ulbl2g==}
-    engines: {node: ^14.18.0 || >=16.0.0}
+  vite@6.4.1:
+    resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
-      '@types/node': '>= 14'
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      jiti: '>=1.21.0'
       less: '*'
       lightningcss: ^1.21.0
       sass: '*'
+      sass-embedded: '*'
       stylus: '*'
       sugarss: '*'
-      terser: ^5.4.0
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
     peerDependenciesMeta:
       '@types/node':
+        optional: true
+      jiti:
         optional: true
       less:
         optional: true
@@ -10920,11 +10921,17 @@ packages:
         optional: true
       sass:
         optional: true
+      sass-embedded:
+        optional: true
       stylus:
         optional: true
       sugarss:
         optional: true
       terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
         optional: true
 
   vite@7.2.4:
@@ -12961,7 +12968,7 @@ snapshots:
       style-mod: 4.1.3
       w3c-keyname: 2.2.8
 
-  '@crxjs/vite-plugin@1.0.14(vite@4.5.14(@types/node@22.15.3)(terser@5.44.1))':
+  '@crxjs/vite-plugin@1.0.14(vite@6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1))':
     dependencies:
       '@rollup/pluginutils': 4.2.1
       '@webcomponents/custom-elements': 1.6.0
@@ -12977,9 +12984,9 @@ snapshots:
       picocolors: 1.1.1
       react-refresh: 0.13.0
       rollup: 2.79.2
-      vite: 4.5.14(@types/node@22.15.3)(terser@5.44.1)
+      vite: 6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1)
     optionalDependencies:
-      '@vitejs/plugin-react': 4.4.1(vite@4.5.14(@types/node@22.15.3)(terser@5.44.1))
+      '@vitejs/plugin-react': 4.4.1(vite@6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -16452,14 +16459,14 @@ snapshots:
 
   '@vercel/edge@1.2.2': {}
 
-  '@vitejs/plugin-react@4.4.1(vite@4.5.14(@types/node@22.15.3)(terser@5.44.1))':
+  '@vitejs/plugin-react@4.4.1(vite@6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1))':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.5)
       '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.28.5)
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 4.5.14(@types/node@22.15.3)(terser@5.44.1)
+      vite: 6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -22422,10 +22429,6 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  rollup@3.29.5:
-    optionalDependencies:
-      fsevents: 2.3.3
-
   rollup@4.53.3:
     dependencies:
       '@types/estree': 1.0.8
@@ -23902,15 +23905,21 @@ snapshots:
       - supports-color
       - typescript
 
-  vite@4.5.14(@types/node@22.15.3)(terser@5.44.1):
+  vite@6.4.1(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1):
     dependencies:
-      esbuild: 0.18.20
-      postcss: 8.4.38
-      rollup: 3.29.5
+      esbuild: 0.25.12
+      fdir: 6.5.0(picomatch@4.0.3)
+      picomatch: 4.0.3
+      postcss: 8.5.6
+      rollup: 4.53.3
+      tinyglobby: 0.2.15
     optionalDependencies:
       '@types/node': 22.15.3
       fsevents: 2.3.3
+      jiti: 2.6.1
       terser: 5.44.1
+      tsx: 4.16.0
+      yaml: 2.8.1
 
   vite@7.2.4(@types/node@22.15.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.16.0)(yaml@2.8.1):
     dependencies:
