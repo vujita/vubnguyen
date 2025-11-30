@@ -58,3 +58,4 @@ storybook-static
 
 # AI files
 .claude
+.gemini-clipboard
