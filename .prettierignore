@@ -11,3 +11,5 @@ test-results/
 playwright-report/
 playwright/.cache/
 pnpm-lock.yaml
+.gemini-clipboard/clipboard-1764512613594.png
+apps/studio-vubnguyen/.sanity
