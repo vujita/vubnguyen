@@ -70,7 +70,7 @@
     },
     "test": {},
     "type-check": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"]
     }
   },
   "ui": "stream"
