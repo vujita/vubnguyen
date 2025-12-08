@@ -58,7 +58,6 @@ const config = {
     "@typescript-eslint/prefer-return-this-type": "error",
     "@typescript-eslint/prefer-string-starts-ends-with": "error",
     "@typescript-eslint/prefer-ts-expect-error": "error",
-    "@typescript-eslint/type-annotation-spacing": "error",
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
     // "import/no-extraneous-dependencies": ["warn", { includeInternal: true, includeTypes: true }],
     "import/no-unresolved": "error",

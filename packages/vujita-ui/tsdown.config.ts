@@ -21,6 +21,7 @@ export default defineConfig(({
   dts: {
     tsconfig: "tsconfig.build.json",
   },
+    treeshake: false,
   outDir: "dist",
   clean: !watch,
 }));
