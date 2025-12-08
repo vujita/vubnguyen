@@ -20,18 +20,18 @@
     "root": true
   },
   "dependencies": {
-    "@trpc/client": "11.5.1",
-    "@trpc/server": "11.5.1",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
     "@vujita/auth": "workspace:*",
     "@vujita/db": "workspace:*",
-    "drizzle-orm": "0.31.2",
-    "superjson": "2.2.1",
-    "zod": "3.22.3"
+    "drizzle-orm": "catalog:",
+    "superjson": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "eslint": "8.45.0",
+    "eslint": "catalog:",
     "eslint-config-vujita": "workspace:*",
-    "rimraf": "5.0.7",
-    "typescript": "5.9.2"
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
   }
 }

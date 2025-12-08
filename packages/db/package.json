@@ -24,17 +24,17 @@
     "root": true
   },
   "dependencies": {
-    "@auth/core": "0.39.0",
-    "drizzle-kit": "0.22.7",
-    "drizzle-orm": "0.31.2",
-    "postgres": "3.4.4",
-    "zod": "3.22.3"
+    "@auth/core": "catalog:",
+    "drizzle-kit": "catalog:",
+    "drizzle-orm": "catalog:",
+    "postgres": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "dotenv-cli": "7.4.2",
+    "dotenv-cli": "catalog:",
     "eslint-config-vujita": "workspace:*",
-    "pg": "8.15.6",
-    "tsx": "4.16.0",
-    "typescript": "5.9.2"
+    "pg": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
   }
 }
