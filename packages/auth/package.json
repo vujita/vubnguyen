@@ -20,19 +20,19 @@
     "root": true
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "1.3.0",
-    "@t3-oss/env-nextjs": "0.6.0",
+    "@auth/drizzle-adapter": "catalog:",
+    "@t3-oss/env-nextjs": "catalog:",
     "@vujita/db": "workspace:*",
-    "next": "15.4.7",
-    "next-auth": "4.24.11",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "zod": "3.22.3"
+    "next": "catalog:",
+    "next-auth": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "eslint": "8.45.0",
+    "eslint": "catalog:",
     "eslint-config-vujita": "workspace:*",
-    "rimraf": "5.0.7",
-    "typescript": "5.9.2"
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
   }
 }
