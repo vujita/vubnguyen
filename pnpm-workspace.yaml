@@ -89,7 +89,7 @@ catalog:
   react-dom: 19.2.3
   rimraf: 5.0.7
   sanity: 4.22.0
-  storybook: 8.6.12
+  storybook: 8.6.15
   styled-components: 6.1.18
   superjson: 2.2.1
   tailwind-merge: 1.14.0
