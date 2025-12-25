@@ -36,7 +36,7 @@
     "test:e2e": "turbo e2e",
     "type-check": "turbo type-check"
   },
-  "dependencies": {
+  "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@manypkg/cli": "catalog:",
     "@xarc/run": "catalog:",
