@@ -99,7 +99,7 @@ catalog:
   tsc-alias: 1.8.10
   tsconfig-paths-webpack-plugin: 4.2.0
   tsdown: 0.15.10
-  tsx: 4.16.0
+  tsx: 4.21.0
   turbo: 2.0.6
   typescript: 5.9.2
   zod: 3.22.3
