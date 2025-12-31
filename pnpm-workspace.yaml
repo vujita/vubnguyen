@@ -87,7 +87,7 @@ catalog:
   prettier-plugin-tailwindcss: 0.6.5
   react: 19.2.3
   react-dom: 19.2.3
-  rimraf: 5.0.7
+  rimraf: 6.1.2
   sanity: 4.22.0
   storybook: 8.6.15
   styled-components: 6.1.18
