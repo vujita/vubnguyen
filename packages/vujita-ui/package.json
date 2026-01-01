@@ -90,7 +90,7 @@
     "dotenv": "16.4.4",
     "eslint": "8.45.0",
     "eslint-config-vujita": "workspace:*",
-    "eslint-plugin-storybook": "9.1.5",
+    "eslint-plugin-storybook": "10.1.11",
     "http-server": "14.1.1",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
