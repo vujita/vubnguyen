@@ -47,36 +47,16 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 20
-          max_attempts: 3
-          command: pnpm turbo run build
-          on_retry_command: pnpm turbo run build --force
+        run: pnpm turbo run build
 
       - name: Build Storybook
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 20
-          max_attempts: 3
-          command: pnpm turbo run build:storybook
-          on_retry_command: pnpm turbo run build:storybook --force
+        run: pnpm turbo run build:storybook
 
       - name: Lint
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 20
-          command: pnpm turbo run build lint type-check test
-          max_attempts: 3
-          on_retry_command: pnpm turbo run build lint type-check test --force
+        run: pnpm turbo run lint
 
       - name: Type-check
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 20
-          command: pnpm turbo run type-check
-          max_attempts: 3
-          on_retry_command: pnpm turbo run type-check --force
+        run: pnpm turbo run type-check
 
       - name: Test
         run: pnpm turbo run test
