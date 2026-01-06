@@ -184,8 +184,8 @@ catalogs:
       specifier: 19.2.3
       version: 19.2.3
     rimraf:
-      specifier: 5.0.7
-      version: 5.0.7
+      specifier: 6.1.2
+      version: 6.1.2
     sanity:
       specifier: 4.22.0
       version: 4.22.0
@@ -414,7 +414,7 @@ importers:
         version: 8.4.38
       rimraf:
         specifier: 'catalog:'
-        version: 5.0.7
+        version: 6.1.2
       tailwindcss:
         specifier: 'catalog:'
         version: 3.3.2(ts-node@10.9.1(@swc/core@1.15.3)(@types/node@25.0.3)(typescript@5.9.2))
@@ -454,7 +454,7 @@ importers:
         version: link:../config/eslint
       rimraf:
         specifier: 'catalog:'
-        version: 5.0.7
+        version: 6.1.2
       typescript:
         specifier: 'catalog:'
         version: 5.9.2
@@ -494,7 +494,7 @@ importers:
         version: link:../config/eslint
       rimraf:
         specifier: 'catalog:'
-        version: 5.0.7
+        version: 6.1.2
       typescript:
         specifier: 'catalog:'
         version: 5.9.2
