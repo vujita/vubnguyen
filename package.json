@@ -54,7 +54,7 @@
   },
   "packageManager": "pnpm@10.24.0",
   "engines": {
-    "node": ">=v18.16.0"
+    "node": ">=20.9.0"
   },
   "manypkg": {
     "workspaceProtocol": "allow",
