@@ -1,1 +1,157 @@
 @import "vujita-ui/src/index.css";
+
+:root {
+  --site-bg: #f5f0e8;
+  --site-text: #1a1814;
+  --site-muted: #8a8278;
+  --site-accent: #9a6f2e;
+  --site-border: #ddd8cc;
+  --site-surface: #ece7dd;
+  --site-bg-header: rgba(245, 240, 232, 0.88);
+}
+
+.dark {
+  --site-bg: #0d0c0a;
+  --site-text: #e6e0d4;
+  --site-muted: #7a7268;
+  --site-accent: #c9a86c;
+  --site-border: #262320;
+  --site-surface: #141210;
+  --site-bg-header: rgba(13, 12, 10, 0.88);
+}
+
+html,
+body {
+  background-color: var(--site-bg);
+  color: var(--site-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Font utilities ─────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.font-code {
+  font-family: var(--font-fira-code), "Courier New", monospace;
+}
+
+/* ─── Header ─────────────────────────────────────── */
+
+.header-bg {
+  background-color: var(--site-bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Signature animation ────────────────────────── */
+
+.sig-path-1,
+.sig-path-2 {
+  fill: none;
+  stroke: var(--site-accent);
+  opacity: 0;
+}
+
+.sig-path-1 {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: sig-draw 2.2s cubic-bezier(0.35, 0, 0.25, 1) 0.4s forwards;
+}
+
+.sig-path-2 {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: sig-draw 1.4s cubic-bezier(0.35, 0, 0.25, 1) 2.8s forwards;
+}
+
+/* ─── Hero entrance animations ───────────────────── */
+
+.anim-label {
+  opacity: 0;
+  animation: fade-up 0.6s ease 0.1s both;
+}
+
+.anim-name {
+  opacity: 0;
+  animation: fade-up 0.8s ease 0.2s both;
+}
+
+.anim-divider {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: scale-x 0.7s ease 0.5s both;
+}
+
+.anim-sig {
+  opacity: 0;
+  animation: fade-in 0.6s ease 0.55s both;
+}
+
+.anim-bio {
+  opacity: 0;
+  animation: fade-up 0.6s ease 0.7s both;
+}
+
+.anim-scroll {
+  opacity: 0;
+  animation: fade-in 1s ease 1.6s both;
+}
+
+.scroll-bounce {
+  animation: bounce-y 2s ease-in-out 2s infinite;
+}
+
+/* ─── Keyframes ───────────────────────────────────── */
+
+@keyframes sig-draw {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
