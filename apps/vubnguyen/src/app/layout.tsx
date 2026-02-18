@@ -1,32 +1,39 @@
 import { type Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fira_Code, Fraunces } from "next/font/google";
 
 import "@vujita/vubnguyen/src/styles/globals.css";
 
-import { type CSSProperties, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import classnames from "vujita-ui/classnames";
 
 import { TRPCReactProvider } from "@vujita/vubnguyen/src/app/providers";
 import { Header } from "@vujita/vubnguyen/src/components/Header";
 
-config.autoAddCss = true; // Prevent Font Awesome from adding its CSS since we did it manually above
+config.autoAddCss = true;
 
-const fontSans = Inter({
+const fontDisplay = Fraunces({
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-fraunces",
+  weight: ["100", "300", "400", "600", "700", "900"],
 });
-console.log("fontSans", fontSans);
+
+const fontMono = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-code",
+  weight: ["300", "400", "500"],
+});
 
 export const metadata: Metadata = {
-  description: "A website for Vu Nguyen",
+  description: "Staff Engineer at Amplitude. Building systems that scale.",
   openGraph: {
-    description: "A website for Vu Nguyen",
+    description: "Staff Engineer at Amplitude. Building systems that scale.",
     siteName: "vubnguyen.com",
-    title: "Vu Nguyen personal website",
+    title: "Vu Nguyen — Staff Engineer",
     url: "https://vubnguyen.com",
   },
-  title: "vubnguyen",
+  title: "Vu Nguyen — Staff Engineer",
   twitter: {
     card: "summary_large_image",
     creator: "@Vu_Man_Chu",
@@ -38,15 +45,13 @@ export default function Layout(props: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={classnames("font-sans", fontSans.variable, fontSans.className, "transition-colors duration-300", "light")}
-      style={{ "color-scheme": "light" } as CSSProperties}
+      className={classnames(fontDisplay.variable, fontMono.variable)}
+      suppressHydrationWarning
     >
       <body>
         <TRPCReactProvider>
-          <main>
-            <Header />
-            {props.children}
-          </main>
+          <Header />
+          <main>{props.children}</main>
         </TRPCReactProvider>
       </body>
     </html>

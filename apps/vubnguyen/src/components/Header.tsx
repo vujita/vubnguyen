@@ -1,39 +1,39 @@
 import { type FC } from "react";
+import Link from "next/link";
 
 import ThemeSwitcher from "@vujita/vubnguyen/src/components/theme-switcher";
 
 export const Header: FC = () => {
   return (
-    <header className="bg-white-900 fixed w-full select-none border-gray-200 bg-gray-100 shadow-md backdrop-blur-md dark:bg-gray-900">
-      <div className="mx-auto flex flex-wrap items-center justify-between p-2">
-        <button
-          aria-controls="navbar-user"
-          aria-expanded="false"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          type="button"
+    <header className="header-bg fixed top-0 z-50 w-full border-b border-[var(--site-border)]">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+        <Link
+          href="/"
+          className="font-display text-xs uppercase tracking-[0.25em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-text)]"
         >
-          {/**
-           * TODO: Make this a client componet with a popout drawer
-           */}
-          <svg
-            aria-hidden="true"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 17 14"
-            xmlns="http://www.w3.org/2000/svg"
+          Vu Nguyen
+        </Link>
+        <nav className="flex items-center gap-8">
+          <Link
+            href="/work"
+            className="font-code text-xs uppercase tracking-[0.2em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
           >
-            <path
-              d="M1 1h15M1 7h15M1 13h15"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </svg>
-        </button>
-        <div className="flex items-center space-x-2 md:order-2">
+            Work
+          </Link>
+          <Link
+            href="/writing"
+            className="font-code text-xs uppercase tracking-[0.2em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
+          >
+            Writing
+          </Link>
+          <Link
+            href="/contact"
+            className="font-code text-xs uppercase tracking-[0.2em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
+          >
+            Contact
+          </Link>
           <ThemeSwitcher />
-        </div>
+        </nav>
       </div>
     </header>
   );
