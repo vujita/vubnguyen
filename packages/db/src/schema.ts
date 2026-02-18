@@ -7,7 +7,6 @@ import {
   text,
   timestamp,
   uniqueIndex,
-  uuid,
 } from "drizzle-orm/pg-core";
 
 // import { sql } from "drizzle-orm"
@@ -60,11 +59,6 @@ export const verificationTokens = pgTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   }),
 );
-export const post = pgTable("post", {
-  content: text("content").notNull(),
-  id: uuid("id").defaultRandom().primaryKey(),
-  title: text("title").notNull(),
-});
 
 export const verificationToken = pgTable(
   "VerificationToken",
