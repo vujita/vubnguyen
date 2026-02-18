@@ -1,4 +1,3 @@
-import { LazyPosts } from "@vujita/vubnguyen/src/components/posts/lazy-posts";
 import Signature from "@vujita/vubnguyen/src/components/signature";
 
 export default function HomePage() {
@@ -9,7 +8,6 @@ export default function HomePage() {
         <Signature />
       </div>
       <div className="p-4 text-center text-3xl text-blue-500 md:text-7xl">{"Coming soon!"}</div>
-      <LazyPosts />
     </div>
   );
 }
