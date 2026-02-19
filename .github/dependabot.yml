@@ -7,11 +7,6 @@ updates:
     reviewers:
       - "vujita"
     groups:
-      storybook:
-        patterns:
-          - "@storybook/*"
-          - "storybook-*"
-          - "storybook"
       trpc:
         patterns:
           - "@trpc/*"
