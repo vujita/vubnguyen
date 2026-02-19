@@ -11,10 +11,6 @@
     "build:clean": {
       "cache": false
     },
-    "build:storybook": {
-      "dependsOn": ["^build"],
-      "outputs": ["storybook-static/**"]
-    },
     "clean": {
       "cache": false
     },
@@ -30,10 +26,6 @@
       "cache": false,
       "dependsOn": ["^db:generate"]
     },
-    "deploy:chromatic": {
-      "cache": false,
-      "dependsOn": ["^build"]
-    },
     "dev": {
       "cache": false,
       "dependsOn": ["^build"],
@@ -42,16 +34,6 @@
     "dev:preview": {
       "cache": false,
       "dependsOn": ["build"],
-      "persistent": true
-    },
-    "dev:preview:storybook": {
-      "cache": false,
-      "dependsOn": ["build:storybook"],
-      "persistent": true
-    },
-    "dev:storybook": {
-      "cache": false,
-      "dependsOn": ["^build"],
       "persistent": true
     },
     "e2e": {
