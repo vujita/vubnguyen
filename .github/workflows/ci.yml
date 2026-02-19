@@ -49,9 +49,6 @@ jobs:
       - name: Build
         run: pnpm turbo run build
 
-      - name: Build Storybook
-        run: pnpm turbo run build:storybook
-
       - name: Lint
         run: pnpm turbo run lint
 

@@ -7,8 +7,7 @@
     },
     "extends": [
       "eslint-config-vujita/base",
-      "eslint-config-vujita/react",
-      "plugin:storybook/recommended"
+      "eslint-config-vujita/react"
     ],
     settings: {
       "import/parsers": {
@@ -33,15 +32,6 @@
           "@typescript-eslint/no-unsafe-call": 1
         }
       },
-      {
-        "files": [
-          "*.stories.ts",
-          "*.stories.tsx"
-        ],
-        "rules": {
-          "@typescript-eslint/await-thenable": "off"
-        }
-      }
     ],
     "root": true
   }
