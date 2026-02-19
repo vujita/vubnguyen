@@ -12,6 +12,7 @@ const compat = new FlatCompat({
 });
 
 export default [
+  { ignores: ["next-env.d.ts"] },
   ...compat.extends("eslint-config-vujita/base", "eslint-config-vujita/nextjs", "eslint-config-vujita/react"),
   {
     languageOptions: {
