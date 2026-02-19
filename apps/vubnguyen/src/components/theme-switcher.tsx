@@ -20,9 +20,10 @@ const ThemeSwitcher: FC = () => {
 
   return (
     <button
-      onClick={onToggle}
       aria-label="Toggle theme"
       className="text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
+      onClick={onToggle}
+      type="button"
     >
       {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </button>

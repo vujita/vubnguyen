@@ -20,7 +20,7 @@ catalog:
   "@ianvs/prettier-plugin-sort-imports": 4.1.0
   "@manypkg/cli": 0.25.1
   "@next/bundle-analyzer": 15.3.1
-  "@next/eslint-plugin-next": 14.2.3
+  "@next/eslint-plugin-next": 15.4.10
   "@playwright/test": 1.57.0
   "@storybook/addon-essentials": 8.6.12
   "@storybook/addon-interactions": 8.6.12
