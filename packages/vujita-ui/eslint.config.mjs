@@ -1,14 +1,31 @@
-  export default {
-    extends: ["eslint-config-vujita/base",  "eslint-config-vujita/react"],
-    parser: "@typescript-eslint/parser",
-    parserOptions: {
-      project: "./tsconfig.json",
-      tsconfigRootDir: __dirname,
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+});
+
+export default [
+  {
+    ignores: ["coverage", "storybook-static"],
+  },
+  ...compat.extends(
+    "eslint-config-vujita/base",
+    "eslint-config-vujita/react"
+  ),
+  {
+    languageOptions: {
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+      },
     },
-    "extends": [
-      "eslint-config-vujita/base",
-      "eslint-config-vujita/react"
-    ],
     settings: {
       "import/parsers": {
         "@typescript-eslint/parser": [".ts", ".tsx"],
@@ -20,18 +37,11 @@
         },
       },
     },
-    "overrides": [
-      {
-        "files": [
-          "*.test.js",
-          "*.test.jsx",
-          "*.test.ts",
-          "*.test.tsx"
-        ],
-        "rules": {
-          "@typescript-eslint/no-unsafe-call": 1
-        }
-      },
-    ],
-    "root": true
-  }
+  },
+  {
+    files: ["*.test.js", "*.test.jsx", "*.test.ts", "*.test.tsx"],
+    rules: {
+      "@typescript-eslint/no-unsafe-call": 1,
+    },
+  },
+];
