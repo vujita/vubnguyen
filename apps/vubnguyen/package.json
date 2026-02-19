@@ -10,10 +10,8 @@
     "e2e": "rimraf playwright-report && pnpm with-env playwright test",
     "eslint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "eslint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "lint": "xrun -s next:lint eslint",
-    "lint:fix": "xrun -s next:lint:fix eslint:fix",
-    "next:lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
-    "next:lint:fix": "dotenv -v SKIP_ENV_VALIDATION=1 next lint --fix",
+    "lint": "xrun eslint",
+    "lint:fix": "xrun eslint:fix",
     "start": "pnpm with-env next start",
     "type-check": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"

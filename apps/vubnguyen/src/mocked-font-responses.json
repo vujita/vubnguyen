@@ -1,0 +1,4 @@
+{
+  "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap": "@font-face { font-family: 'Fira Code'; font-style: normal; font-weight: 300 500; src: url(https://fonts.gstatic.com/mock/fira-code.woff2) format('woff2'); unicode-range: U+0000-00FF; }",
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,100;0,300;0,400;0,600;0,700;0,900;1,100;1,300;1,400;1,600;1,700;1,900&display=swap": "@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 100 900; src: url(https://fonts.gstatic.com/mock/fraunces-normal.woff2) format('woff2'); unicode-range: U+0000-00FF; }"
+}

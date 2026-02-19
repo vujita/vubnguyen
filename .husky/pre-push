@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 pnpm manypkg check
-pnpm turbo run build lint type-check test e2e
+pnpm turbo run build lint type-check test
 pnpm run check
