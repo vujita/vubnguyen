@@ -9,7 +9,6 @@ const config = {
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
   experimental: {},
-  outputFileTracing: true,
   // this includes files from the monorepo base two directories up
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
