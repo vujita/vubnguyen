@@ -37,11 +37,11 @@ catalogs:
       specifier: 0.25.1
       version: 0.25.1
     '@next/bundle-analyzer':
-      specifier: 15.3.1
-      version: 15.3.1
+      specifier: 16.1.6
+      version: 16.1.6
     '@next/eslint-plugin-next':
-      specifier: 15.4.10
-      version: 15.4.10
+      specifier: 16.1.6
+      version: 16.1.6
     '@playwright/test':
       specifier: 1.57.0
       version: 1.57.0
@@ -380,7 +380,7 @@ importers:
     devDependencies:
       '@next/bundle-analyzer':
         specifier: 'catalog:'
-        version: 15.3.1
+        version: 16.1.6
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.57.0
@@ -502,7 +502,7 @@ importers:
     dependencies:
       '@next/eslint-plugin-next':
         specifier: 'catalog:'
-        version: 15.4.10
+        version: 16.1.6
       '@types/eslint':
         specifier: 'catalog:'
         version: 8.56.10
@@ -1887,14 +1887,14 @@ packages:
   '@napi-rs/wasm-runtime@1.0.7':
     resolution: {integrity: sha512-SeDnOO0Tk7Okiq6DbXmmBODgOAb9dp9gjlphokTUxmt8U3liIP1ZsozBahH69j/RJv+Rfs6IwUKHTgQYJ/HBAw==}
 
-  '@next/bundle-analyzer@15.3.1':
-    resolution: {integrity: sha512-NqUZrjVruGbdQaPE3OSEXP+ZuULqumeHVTuU9pOX1V0/9BWY9FOck3jgQGFdBtG41nOYuO8+CoHKDQAVIPQJrw==}
+  '@next/bundle-analyzer@16.1.6':
+    resolution: {integrity: sha512-ee2kagdTaeEWPlotgdTOqFHYcD3e2m2bbE3I9Rq2i6ABYi5OgopmtEUe8NM23viaYxLV2tDH/2nd5+qKoEr6cw==}
 
   '@next/env@16.1.6':
     resolution: {integrity: sha512-N1ySLuZjnAtN3kFnwhAwPvZah8RJxKasD7x1f8shFqhncnWZn4JMfg37diLNuoHsLAlrDfM3g4mawVdtAG8XLQ==}
 
-  '@next/eslint-plugin-next@15.4.10':
-    resolution: {integrity: sha512-WXbIDBQ+IVnsSe5BSfOpj48pZigOp2SIaq3JcQ9DEoqm7fcSsqEFcLBU4xtnoDpWzGx4pNTchCxRcDaItO73aA==}
+  '@next/eslint-plugin-next@16.1.6':
+    resolution: {integrity: sha512-/Qq3PTagA6+nYVfryAtQ7/9FEr/6YVyvOtl6rZnGsbReGLf0jZU6gkpr1FuChAQpvV46a78p4cmHOVP8mbfSMQ==}
 
   '@next/swc-darwin-arm64@16.1.6':
     resolution: {integrity: sha512-wTzYulosJr/6nFnqGW7FrG3jfUUlEf8UjGA0/pyypJl42ExdVgC6xJgcXQ+V8QFn6niSG2Pb8+MIG1mZr2vczw==}
@@ -8889,7 +8889,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@next/bundle-analyzer@15.3.1':
+  '@next/bundle-analyzer@16.1.6':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:
@@ -8898,7 +8898,7 @@ snapshots:
 
   '@next/env@16.1.6': {}
 
-  '@next/eslint-plugin-next@15.4.10':
+  '@next/eslint-plugin-next@16.1.6':
     dependencies:
       fast-glob: 3.3.1
 
