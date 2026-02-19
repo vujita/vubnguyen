@@ -79,8 +79,8 @@ catalogs:
       specifier: 25.0.3
       version: 25.0.3
     '@types/react':
-      specifier: 19.1.2
-      version: 19.1.2
+      specifier: 19.2.14
+      version: 19.2.14
     '@types/react-dom':
       specifier: 19.2.3
       version: 19.2.3
@@ -205,8 +205,8 @@ catalogs:
       specifier: 0.6.5
       version: 0.6.5
     react:
-      specifier: 19.2.3
-      version: 19.2.3
+      specifier: 19.2.4
+      version: 19.2.4
     react-dom:
       specifier: 19.2.3
       version: 19.2.3
@@ -313,28 +313,28 @@ importers:
         version: 6.5.2
       '@fortawesome/react-fontawesome':
         specifier: 'catalog:'
-        version: 0.2.0(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.2.3)
+        version: 0.2.0(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.2.4)
       '@t3-oss/env-nextjs':
         specifier: 'catalog:'
         version: 0.6.0(typescript@5.9.2)(zod@3.22.3)
       '@tanstack/react-query':
         specifier: 'catalog:'
-        version: 5.90.21(react@19.2.3)
+        version: 5.90.21(react@19.2.4)
       '@tanstack/react-query-devtools':
         specifier: 'catalog:'
-        version: 5.91.3(@tanstack/react-query@5.90.21(react@19.2.3))(react@19.2.3)
+        version: 5.91.3(@tanstack/react-query@5.90.21(react@19.2.4))(react@19.2.4)
       '@tanstack/react-query-next-experimental':
         specifier: 'catalog:'
-        version: 5.91.0(@tanstack/react-query@5.90.21(react@19.2.3))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 5.91.0(@tanstack/react-query@5.90.21(react@19.2.4))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react@19.2.4)
       '@trpc/client':
         specifier: 'catalog:'
         version: 11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2)
       '@trpc/next':
         specifier: 'catalog:'
-        version: 11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/react-query@11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.3)(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)
+        version: 11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/react-query@11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.4)(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react-dom@19.2.3(react@19.2.4))(react@19.2.4)(typescript@5.9.2)
       '@trpc/react-query':
         specifier: 'catalog:'
-        version: 11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.3)(typescript@5.9.2)
+        version: 11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.4)(typescript@5.9.2)
       '@trpc/server':
         specifier: 'catalog:'
         version: 11.10.0(typescript@5.9.2)
@@ -349,25 +349,25 @@ importers:
         version: link:../../packages/db
       framer-motion:
         specifier: 'catalog:'
-        version: 11.3.7(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 11.3.7(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       lucide-react:
         specifier: 'catalog:'
-        version: 0.378.0(react@19.2.3)
+        version: 0.378.0(react@19.2.4)
       next:
         specifier: 'catalog:'
-        version: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       next-auth:
         specifier: 'catalog:'
-        version: 4.24.11(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 4.24.11(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       next-themes:
         specifier: 'catalog:'
-        version: 0.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 0.3.0(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       react:
         specifier: 'catalog:'
-        version: 19.2.3
+        version: 19.2.4
       react-dom:
         specifier: 'catalog:'
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       superjson:
         specifier: 'catalog:'
         version: 2.2.1
@@ -389,10 +389,10 @@ importers:
         version: 25.0.3
       '@types/react':
         specifier: 'catalog:'
-        version: 19.1.2
+        version: 19.2.14
       '@types/react-dom':
         specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.1.2)
+        version: 19.2.3(@types/react@19.2.14)
       '@xarc/run':
         specifier: 'catalog:'
         version: 1.1.1
@@ -437,7 +437,7 @@ importers:
         version: link:../db
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.31.2(@types/react@19.1.2)(pg@8.15.6)(postgres@3.4.4)(react@19.2.3)
+        version: 0.31.2(@types/react@19.2.14)(pg@8.15.6)(postgres@3.4.4)(react@19.2.4)
       superjson:
         specifier: 'catalog:'
         version: 2.2.1
@@ -471,16 +471,16 @@ importers:
         version: link:../db
       next:
         specifier: 'catalog:'
-        version: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       next-auth:
         specifier: 'catalog:'
-        version: 4.24.11(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 4.24.11(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       react:
         specifier: 'catalog:'
-        version: 19.2.3
+        version: 19.2.4
       react-dom:
         specifier: 'catalog:'
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       zod:
         specifier: 'catalog:'
         version: 3.22.3
@@ -560,7 +560,7 @@ importers:
         version: 0.22.7
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.31.2(@types/react@19.1.2)(pg@8.15.6)(postgres@3.4.4)(react@19.2.3)
+        version: 0.31.2(@types/react@19.2.14)(pg@8.15.6)(postgres@3.4.4)(react@19.2.4)
       postgres:
         specifier: 'catalog:'
         version: 3.4.4
@@ -594,7 +594,7 @@ importers:
         version: 2.1.1
       lucide-react:
         specifier: 'catalog:'
-        version: 0.378.0(react@19.2.3)
+        version: 0.378.0(react@19.2.4)
       tailwind-merge:
         specifier: 'catalog:'
         version: 3.4.0
@@ -643,10 +643,10 @@ importers:
         version: 29.7.0
       react:
         specifier: 'catalog:'
-        version: 19.2.3
+        version: 19.2.4
       react-dom:
         specifier: 'catalog:'
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       rimraf:
         specifier: 'catalog:'
         version: 5.0.7
@@ -2686,8 +2686,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.2.0
 
-  '@types/react@19.1.2':
-    resolution: {integrity: sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==}
+  '@types/react@19.2.14':
+    resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
 
   '@types/semver@7.7.1':
     resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
@@ -6178,8 +6178,8 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
-  react@19.2.3:
-    resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
+  react@19.2.4:
+    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -8381,11 +8381,11 @@ snapshots:
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.5.2
 
-  '@fortawesome/react-fontawesome@0.2.0(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.2.3)':
+  '@fortawesome/react-fontawesome@0.2.0(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.2.4)':
     dependencies:
       '@fortawesome/fontawesome-svg-core': 6.7.2
       prop-types: 15.8.1
-      react: 19.2.3
+      react: 19.2.4
 
   '@hono/node-server@1.19.9(hono@4.11.10)':
     dependencies:
@@ -9414,22 +9414,22 @@ snapshots:
 
   '@tanstack/query-devtools@5.93.0': {}
 
-  '@tanstack/react-query-devtools@5.91.3(@tanstack/react-query@5.90.21(react@19.2.3))(react@19.2.3)':
+  '@tanstack/react-query-devtools@5.91.3(@tanstack/react-query@5.90.21(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@tanstack/query-devtools': 5.93.0
-      '@tanstack/react-query': 5.90.21(react@19.2.3)
-      react: 19.2.3
+      '@tanstack/react-query': 5.90.21(react@19.2.4)
+      react: 19.2.4
 
-  '@tanstack/react-query-next-experimental@5.91.0(@tanstack/react-query@5.90.21(react@19.2.3))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@tanstack/react-query-next-experimental@5.91.0(@tanstack/react-query@5.90.21(react@19.2.4))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@tanstack/react-query': 5.90.21(react@19.2.3)
-      next: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      react: 19.2.3
+      '@tanstack/react-query': 5.90.21(react@19.2.4)
+      next: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
+      react: 19.2.4
 
-  '@tanstack/react-query@5.90.21(react@19.2.3)':
+  '@tanstack/react-query@5.90.21(react@19.2.4)':
     dependencies:
       '@tanstack/query-core': 5.90.20
-      react: 19.2.3
+      react: 19.2.4
 
   '@tootallnate/once@2.0.0': {}
 
@@ -9438,24 +9438,24 @@ snapshots:
       '@trpc/server': 11.10.0(typescript@5.9.2)
       typescript: 5.9.2
 
-  '@trpc/next@11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/react-query@11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.3)(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)':
+  '@trpc/next@11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/react-query@11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.4)(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react-dom@19.2.3(react@19.2.4))(react@19.2.4)(typescript@5.9.2)':
     dependencies:
       '@trpc/client': 11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2)
       '@trpc/server': 11.10.0(typescript@5.9.2)
-      next: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
+      next: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
+      react: 19.2.4
+      react-dom: 19.2.3(react@19.2.4)
       typescript: 5.9.2
     optionalDependencies:
-      '@tanstack/react-query': 5.90.21(react@19.2.3)
-      '@trpc/react-query': 11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.3)(typescript@5.9.2)
+      '@tanstack/react-query': 5.90.21(react@19.2.4)
+      '@trpc/react-query': 11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.4)(typescript@5.9.2)
 
-  '@trpc/react-query@11.10.0(@tanstack/react-query@5.90.21(react@19.2.3))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.3)(typescript@5.9.2)':
+  '@trpc/react-query@11.10.0(@tanstack/react-query@5.90.21(react@19.2.4))(@trpc/client@11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.10.0(typescript@5.9.2))(react@19.2.4)(typescript@5.9.2)':
     dependencies:
-      '@tanstack/react-query': 5.90.21(react@19.2.3)
+      '@tanstack/react-query': 5.90.21(react@19.2.4)
       '@trpc/client': 11.10.0(@trpc/server@11.10.0(typescript@5.9.2))(typescript@5.9.2)
       '@trpc/server': 11.10.0(typescript@5.9.2)
-      react: 19.2.3
+      react: 19.2.4
       typescript: 5.9.2
 
   '@trpc/server@11.10.0(typescript@5.9.2)':
@@ -9555,11 +9555,11 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@types/react-dom@19.2.3(@types/react@19.1.2)':
+  '@types/react-dom@19.2.3(@types/react@19.2.14)':
     dependencies:
-      '@types/react': 19.1.2
+      '@types/react': 19.2.14
 
-  '@types/react@19.1.2':
+  '@types/react@19.2.14':
     dependencies:
       csstype: 3.2.3
 
@@ -10625,12 +10625,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.31.2(@types/react@19.1.2)(pg@8.15.6)(postgres@3.4.4)(react@19.2.3):
+  drizzle-orm@0.31.2(@types/react@19.2.14)(pg@8.15.6)(postgres@3.4.4)(react@19.2.4):
     optionalDependencies:
-      '@types/react': 19.1.2
+      '@types/react': 19.2.14
       pg: 8.15.6
       postgres: 3.4.4
-      react: 19.2.3
+      react: 19.2.4
 
   dts-resolver@2.1.3: {}
 
@@ -11289,13 +11289,13 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  framer-motion@11.3.7(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  framer-motion@11.3.7(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.3(react@19.2.4))(react@19.2.4):
     dependencies:
       tslib: 2.8.1
     optionalDependencies:
       '@emotion/is-prop-valid': 1.2.2
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
+      react: 19.2.4
+      react-dom: 19.2.3(react@19.2.4)
 
   fresh@2.0.0: {}
 
@@ -12575,9 +12575,9 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  lucide-react@0.378.0(react@19.2.3):
+  lucide-react@0.378.0(react@19.2.4):
     dependencies:
-      react: 19.2.3
+      react: 19.2.4
 
   magic-string@0.30.21:
     dependencies:
@@ -12781,36 +12781,36 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-auth@4.24.11(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next-auth@4.24.11(next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4))(react-dom@19.2.3(react@19.2.4))(react@19.2.4):
     dependencies:
       '@babel/runtime': 7.28.4
       '@panva/hkdf': 1.2.1
       cookie: 0.7.2
       jose: 4.15.9
-      next: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4)
       oauth: 0.9.15
       openid-client: 5.7.1
       preact: 10.27.2
       preact-render-to-string: 5.2.6(preact@10.27.2)
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
+      react: 19.2.4
+      react-dom: 19.2.3(react@19.2.4)
       uuid: 8.3.2
 
-  next-themes@0.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next-themes@0.3.0(react-dom@19.2.3(react@19.2.4))(react@19.2.4):
     dependencies:
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
+      react: 19.2.4
+      react-dom: 19.2.3(react@19.2.4)
 
-  next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next@16.1.6(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.4))(react@19.2.4):
     dependencies:
       '@next/env': 16.1.6
       '@swc/helpers': 0.5.15
       baseline-browser-mapping: 2.8.32
       caniuse-lite: 1.0.30001757
       postcss: 8.4.31
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-      styled-jsx: 5.1.6(react@19.2.3)
+      react: 19.2.4
+      react-dom: 19.2.3(react@19.2.4)
+      styled-jsx: 5.1.6(react@19.2.4)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.1.6
       '@next/swc-darwin-x64': 16.1.6
@@ -13542,16 +13542,16 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-dom@19.2.3(react@19.2.3):
+  react-dom@19.2.3(react@19.2.4):
     dependencies:
-      react: 19.2.3
+      react: 19.2.4
       scheduler: 0.27.0
 
   react-is@16.13.1: {}
 
   react-is@18.3.1: {}
 
-  react@19.2.3: {}
+  react@19.2.4: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -14196,10 +14196,10 @@ snapshots:
       minimist: 1.2.8
       through: 2.3.8
 
-  styled-jsx@5.1.6(react@19.2.3):
+  styled-jsx@5.1.6(react@19.2.4):
     dependencies:
       client-only: 0.0.1
-      react: 19.2.3
+      react: 19.2.4
 
   sucrase@3.35.1:
     dependencies:
