@@ -27,12 +27,12 @@ export default function WorkPage() {
       {/* ─── EXPERIENCE ───────────────────────────────────── */}
       <section className="px-6 pb-28 pt-36">
         <div className="mx-auto max-w-5xl">
-          <p className="font-code mb-14 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">01 / Experience</p>
+          <p className="font-code mb-14 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"01 / Experience"}</p>
           <div>
             {experiences.map((exp) => (
               <div
-                key={exp.company}
                 className="group border-t border-[var(--site-border)] py-10"
+                key={exp.company}
               >
                 <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
                   <div className="flex-1">
@@ -51,12 +51,12 @@ export default function WorkPage() {
       {/* ─── EXPERTISE ────────────────────────────────────── */}
       <section className="border-t border-[var(--site-border)] px-6 py-28">
         <div className="mx-auto max-w-5xl">
-          <p className="font-code mb-14 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">02 / Expertise</p>
+          <p className="font-code mb-14 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"02 / Expertise"}</p>
           <div className="flex flex-wrap gap-3">
             {skills.map((skill) => (
               <span
-                key={skill}
                 className="font-code border border-[var(--site-border)] px-4 py-2 text-xs uppercase tracking-[0.15em] text-[var(--site-muted)] transition-colors duration-200 hover:border-[var(--site-accent)] hover:text-[var(--site-accent)]"
+                key={skill}
               >
                 {skill}
               </span>

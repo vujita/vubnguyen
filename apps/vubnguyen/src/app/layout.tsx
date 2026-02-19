@@ -44,8 +44,8 @@ export const metadata: Metadata = {
 export default function Layout(props: { children: ReactNode }) {
   return (
     <html
-      lang="en"
       className={classnames(fontDisplay.variable, fontMono.variable)}
+      lang="en"
       suppressHydrationWarning
     >
       <body>

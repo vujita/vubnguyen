@@ -37,7 +37,7 @@ const config = {
     // },
   },
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended-type-checked", "plugin:@typescript-eslint/stylistic-type-checked", "prettier", "plugin:import/typescript"],
-  ignorePatterns: ["**/.eslintrc.cjs", "**/*.config.js", "**/*.config.cjs", "packages/config/**", ".next", "dist", "pnpm-lock.yaml"],
+  ignorePatterns: ["**/.eslintrc.cjs", "**/*.config.js", "**/*.config.cjs", "**/*.config.mjs", "**/*.config.ts", "packages/config/**", ".next", "dist", "pnpm-lock.yaml"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
