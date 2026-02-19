@@ -2,6 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import nextjsConfig from "eslint-config-vujita/nextjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,7 +13,8 @@ const compat = new FlatCompat({
 });
 
 export default [
-  ...compat.extends("eslint-config-vujita/base", "eslint-config-vujita/nextjs", "eslint-config-vujita/react"),
+  ...compat.extends("eslint-config-vujita/base", "eslint-config-vujita/react"),
+  ...nextjsConfig,
   {
     languageOptions: {
       parserOptions: {
