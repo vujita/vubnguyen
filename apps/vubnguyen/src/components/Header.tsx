@@ -8,7 +8,7 @@ export const Header: FC = () => {
     <header className="header-bg fixed top-0 z-50 w-full border-b border-[var(--site-border)]">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 sm:py-5">
         <Link
-          className="font-display text-xs uppercase tracking-[0.15em] whitespace-nowrap text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-text)] sm:tracking-[0.25em]"
+          className="font-display whitespace-nowrap text-xs uppercase tracking-[0.15em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-text)] sm:tracking-[0.25em]"
           href="/"
         >
           {"Vu Nguyen"}
