@@ -14,6 +14,20 @@ export function postHref(slug: string): Route<`/writing/${string}`> {
 
 export const allPosts: PostMeta[] = [
   {
+    date: "2026-02-20",
+    description: "The rules of the market have changed. Productivity is now the primary competitive lever — and great DX is how you pull it.",
+    slug: "dx-for-the-ai-era",
+    tags: ["dx", "engineering", "productivity", "ai", "startups"],
+    title: "Optimizing Developer Experience for Today",
+  },
+  {
+    date: "2026-02-20",
+    description: "Generative AI is collapsing the cost of writing code. The bottleneck is shifting — and so should your architecture.",
+    slug: "ai-coding-paradigm",
+    tags: ["ai", "engineering", "architecture", "dx"],
+    title: "The Shifting Paradigm of Coding in the Age of AI",
+  },
+  {
     date: "2024-11-15",
     description: "Lessons learned from scaling analytics infrastructure to handle billions of events per day — and the engineering principles that made it possible.",
     slug: "building-systems-that-scale",
