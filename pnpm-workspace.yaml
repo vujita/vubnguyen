@@ -49,7 +49,7 @@ catalog:
   "@typescript-eslint/parser": 8.48.0
   "@xarc/run": 1.1.1
   autoprefixer: 10.4.19
-  babel-jest: 29.7.0
+  babel-jest: 30.2.0
   chromatic: 11.5.4
   class-variance-authority: 0.7.0
   clsx: 2.1.1
