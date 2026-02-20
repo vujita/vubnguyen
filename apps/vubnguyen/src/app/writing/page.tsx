@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { formatDate, getAllPostMeta } from "@vujita/vubnguyen/src/lib/posts";
+import { allPosts, formatDate } from "@vujita/vubnguyen/src/lib/posts";
 
 export const metadata = {
   description: "Essays and notes on engineering, systems, and leadership.",
@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 export default function WritingPage() {
-  const posts = getAllPostMeta();
+  const posts = allPosts;
 
   return (
     <div className="bg-[var(--site-bg)] text-[var(--site-text)]">

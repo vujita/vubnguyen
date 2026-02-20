@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 import Signature from "@vujita/vubnguyen/src/components/signature";
-import { formatDate, getAllPostMeta } from "@vujita/vubnguyen/src/lib/posts";
+import { allPosts, formatDate } from "@vujita/vubnguyen/src/lib/posts";
 
 const siteMap = [
   {
@@ -23,7 +23,7 @@ const siteMap = [
 ];
 
 export default function HomePage() {
-  const recentPosts = getAllPostMeta().slice(0, 3);
+  const recentPosts = allPosts.slice(0, 3);
 
   return (
     <div className="bg-[var(--site-bg)] text-[var(--site-text)]">

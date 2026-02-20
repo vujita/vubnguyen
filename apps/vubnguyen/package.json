@@ -31,7 +31,6 @@
     "@vujita/auth": "workspace:*",
     "@vujita/db": "workspace:*",
     "framer-motion": "catalog:",
-    "gray-matter": "^4.0.3",
     "lucide-react": "catalog:",
     "marked": "^17.0.3",
     "next": "catalog:",
@@ -39,7 +38,6 @@
     "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-markdown": "^10.1.0",
     "superjson": "catalog:",
     "vujita-ui": "workspace:*",
     "zod": "catalog:"
