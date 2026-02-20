@@ -16,6 +16,14 @@ export const allPosts: PostMeta[] = [
   {
     date: "2026-02-20",
     description:
+      "The rules of the market have changed. Productivity is now the primary competitive lever — and great DX is how you pull it.",
+    slug: "dx-for-the-ai-era",
+    tags: ["dx", "engineering", "productivity", "ai", "startups"],
+    title: "Optimizing Developer Experience for Today",
+  },
+  {
+    date: "2026-02-20",
+    description:
       "Generative AI is collapsing the cost of writing code. The bottleneck is shifting — and so should your architecture.",
     slug: "ai-coding-paradigm",
     tags: ["ai", "engineering", "architecture", "dx"],
