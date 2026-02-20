@@ -104,6 +104,110 @@ body {
   animation: bounce-y 2s ease-in-out 2s infinite;
 }
 
+/* ─── Blog prose ─────────────────────────────────── */
+
+.prose-blog {
+  color: var(--site-text);
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+
+.prose-blog p {
+  margin-bottom: 1.5rem;
+}
+
+.prose-blog h2 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--site-text);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-blog h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--site-text);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-blog ul,
+.prose-blog ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.prose-blog ul {
+  list-style-type: disc;
+}
+
+.prose-blog ol {
+  list-style-type: decimal;
+}
+
+.prose-blog li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-blog strong {
+  font-weight: 700;
+  color: var(--site-text);
+}
+
+.prose-blog em {
+  font-style: italic;
+  color: var(--site-muted);
+}
+
+.prose-blog code {
+  font-family: var(--font-fira-code), "Courier New", monospace;
+  font-size: 0.875em;
+  background-color: var(--site-surface);
+  color: var(--site-accent);
+  padding: 0.125em 0.375em;
+  border-radius: 0.25rem;
+}
+
+.prose-blog pre {
+  background-color: var(--site-surface);
+  border: 1px solid var(--site-border);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.prose-blog pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--site-text);
+}
+
+.prose-blog blockquote {
+  border-left: 2px solid var(--site-accent);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--site-muted);
+  font-style: italic;
+}
+
+.prose-blog a {
+  color: var(--site-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-blog a:hover {
+  opacity: 0.8;
+}
+
 /* ─── Keyframes ───────────────────────────────────── */
 
 @keyframes sig-draw {
