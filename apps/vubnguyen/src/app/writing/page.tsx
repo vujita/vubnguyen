@@ -29,7 +29,7 @@ export default function WritingPage() {
               >
                 <Link
                   className="block"
-                  href={`/writing/${post.slug}`}
+                  href={post.href}
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-8">
                     <time className="font-code shrink-0 text-xs tracking-widest text-[var(--site-muted)]">{formatDate(post.date)}</time>

@@ -1,10 +1,11 @@
+import { type Route } from "next";
 import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 import Signature from "@vujita/vubnguyen/src/components/signature";
 import { allPosts, formatDate } from "@vujita/vubnguyen/src/lib/posts";
 
-const siteMap = [
+const siteMap: { description: string; href: Route; section: string }[] = [
   {
     description: "Experience, roles, and expertise across distributed systems and platform engineering.",
     href: "/work",
@@ -87,7 +88,7 @@ export default function HomePage() {
               {recentPosts.map((post) => (
                 <Link
                   className="group flex flex-col gap-1 py-8 sm:flex-row sm:items-baseline sm:gap-8"
-                  href={`/writing/${post.slug}`}
+                  href={post.href}
                   key={post.slug}
                 >
                   <time className="font-code shrink-0 text-xs tracking-widest text-[var(--site-muted)]">{formatDate(post.date)}</time>
