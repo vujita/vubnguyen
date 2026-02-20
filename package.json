@@ -40,7 +40,6 @@
     "eslint": "catalog:",
     "eslint-plugin-prettier": "catalog:",
     "husky": "catalog:",
-    "lerna": "catalog:",
     "lint-staged": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "catalog:",
