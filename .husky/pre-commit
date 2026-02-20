@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# If any package.json or pnpm-workspace.yaml is staged, run pnpm install
+# to ensure pnpm-lock.yaml stays in sync before CI runs with --frozen-lockfile
+if git diff --cached --name-only | grep -qE '(package\.json|pnpm-workspace\.yaml)'; then
+  echo "Dependency files changed — running pnpm install to sync lockfile..."
+  pnpm install
+  git add pnpm-lock.yaml
+fi
+
 pnpm manypkg fix
 pnpm lint-staged
 pnpm run check
