@@ -3,8 +3,8 @@ import Link from "next/link";
 import { formatDate, getAllPostMeta } from "@vujita/vubnguyen/src/lib/posts";
 
 export const metadata = {
-  title: "Writing — Vu Nguyen",
   description: "Essays and notes on engineering, systems, and leadership.",
+  title: "Writing — Vu Nguyen",
 };
 
 export default function WritingPage() {
@@ -24,12 +24,12 @@ export default function WritingPage() {
           <div className="divide-y divide-[var(--site-border)]">
             {posts.map((post) => (
               <article
-                key={post.slug}
                 className="group py-10"
+                key={post.slug}
               >
                 <Link
-                  href={`/writing/${post.slug}`}
                   className="block"
+                  href={`/writing/${post.slug}`}
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-8">
                     <time className="font-code shrink-0 text-xs tracking-widest text-[var(--site-muted)]">{formatDate(post.date)}</time>
@@ -40,8 +40,8 @@ export default function WritingPage() {
                         <div className="mt-3 flex flex-wrap gap-2">
                           {post.tags.map((tag) => (
                             <span
-                              key={tag}
                               className="font-code rounded-sm bg-[var(--site-surface)] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--site-muted)]"
+                              key={tag}
                             >
                               {tag}
                             </span>

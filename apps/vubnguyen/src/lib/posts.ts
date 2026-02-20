@@ -1,20 +1,19 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
 export interface PostMeta {
-  slug: string;
-  title: string;
   date: string;
   description: string;
+  slug: string;
   tags: string[];
+  title: string;
 }
 
 export interface Post extends PostMeta {
-  contentHtml: string;
+  content: string;
 }
 
 export function getAllPostMeta(): PostMeta[] {
@@ -29,18 +28,18 @@ export function getAllPostMeta(): PostMeta[] {
       const { data } = matter(fileContents);
 
       return {
-        slug,
-        title: data.title as string,
         date: data.date as string,
         description: data.description as string,
-        tags: (data.tags as string[]) ?? [],
+        slug,
+        tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+        title: data.title as string,
       };
     });
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+export function getPostBySlug(slug: string): Post | null {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
 
   if (!fs.existsSync(fullPath)) {
@@ -48,24 +47,23 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-  const contentHtml = await marked(content);
+  const { content, data } = matter(fileContents);
 
   return {
-    slug,
-    title: data.title as string,
+    content,
     date: data.date as string,
     description: data.description as string,
-    tags: (data.tags as string[]) ?? [],
-    contentHtml,
+    slug,
+    tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+    title: data.title as string,
   };
 }
 
 export function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
     day: "numeric",
+    month: "long",
     timeZone: "UTC",
+    year: "numeric",
   });
 }

@@ -39,6 +39,7 @@
     "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "react-markdown": "^10.1.0",
     "superjson": "catalog:",
     "vujita-ui": "workspace:*",
     "zod": "catalog:"

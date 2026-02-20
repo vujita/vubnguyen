@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 
 import { formatDate, getAllPostMeta, getPostBySlug } from "@vujita/vubnguyen/src/lib/posts";
 
@@ -7,24 +8,24 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const posts = getAllPostMeta();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Vu Nguyen`,
     description: post.description,
+    title: `${post.title} — Vu Nguyen`,
   };
 }
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -36,8 +37,8 @@ export default async function PostPage({ params }: Props) {
         <div className="mx-auto w-full max-w-2xl">
           {/* Back link */}
           <Link
-            href="/writing"
             className="font-code mb-12 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
+            href="/writing"
           >
             {"← Writing"}
           </Link>
@@ -51,8 +52,8 @@ export default async function PostPage({ params }: Props) {
               <div className="mt-6 flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
                   <span
-                    key={tag}
                     className="font-code rounded-sm bg-[var(--site-surface)] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--site-muted)]"
+                    key={tag}
                   >
                     {tag}
                   </span>
@@ -64,16 +65,15 @@ export default async function PostPage({ params }: Props) {
           <hr className="mb-12 border-[var(--site-border)]" />
 
           {/* Content */}
-          <div
-            className="prose-blog"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
+          <div className="prose-blog">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
 
           <hr className="mb-12 mt-16 border-[var(--site-border)]" />
 
           <Link
-            href="/writing"
             className="font-code inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
+            href="/writing"
           >
             {"← Back to Writing"}
           </Link>
