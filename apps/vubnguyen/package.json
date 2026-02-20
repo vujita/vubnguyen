@@ -32,6 +32,7 @@
     "@vujita/db": "workspace:*",
     "framer-motion": "catalog:",
     "lucide-react": "catalog:",
+    "marked": "^17.0.3",
     "next": "catalog:",
     "next-auth": "catalog:",
     "next-themes": "catalog:",
