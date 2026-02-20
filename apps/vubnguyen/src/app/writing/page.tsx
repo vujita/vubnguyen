@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { allPosts, formatDate } from "@vujita/vubnguyen/src/lib/posts";
+import { allPosts, formatDate, postHref } from "@vujita/vubnguyen/src/lib/posts";
 
 export const metadata = {
   description: "Essays and notes on engineering, systems, and leadership.",
@@ -29,7 +29,7 @@ export default function WritingPage() {
               >
                 <Link
                   className="block"
-                  href={post.href}
+                  href={postHref(post.slug)}
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-8">
                     <time className="font-code shrink-0 text-xs tracking-widest text-[var(--site-muted)]">{formatDate(post.date)}</time>

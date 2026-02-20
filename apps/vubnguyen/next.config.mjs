@@ -6,9 +6,7 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import("next").NextConfig} */
 const config = {
-  experimental: {
-    typedRoutes: true,
-  },
+  typedRoutes: true,
   // this includes files from the monorepo base two directories up
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
