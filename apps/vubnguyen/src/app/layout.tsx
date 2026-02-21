@@ -8,6 +8,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import classnames from "vujita-ui/classnames";
 
 import { TRPCReactProvider } from "@vujita/vubnguyen/src/app/providers";
+import { AmplitudeProvider } from "@vujita/vubnguyen/src/components/AmplitudeProvider";
 import { Header } from "@vujita/vubnguyen/src/components/Header";
 
 config.autoAddCss = true;
@@ -50,8 +51,10 @@ export default function Layout(props: { children: ReactNode }) {
     >
       <body>
         <TRPCReactProvider>
-          <Header />
-          <main>{props.children}</main>
+          <AmplitudeProvider>
+            <Header />
+            <main>{props.children}</main>
+          </AmplitudeProvider>
         </TRPCReactProvider>
       </body>
     </html>

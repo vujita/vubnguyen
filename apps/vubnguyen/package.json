@@ -17,6 +17,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "catalog:",
     "@fortawesome/free-solid-svg-icons": "catalog:",
     "@fortawesome/react-fontawesome": "catalog:",
     "@t3-oss/env-nextjs": "catalog:",
