@@ -9,9 +9,7 @@ module.exports = {
   transform: {
     "^.+\\.[jt]sx?$": "babel-jest",
   },
-  // Map .js imports to .ts files (Jest doesn't handle ESM .js → .ts remapping)
   moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1",
     "^phaser$": "<rootDir>/src/__mocks__/phaser.ts",
   },
 };

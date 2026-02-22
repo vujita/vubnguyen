@@ -1,4 +1,4 @@
-import { getSymbol, SYMBOL_MAP, SYMBOLS } from "../core/symbols.js";
+import { getSymbol, SYMBOL_MAP, SYMBOLS } from "../core/symbols";
 
 describe("SYMBOLS", () => {
   it("has at least one symbol", () => {

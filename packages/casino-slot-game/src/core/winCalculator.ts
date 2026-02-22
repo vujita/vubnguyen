@@ -1,6 +1,6 @@
-import { PAYLINES, type Payline } from "./paylines.js";
-import { type ReelGrid } from "./reels.js";
-import { SYMBOL_MAP, type SymbolId } from "./symbols.js";
+import { PAYLINES, type Payline } from "./paylines";
+import { type ReelGrid } from "./reels";
+import { SYMBOL_MAP, type SymbolId } from "./symbols";
 
 export interface WinResult {
   /** Payout multiplier × bet */

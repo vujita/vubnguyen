@@ -1,4 +1,4 @@
-import { SYMBOLS, type SymbolId } from "./symbols.js";
+import { SYMBOLS, type SymbolId } from "./symbols";
 
 /** Number of columns (reels) */
 export const REEL_COUNT = 3;

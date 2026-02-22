@@ -1,6 +1,6 @@
-import { type Payline } from "../core/paylines.js";
-import { type ReelGrid } from "../core/reels.js";
-import { calculateWins, checkPayline } from "../core/winCalculator.js";
+import { type Payline } from "../core/paylines";
+import { type ReelGrid } from "../core/reels";
+import { calculateWins, checkPayline } from "../core/winCalculator";
 
 const middlePayline: Payline = { id: 1, rows: [1, 1, 1] };
 

@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 
-import { REEL_COUNT, ROW_COUNT, spinReels, type ReelGrid } from "../../core/reels.js";
-import { SYMBOLS, type SymbolId } from "../../core/symbols.js";
-import { calculateWins } from "../../core/winCalculator.js";
+import { REEL_COUNT, ROW_COUNT, spinReels, type ReelGrid } from "../../core/reels";
+import { SYMBOLS, type SymbolId } from "../../core/symbols";
+import { calculateWins } from "../../core/winCalculator";
 
 const SYMBOL_LABEL: Record<SymbolId, string> = {
   bar: "BAR",

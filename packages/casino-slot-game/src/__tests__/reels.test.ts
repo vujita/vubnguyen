@@ -1,5 +1,5 @@
-import { buildReelStrip, pickSymbol, REEL_COUNT, ROW_COUNT, spinReels } from "../core/reels.js";
-import { SYMBOLS } from "../core/symbols.js";
+import { buildReelStrip, pickSymbol, REEL_COUNT, ROW_COUNT, spinReels } from "../core/reels";
+import { SYMBOLS } from "../core/symbols";
 
 const validIds = new Set(SYMBOLS.map((s) => s.id));
 

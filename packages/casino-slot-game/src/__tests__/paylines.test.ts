@@ -1,5 +1,5 @@
-import { PAYLINES, validatePaylines } from "../core/paylines.js";
-import { REEL_COUNT, ROW_COUNT } from "../core/reels.js";
+import { PAYLINES, validatePaylines } from "../core/paylines";
+import { REEL_COUNT, ROW_COUNT } from "../core/reels";
 
 describe("PAYLINES", () => {
   it("has at least one payline", () => {

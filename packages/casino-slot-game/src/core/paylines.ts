@@ -1,4 +1,4 @@
-import { REEL_COUNT, ROW_COUNT } from "./reels.js";
+import { REEL_COUNT, ROW_COUNT } from "./reels";
 
 export interface Payline {
   id: number;

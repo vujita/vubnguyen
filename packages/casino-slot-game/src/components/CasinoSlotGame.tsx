@@ -23,7 +23,7 @@ export function CasinoSlotGame({ width = 500, height = 520, className }: CasinoS
     let game: { destroy: (removeCanvas: boolean) => void } | null = null;
 
     // Dynamic import keeps Phaser out of the SSR bundle entirely
-    void import("../game/SlotGame.js").then(({ createSlotGame }) => {
+    void import("../game/SlotGame").then(({ createSlotGame }) => {
       game = createSlotGame({ height, parent, width });
     });
 
