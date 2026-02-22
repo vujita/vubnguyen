@@ -33,6 +33,7 @@
     "framer-motion": "catalog:",
     "lucide-react": "catalog:",
     "marked": "^17.0.3",
+    "match-sorter": "catalog:",
     "next": "catalog:",
     "next-auth": "catalog:",
     "next-themes": "catalog:",
