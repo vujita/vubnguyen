@@ -34,16 +34,12 @@ export default function HomePage() {
           <p className="anim-label font-code mb-8 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"— Staff Engineer · Amplitude Analytics"}</p>
 
           <h1 className="anim-name font-display text-[clamp(72px,13vw,148px)] font-bold italic leading-none tracking-tight text-[var(--site-text)]">
-            {"Vu"}
-            <br />
+            <Signature className="block h-36 w-auto sm:h-44" />
             {"Nguyen"}
           </h1>
 
-          <div className="anim-sig mt-10 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-16">
-            <Signature className="h-36 w-auto shrink-0 sm:h-44" />
-            <div className="anim-bio">
-              <p className="font-display max-w-[28rem] text-xl font-light italic leading-relaxed text-[var(--site-muted)]">{"Building systems that scale. Leading teams that ship. Writing code that lasts."}</p>
-            </div>
+          <div className="anim-sig anim-bio mt-10">
+            <p className="font-display max-w-[28rem] text-xl font-light italic leading-relaxed text-[var(--site-muted)]">{"Building systems that scale. Leading teams that ship. Writing code that lasts."}</p>
           </div>
         </div>
       </section>
