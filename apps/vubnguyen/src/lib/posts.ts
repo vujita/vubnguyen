@@ -15,6 +15,13 @@ export function postHref(slug: string): Route<`/writing/${string}`> {
 export const allPosts: PostMeta[] = [
   {
     date: "2026-02-22",
+    description: "The narrative that SaaS is dying has overcorrected. Some of the pessimism is warranted — but conflating a discipline cycle with a model failure leads builders to abandon durable ideas.",
+    slug: "saas-market-correction",
+    tags: ["saas", "startups", "engineering", "business", "market"],
+    title: "The SaaS Overcorrection",
+  },
+  {
+    date: "2026-02-22",
     description: "AI is generating code faster than we can reason about it. The old playbook for managing tech debt — stop, clean up, resume — is no longer enough.",
     slug: "tech-debt-in-the-ai-era",
     tags: ["ai", "engineering", "tech-debt", "architecture"],
