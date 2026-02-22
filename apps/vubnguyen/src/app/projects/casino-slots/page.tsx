@@ -20,23 +20,21 @@ export default function CasinoSlotsPage() {
             <CasinoSlotLoader />
           </div>
 
-          <div className="mt-16 border-t border-[var(--site-border)] pt-12">
-            <p className="font-code mb-6 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"How it works"}</p>
-            <div className="grid gap-6 text-sm leading-relaxed text-[var(--site-muted)] sm:grid-cols-3">
-              <div>
-                <p className="font-code mb-2 text-xs uppercase tracking-[0.15em] text-[var(--site-text)]">{"Weighted reels"}</p>
-                <p>{"Each symbol has a weight. Higher-payout symbols appear less often. The reel strip is built at runtime from these weights."}</p>
-              </div>
-              <div>
-                <p className="font-code mb-2 text-xs uppercase tracking-[0.15em] text-[var(--site-text)]">{"5 paylines"}</p>
-                <p>{"Top row, middle row, bottom row, and both diagonals. Matching all 3 symbols on any payline pays out."}</p>
-              </div>
-              <div>
-                <p className="font-code mb-2 text-xs uppercase tracking-[0.15em] text-[var(--site-text)]">{"Jackpot"}</p>
-                <p>{"Three 7s on any payline triggers the jackpot — a 100× bet multiplier."}</p>
-              </div>
+          <p className="font-code mt-16 border-t border-[var(--site-border)] pb-6 pt-12 text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"How it works"}</p>
+          <dl className="grid gap-6 text-sm leading-relaxed text-[var(--site-muted)] sm:grid-cols-3">
+            <div>
+              <dt className="font-code mb-2 text-xs uppercase tracking-[0.15em] text-[var(--site-text)]">{"Weighted reels"}</dt>
+              <dd>{"Each symbol has a weight. Higher-payout symbols appear less often. The reel strip is built at runtime from these weights."}</dd>
             </div>
-          </div>
+            <div>
+              <dt className="font-code mb-2 text-xs uppercase tracking-[0.15em] text-[var(--site-text)]">{"5 paylines"}</dt>
+              <dd>{"Top row, middle row, bottom row, and both diagonals. Matching all 3 symbols on any payline pays out."}</dd>
+            </div>
+            <div>
+              <dt className="font-code mb-2 text-xs uppercase tracking-[0.15em] text-[var(--site-text)]">{"Jackpot"}</dt>
+              <dd>{"Three 7s on any payline triggers the jackpot — a 100× bet multiplier."}</dd>
+            </div>
+          </dl>
         </div>
       </section>
     </div>

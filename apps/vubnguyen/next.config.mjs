@@ -10,7 +10,7 @@ const config = {
   // this includes files from the monorepo base two directories up
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
-  transpilePackages: ["@vujita/api", "@vujita/auth", "@vujita/db", "vujita-ui"],
+  transpilePackages: ["@vujita/api", "@vujita/auth", "@vujita/casino-slot-game", "@vujita/db", "vujita-ui"],
   turbopack: {},
   typescript: { ignoreBuildErrors: true },
 };
