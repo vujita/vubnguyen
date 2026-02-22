@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 
 export interface CasinoSlotGameProps {
-  width?: number;
-  height?: number;
   className?: string;
+  height?: number;
+  width?: number;
 }
 
 /**

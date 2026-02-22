@@ -3,17 +3,17 @@ import { type ReelGrid } from "./reels.js";
 import { SYMBOL_MAP, type SymbolId } from "./symbols.js";
 
 export interface WinResult {
-  paylineId: number;
-  symbol: SymbolId;
   /** Payout multiplier × bet */
   multiplier: number;
+  paylineId: number;
+  symbol: SymbolId;
 }
 
 export interface SpinResult {
-  wins: WinResult[];
-  totalMultiplier: number;
   /** true when all three reels show "seven" on any payline */
   isJackpot: boolean;
+  totalMultiplier: number;
+  wins: WinResult[];
 }
 
 /**

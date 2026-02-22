@@ -3,9 +3,9 @@ import Phaser from "phaser";
 import { MainScene } from "./scenes/MainScene.js";
 
 export interface SlotGameOptions {
+  height?: number;
   parent: HTMLElement;
   width?: number;
-  height?: number;
 }
 
 /**

@@ -157,7 +157,7 @@ export class MainScene extends Phaser.Scene {
       callback: () => {
         for (let row = 0; row < ROW_COUNT; row++) {
           for (let col = 0; col < REEL_COUNT; col++) {
-            const randId = SYMBOLS_LIST[Math.floor(Math.random() * SYMBOLS_LIST.length)] as SymbolId;
+            const randId = SYMBOLS_LIST[Math.floor(Math.random() * SYMBOLS_LIST.length)]!;
             this.cellTexts[row]?.[col]?.setText(SYMBOL_LABEL[randId]);
           }
         }
@@ -175,7 +175,7 @@ export class MainScene extends Phaser.Scene {
   private renderGrid(grid: ReelGrid): void {
     for (let row = 0; row < ROW_COUNT; row++) {
       for (let col = 0; col < REEL_COUNT; col++) {
-        const id = grid[row]?.[col] as SymbolId | undefined;
+        const id = grid[row]?.[col];
         if (!id) continue;
         this.cellTexts[row]?.[col]?.setText(SYMBOL_LABEL[id]);
         this.cellTexts[row]?.[col]?.setStyle({ color: `#${SYMBOL_COLOR[id].toString(16).padStart(6, "0")}` });
