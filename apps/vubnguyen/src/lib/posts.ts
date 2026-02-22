@@ -15,8 +15,7 @@ export function postHref(slug: string): Route<`/writing/${string}`> {
 export const allPosts: PostMeta[] = [
   {
     date: "2026-02-22",
-    description:
-      "AI is generating code faster than we can reason about it. The old playbook for managing tech debt — stop, clean up, resume — is no longer enough.",
+    description: "AI is generating code faster than we can reason about it. The old playbook for managing tech debt — stop, clean up, resume — is no longer enough.",
     slug: "tech-debt-in-the-ai-era",
     tags: ["ai", "engineering", "tech-debt", "architecture"],
     title: "Tech Debt in the Age of AI",
