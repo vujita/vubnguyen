@@ -1,19 +1,11 @@
 import { type Metadata } from "next";
-import dynamic from "next/dynamic";
+
+import { CasinoSlotLoader } from "@vujita/vubnguyen/src/app/projects/casino-slots/CasinoSlotLoader";
 
 export const metadata: Metadata = {
   description: "A browser-based 3-reel slot machine built with Phaser 3 and TypeScript.",
   title: "Casino Slot Machine — Vu Nguyen",
 };
-
-// Load the Phaser game client-side only — Phaser requires window/canvas
-const CasinoSlotGame = dynamic(
-  () =>
-    import("@vujita/casino-slot-game").then((mod) => ({
-      default: mod.CasinoSlotGame,
-    })),
-  { ssr: false },
-);
 
 export default function CasinoSlotsPage() {
   return (
@@ -25,11 +17,7 @@ export default function CasinoSlotsPage() {
           <p className="mb-12 max-w-xl text-sm leading-relaxed text-[var(--site-muted)]">{"A 3-reel slot machine powered by Phaser 3. Weighted reel strips, 5 paylines, and jackpot detection — driven by pure TypeScript game logic."}</p>
 
           <div className="flex justify-center">
-            <CasinoSlotGame
-              className="rounded-sm"
-              height={520}
-              width={500}
-            />
+            <CasinoSlotLoader />
           </div>
 
           <div className="mt-16 border-t border-[var(--site-border)] pt-12">
