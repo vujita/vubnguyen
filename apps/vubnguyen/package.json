@@ -29,6 +29,7 @@
     "@trpc/server": "catalog:",
     "@vujita/api": "workspace:*",
     "@vujita/auth": "workspace:*",
+    "@vujita/casino-slot-game": "workspace:*",
     "@vujita/db": "workspace:*",
     "framer-motion": "catalog:",
     "lucide-react": "catalog:",

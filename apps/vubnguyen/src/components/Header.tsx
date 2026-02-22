@@ -22,6 +22,12 @@ export const Header: FC = () => {
           </Link>
           <Link
             className="font-code text-xs uppercase tracking-[0.1em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)] sm:tracking-[0.2em]"
+            href="/projects"
+          >
+            {"Projects"}
+          </Link>
+          <Link
+            className="font-code text-xs uppercase tracking-[0.1em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)] sm:tracking-[0.2em]"
             href="/writing"
           >
             {"Writing"}
