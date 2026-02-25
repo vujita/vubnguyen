@@ -18,9 +18,9 @@ export default function PostLayout({ children, date, description, tags, title }:
         <div className="mx-auto w-full max-w-2xl">
           <Link
             className="font-code mb-12 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
-            href="/writing"
+            href="/blog"
           >
-            {"← Writing"}
+            {"← Blog"}
           </Link>
 
           <header className="mb-12 mt-8">
@@ -49,9 +49,9 @@ export default function PostLayout({ children, date, description, tags, title }:
 
           <Link
             className="font-code inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
-            href="/writing"
+            href="/blog"
           >
-            {"← Back to Writing"}
+            {"← Back to Blog"}
           </Link>
         </div>
       </article>
