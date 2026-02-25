@@ -13,8 +13,8 @@ const siteMap: { description: string; href: Route; section: string }[] = [
   },
   {
     description: "Essays and notes on engineering craft, systems thinking, and technical leadership.",
-    href: "/writing",
-    section: "02 / Writing",
+    href: "/blog",
+    section: "02 / Blog",
   },
   {
     description: "Get in touch for collaboration, speaking, or just to say hello.",
@@ -71,10 +71,10 @@ export default function HomePage() {
         <section className="border-t border-[var(--site-border)] px-6 py-24">
           <div className="mx-auto w-full max-w-5xl">
             <div className="mb-12 flex items-baseline justify-between">
-              <p className="font-code text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"— Recent Writing"}</p>
+              <p className="font-code text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">{"— Recent Posts"}</p>
               <Link
                 className="font-code text-xs uppercase tracking-widest text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)]"
-                href="/writing"
+                href="/blog"
               >
                 {"All posts →"}
               </Link>
