@@ -14,6 +14,13 @@ export function postHref(slug: string): Route<`/writing/${string}`> {
 
 export const allPosts: PostMeta[] = [
   {
+    date: "2026-02-25",
+    description: "LLM agents drift. They hold contradictory beliefs, wander into undefined transitions, and silently declare victory. State machines are how you stop that.",
+    slug: "agentic-state-machines",
+    tags: ["ai", "engineering", "architecture", "agentic", "state-machines"],
+    title: "Agentic Systems Need State Machines",
+  },
+  {
     date: "2026-02-22",
     description: "The narrative that SaaS is dying has overcorrected. Some of the pessimism is warranted — but conflating a discipline cycle with a model failure leads builders to abandon durable ideas.",
     slug: "saas-market-correction",
