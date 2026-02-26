@@ -42,22 +42,22 @@ export default function SearchablePosts({ posts }: SearchablePostsProps) {
                 aria-pressed={active}
                 className={["font-code cursor-pointer rounded-sm px-2 py-0.5 text-[10px] uppercase tracking-widest transition-colors duration-150", active ? "bg-[var(--site-accent)] text-[var(--site-bg)]" : "bg-[var(--site-surface)] text-[var(--site-muted)] hover:text-[var(--site-text)]"].join(" ")}
                 key={tag}
-                onClick={() => send({ type: "TOGGLE_TAG", tag })}
+                onClick={() => send({ tag, type: "TOGGLE_TAG" })}
                 type="button"
               >
                 {tag}
               </button>
             );
           })}
-          {isFiltering && (
+          {isFiltering ? (
             <button
               className="font-code cursor-pointer text-[10px] uppercase tracking-widest text-[var(--site-muted)] underline underline-offset-2 transition-colors duration-150 hover:text-[var(--site-accent)]"
               onClick={() => send({ type: "CLEAR_ALL" })}
               type="button"
             >
-              Clear filters
+              {"Clear filters"}
             </button>
-          )}
+          ) : null}
         </div>
       )}
 
@@ -66,7 +66,7 @@ export default function SearchablePosts({ posts }: SearchablePostsProps) {
         <input
           aria-label="Search posts"
           className="font-code w-full border-b border-[var(--site-border)] bg-transparent py-3 text-sm text-[var(--site-text)] placeholder-[var(--site-muted)] outline-none transition-colors duration-200 focus:border-[var(--site-accent)]"
-          onChange={(e) => send({ type: "SET_QUERY", query: e.target.value })}
+          onChange={(e) => send({ query: e.target.value, type: "SET_QUERY" })}
           placeholder="Search by title, topic, or tag…"
           type="search"
           value={query}
@@ -117,7 +117,7 @@ export default function SearchablePosts({ posts }: SearchablePostsProps) {
                               key={tag}
                               onClick={(e) => {
                                 e.preventDefault();
-                                send({ type: "TOGGLE_TAG", tag });
+                                send({ tag, type: "TOGGLE_TAG" });
                               }}
                               type="button"
                             >

@@ -5,10 +5,7 @@ export interface BlogFilterContext {
   selectedTags: string[];
 }
 
-export type BlogFilterEvent =
-  | { query: string; type: "SET_QUERY" }
-  | { tag: string; type: "TOGGLE_TAG" }
-  | { type: "CLEAR_ALL" };
+export type BlogFilterEvent = { query: string; type: "SET_QUERY" } | { tag: string; type: "TOGGLE_TAG" } | { type: "CLEAR_ALL" };
 
 /**
  * Parent parallel machine for the blog filter feature.
@@ -84,17 +81,13 @@ export const blogFilterMachine = setup({
               {
                 // Last remaining tag is being removed — go back to empty
                 actions: assign({ selectedTags: [] }),
-                guard: ({ context, event }) =>
-                  context.selectedTags.includes(event.tag) && context.selectedTags.length === 1,
+                guard: ({ context, event }) => context.selectedTags.includes(event.tag) && context.selectedTags.length === 1,
                 target: "empty",
               },
               {
                 // Toggle tag in or out of the selection
                 actions: assign({
-                  selectedTags: ({ context, event }) =>
-                    context.selectedTags.includes(event.tag)
-                      ? context.selectedTags.filter((t) => t !== event.tag)
-                      : [...context.selectedTags, event.tag],
+                  selectedTags: ({ context, event }) => (context.selectedTags.includes(event.tag) ? context.selectedTags.filter((t) => t !== event.tag) : [...context.selectedTags, event.tag]),
                 }),
               },
             ],

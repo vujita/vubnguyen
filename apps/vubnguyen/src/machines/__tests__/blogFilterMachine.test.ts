@@ -1,6 +1,5 @@
-import { createActor } from "xstate";
-
 import { blogFilterMachine } from "src/machines/blogFilterMachine";
+import { createActor } from "xstate";
 
 function startActor() {
   return createActor(blogFilterMachine).start();
