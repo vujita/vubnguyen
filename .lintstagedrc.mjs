@@ -6,4 +6,5 @@ export default {
   "*.{html}": ["prettier --write", "git add"],
   "*.{js,jsx,ts,tsx,cjs,mjs,md}": ["prettier --write --list-different", "git add"],
   "{apps,packages}/src/**/*.{js,jsx,ts,tsx,cjs,mjs,md}": ["prettier --write --list-different", "eslint --fix", "git add"],
+  "scripts/**/*.{ts,js}": ["prettier --write --list-different", "git add"],
 };
