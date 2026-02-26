@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 
+import TechDebtChart from "@vujita/vubnguyen/src/components/TechDebtChart";
 import PostLayout from "@vujita/vubnguyen/src/components/PostLayout";
 
 export const metadata: Metadata = {
@@ -32,6 +33,8 @@ export default function TechDebtInTheAiEraPage() {
       </p>
       <p>{"But there is a side effect that is easy to miss in the excitement: we are now generating structural decisions — abstractions, data models, API contracts, naming conventions — at the same accelerated rate. And unlike raw code volume, structural decisions compound. A wrong abstraction introduced today becomes the foundation ten features depend on next month."}</p>
       <p>{'AI tools are optimized to produce code that works. They are less optimized to produce code that fits — code that is consistent with the existing architecture, that does not duplicate logic that already exists three files away, that introduces the right abstraction rather than the nearest approximation. The delta between "works" and "fits" is tech debt, and it is accumulating faster than at any point in the history of software.'}</p>
+
+      <TechDebtChart />
 
       <h2>{"The Old Playbook Is Breaking"}</h2>
       <p>{"The traditional approach to tech debt has always been episodic. You ship until the weight becomes noticeable — velocity slows, bugs cluster in certain areas, every new feature touches the same fragile code. Then you stop. You run a cleanup sprint, or a refactor quarter, or a dedicated debt-reduction cycle. You pay down the balance, reset the clock, and resume."}</p>

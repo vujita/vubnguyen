@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 
+import StateMachineDiagram from "@vujita/vubnguyen/src/components/StateMachineDiagram";
 import PostLayout from "@vujita/vubnguyen/src/components/PostLayout";
 
 export const metadata: Metadata = {
@@ -19,6 +20,8 @@ export default function AgenticStateMachinesPage() {
       <p>{"The pitch for agentic AI systems is compelling: give a model access to tools, let it reason across multiple steps, and it will accomplish tasks that a single prompt never could. The agent plans, executes, observes, and adapts. It can write code, run tests, fix failures, and iterate — all without a human directing each step."}</p>
       <p>{"The reality, for anyone who has built and operated these systems, is messier. Agents drift. They contradict decisions they made two steps ago. They wander into action sequences that were never sanctioned. They declare a task complete when it is not, or loop endlessly because they cannot recognize that it is. The more capable the underlying model, the more convincing the drift looks — which makes it harder, not easier, to catch."}</p>
       <p>{"The solution is not a better prompt. It is a better structure. Specifically, it is a state machine."}</p>
+
+      <StateMachineDiagram />
 
       <h2>{"Why Agentic Systems Drift"}</h2>
       <p>{"Most agentic systems today are built as loops: observe the environment, reason about what to do next, call a tool, observe the result, repeat. The logic that governs transitions between steps lives in the model's context — in the prompt, the conversation history, and whatever the model infers from the current situation. There is no external record of what state the system is in. There is no enforced set of valid transitions. There is no invariant being checked between steps."}</p>
