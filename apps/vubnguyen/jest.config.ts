@@ -7,6 +7,17 @@ const config: Config = {
   coverageProvider: "v8",
   testEnvironment: "node",
   testPathIgnorePatterns: ["/node_modules/", "/e2e/"],
+  transform: {
+    "^.+\\.tsx?$": [
+      "babel-jest",
+      {
+        presets: [
+          ["@babel/preset-env", { targets: { node: "current" } }],
+          "@babel/preset-typescript",
+        ],
+      },
+    ],
+  },
 };
 
 export default config;
