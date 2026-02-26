@@ -16,22 +16,68 @@ export default function TechDebtChart() {
         />
 
         {/* ── Subtle horizontal grid ── */}
-        <line stroke="var(--site-border)" strokeOpacity="0.6" strokeWidth="0.75" x1="50" x2="484" y1="60" y2="60" />
-        <line stroke="var(--site-border)" strokeOpacity="0.6" strokeWidth="0.75" x1="50" x2="484" y1="110" y2="110" />
+        <line
+          stroke="var(--site-border)"
+          strokeOpacity="0.6"
+          strokeWidth="0.75"
+          x1="50"
+          x2="484"
+          y1="60"
+          y2="60"
+        />
+        <line
+          stroke="var(--site-border)"
+          strokeOpacity="0.6"
+          strokeWidth="0.75"
+          x1="50"
+          x2="484"
+          y1="110"
+          y2="110"
+        />
 
         {/* ── Code reviewed (lower, flatter curve) ── */}
-        <path d="M 50,155 C 200,153 360,135 480,112" stroke="var(--site-muted)" strokeWidth="2" />
+        <path
+          d="M 50,155 C 200,153 360,135 480,112"
+          stroke="var(--site-muted)"
+          strokeWidth="2"
+        />
 
         {/* ── Code generated (upper, steep curve) ── */}
-        <path d="M 50,155 C 200,148 360,78 480,22" stroke="var(--site-accent)" strokeWidth="2.25" />
+        <path
+          d="M 50,155 C 200,148 360,78 480,22"
+          stroke="var(--site-accent)"
+          strokeWidth="2.25"
+        />
 
         {/* ── Axes ── */}
-        <line stroke="var(--site-border)" strokeWidth="1.5" x1="50" x2="50" y1="15" y2="165" />
-        <line stroke="var(--site-border)" strokeWidth="1.5" x1="45" x2="488" y1="165" y2="165" />
+        <line
+          stroke="var(--site-border)"
+          strokeWidth="1.5"
+          x1="50"
+          x2="50"
+          y1="15"
+          y2="165"
+        />
+        <line
+          stroke="var(--site-border)"
+          strokeWidth="1.5"
+          x1="45"
+          x2="488"
+          y1="165"
+          y2="165"
+        />
 
         {/* Axis arrowheads */}
-        <path d="M 46,19 L 50,13 L 54,19" stroke="var(--site-border)" strokeWidth="1.5" />
-        <path d="M 483,161 L 489,165 L 483,169" stroke="var(--site-border)" strokeWidth="1.5" />
+        <path
+          d="M 46,19 L 50,13 L 54,19"
+          stroke="var(--site-border)"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M 483,161 L 489,165 L 483,169"
+          stroke="var(--site-border)"
+          strokeWidth="1.5"
+        />
 
         {/* ── Y axis label ── */}
         <text
@@ -98,9 +144,7 @@ export default function TechDebtChart() {
           ↑ TECH DEBT ↑
         </text>
       </svg>
-      <figcaption className="mt-4 text-center font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">
-        AI tools accelerate code generation far beyond the rate at which code can be reviewed and understood
-      </figcaption>
+      <figcaption className="font-code mt-4 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">AI tools accelerate code generation far beyond the rate at which code can be reviewed and understood</figcaption>
     </figure>
   );
 }

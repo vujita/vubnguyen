@@ -1,8 +1,8 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 
-import StateMachineDiagram from "@vujita/vubnguyen/src/components/StateMachineDiagram";
 import PostLayout from "@vujita/vubnguyen/src/components/PostLayout";
+import StateMachineDiagram from "@vujita/vubnguyen/src/components/StateMachineDiagram";
 
 export const metadata: Metadata = {
   description: "LLM agents drift. They hold contradictory beliefs, wander into undefined transitions, and silently declare victory. State machines are how you stop that.",

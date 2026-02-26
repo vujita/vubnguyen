@@ -1,8 +1,8 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 
-import TechDebtChart from "@vujita/vubnguyen/src/components/TechDebtChart";
 import PostLayout from "@vujita/vubnguyen/src/components/PostLayout";
+import TechDebtChart from "@vujita/vubnguyen/src/components/TechDebtChart";
 
 export const metadata: Metadata = {
   description: "AI is generating code faster than we can reason about it. The old playbook for managing tech debt — stop, clean up, resume — is no longer enough.",
