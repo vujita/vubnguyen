@@ -15,13 +15,14 @@ const DIAGRAM = `stateDiagram-v2
 
 export default function StateMachineDiagram() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cancelledRef = useRef(false);
 
   useEffect(() => {
-    let cancelled = false;
+    cancelledRef.current = false;
 
     void (async () => {
       const mermaid = (await import("mermaid")).default;
-      if (cancelled) return;
+      if (cancelledRef.current) return;
 
       const s = getComputedStyle(document.documentElement);
       const css = (v: string) => s.getPropertyValue(v).trim();
@@ -48,13 +49,13 @@ export default function StateMachineDiagram() {
       const id = `sm-${Math.random().toString(36).slice(2, 8)}`;
       const { svg } = await mermaid.render(id, DIAGRAM);
 
-      if (!cancelled && containerRef.current) {
+      if (containerRef.current) {
         containerRef.current.innerHTML = svg;
       }
     })();
 
     return () => {
-      cancelled = true;
+      cancelledRef.current = true;
     };
   }, []);
 
@@ -64,7 +65,7 @@ export default function StateMachineDiagram() {
         className="mx-auto w-full max-w-[640px] overflow-x-auto [&_svg]:mx-auto [&_svg]:max-w-full"
         ref={containerRef}
       />
-      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">The system is always in exactly one state — transitions are enforced by the orchestration layer, not inferred by the model</figcaption>
+      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"The system is always in exactly one state — transitions are enforced by the orchestration layer, not inferred by the model"}</figcaption>
     </figure>
   );
 }

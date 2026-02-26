@@ -90,7 +90,7 @@ export default function TechDebtChart() {
           x="16"
           y="90"
         >
-          CODE VOLUME
+          {"CODE VOLUME"}
         </text>
 
         {/* ── X axis label ── */}
@@ -103,7 +103,7 @@ export default function TechDebtChart() {
           x="267"
           y="182"
         >
-          TIME
+          {"TIME"}
         </text>
 
         {/* ── Curve labels ── */}
@@ -116,7 +116,7 @@ export default function TechDebtChart() {
           x="478"
           y="17"
         >
-          code generated
+          {"code generated"}
         </text>
         <text
           fill="var(--site-muted)"
@@ -127,7 +127,7 @@ export default function TechDebtChart() {
           x="478"
           y="128"
         >
-          code reviewed
+          {"code reviewed"}
         </text>
 
         {/* ── "tech debt" label in the gap ── */}
@@ -141,10 +141,10 @@ export default function TechDebtChart() {
           x="340"
           y="64"
         >
-          ↑ TECH DEBT ↑
+          {"↑ TECH DEBT ↑"}
         </text>
       </svg>
-      <figcaption className="font-code mt-4 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">AI tools accelerate code generation far beyond the rate at which code can be reviewed and understood</figcaption>
+      <figcaption className="font-code mt-4 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"AI tools accelerate code generation far beyond the rate at which code can be reviewed and understood"}</figcaption>
     </figure>
   );
 }
