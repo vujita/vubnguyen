@@ -2,7 +2,7 @@
  * generate-state-diagrams.ts
  *
  * Traverses the blogFilterMachine config, emits Mermaid stateDiagram-v2 text
- * for each logical machine, then renders each .mmd to an .svg via mmdc.
+ * for each logical machine, then renders each .mmd to a .png via mmdc.
  *
  * Usage: pnpm tsx scripts/generate-state-diagrams.ts
  */
@@ -112,15 +112,16 @@ function subMachineDiagram(regionConfig: StateNodeConfig): string {
 
 function writeDiagram(name: string, mmd: string): void {
   const mmdPath = join(outputDir, `${name}.mmd`);
-  const svgPath = join(outputDir, `${name}.svg`);
+  const pngPath = join(outputDir, `${name}.png`);
 
   writeFileSync(mmdPath, mmd, "utf-8");
   console.log(`  wrote  ${mmdPath}`);
 
-  execSync(`"${mmdc}" -i "${mmdPath}" -o "${svgPath}" -p "${puppeteerConfig}"`, {
+  execSync(`"${mmdc}" -i "${mmdPath}" -o "${pngPath}" -b white -p "${puppeteerConfig}"`, {
+    env: { ...process.env, PUPPETEER_SKIP_DOWNLOAD: "true" },
     stdio: "inherit",
   });
-  console.log(`  rendered ${svgPath}`);
+  console.log(`  rendered ${pngPath}`);
 }
 
 // ─── Main ──────────────────────────────────────────────────────────────────

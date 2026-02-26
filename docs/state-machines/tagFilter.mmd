@@ -1,6 +1,6 @@
 stateDiagram-v2
   [*] --> empty
   empty --> filtering : TOGGLE_TAG
+  filtering --> empty : CLEAR_ALL
   filtering --> empty : TOGGLE_TAG
   filtering --> filtering : TOGGLE_TAG
-  filtering --> empty : CLEAR_ALL

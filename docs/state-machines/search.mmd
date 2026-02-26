@@ -1,6 +1,6 @@
 stateDiagram-v2
   [*] --> idle
-  idle --> active : SET_QUERY
+  active --> idle : CLEAR_ALL
   active --> idle : SET_QUERY
   active --> active : SET_QUERY
-  active --> idle : CLEAR_ALL
+  idle --> active : SET_QUERY
