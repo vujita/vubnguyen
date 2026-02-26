@@ -14,10 +14,7 @@ const config: Config = {
     "^.+\\.tsx?$": [
       "babel-jest",
       {
-        presets: [
-          ["@babel/preset-env", { targets: { node: "current" } }],
-          "@babel/preset-typescript",
-        ],
+        presets: [["@babel/preset-env", { targets: { node: "current" } }], "@babel/preset-typescript"],
       },
     ],
   },
