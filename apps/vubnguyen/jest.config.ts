@@ -5,6 +5,9 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
+  moduleNameMapper: {
+    "^src/(.*)$": "<rootDir>/src/$1",
+  },
   testEnvironment: "node",
   testPathIgnorePatterns: ["/node_modules/", "/e2e/"],
   transform: {

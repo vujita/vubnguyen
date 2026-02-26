@@ -5,7 +5,10 @@ export interface BlogFilterContext {
   selectedTags: string[];
 }
 
-export type BlogFilterEvent = { type: "SET_QUERY"; query: string } | { type: "TOGGLE_TAG"; tag: string } | { type: "CLEAR_ALL" };
+export type BlogFilterEvent =
+  | { query: string; type: "SET_QUERY" }
+  | { tag: string; type: "TOGGLE_TAG" }
+  | { type: "CLEAR_ALL" };
 
 /**
  * Parent parallel machine for the blog filter feature.
@@ -22,40 +25,39 @@ export const blogFilterMachine = setup({
     events: {} as BlogFilterEvent,
   },
 }).createMachine({
-  id: "blogFilter",
-  type: "parallel",
   context: {
     query: "",
     selectedTags: [],
   },
+  id: "blogFilter",
   states: {
     search: {
       initial: "idle",
       states: {
-        idle: {
-          on: {
-            SET_QUERY: {
-              guard: ({ event }) => event.query.trim() !== "",
-              target: "active",
-              actions: assign({ query: ({ event }) => event.query }),
-            },
-          },
-        },
         active: {
           on: {
+            CLEAR_ALL: {
+              actions: assign({ query: "" }),
+              target: "idle",
+            },
             SET_QUERY: [
               {
+                actions: assign({ query: "" }),
                 guard: ({ event }) => event.query.trim() === "",
                 target: "idle",
-                actions: assign({ query: "" }),
               },
               {
                 actions: assign({ query: ({ event }) => event.query }),
               },
             ],
-            CLEAR_ALL: {
-              target: "idle",
-              actions: assign({ query: "" }),
+          },
+        },
+        idle: {
+          on: {
+            SET_QUERY: {
+              actions: assign({ query: ({ event }) => event.query }),
+              guard: ({ event }) => event.query.trim() !== "",
+              target: "active",
             },
           },
         },
@@ -67,34 +69,39 @@ export const blogFilterMachine = setup({
         empty: {
           on: {
             TOGGLE_TAG: {
-              target: "filtering",
               actions: assign({ selectedTags: ({ event }) => [event.tag] }),
+              target: "filtering",
             },
           },
         },
         filtering: {
           on: {
+            CLEAR_ALL: {
+              actions: assign({ query: "", selectedTags: [] }),
+              target: "empty",
+            },
             TOGGLE_TAG: [
               {
                 // Last remaining tag is being removed — go back to empty
-                guard: ({ context, event }) => context.selectedTags.includes(event.tag) && context.selectedTags.length === 1,
-                target: "empty",
                 actions: assign({ selectedTags: [] }),
+                guard: ({ context, event }) =>
+                  context.selectedTags.includes(event.tag) && context.selectedTags.length === 1,
+                target: "empty",
               },
               {
                 // Toggle tag in or out of the selection
                 actions: assign({
-                  selectedTags: ({ context, event }) => (context.selectedTags.includes(event.tag) ? context.selectedTags.filter((t) => t !== event.tag) : [...context.selectedTags, event.tag]),
+                  selectedTags: ({ context, event }) =>
+                    context.selectedTags.includes(event.tag)
+                      ? context.selectedTags.filter((t) => t !== event.tag)
+                      : [...context.selectedTags, event.tag],
                 }),
               },
             ],
-            CLEAR_ALL: {
-              target: "empty",
-              actions: assign({ query: "", selectedTags: [] }),
-            },
           },
         },
       },
     },
   },
+  type: "parallel",
 });

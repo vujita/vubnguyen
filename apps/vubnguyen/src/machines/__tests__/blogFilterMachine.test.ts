@@ -1,6 +1,6 @@
 import { createActor } from "xstate";
 
-import { blogFilterMachine } from "../blogFilterMachine";
+import { blogFilterMachine } from "src/machines/blogFilterMachine";
 
 function startActor() {
   return createActor(blogFilterMachine).start();
@@ -24,7 +24,7 @@ describe("blogFilterMachine", () => {
   describe("search region", () => {
     it("transitions to active when SET_QUERY receives a non-empty string", () => {
       const actor = startActor();
-      actor.send({ type: "SET_QUERY", query: "ai" });
+      actor.send({ query: "ai", type: "SET_QUERY" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ search: "active" });
       expect(snapshot.context.query).toBe("ai");
@@ -33,15 +33,15 @@ describe("blogFilterMachine", () => {
 
     it("stays idle when SET_QUERY receives an empty string", () => {
       const actor = startActor();
-      actor.send({ type: "SET_QUERY", query: "   " });
+      actor.send({ query: "   ", type: "SET_QUERY" });
       expect(actor.getSnapshot().value).toMatchObject({ search: "idle" });
       actor.stop();
     });
 
     it("transitions back to idle when SET_QUERY is cleared", () => {
       const actor = startActor();
-      actor.send({ type: "SET_QUERY", query: "ai" });
-      actor.send({ type: "SET_QUERY", query: "" });
+      actor.send({ query: "ai", type: "SET_QUERY" });
+      actor.send({ query: "", type: "SET_QUERY" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ search: "idle" });
       expect(snapshot.context.query).toBe("");
@@ -50,8 +50,8 @@ describe("blogFilterMachine", () => {
 
     it("updates query while remaining active", () => {
       const actor = startActor();
-      actor.send({ type: "SET_QUERY", query: "ai" });
-      actor.send({ type: "SET_QUERY", query: "engineering" });
+      actor.send({ query: "ai", type: "SET_QUERY" });
+      actor.send({ query: "engineering", type: "SET_QUERY" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ search: "active" });
       expect(snapshot.context.query).toBe("engineering");
@@ -62,7 +62,7 @@ describe("blogFilterMachine", () => {
   describe("tagFilter region", () => {
     it("transitions to filtering when the first tag is toggled", () => {
       const actor = startActor();
-      actor.send({ type: "TOGGLE_TAG", tag: "ai" });
+      actor.send({ tag: "ai", type: "TOGGLE_TAG" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ tagFilter: "filtering" });
       expect(snapshot.context.selectedTags).toEqual(["ai"]);
@@ -71,8 +71,8 @@ describe("blogFilterMachine", () => {
 
     it("adds a second tag", () => {
       const actor = startActor();
-      actor.send({ type: "TOGGLE_TAG", tag: "ai" });
-      actor.send({ type: "TOGGLE_TAG", tag: "engineering" });
+      actor.send({ tag: "ai", type: "TOGGLE_TAG" });
+      actor.send({ tag: "engineering", type: "TOGGLE_TAG" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ tagFilter: "filtering" });
       expect(snapshot.context.selectedTags).toEqual(["ai", "engineering"]);
@@ -81,9 +81,9 @@ describe("blogFilterMachine", () => {
 
     it("removes one tag when multiple are selected", () => {
       const actor = startActor();
-      actor.send({ type: "TOGGLE_TAG", tag: "ai" });
-      actor.send({ type: "TOGGLE_TAG", tag: "engineering" });
-      actor.send({ type: "TOGGLE_TAG", tag: "ai" });
+      actor.send({ tag: "ai", type: "TOGGLE_TAG" });
+      actor.send({ tag: "engineering", type: "TOGGLE_TAG" });
+      actor.send({ tag: "ai", type: "TOGGLE_TAG" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ tagFilter: "filtering" });
       expect(snapshot.context.selectedTags).toEqual(["engineering"]);
@@ -92,8 +92,8 @@ describe("blogFilterMachine", () => {
 
     it("returns to empty when the last tag is removed", () => {
       const actor = startActor();
-      actor.send({ type: "TOGGLE_TAG", tag: "ai" });
-      actor.send({ type: "TOGGLE_TAG", tag: "ai" });
+      actor.send({ tag: "ai", type: "TOGGLE_TAG" });
+      actor.send({ tag: "ai", type: "TOGGLE_TAG" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toMatchObject({ tagFilter: "empty" });
       expect(snapshot.context.selectedTags).toEqual([]);
@@ -104,8 +104,8 @@ describe("blogFilterMachine", () => {
   describe("CLEAR_ALL", () => {
     it("resets both search and tagFilter regions simultaneously", () => {
       const actor = startActor();
-      actor.send({ type: "SET_QUERY", query: "ai" });
-      actor.send({ type: "TOGGLE_TAG", tag: "engineering" });
+      actor.send({ query: "ai", type: "SET_QUERY" });
+      actor.send({ tag: "engineering", type: "TOGGLE_TAG" });
       actor.send({ type: "CLEAR_ALL" });
       const snapshot = actor.getSnapshot();
       expect(snapshot.value).toEqual({ search: "idle", tagFilter: "empty" });
