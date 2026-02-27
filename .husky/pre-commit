@@ -16,6 +16,6 @@ pnpm run check
 # Generate state machine diagrams and stage the output
 echo "Generating state machine diagrams..."
 pnpm tsx scripts/generate-state-diagrams.ts
-git add docs/state-machines/
+git add apps/vubnguyen/src/machines/
 
 pnpm manypkg fix

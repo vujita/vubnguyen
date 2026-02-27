@@ -7,7 +7,7 @@
  *   3. @viz-js/viz  (Graphviz compiled to WebAssembly) renders DOT → SVG
  *   4. @resvg/resvg-js (Rust SVG renderer, pre-built binary) converts SVG → PNG
  *
- * Also writes .mmd files + docs/state-machines/README.md with per-machine
+ * Also writes .mmd files + apps/vubnguyen/src/machines/README.md with per-machine
  * documentation and mermaid blocks that GitHub renders natively.
  *
  * To add a new machine: export it from apps/vubnguyen/src/machines/index.ts.
@@ -22,7 +22,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
-const outputDir = join(rootDir, "docs/state-machines");
+const outputDir = join(rootDir, "apps/vubnguyen/src/machines");
 
 mkdirSync(outputDir, { recursive: true });
 
