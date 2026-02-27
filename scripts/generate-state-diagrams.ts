@@ -2,29 +2,61 @@
  * generate-state-diagrams.ts
  *
  * Completely browser-free PNG generation:
- *   1. Imports all machines from apps/vubnguyen/src/machines/index.ts
+ *   1. Discovers all machines/index.ts barrels under apps/ and packages/
  *   2. XState machine config → Graphviz DOT language
  *   3. @viz-js/viz  (Graphviz compiled to WebAssembly) renders DOT → SVG
  *   4. @resvg/resvg-js (Rust SVG renderer, pre-built binary) converts SVG → PNG
  *
- * Also writes .mmd files + apps/vubnguyen/src/machines/README.md with per-machine
- * documentation and mermaid blocks that GitHub renders natively.
- *
- * To add a new machine: export it from apps/vubnguyen/src/machines/index.ts.
+ * Convention: any machines/ directory under apps/ or packages/ whose index.ts
+ * exports XState v5 machines is discovered automatically. Diagrams (.mmd, .png)
+ * and a README.md summary are written into the same machines/ directory —
+ * keeping documentation colocated with the code.
  *
  * Usage: pnpm tsx scripts/generate-state-diagrams.ts
  */
 
-import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
-const outputDir = join(rootDir, "apps/vubnguyen/src/machines");
 
-mkdirSync(outputDir, { recursive: true });
+// ─── Machine barrel discovery ───────────────────────────────────────────────
+
+const SKIP_DIRS = new Set(["node_modules", ".git", "dist", ".next", "build", "out", ".turbo"]);
+
+/**
+ * Recursively walks apps/ and packages/ looking for directories named
+ * "machines" that contain an index.ts barrel. Each such directory is
+ * treated as an independent set of machines to diagram.
+ */
+function findMachinesDirs(root: string): string[] {
+  const results: string[] = [];
+
+  function walk(dir: string): void {
+    let entries: ReturnType<typeof readdirSync>;
+    try {
+      entries = readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      if (!entry.isDirectory() || SKIP_DIRS.has(entry.name)) continue;
+      const fullPath = join(dir, entry.name);
+      if (entry.name === "machines" && existsSync(join(fullPath, "index.ts"))) {
+        results.push(fullPath);
+      } else {
+        walk(fullPath);
+      }
+    }
+  }
+
+  walk(join(root, "apps"));
+  walk(join(root, "packages"));
+  return results;
+}
 
 // ─── Types (mirrors XState v5 config shape) ────────────────────────────────
 
@@ -172,11 +204,12 @@ async function dotToPng(dot: string): Promise<Buffer> {
 type DiagramEntry = { slug: string; mmd: string };
 type MachineEntry = { config: MachineConfig; diagrams: DiagramEntry[] };
 
-function buildReadme(machines: MachineEntry[]): string {
+function buildReadme(machines: MachineEntry[], machinesDir: string): string {
+  const relDir = relative(rootDir, machinesDir);
   const toc = machines.map(({ config }) => `- [${config.id}](#${config.id.toLowerCase()})`).join("\n");
 
   const sections = machines.map(({ config, diagrams }) => {
-    const sourceFile = `apps/vubnguyen/src/machines/${config.id}Machine.ts`;
+    const sourceFile = `${relDir}/${config.id}Machine.ts`;
     const isParallel = config.type === "parallel";
     const regionNames = isParallel ? Object.keys(config.states ?? {}) : [];
 
@@ -205,57 +238,73 @@ function buildReadme(machines: MachineEntry[]): string {
     return lines.join("\n");
   });
 
-  return ["# State Machine Diagrams", "", "> Auto-generated — do not edit directly.", "> To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`", "> To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.", ">", `> _Last generated: ${new Date().toISOString()}_`, "", "## Contents", "", toc, "", "---", "", ...sections].join("\n");
+  return ["# State Machine Diagrams", "", "> Auto-generated — do not edit directly.", "> To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`", `> To add a machine: export it from \`${relDir}/index.ts\`.`, ">", `> _Last generated: ${new Date().toISOString()}_`, "", "## Contents", "", toc, "", "---", "", ...sections].join("\n");
 }
 
 // ─── Main ──────────────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
-  // Import all registered machines from the barrel file.
-  // Adding a new export there is all it takes to include a new machine.
-  const barrel = await import("../apps/vubnguyen/src/machines/index");
+  const machinesDirs = findMachinesDirs(rootDir);
 
-  const discovered = Object.entries(barrel).filter(([, v]) => isMachineConfig(v)) as Array<[string, { config: MachineConfig }]>;
-
-  console.log(`\nFound ${discovered.length} machine(s): ${discovered.map(([k]) => k).join(", ")}\n`);
-
-  const machineEntries: MachineEntry[] = [];
-
-  for (const [, machine] of discovered) {
-    const config = machine.config;
-    const isParallel = config.type === "parallel";
-    const diagrams: DiagramEntry[] = [];
-
-    console.log(`Processing: ${config.id}${isParallel ? " (parallel)" : ""}`);
-
-    // Full machine diagram
-    diagrams.push({ slug: config.id, mmd: machineToMmd(config) });
-    const fullPng = await dotToPng(machineToDot(config));
-    writeFileSync(join(outputDir, `${config.id}.mmd`), machineToMmd(config) + "\n", "utf-8");
-    writeFileSync(join(outputDir, `${config.id}.png`), fullPng);
-    console.log(`  rendered ${config.id}.png`);
-
-    // Sub-diagrams for each parallel region
-    if (isParallel) {
-      for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
-        const mmd = regionToMmd(regionConfig);
-        diagrams.push({ slug: regionName, mmd });
-        const png = await dotToPng(regionToDot(regionName, regionConfig));
-        writeFileSync(join(outputDir, `${regionName}.mmd`), mmd + "\n", "utf-8");
-        writeFileSync(join(outputDir, `${regionName}.png`), png);
-        console.log(`  rendered ${regionName}.png`);
-      }
-    }
-
-    machineEntries.push({ config, diagrams });
-    console.log();
+  if (machinesDirs.length === 0) {
+    console.log("No machines/index.ts barrels found under apps/ or packages/.");
+    return;
   }
 
-  // Write README.md
-  writeFileSync(join(outputDir, "README.md"), buildReadme(machineEntries), "utf-8");
-  console.log("  wrote  README.md");
+  console.log(`\nFound ${machinesDirs.length} machines director${machinesDirs.length === 1 ? "y" : "ies"}.\n`);
 
-  console.log("\nDone.\n");
+  for (const machinesDir of machinesDirs) {
+    const relDir = relative(rootDir, machinesDir);
+    console.log(`── ${relDir}/index.ts`);
+
+    mkdirSync(machinesDir, { recursive: true });
+
+    const barrel = await import(pathToFileURL(join(machinesDir, "index.ts")).href);
+    const discovered = Object.entries(barrel).filter(([, v]) => isMachineConfig(v)) as Array<[string, { config: MachineConfig }]>;
+
+    if (discovered.length === 0) {
+      console.log("   no XState machines found — skipping.\n");
+      continue;
+    }
+
+    console.log(`   ${discovered.length} machine(s): ${discovered.map(([k]) => k).join(", ")}`);
+
+    const machineEntries: MachineEntry[] = [];
+
+    for (const [, machine] of discovered) {
+      const config = machine.config;
+      const isParallel = config.type === "parallel";
+      const diagrams: DiagramEntry[] = [];
+
+      console.log(`   processing: ${config.id}${isParallel ? " (parallel)" : ""}`);
+
+      // Full machine diagram
+      diagrams.push({ slug: config.id, mmd: machineToMmd(config) });
+      const fullPng = await dotToPng(machineToDot(config));
+      writeFileSync(join(machinesDir, `${config.id}.mmd`), machineToMmd(config) + "\n", "utf-8");
+      writeFileSync(join(machinesDir, `${config.id}.png`), fullPng);
+      console.log(`   rendered ${config.id}.png`);
+
+      // Sub-diagrams for each parallel region
+      if (isParallel) {
+        for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
+          const mmd = regionToMmd(regionConfig);
+          diagrams.push({ slug: regionName, mmd });
+          const png = await dotToPng(regionToDot(regionName, regionConfig));
+          writeFileSync(join(machinesDir, `${regionName}.mmd`), mmd + "\n", "utf-8");
+          writeFileSync(join(machinesDir, `${regionName}.png`), png);
+          console.log(`   rendered ${regionName}.png`);
+        }
+      }
+
+      machineEntries.push({ config, diagrams });
+    }
+
+    writeFileSync(join(machinesDir, "README.md"), buildReadme(machineEntries, machinesDir), "utf-8");
+    console.log(`   wrote  README.md\n`);
+  }
+
+  console.log("Done.\n");
 }
 
 main().catch((err: unknown) => {
