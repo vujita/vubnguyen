@@ -12,7 +12,7 @@ catalog:
   "@auth/core": 0.39.0
   "@auth/drizzle-adapter": 1.3.0
   "@babel/core": 7.29.0
-  "@babel/preset-env": 7.28.5
+  "@babel/preset-env": 7.29.0
   "@babel/preset-react": 7.28.5
   "@babel/preset-typescript": 7.28.5
   "@fortawesome/free-solid-svg-icons": 7.2.0
