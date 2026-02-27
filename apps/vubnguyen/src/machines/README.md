@@ -4,7 +4,7 @@
 > To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`
 > To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.
 >
-> _Last generated: 2026-02-27T10:16:07.713Z_
+> _Last generated: 2026-02-27T10:29:10.222Z_
 
 ## Contents
 

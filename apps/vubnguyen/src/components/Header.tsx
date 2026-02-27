@@ -32,6 +32,12 @@ export const Header: FC = () => {
           >
             {"Contact"}
           </Link>
+          <Link
+            className="font-code text-xs uppercase tracking-[0.1em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)] sm:tracking-[0.2em]"
+            href="/games/snake"
+          >
+            {"Snake"}
+          </Link>
           <ThemeSwitcher />
         </nav>
       </div>
