@@ -129,10 +129,7 @@ export default function SnakeGame() {
       </div>
 
       {/* Phaser canvas — responsive square, scales to fit viewport */}
-      <div
-        className="w-full max-w-[480px] border border-[var(--site-border)]"
-        style={{ aspectRatio: "1 / 1" }}
-      >
+      <div className="aspect-square w-full max-w-[480px] border border-[var(--site-border)]">
         <div
           className="h-full w-full"
           ref={containerRef}
@@ -140,7 +137,7 @@ export default function SnakeGame() {
       </div>
 
       {/* D-pad — touch steering */}
-      {(stateName === "playing" || stateName === "paused") && (
+      {stateName === "playing" || stateName === "paused" ? (
         <div className="mt-6 grid w-40 grid-cols-3 gap-1.5">
           <div />
           <button
@@ -176,12 +173,12 @@ export default function SnakeGame() {
           </button>
           <div />
         </div>
-      )}
+      ) : null}
 
       {/* Controls */}
       <div className="mt-6 flex w-full max-w-[480px] flex-col gap-4">
         {/* Difficulty selector — only on idle / dead */}
-        {(stateName === "idle" || stateName === "dead") && (
+        {stateName === "idle" || stateName === "dead" ? (
           <div className="flex items-center gap-3">
             <span className="font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"Difficulty"}</span>
             {(Object.keys(DIFFICULTY_SPEEDS) as Difficulty[]).map((d) => (
@@ -195,7 +192,7 @@ export default function SnakeGame() {
               </button>
             ))}
           </div>
-        )}
+        ) : null}
 
         {/* Action buttons */}
         <div className="flex gap-3">

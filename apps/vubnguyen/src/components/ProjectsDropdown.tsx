@@ -33,7 +33,7 @@ export function ProjectsDropdown() {
       >
         {"Projects"}
       </button>
-      {open && (
+      {open ? (
         <div className="absolute right-0 top-full z-10 mt-2 min-w-[120px] border border-[var(--site-border)] bg-[var(--site-surface)] py-1">
           {PROJECTS.map(({ href, label }) => (
             <Link
@@ -46,7 +46,7 @@ export function ProjectsDropdown() {
             </Link>
           ))}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
