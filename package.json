@@ -36,7 +36,6 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@manypkg/cli": "catalog:",
-    "@mermaid-js/mermaid-cli": "catalog:",
     "@xarc/run": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-prettier": "catalog:",
