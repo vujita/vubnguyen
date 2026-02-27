@@ -44,14 +44,15 @@ export default function SnakeGame() {
         backgroundColor: "#0d0c0a",
         height: CANVAS_H,
         parent: containerRef.current,
-        scale: {
-          autoCenter: Phaser.Scale.CENTER_BOTH,
-          mode: Phaser.Scale.FIT,
-        },
         scene: scene,
         type: Phaser.AUTO,
         width: CANVAS_W,
       });
+
+      // Make the canvas responsive without using Phaser's scale manager,
+      // which reads offsetHeight before CSS aspect-ratio resolves.
+      game.canvas.style.width = "100%";
+      game.canvas.style.height = "auto";
 
       gameRef.current = game;
       game.scene.start("SnakeScene", { send });
@@ -128,13 +129,11 @@ export default function SnakeGame() {
         {stateName === "dead" && <span className="font-code text-xs uppercase tracking-widest text-red-500">{"Game Over"}</span>}
       </div>
 
-      {/* Phaser canvas — responsive square, scales to fit viewport */}
-      <div className="aspect-square w-full max-w-[480px] border border-[var(--site-border)]">
-        <div
-          className="h-full w-full"
-          ref={containerRef}
-        />
-      </div>
+      {/* Phaser canvas — responsive, scales to fit viewport via CSS on canvas */}
+      <div
+        className="w-full max-w-[480px] border border-[var(--site-border)]"
+        ref={containerRef}
+      />
 
       {/* D-pad — touch steering */}
       {stateName === "playing" || stateName === "paused" ? (
