@@ -40,6 +40,7 @@
     "next": "catalog:",
     "next-auth": "catalog:",
     "next-themes": "catalog:",
+    "phaser": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "superjson": "catalog:",
