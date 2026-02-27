@@ -1,16 +1,20 @@
 /**
  * generate-state-diagrams.ts
  *
- * Traverses the blogFilterMachine config, emits Mermaid stateDiagram-v2 text
- * for each logical machine, then writes docs/state-machines/README.md with
- * fenced ```mermaid blocks that GitHub renders natively — no browser required.
+ * Completely browser-free PNG generation:
+ *   1. XState machine config → Graphviz DOT language
+ *   2. @viz-js/viz  (Graphviz compiled to WebAssembly) renders DOT → SVG
+ *   3. @resvg/resvg-js (Rust SVG renderer, pre-built binary) converts SVG → PNG
+ *
+ * Also writes .mmd files + docs/state-machines/README.md for GitHub's
+ * native mermaid renderer (no extra tooling needed in CI).
  *
  * Usage: pnpm tsx scripts/generate-state-diagrams.ts
  */
 
-import { mkdirSync, writeFileSync } from "fs";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { blogFilterMachine } from "../apps/vubnguyen/src/machines/blogFilterMachine";
 
@@ -39,28 +43,26 @@ type MachineConfig = {
   states?: Record<string, StateNodeConfig>;
 };
 
-// ─── Mermaid helpers ───────────────────────────────────────────────────────
+// ─── DOT language generation ───────────────────────────────────────────────
 
-function compoundStateLines(statesObj: Record<string, StateNodeConfig>, initial: string | undefined, indent: string): string[] {
+const DOT_GRAPH_ATTRS = ["rankdir=LR", 'bgcolor="white"', 'node [fontname="monospace" fontsize=13 margin="0.2,0.12" shape=box style="rounded,filled" fillcolor="#ECECFF" color="#9370DB"]', 'edge [fontname="monospace" fontsize=10 color="#555555"]'].join("\n  ");
+
+function compoundToDotLines(states: Record<string, StateNodeConfig>, initial: string | undefined, prefix: string, indent: string): string[] {
   const lines: string[] = [];
+  const q = (s: string) => `"${prefix}${s}"`;
 
   if (initial) {
-    lines.push(`${indent}[*] --> ${initial}`);
+    lines.push(`${indent}"${prefix}__start" [shape=point width=0.2 fillcolor=black color=black style=filled label=""];`);
+    lines.push(`${indent}"${prefix}__start" -> ${q(initial)};`);
   }
 
-  for (const [stateName, stateConfig] of Object.entries(statesObj)) {
-    if (stateConfig.states && Object.keys(stateConfig.states).length > 0) {
-      lines.push(`${indent}state ${stateName} {`);
-      lines.push(...compoundStateLines(stateConfig.states, stateConfig.initial, indent + "  "));
-      lines.push(`${indent}}`);
-    }
-
-    for (const [eventName, raw] of Object.entries(stateConfig.on ?? {})) {
-      const transitions = Array.isArray(raw) ? raw : [raw];
-      for (const t of transitions) {
-        const target = typeof t === "string" ? t : t.target;
-        const to = target ?? stateName;
-        lines.push(`${indent}${stateName} --> ${to} : ${eventName}`);
+  for (const [stateName, stateConfig] of Object.entries(states)) {
+    lines.push(`${indent}${q(stateName)} [label="${stateName}"];`);
+    for (const [event, raw] of Object.entries(stateConfig.on ?? {})) {
+      const arr = Array.isArray(raw) ? raw : [raw];
+      for (const t of arr) {
+        const target = typeof t === "string" ? t : (t as { target?: string }).target ?? stateName;
+        lines.push(`${indent}${q(stateName)} -> ${q(target)} [label="${event}"];`);
       }
     }
   }
@@ -68,60 +70,114 @@ function compoundStateLines(statesObj: Record<string, StateNodeConfig>, initial:
   return lines;
 }
 
-function parallelMachineDiagram(config: MachineConfig): string {
-  const lines = ["stateDiagram-v2"];
-  lines.push(`  state ${config.id} {`);
+function parallelMachineToDot(config: MachineConfig): string {
+  const lines = [`digraph "${config.id}" {`, `  ${DOT_GRAPH_ATTRS}`];
+  for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
+    lines.push(`  subgraph "cluster_${regionName}" {`);
+    lines.push(`    label="${regionName}" fontname="monospace" fontsize=14 style=rounded color="#aaaaaa"`);
+    lines.push(...compoundToDotLines(regionConfig.states ?? {}, regionConfig.initial, `${regionName}_`, "    "));
+    lines.push("  }");
+  }
+  lines.push("}");
+  return lines.join("\n");
+}
 
+function subMachineToDot(name: string, regionConfig: StateNodeConfig): string {
+  const lines = [`digraph "${name}" {`, `  ${DOT_GRAPH_ATTRS}`];
+  lines.push(...compoundToDotLines(regionConfig.states ?? {}, regionConfig.initial, "", "  "));
+  lines.push("}");
+  return lines.join("\n");
+}
+
+// ─── Mermaid text (for GitHub README native rendering) ────────────────────
+
+function compoundMmdLines(states: Record<string, StateNodeConfig>, initial: string | undefined, indent: string): string[] {
+  const lines: string[] = [];
+  if (initial) lines.push(`${indent}[*] --> ${initial}`);
+  for (const [stateName, stateConfig] of Object.entries(states)) {
+    if (stateConfig.states && Object.keys(stateConfig.states).length > 0) {
+      lines.push(`${indent}state ${stateName} {`);
+      lines.push(...compoundMmdLines(stateConfig.states, stateConfig.initial, indent + "  "));
+      lines.push(`${indent}}`);
+    }
+    for (const [event, raw] of Object.entries(stateConfig.on ?? {})) {
+      const arr = Array.isArray(raw) ? raw : [raw];
+      for (const t of arr) {
+        const target = typeof t === "string" ? t : (t as { target?: string }).target ?? stateName;
+        lines.push(`${indent}${stateName} --> ${target} : ${event}`);
+      }
+    }
+  }
+  return lines;
+}
+
+function parallelMachineMmd(config: MachineConfig): string {
+  const lines = ["stateDiagram-v2", `  state ${config.id} {`];
   const regions = Object.entries(config.states ?? {});
   regions.forEach(([regionName, regionConfig], i) => {
     lines.push(`    state ${regionName} {`);
-    lines.push(...compoundStateLines(regionConfig.states ?? {}, regionConfig.initial, "      "));
-    lines.push(`    }`);
-    if (i < regions.length - 1) {
-      lines.push("    --");
-    }
+    lines.push(...compoundMmdLines(regionConfig.states ?? {}, regionConfig.initial, "      "));
+    lines.push("    }");
+    if (i < regions.length - 1) lines.push("    --");
   });
-
   lines.push("  }");
   return lines.join("\n");
 }
 
-function subMachineDiagram(regionConfig: StateNodeConfig): string {
+function subMachineMmd(regionConfig: StateNodeConfig): string {
   const lines = ["stateDiagram-v2"];
-  lines.push(...compoundStateLines(regionConfig.states ?? {}, regionConfig.initial, "  "));
+  lines.push(...compoundMmdLines(regionConfig.states ?? {}, regionConfig.initial, "  "));
   return lines.join("\n");
 }
 
-// ─── Output ────────────────────────────────────────────────────────────────
+// ─── Render pipeline ───────────────────────────────────────────────────────
 
-function main(): void {
+async function dotToPng(dot: string): Promise<Buffer> {
+  const { instance } = await import("@viz-js/viz");
+  const { Resvg } = await import("@resvg/resvg-js");
+
+  const viz = await instance();
+  const svg = viz.renderString(dot, { format: "svg" });
+
+  const resvg = new Resvg(svg, {
+    fitTo: { mode: "width", value: 900 },
+    font: { loadSystemFonts: true },
+  });
+  return Buffer.from(resvg.render().asPng());
+}
+
+// ─── Main ──────────────────────────────────────────────────────────────────
+
+async function main(): Promise<void> {
   const config = blogFilterMachine.config as MachineConfig;
-
   console.log(`\nGenerating state diagrams for: ${config.id}\n`);
 
-  const diagrams: Array<{ name: string; mmd: string }> = [{ mmd: parallelMachineDiagram(config), name: config.id }];
+  const diagrams: Array<{ name: string; dot: string; mmd: string }> = [{ name: config.id, dot: parallelMachineToDot(config), mmd: parallelMachineMmd(config) }];
 
   for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
-    diagrams.push({ mmd: subMachineDiagram(regionConfig), name: regionName });
+    diagrams.push({ name: regionName, dot: subMachineToDot(regionName, regionConfig), mmd: subMachineMmd(regionConfig) });
   }
 
-  // Write individual .mmd files
-  for (const { name, mmd } of diagrams) {
-    const mmdPath = join(outputDir, `${name}.mmd`);
-    writeFileSync(mmdPath, mmd + "\n", "utf-8");
+  for (const { name, dot, mmd } of diagrams) {
+    writeFileSync(join(outputDir, `${name}.mmd`), mmd + "\n", "utf-8");
     console.log(`  wrote  ${name}.mmd`);
+
+    const png = await dotToPng(dot);
+    writeFileSync(join(outputDir, `${name}.png`), png);
+    console.log(`  rendered ${name}.png`);
   }
 
-  // Write README.md with fenced mermaid blocks — rendered natively by GitHub
+  // README.md with mermaid blocks for GitHub native rendering
   const readmeSections = diagrams.map(({ name, mmd }) => `## ${name}\n\n\`\`\`mermaid\n${mmd}\n\`\`\``);
-
   const readme = ["# State Machine Diagrams", "", "Auto-generated from XState machine configurations via `pnpm tsx scripts/generate-state-diagrams.ts`.", "GitHub renders these diagrams natively — no build step needed.", "", `<!-- generated: ${new Date().toISOString()} -->`, "", ...readmeSections.flatMap((s) => [s, ""])].join("\n");
 
-  const readmePath = join(outputDir, "README.md");
-  writeFileSync(readmePath, readme, "utf-8");
+  writeFileSync(join(outputDir, "README.md"), readme, "utf-8");
   console.log(`  wrote  README.md`);
 
   console.log("\nDone.\n");
 }
 
-main();
+main().catch((err: unknown) => {
+  console.error(err);
+  process.exit(1);
+});
