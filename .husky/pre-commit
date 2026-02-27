@@ -12,4 +12,10 @@ fi
 pnpm manypkg fix
 pnpm lint-staged
 pnpm run check
+
+# Generate state machine diagrams and stage the output
+echo "Generating state machine diagrams..."
+pnpm tsx scripts/generate-state-diagrams.ts
+git add docs/state-machines/
+
 pnpm manypkg fix

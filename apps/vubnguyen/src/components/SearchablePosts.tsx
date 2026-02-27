@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { useMachine } from "@xstate/react";
 import { matchSorter } from "match-sorter";
 import Highlight from "src/components/Highlight";
+import { blogFilterMachine } from "src/machines/blogFilterMachine";
 
 import { formatDate, postHref, type PostMeta } from "@vujita/vubnguyen/src/lib/posts";
 
@@ -12,9 +13,14 @@ interface SearchablePostsProps {
 }
 
 export default function SearchablePosts({ posts }: SearchablePostsProps) {
-  const [query, setQuery] = useState("");
+  const [snapshot, send] = useMachine(blogFilterMachine);
 
-  const filtered =
+  const { query, selectedTags } = snapshot.context;
+  const isFiltering = snapshot.matches({ tagFilter: "filtering" });
+
+  const allTags = Array.from(new Set(posts.flatMap((p) => p.tags))).sort();
+
+  const textFiltered =
     query.trim() === ""
       ? posts
       : matchSorter(posts, query, {
@@ -22,24 +28,57 @@ export default function SearchablePosts({ posts }: SearchablePostsProps) {
           threshold: matchSorter.rankings.CONTAINS,
         });
 
+  const filtered = selectedTags.length === 0 ? textFiltered : textFiltered.filter((p) => selectedTags.some((t) => p.tags.includes(t)));
+
   return (
     <>
+      {/* Tag filter bar */}
+      {allTags.length > 0 && (
+        <div className="mb-6 flex flex-wrap items-center gap-2">
+          {allTags.map((tag) => {
+            const active = selectedTags.includes(tag);
+            return (
+              <button
+                aria-pressed={active}
+                className={["font-code cursor-pointer rounded-sm px-2 py-0.5 text-[10px] uppercase tracking-widest transition-colors duration-150", active ? "bg-[var(--site-accent)] text-[var(--site-bg)]" : "bg-[var(--site-surface)] text-[var(--site-muted)] hover:text-[var(--site-text)]"].join(" ")}
+                key={tag}
+                onClick={() => send({ tag, type: "TOGGLE_TAG" })}
+                type="button"
+              >
+                {tag}
+              </button>
+            );
+          })}
+          {isFiltering ? (
+            <button
+              className="font-code cursor-pointer text-[10px] uppercase tracking-widest text-[var(--site-muted)] underline underline-offset-2 transition-colors duration-150 hover:text-[var(--site-accent)]"
+              onClick={() => send({ type: "CLEAR_ALL" })}
+              type="button"
+            >
+              {"Clear filters"}
+            </button>
+          ) : null}
+        </div>
+      )}
+
+      {/* Text search */}
       <div className="mb-10">
         <input
           aria-label="Search posts"
           className="font-code w-full border-b border-[var(--site-border)] bg-transparent py-3 text-sm text-[var(--site-text)] placeholder-[var(--site-muted)] outline-none transition-colors duration-200 focus:border-[var(--site-accent)]"
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => send({ query: e.target.value, type: "SET_QUERY" })}
           placeholder="Search by title, topic, or tag…"
           type="search"
           value={query}
         />
       </div>
 
+      {/* Post list */}
       <div className="divide-y divide-[var(--site-border)]">
         {filtered.length === 0 ? (
           <p className="font-code py-10 text-sm text-[var(--site-muted)]">
             {"\u201cNo posts matched \u201c"}
-            {query}
+            {query || selectedTags.join(", ")}
             {"\u201d."}
           </p>
         ) : (
@@ -69,17 +108,26 @@ export default function SearchablePosts({ posts }: SearchablePostsProps) {
                     </p>
                     {post.tags.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {post.tags.map((tag) => (
-                          <span
-                            className="font-code rounded-sm bg-[var(--site-surface)] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--site-muted)]"
-                            key={tag}
-                          >
-                            <Highlight
-                              query={query}
-                              text={tag}
-                            />
-                          </span>
-                        ))}
+                        {post.tags.map((tag) => {
+                          const active = selectedTags.includes(tag);
+                          return (
+                            <button
+                              aria-pressed={active}
+                              className={["font-code cursor-pointer rounded-sm px-2 py-0.5 text-[10px] uppercase tracking-widest transition-colors duration-150", active ? "bg-[var(--site-accent)] text-[var(--site-bg)]" : "bg-[var(--site-surface)] text-[var(--site-muted)] hover:text-[var(--site-text)]"].join(" ")}
+                              key={tag}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                send({ tag, type: "TOGGLE_TAG" });
+                              }}
+                              type="button"
+                            >
+                              <Highlight
+                                query={query}
+                                text={tag}
+                              />
+                            </button>
+                          );
+                        })}
                       </div>
                     )}
                   </div>

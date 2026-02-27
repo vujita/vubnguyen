@@ -36,6 +36,8 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@manypkg/cli": "catalog:",
+    "@resvg/resvg-js": "catalog:",
+    "@viz-js/viz": "catalog:",
     "@xarc/run": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-prettier": "catalog:",
