@@ -2,12 +2,15 @@
  * generate-state-diagrams.ts
  *
  * Completely browser-free PNG generation:
- *   1. XState machine config → Graphviz DOT language
- *   2. @viz-js/viz  (Graphviz compiled to WebAssembly) renders DOT → SVG
- *   3. @resvg/resvg-js (Rust SVG renderer, pre-built binary) converts SVG → PNG
+ *   1. Imports all machines from apps/vubnguyen/src/machines/index.ts
+ *   2. XState machine config → Graphviz DOT language
+ *   3. @viz-js/viz  (Graphviz compiled to WebAssembly) renders DOT → SVG
+ *   4. @resvg/resvg-js (Rust SVG renderer, pre-built binary) converts SVG → PNG
  *
- * Also writes .mmd files + docs/state-machines/README.md for GitHub's
- * native mermaid renderer (no extra tooling needed in CI).
+ * Also writes .mmd files + docs/state-machines/README.md with per-machine
+ * documentation and mermaid blocks that GitHub renders natively.
+ *
+ * To add a new machine: export it from apps/vubnguyen/src/machines/index.ts.
  *
  * Usage: pnpm tsx scripts/generate-state-diagrams.ts
  */
@@ -15,8 +18,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-
-import { blogFilterMachine } from "../apps/vubnguyen/src/machines/blogFilterMachine";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,10 +39,17 @@ type StateNodeConfig = {
 
 type MachineConfig = {
   id: string;
+  initial?: string;
   type?: string;
   context?: unknown;
   states?: Record<string, StateNodeConfig>;
 };
+
+// ─── Machine discovery ─────────────────────────────────────────────────────
+
+function isMachineConfig(value: unknown): value is { config: MachineConfig } {
+  return value !== null && typeof value === "object" && "config" in value && typeof (value as Record<string, unknown>).config === "object" && (value as { config: MachineConfig }).config !== null && "id" in (value as { config: MachineConfig }).config;
+}
 
 // ─── DOT language generation ───────────────────────────────────────────────
 
@@ -70,19 +78,25 @@ function compoundToDotLines(states: Record<string, StateNodeConfig>, initial: st
   return lines;
 }
 
-function parallelMachineToDot(config: MachineConfig): string {
+function machineToDot(config: MachineConfig): string {
   const lines = [`digraph "${config.id}" {`, `  ${DOT_GRAPH_ATTRS}`];
-  for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
-    lines.push(`  subgraph "cluster_${regionName}" {`);
-    lines.push(`    label="${regionName}" fontname="monospace" fontsize=14 style=rounded color="#aaaaaa"`);
-    lines.push(...compoundToDotLines(regionConfig.states ?? {}, regionConfig.initial, `${regionName}_`, "    "));
-    lines.push("  }");
+
+  if (config.type === "parallel") {
+    for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
+      lines.push(`  subgraph "cluster_${regionName}" {`);
+      lines.push(`    label="${regionName}" fontname="monospace" fontsize=14 style=rounded color="#aaaaaa"`);
+      lines.push(...compoundToDotLines(regionConfig.states ?? {}, regionConfig.initial, `${regionName}_`, "    "));
+      lines.push("  }");
+    }
+  } else {
+    lines.push(...compoundToDotLines(config.states ?? {}, config.initial, "", "  "));
   }
+
   lines.push("}");
   return lines.join("\n");
 }
 
-function subMachineToDot(name: string, regionConfig: StateNodeConfig): string {
+function regionToDot(name: string, regionConfig: StateNodeConfig): string {
   const lines = [`digraph "${name}" {`, `  ${DOT_GRAPH_ATTRS}`];
   lines.push(...compoundToDotLines(regionConfig.states ?? {}, regionConfig.initial, "", "  "));
   lines.push("}");
@@ -111,20 +125,27 @@ function compoundMmdLines(states: Record<string, StateNodeConfig>, initial: stri
   return lines;
 }
 
-function parallelMachineMmd(config: MachineConfig): string {
-  const lines = ["stateDiagram-v2", `  state ${config.id} {`];
-  const regions = Object.entries(config.states ?? {});
-  regions.forEach(([regionName, regionConfig], i) => {
-    lines.push(`    state ${regionName} {`);
-    lines.push(...compoundMmdLines(regionConfig.states ?? {}, regionConfig.initial, "      "));
-    lines.push("    }");
-    if (i < regions.length - 1) lines.push("    --");
-  });
-  lines.push("  }");
+function machineToMmd(config: MachineConfig): string {
+  const lines = ["stateDiagram-v2"];
+
+  if (config.type === "parallel") {
+    lines.push(`  state ${config.id} {`);
+    const regions = Object.entries(config.states ?? {});
+    regions.forEach(([regionName, regionConfig], i) => {
+      lines.push(`    state ${regionName} {`);
+      lines.push(...compoundMmdLines(regionConfig.states ?? {}, regionConfig.initial, "      "));
+      lines.push("    }");
+      if (i < regions.length - 1) lines.push("    --");
+    });
+    lines.push("  }");
+  } else {
+    lines.push(...compoundMmdLines(config.states ?? {}, config.initial, "  "));
+  }
+
   return lines.join("\n");
 }
 
-function subMachineMmd(regionConfig: StateNodeConfig): string {
+function regionToMmd(regionConfig: StateNodeConfig): string {
   const lines = ["stateDiagram-v2"];
   lines.push(...compoundMmdLines(regionConfig.states ?? {}, regionConfig.initial, "  "));
   return lines.join("\n");
@@ -146,33 +167,93 @@ async function dotToPng(dot: string): Promise<Buffer> {
   return Buffer.from(resvg.render().asPng());
 }
 
+// ─── README generation ─────────────────────────────────────────────────────
+
+type DiagramEntry = { slug: string; mmd: string };
+type MachineEntry = { config: MachineConfig; diagrams: DiagramEntry[] };
+
+function buildReadme(machines: MachineEntry[]): string {
+  const toc = machines.map(({ config }) => `- [${config.id}](#${config.id.toLowerCase()})`).join("\n");
+
+  const sections = machines.map(({ config, diagrams }) => {
+    const sourceFile = `apps/vubnguyen/src/machines/${config.id}Machine.ts`;
+    const isParallel = config.type === "parallel";
+    const regionNames = isParallel ? Object.keys(config.states ?? {}) : [];
+
+    const lines: string[] = [
+      `## ${config.id}`,
+      "",
+      `**Source:** \`${sourceFile}\`  `,
+      isParallel
+        ? `**Type:** parallel — regions: ${regionNames.map((r) => `\`${r}\``).join(", ")}`
+        : `**Type:** compound — states: ${Object.keys(config.states ?? {})
+            .map((s) => `\`${s}\``)
+            .join(", ")}`,
+      "",
+    ];
+
+    if (isParallel) {
+      const [full, ...regions] = diagrams;
+      lines.push("### Full machine", "", "```mermaid", full.mmd, "```", "");
+      for (const { slug, mmd } of regions) {
+        lines.push(`### \`${slug}\` region`, "", "```mermaid", mmd, "```", "");
+      }
+    } else {
+      lines.push("```mermaid", diagrams[0].mmd, "```", "");
+    }
+
+    return lines.join("\n");
+  });
+
+  return ["# State Machine Diagrams", "", "> Auto-generated — do not edit directly.", "> To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`", "> To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.", ">", `> _Last generated: ${new Date().toISOString()}_`, "", "## Contents", "", toc, "", "---", "", ...sections].join("\n");
+}
+
 // ─── Main ──────────────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
-  const config = blogFilterMachine.config as MachineConfig;
-  console.log(`\nGenerating state diagrams for: ${config.id}\n`);
+  // Import all registered machines from the barrel file.
+  // Adding a new export there is all it takes to include a new machine.
+  const barrel = await import("../apps/vubnguyen/src/machines/index");
 
-  const diagrams: Array<{ name: string; dot: string; mmd: string }> = [{ name: config.id, dot: parallelMachineToDot(config), mmd: parallelMachineMmd(config) }];
+  const discovered = Object.entries(barrel).filter(([, v]) => isMachineConfig(v)) as Array<[string, { config: MachineConfig }]>;
 
-  for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
-    diagrams.push({ name: regionName, dot: subMachineToDot(regionName, regionConfig), mmd: subMachineMmd(regionConfig) });
+  console.log(`\nFound ${discovered.length} machine(s): ${discovered.map(([k]) => k).join(", ")}\n`);
+
+  const machineEntries: MachineEntry[] = [];
+
+  for (const [, machine] of discovered) {
+    const config = machine.config;
+    const isParallel = config.type === "parallel";
+    const diagrams: DiagramEntry[] = [];
+
+    console.log(`Processing: ${config.id}${isParallel ? " (parallel)" : ""}`);
+
+    // Full machine diagram
+    diagrams.push({ slug: config.id, mmd: machineToMmd(config) });
+    const fullPng = await dotToPng(machineToDot(config));
+    writeFileSync(join(outputDir, `${config.id}.mmd`), machineToMmd(config) + "\n", "utf-8");
+    writeFileSync(join(outputDir, `${config.id}.png`), fullPng);
+    console.log(`  rendered ${config.id}.png`);
+
+    // Sub-diagrams for each parallel region
+    if (isParallel) {
+      for (const [regionName, regionConfig] of Object.entries(config.states ?? {})) {
+        const mmd = regionToMmd(regionConfig);
+        diagrams.push({ slug: regionName, mmd });
+        const png = await dotToPng(regionToDot(regionName, regionConfig));
+        writeFileSync(join(outputDir, `${regionName}.mmd`), mmd + "\n", "utf-8");
+        writeFileSync(join(outputDir, `${regionName}.png`), png);
+        console.log(`  rendered ${regionName}.png`);
+      }
+    }
+
+    machineEntries.push({ config, diagrams });
+    console.log();
   }
 
-  for (const { name, dot, mmd } of diagrams) {
-    writeFileSync(join(outputDir, `${name}.mmd`), mmd + "\n", "utf-8");
-    console.log(`  wrote  ${name}.mmd`);
-
-    const png = await dotToPng(dot);
-    writeFileSync(join(outputDir, `${name}.png`), png);
-    console.log(`  rendered ${name}.png`);
-  }
-
-  // README.md with mermaid blocks for GitHub native rendering
-  const readmeSections = diagrams.map(({ name, mmd }) => `## ${name}\n\n\`\`\`mermaid\n${mmd}\n\`\`\``);
-  const readme = ["# State Machine Diagrams", "", "Auto-generated from XState machine configurations via `pnpm tsx scripts/generate-state-diagrams.ts`.", "GitHub renders these diagrams natively — no build step needed.", "", `<!-- generated: ${new Date().toISOString()} -->`, "", ...readmeSections.flatMap((s) => [s, ""])].join("\n");
-
-  writeFileSync(join(outputDir, "README.md"), readme, "utf-8");
-  console.log(`  wrote  README.md`);
+  // Write README.md
+  writeFileSync(join(outputDir, "README.md"), buildReadme(machineEntries), "utf-8");
+  console.log("  wrote  README.md");
 
   console.log("\nDone.\n");
 }

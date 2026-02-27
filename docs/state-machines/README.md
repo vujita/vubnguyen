@@ -1,11 +1,23 @@
 # State Machine Diagrams
 
-Auto-generated from XState machine configurations via `pnpm tsx scripts/generate-state-diagrams.ts`.
-GitHub renders these diagrams natively — no build step needed.
+> Auto-generated — do not edit directly.
+> To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`
+> To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.
+>
+> _Last generated: 2026-02-27T03:00:12.186Z_
 
-<!-- generated: 2026-02-27T02:42:01.114Z -->
+## Contents
+
+- [blogFilter](#blogfilter)
+
+---
 
 ## blogFilter
+
+**Source:** `apps/vubnguyen/src/machines/blogFilterMachine.ts`  
+**Type:** parallel — regions: `search`, `tagFilter`
+
+### Full machine
 
 ```mermaid
 stateDiagram-v2
@@ -28,7 +40,7 @@ stateDiagram-v2
   }
 ```
 
-## search
+### `search` region
 
 ```mermaid
 stateDiagram-v2
@@ -39,7 +51,7 @@ stateDiagram-v2
   idle --> active : SET_QUERY
 ```
 
-## tagFilter
+### `tagFilter` region
 
 ```mermaid
 stateDiagram-v2
