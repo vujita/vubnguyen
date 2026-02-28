@@ -3,3 +3,4 @@
 // file — adding an export is all it takes to include a new machine.
 export { blogFilterMachine } from "./blogFilterMachine";
 export { snakeMachine } from "../app/games/snake/snakeMachine";
+export { spaceInvadersMachine } from "../app/games/space-invaders/spaceInvadersMachine";

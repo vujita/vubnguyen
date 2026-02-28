@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const DIAGRAM = `stateDiagram-v2
+const DEFAULT_DIAGRAM = `stateDiagram-v2
   direction LR
   [*] --> IDLE
   IDLE --> PLANNING
@@ -13,7 +13,14 @@ const DIAGRAM = `stateDiagram-v2
   COMPLETE --> [*]
   FAILED --> [*]`;
 
-export default function StateMachineDiagram() {
+const DEFAULT_CAPTION = "The system is always in exactly one state — transitions are enforced by the orchestration layer, not inferred by the model";
+
+interface Props {
+  caption?: string;
+  diagram?: string;
+}
+
+export default function StateMachineDiagram({ caption = DEFAULT_CAPTION, diagram = DEFAULT_DIAGRAM }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cancelledRef = useRef(false);
 
@@ -47,7 +54,7 @@ export default function StateMachineDiagram() {
       });
 
       const id = `sm-${Math.random().toString(36).slice(2, 8)}`;
-      const { svg } = await mermaid.render(id, DIAGRAM);
+      const { svg } = await mermaid.render(id, diagram);
 
       if (containerRef.current) {
         containerRef.current.innerHTML = svg;
@@ -57,15 +64,15 @@ export default function StateMachineDiagram() {
     return () => {
       cancelledRef.current = true;
     };
-  }, []);
+  }, [diagram]);
 
   return (
-    <figure className="my-10 rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-6">
+    <figure className="my-6 rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-6">
       <div
         className="mx-auto w-full max-w-[640px] overflow-x-auto [&_svg]:mx-auto [&_svg]:max-w-full"
         ref={containerRef}
       />
-      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"The system is always in exactly one state — transitions are enforced by the orchestration layer, not inferred by the model"}</figcaption>
+      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{caption}</figcaption>
     </figure>
   );
 }

@@ -4,12 +4,13 @@
 > To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`
 > To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.
 >
-> _Last generated: 2026-02-28T07:23:48.745Z_
+> _Last generated: 2026-02-28T09:06:29.673Z_
 
 ## Contents
 
 - [blogFilter](#blogfilter)
 - [snake](#snake)
+- [spaceInvaders](#spaceinvaders)
 
 ---
 
@@ -80,4 +81,37 @@ stateDiagram-v2
   playing --> playing : STEER
   playing --> dead : TICK
   playing --> playing : TICK
+```
+
+## spaceInvaders
+
+**Source:** `apps/vubnguyen/src/machines/spaceInvadersMachine.ts`  
+**Type:** compound — states: `gameOver`, `idle`, `paused`, `playing`
+
+```mermaid
+stateDiagram-v2
+  [*] --> idle
+  gameOver --> idle : RESET
+  idle --> playing : START
+  paused --> idle : RESET
+  paused --> playing.active : RESUME
+  state playing {
+    [*] --> active
+    active --> active : FIRE_PLAYER
+    active --> active : INPUT_LEFT_DOWN
+    active --> active : INPUT_LEFT_UP
+    active --> active : INPUT_RIGHT_DOWN
+    active --> active : INPUT_RIGHT_UP
+    active --> #spaceInvaders.gameOver : TICK
+    active --> playerDying : TICK
+    active --> levelComplete : TICK
+    active --> active : TICK
+    levelComplete --> active : TICK
+    levelComplete --> levelComplete : TICK
+    playerDying --> #spaceInvaders.gameOver : TICK
+    playerDying --> active : TICK
+    playerDying --> playerDying : TICK
+  }
+  playing --> paused : PAUSE
+  playing --> idle : RESET
 ```
