@@ -13,6 +13,12 @@ const projects = [
     label: "Snake",
     tags: ["XState", "Phaser 3", "TypeScript"],
   },
+  {
+    description: "Classic Space Invaders built with XState v5 state machines and Phaser 3 for rendering. Pixel-art invaders, UFO mystery ship, destructible shields, and progressive difficulty. Fully playable on mobile with on-screen controls.",
+    href: "/games/space-invaders",
+    label: "Space Invaders",
+    tags: ["XState", "Phaser 3", "TypeScript", "Mobile"],
+  },
 ] as const;
 
 export default function ProjectsPage() {
