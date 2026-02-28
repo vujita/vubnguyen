@@ -2,3 +2,4 @@
 // The diagram generator (scripts/generate-state-diagrams.ts) imports from this
 // file — adding an export is all it takes to include a new machine.
 export { blogFilterMachine } from "./blogFilterMachine";
+export { snakeMachine } from "../app/games/snake/snakeMachine";
