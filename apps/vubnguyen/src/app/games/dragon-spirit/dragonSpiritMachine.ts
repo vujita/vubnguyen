@@ -153,6 +153,7 @@ export interface DragonSpiritContext {
   bossVx: number;
   bossVy: number;
   bossFiringTimer: number;
+  bossDefeated: boolean; // latches true when boss HP hits 0, cleared on new stage
 
   // Id counter
   nextId: number;
@@ -162,6 +163,8 @@ export type DragonSpiritEvent =
   | { type: "START" }
   | { type: "TICK" }
   | { keys: HeldKeys; type: "SET_KEYS" }
+  | { type: "FIRE" }
+  | { type: "FIRE_DOWN" }
   | { type: "PAUSE" }
   | { type: "RESUME" }
   | { type: "RESET" };
@@ -372,6 +375,7 @@ function initialContext(): DragonSpiritContext {
     // Boss
     bossActive: false,
     bossSpawned: false,
+    bossDefeated: false,
     bossHP: 0,
     bossBullets: [],
     bossFiringTimer: 0,
@@ -458,7 +462,7 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
   }).filter((e) => e.y < CANVAS_H + 60 && e.y > -120);
 
   // ── Boss movement ────────────────────────────────────────────────────────
-  let { bossActive, bossSpawned, bossHP, bossX, bossY, bossVx, bossVy, maxBossHP } = ctx;
+  let { bossActive, bossSpawned, bossDefeated, bossHP, bossX, bossY, bossVx, bossVy, maxBossHP } = ctx;
   let bossBullets = [...ctx.bossBullets];
   let bossFiringTimer = ctx.bossFiringTimer;
 
@@ -551,6 +555,7 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
         hitEnemyIds.add(bossEnemy.id);
         score += 10000;
         bossActive = false;
+        bossDefeated = true;
       } else {
         const idx = enemies.findIndex((x) => x.id === bossEnemy.id);
         if (idx >= 0) enemies[idx] = { ...enemies[idx]!, hp: newHP };
@@ -654,6 +659,7 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
   return {
     bossActive,
     bossSpawned,
+    bossDefeated,
     bossHP,
     bossBullets,
     bossFiringTimer,
@@ -719,6 +725,25 @@ export const dragonSpiritMachine = setup({
         SET_KEYS: {
           actions: assign({ heldKeys: ({ event }) => event.keys }),
         },
+        // Manual fire: extra fireball burst (resets auto-fire timer)
+        FIRE: {
+          actions: assign(({ context }: { context: DragonSpiritContext }) => {
+            const spread = context.heads === 1 ? [0] : context.heads === 2 ? [-18, 18] : [-30, 0, 30];
+            const newBullets = spread.map((ox) => ({
+              id: nextId(),
+              x: context.dragonX + ox,
+              y: context.dragonY - 14,
+            }));
+            return { bullets: [...context.bullets, ...newBullets], fireTimer: 0 };
+          }),
+        },
+        // Manual bomb: drop ground bomb immediately (resets auto-bomb timer)
+        FIRE_DOWN: {
+          actions: assign(({ context }: { context: DragonSpiritContext }) => ({
+            bombs: [...context.bombs, { id: nextId(), radius: 0, x: context.dragonX, y: GROUND_Y + 8 }],
+            bombTimer: 0,
+          })),
+        },
         TICK: [
           // Player out of lives → game over
           {
@@ -736,7 +761,7 @@ export const dragonSpiritMachine = setup({
               stageClearTimer: 0,
             })),
             guard: ({ context }: { context: DragonSpiritContext }) =>
-              context.bossSpawned && !context.bossActive,
+              context.bossDefeated,
             target: "stageClear",
           },
           // Normal tick

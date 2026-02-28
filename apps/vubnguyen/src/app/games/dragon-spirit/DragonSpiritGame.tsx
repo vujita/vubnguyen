@@ -26,6 +26,13 @@ const actionBtn =
 const muteBtn =
   "font-code border border-[var(--site-border)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-muted)] transition-colors duration-150 hover:text-[var(--site-accent)]";
 
+// Large attack buttons (right side of D-pad)
+const fireBtn =
+  "font-code flex h-16 w-20 select-none items-center justify-center border border-[var(--site-accent)] text-xs uppercase tracking-widest text-[var(--site-accent)] touch-manipulation transition-colors duration-100 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
+
+const bombBtn =
+  "font-code flex h-16 w-20 select-none items-center justify-center border border-orange-500 text-xs uppercase tracking-widest text-orange-400 touch-manipulation transition-colors duration-100 active:bg-orange-500 active:text-[var(--site-bg)]";
+
 // ─── Small SVG dragon icon for lives display ──────────────────────────────────
 
 function DragonIcon() {
@@ -201,6 +208,16 @@ export default function DragonSpiritGame() {
         if (isPlaying) send({ type: "PAUSE" });
         if (isPaused) send({ type: "RESUME" });
       }
+
+      if (isPlaying) {
+        if (e.code === "Space" || e.key === " ") {
+          e.preventDefault();
+          send({ type: "FIRE" });
+        }
+        if (e.code === "KeyZ" || e.code === "KeyX" || e.key === "z" || e.key === "x") {
+          send({ type: "FIRE_DOWN" });
+        }
+      }
     };
 
     const onKeyUp = (e: KeyboardEvent) => {
@@ -341,14 +358,13 @@ export default function DragonSpiritGame() {
         )}
       </div>
 
-      {/* ── Mobile D-pad controls (shown while playing or paused) ─────────── */}
+      {/* ── Mobile controls (shown while playing or paused) ─────────────── */}
       {(isPlaying || isPaused) && (
         <div
-          className="mt-5 flex w-full max-w-[400px] items-end justify-between"
-          // Release all directions if pointer leaves the whole dpad area
+          className="mt-5 flex w-full max-w-[400px] items-center justify-between"
           onPointerLeave={releaseAll}
         >
-          {/* D-pad */}
+          {/* D-pad (left) */}
           <div className="grid grid-cols-3 gap-1.5">
             <div />
             <button {...dpadProps("up")}>{"▲"}</button>
@@ -363,48 +379,58 @@ export default function DragonSpiritGame() {
             <div />
           </div>
 
-          {/* Action buttons: pause and power-up legend */}
-          <div className="flex flex-col items-end gap-2">
-            {isPlaying && (
+          {/* Attack buttons (right) */}
+          {isPlaying && (
+            <div className="flex flex-col items-center gap-2">
               <button
-                className={muteBtn}
-                onClick={() => send({ type: "PAUSE" })}
+                className={fireBtn}
+                onPointerDown={() => send({ type: "FIRE" })}
                 type="button"
               >
-                {"Pause"}
+                {"Fire"}
               </button>
-            )}
-            {isPaused && (
-              <>
-                <button
-                  className={actionBtn}
-                  onClick={() => send({ type: "RESUME" })}
-                  type="button"
-                >
-                  {"Resume"}
-                </button>
-                <button
-                  className={muteBtn}
-                  onClick={() => { releaseAll(); send({ type: "RESET" }); }}
-                  type="button"
-                >
-                  {"Reset"}
-                </button>
-              </>
-            )}
-
-            {/* Power-up legend */}
-            <div className="mt-1 flex flex-col items-end gap-1">
-              <span className="font-code text-[8px] uppercase tracking-widest text-[var(--site-muted)]">
-                <span className="mr-1 inline-block h-2 w-2 rounded-full bg-blue-400" />
-                {"Blue = +head"}
-              </span>
-              <span className="font-code text-[8px] uppercase tracking-widest text-[var(--site-muted)]">
-                <span className="mr-1 inline-block h-2 w-2 rounded-full bg-red-400" />
-                {"Red = +power"}
-              </span>
+              <button
+                className={bombBtn}
+                onPointerDown={() => send({ type: "FIRE_DOWN" })}
+                type="button"
+              >
+                {"Bomb"}
+              </button>
             </div>
-          </div>
+          )}
+
+          {/* Pause / resume controls (right, when paused) */}
+          {isPaused && (
+            <div className="flex flex-col items-end gap-2">
+              <button
+                className={actionBtn}
+                onClick={() => send({ type: "RESUME" })}
+                type="button"
+              >
+                {"Resume"}
+              </button>
+              <button
+                className={muteBtn}
+                onClick={() => { releaseAll(); send({ type: "RESET" }); }}
+                type="button"
+              >
+                {"Reset"}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Pause button row (below controls, only when playing) */}
+      {isPlaying && (
+        <div className="mt-2 flex w-full max-w-[400px] justify-end">
+          <button
+            className={muteBtn}
+            onClick={() => send({ type: "PAUSE" })}
+            type="button"
+          >
+            {"Pause"}
+          </button>
         </div>
       )}
 
@@ -443,7 +469,7 @@ export default function DragonSpiritGame() {
 
         {/* Keyboard hint */}
         <p className="font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">
-          {"Arrow keys or WASD to fly · Auto-fire · P or Esc to pause"}
+          {"Arrow keys or WASD to fly · Space = Fire · Z/X = Bomb · P or Esc to pause"}
         </p>
 
         {/* Power-up reference (desktop) */}
