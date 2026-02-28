@@ -198,11 +198,11 @@ function makeWaves(stage: number): Wave[] {
 
     if (i >= 2) {
       const groundCount = 1 + Math.min(stage - 1, 2);
-      // Spawn off-screen: alternate left and right sides so enemies walk in
+      // Alternate sides: even waves enter from left, odd from right
       const fromLeft = i % 2 === 0;
       defs.push({
         count: groundCount,
-        pattern: fromLeft ? "patrol" : "patrol_left",
+        pattern: "patrol",
         spread: 40,
         type: groundType,
         x: fromLeft ? -50 : CANVAS_W + 50,
@@ -278,6 +278,11 @@ function spawnWave(wave: Wave, stage: number): Enemy[] {
     const spread = def.spread ?? 0;
     for (let i = 0; i < count; i++) {
       const offsetX = count === 1 ? 0 : -spread / 2 + (spread / (count - 1)) * i;
+      const spawnX = def.x + offsetX;
+      // Ground enemies march straight across: direction determined by spawn side
+      const initialVx = enemyIsGround(def.type)
+        ? spawnX < 0 ? 1.2 + stage * 0.05 : -(1.2 + stage * 0.05)
+        : 0;
       enemies.push({
         hp: enemyBaseHP(def.type, stage),
         id: nextId(),
@@ -285,9 +290,9 @@ function spawnWave(wave: Wave, stage: number): Enemy[] {
         pattern: def.pattern,
         patternT: 0,
         type: def.type,
-        vx: 0,
+        vx: initialVx,
         vy: 0.8 + stage * 0.06,
-        x: def.x + offsetX,
+        x: spawnX,
         y: def.y,
       });
     }
@@ -317,15 +322,9 @@ function applyEnemyPattern(e: Enemy, dragonX: number, dragonY: number, t: number
     case "dive":
       if (t < 30) return { vx: (dragonX - e.x) * 0.03, vy: e.vy };
       return { vx: 0, vy: e.vy };
-    case "patrol": {
-      const dir = Math.sign(Math.sin(t * 0.04)) || 1;
-      return { vx: dir * 1.2, vy: 0 };
-    }
-    case "patrol_left": {
-      // Starts moving left (enters from right side of screen)
-      const dir = Math.sign(Math.sin(t * 0.04 + Math.PI)) || -1;
-      return { vx: dir * 1.2, vy: 0 };
-    }
+    case "patrol":
+      // Ground enemies march at constant speed; direction baked into vx at spawn
+      return { vx: e.vx, vy: 0 };
     case "orbit":
       return {
         vx: Math.cos(t * 0.06) * 1.8,
@@ -467,7 +466,12 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
   let enemies = ctx.enemies.map((e) => {
     const { vx, vy } = applyEnemyPattern(e, dragonX, dragonY, e.patternT + 1);
     return { ...e, patternT: e.patternT + 1, vx, vy, x: e.x + vx, y: e.y + vy };
-  }).filter((e) => e.y < CANVAS_H + 60 && e.y > -120);
+  }).filter((e) => {
+    if (e.y >= CANVAS_H + 60 || e.y <= -120) return false;
+    // Ground enemies march across; cull once they exit the far side
+    if (e.isGround && (e.x < -100 || e.x > CANVAS_W + 100)) return false;
+    return true;
+  });
 
   // ── Boss movement ────────────────────────────────────────────────────────
   let { bossActive, bossSpawned, bossDefeated, bossHP, bossX, bossY, bossVx, bossVy, maxBossHP } = ctx;
