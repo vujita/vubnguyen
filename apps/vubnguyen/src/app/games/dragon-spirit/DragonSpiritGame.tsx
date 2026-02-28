@@ -143,8 +143,12 @@ export default function DragonSpiritGame() {
         width: CANVAS_W,
       });
 
+      game.canvas.style.display = "block";
+      game.canvas.style.position = "absolute";
+      game.canvas.style.top = "0";
+      game.canvas.style.left = "0";
       game.canvas.style.width = "100%";
-      game.canvas.style.height = "auto";
+      game.canvas.style.height = "100%";
 
       gameRef.current = game;
       game.scene.start("DragonSpiritScene");
@@ -305,8 +309,9 @@ export default function DragonSpiritGame() {
 
       {/* ── Phaser canvas + overlays ───────────────────────────────────── */}
       <div
-        className="relative w-full max-w-[400px] border border-[var(--site-border)]"
+        className="relative w-full max-w-[400px] overflow-hidden border border-[var(--site-border)]"
         ref={containerRef}
+        style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}
       >
         {isIdle && (
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-5">

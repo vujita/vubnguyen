@@ -45,10 +45,11 @@ const C = {
 // ─── Scene ────────────────────────────────────────────────────────────────────
 
 export class DragonSpiritScene extends Phaser.Scene {
-  private bgGraphics!: Phaser.GameObjects.Graphics;
-  private entityGraphics!: Phaser.GameObjects.Graphics;
-  private fxGraphics!: Phaser.GameObjects.Graphics;
+  private bgGraphics: Phaser.GameObjects.Graphics | undefined;
+  private entityGraphics: Phaser.GameObjects.Graphics | undefined;
+  private fxGraphics: Phaser.GameObjects.Graphics | undefined;
   private stars: Array<{ x: number; y: number; b: number }> = [];
+  private pendingSnapshot: { ctx: DragonSpiritContext; stateName: string } | null = null;
 
   constructor() {
     super({ key: "DragonSpiritScene" });
@@ -67,9 +68,21 @@ export class DragonSpiritScene extends Phaser.Scene {
         y: Math.random() * GROUND_Y,
       });
     }
+
+    // Flush any snapshot that arrived before graphics were ready
+    if (this.pendingSnapshot) {
+      const { ctx, stateName } = this.pendingSnapshot;
+      this.pendingSnapshot = null;
+      this.updateFromSnapshot(ctx, stateName);
+    }
   }
 
   updateFromSnapshot(ctx: DragonSpiritContext, stateName: string): void {
+    if (!this.bgGraphics || !this.entityGraphics || !this.fxGraphics) {
+      this.pendingSnapshot = { ctx, stateName };
+      return;
+    }
+
     const stageDef = STAGES[ctx.stage - 1]!;
 
     this.bgGraphics.clear();
