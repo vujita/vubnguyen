@@ -37,7 +37,11 @@ export default function SnakeGame() {
       const Phaser = (await import("phaser")).default;
       const { SnakeScene } = await import("src/app/games/snake/PhaserScene");
 
-      if (cancelledRef.current || !containerRef.current) return;
+      // Also guard against gameRef already set: in React StrictMode the effect
+      // runs twice (mount→cleanup→mount). The first async may resolve *after*
+      // cancelledRef is reset by the second effect, so we must re-check here
+      // to prevent two Phaser instances being created in the same container.
+      if (cancelledRef.current || !containerRef.current || gameRef.current) return;
 
       const scene = new SnakeScene();
       const game = new Phaser.Game({
