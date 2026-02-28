@@ -8,10 +8,8 @@ import { type SpaceInvaderScene } from "@vujita/vubnguyen/src/app/games/space-in
 import {
   CANVAS_H,
   CANVAS_W,
-  SPACE_INVADERS_DIAGRAM,
   spaceInvadersMachine,
 } from "@vujita/vubnguyen/src/app/games/space-invaders/spaceInvadersMachine";
-import StateMachineDiagram from "@vujita/vubnguyen/src/components/StateMachineDiagram";
 
 type SceneInstance = InstanceType<typeof SpaceInvaderScene>;
 
@@ -267,21 +265,6 @@ export default function SpaceInvadersGame() {
         </p>
       </div>
 
-      {/* State machine diagram */}
-      <div className="mt-12 w-full max-w-[480px]">
-        <details className="group">
-          <summary className="font-code cursor-pointer list-none text-[10px] uppercase tracking-[0.3em] text-[var(--site-muted)] hover:text-[var(--site-accent)]">
-            <span className="mr-2 inline-block transition-transform group-open:rotate-90">{"▶"}</span>
-            {"State Machine Diagram"}
-          </summary>
-          <div className="mt-4">
-            <StateMachineDiagram
-              caption="The game logic lives entirely in the XState machine — Phaser only renders what the machine says"
-              diagram={SPACE_INVADERS_DIAGRAM}
-            />
-          </div>
-        </details>
-      </div>
     </div>
   );
 }

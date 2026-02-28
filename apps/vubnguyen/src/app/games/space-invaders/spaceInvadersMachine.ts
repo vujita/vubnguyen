@@ -57,27 +57,6 @@ const LEVEL_TICKS = 90; // 1.5 s at 60 fps
 // ─── Score table ─────────────────────────────────────────────────────────────
 export const ROW_POINTS = [30, 20, 20, 10, 10] as const; // row 0 = top squid
 
-// ─── Mermaid diagram (rendered on the game page) ─────────────────────────────
-export const SPACE_INVADERS_DIAGRAM = `stateDiagram-v2
-  direction LR
-  [*] --> idle
-  idle --> playing : START
-  playing --> paused : PAUSE
-  playing --> gameOver : RESET
-  paused --> playing : RESUME
-  paused --> idle : RESET
-  gameOver --> idle : RESET
-  state playing {
-    [*] --> active
-    active --> playerDying : TICK [playerHit]
-    active --> levelComplete : TICK [allCleared]
-    active --> gameOver : TICK [hasInvaded]
-    active --> active : TICK
-    playerDying --> active : TICK [livesRemain]
-    playerDying --> gameOver : TICK [noLivesLeft]
-    levelComplete --> active : TICK [ready]
-  }`;
-
 // ─── Types ────────────────────────────────────────────────────────────────────
 export interface Bullet {
   x: number;
