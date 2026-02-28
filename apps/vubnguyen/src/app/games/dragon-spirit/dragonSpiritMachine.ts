@@ -144,6 +144,7 @@ export interface DragonSpiritContext {
 
   // Boss
   bossActive: boolean;
+  bossSpawned: boolean; // true once spawned — prevents respawn after defeat
   bossHP: number;
   maxBossHP: number;
   bossBullets: Bullet[];
@@ -370,6 +371,7 @@ function initialContext(): DragonSpiritContext {
   return {
     // Boss
     bossActive: false,
+    bossSpawned: false,
     bossHP: 0,
     bossBullets: [],
     bossFiringTimer: 0,
@@ -456,7 +458,7 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
   }).filter((e) => e.y < CANVAS_H + 60 && e.y > -120);
 
   // ── Boss movement ────────────────────────────────────────────────────────
-  let { bossActive, bossHP, bossX, bossY, bossVx, bossVy, maxBossHP } = ctx;
+  let { bossActive, bossSpawned, bossHP, bossX, bossY, bossVx, bossVy, maxBossHP } = ctx;
   let bossBullets = [...ctx.bossBullets];
   let bossFiringTimer = ctx.bossFiringTimer;
 
@@ -495,8 +497,9 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
     nextWaveIndex++;
   }
 
-  // ── Spawn boss ───────────────────────────────────────────────────────────
-  if (!bossActive && scrollY >= stageDef.bossScrollY) {
+  // ── Spawn boss (only once per stage) ────────────────────────────────────
+  if (!bossSpawned && scrollY >= stageDef.bossScrollY) {
+    bossSpawned = true;
     bossActive = true;
     const boss = spawnBoss(ctx.stage, nextId());
     maxBossHP = boss.hp;
@@ -650,6 +653,7 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
 
   return {
     bossActive,
+    bossSpawned,
     bossHP,
     bossBullets,
     bossFiringTimer,
@@ -725,21 +729,14 @@ export const dragonSpiritMachine = setup({
             },
             target: "gameOver",
           },
-          // Boss defeated and scroll past boss trigger → stage clear
+          // Boss defeated → stage clear
           {
-            actions: assign(({ context }: { context: DragonSpiritContext }) => {
-              const next = tick(context);
-              return { ...next, stageClearTimer: 0 };
-            }),
-            guard: ({ context }: { context: DragonSpiritContext }) => {
-              const stageDef = STAGES[context.stage - 1]!;
-              const next = tick(context);
-              return (
-                !next.bossActive &&
-                context.bossActive === false &&
-                (next.scrollY ?? 0) >= stageDef.stageLength
-              );
-            },
+            actions: assign(({ context }: { context: DragonSpiritContext }) => ({
+              ...tick(context),
+              stageClearTimer: 0,
+            })),
+            guard: ({ context }: { context: DragonSpiritContext }) =>
+              context.bossSpawned && !context.bossActive,
             target: "stageClear",
           },
           // Normal tick
