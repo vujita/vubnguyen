@@ -4,14 +4,16 @@ import { useEffect, useRef } from "react";
 
 const DIAGRAM = `stateDiagram-v2
   direction LR
-  [*] --> IDLE
-  IDLE --> PLANNING
-  PLANNING --> EXECUTING
-  EXECUTING --> VERIFYING
-  VERIFYING --> COMPLETE
-  EXECUTING --> FAILED : error
-  COMPLETE --> [*]
-  FAILED --> [*]`;
+  [*] --> idle
+  idle --> playing : START
+  playing --> paused : PAUSE
+  playing --> dead : TICK [willCollide]
+  playing --> playing : TICK
+  playing --> playing : STEER
+  playing --> idle : RESET
+  paused --> playing : RESUME
+  paused --> idle : RESET
+  dead --> idle : RESET`;
 
 export default function StateMachineDiagram() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,7 +67,7 @@ export default function StateMachineDiagram() {
         className="mx-auto w-full max-w-[640px] overflow-x-auto [&_svg]:mx-auto [&_svg]:max-w-full"
         ref={containerRef}
       />
-      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"The system is always in exactly one state — transitions are enforced by the orchestration layer, not inferred by the model"}</figcaption>
+      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"Snake game state machine — four states, six event types, every transition explicit"}</figcaption>
     </figure>
   );
 }
