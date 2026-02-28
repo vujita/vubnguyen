@@ -4,11 +4,12 @@
 > To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`
 > To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.
 >
-> _Last generated: 2026-02-28T06:14:30.235Z_
+> _Last generated: 2026-02-28T07:23:48.745Z_
 
 ## Contents
 
 - [blogFilter](#blogfilter)
+- [snake](#snake)
 
 ---
 
@@ -60,4 +61,23 @@ stateDiagram-v2
   filtering --> empty : CLEAR_ALL
   filtering --> empty : TOGGLE_TAG
   filtering --> filtering : TOGGLE_TAG
+```
+
+## snake
+
+**Source:** `apps/vubnguyen/src/machines/snakeMachine.ts`  
+**Type:** compound — states: `dead`, `idle`, `paused`, `playing`
+
+```mermaid
+stateDiagram-v2
+  [*] --> idle
+  dead --> idle : RESET
+  idle --> playing : START
+  paused --> idle : RESET
+  paused --> playing : RESUME
+  playing --> paused : PAUSE
+  playing --> idle : RESET
+  playing --> playing : STEER
+  playing --> dead : TICK
+  playing --> playing : TICK
 ```

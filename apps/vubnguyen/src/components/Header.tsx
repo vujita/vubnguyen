@@ -1,7 +1,6 @@
 import { type FC } from "react";
 import Link from "next/link";
 
-import { ProjectsDropdown } from "@vujita/vubnguyen/src/components/ProjectsDropdown";
 import ThemeSwitcher from "@vujita/vubnguyen/src/components/theme-switcher";
 
 export const Header: FC = () => {
@@ -33,7 +32,12 @@ export const Header: FC = () => {
           >
             {"Contact"}
           </Link>
-          <ProjectsDropdown />
+          <Link
+            className="font-code text-xs uppercase tracking-[0.1em] text-[var(--site-muted)] transition-colors duration-200 hover:text-[var(--site-accent)] sm:tracking-[0.2em]"
+            href="/projects"
+          >
+            {"Projects"}
+          </Link>
           <ThemeSwitcher />
         </nav>
       </div>
