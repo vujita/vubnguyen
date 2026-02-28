@@ -124,8 +124,10 @@ export class DragonSpiritScene extends Phaser.Scene {
       this.drawPowerup(p);
     }
 
-    // ── Enemies ────────────────────────────────────────────────────────────
+    // ── Enemies (only draw when on screen) ─────────────────────────────────
     for (const e of ctx.enemies) {
+      if (e.y < -60 || e.y > CANVAS_H + 60) continue;
+      if (e.x < -60 || e.x > CANVAS_W + 60) continue;
       this.drawEnemy(e);
     }
 

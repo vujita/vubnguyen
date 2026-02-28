@@ -197,12 +197,15 @@ function makeWaves(stage: number): Wave[] {
     });
 
     if (i >= 2) {
+      const groundCount = 1 + Math.min(stage - 1, 2);
+      // Spawn off-screen: alternate left and right sides so enemies walk in
+      const fromLeft = i % 2 === 0;
       defs.push({
-        count: 1 + Math.min(stage - 1, 2),
-        pattern: "patrol",
-        spread: 80,
+        count: groundCount,
+        pattern: fromLeft ? "patrol" : "patrol_left",
+        spread: 40,
         type: groundType,
-        x: CANVAS_W / 2,
+        x: fromLeft ? -50 : CANVAS_W + 50,
         y: GROUND_Y + 16,
       });
     }
@@ -316,6 +319,11 @@ function applyEnemyPattern(e: Enemy, dragonX: number, dragonY: number, t: number
       return { vx: 0, vy: e.vy };
     case "patrol": {
       const dir = Math.sign(Math.sin(t * 0.04)) || 1;
+      return { vx: dir * 1.2, vy: 0 };
+    }
+    case "patrol_left": {
+      // Starts moving left (enters from right side of screen)
+      const dir = Math.sign(Math.sin(t * 0.04 + Math.PI)) || -1;
       return { vx: dir * 1.2, vy: 0 };
     }
     case "orbit":
@@ -524,6 +532,8 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
     for (const e of enemies) {
       if (e.isGround) continue;
       if (hitEnemyIds.has(e.id)) continue;
+      // Skip enemies that haven't entered the visible canvas yet
+      if (e.y < 0 || e.y > CANVAS_H) continue;
       if (Math.abs(b.x - e.x) < 22 && Math.abs(b.y - e.y) < 18) {
         hitBulletIds.add(b.id);
         const newHP = e.hp - 1;
@@ -547,7 +557,7 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
   for (const b of bullets) {
     if (hitBulletIds.has(b.id)) continue;
     const bossEnemy = enemies.find((e) => e.type === "boss");
-    if (bossEnemy && Math.abs(b.x - bossEnemy.x) < 42 && Math.abs(b.y - bossEnemy.y) < 38) {
+    if (bossEnemy && bossEnemy.y >= 0 && bossEnemy.y <= CANVAS_H && Math.abs(b.x - bossEnemy.x) < 42 && Math.abs(b.y - bossEnemy.y) < 38) {
       hitBulletIds.add(b.id);
       const newHP = bossEnemy.hp - 1;
       bossHP = newHP;
@@ -568,6 +578,8 @@ function tick(ctx: DragonSpiritContext): Partial<DragonSpiritContext> {
     for (const e of enemies) {
       if (!e.isGround) continue;
       if (hitEnemyIds.has(e.id)) continue;
+      // Skip ground enemies that haven't walked onto screen yet
+      if (e.x < -50 || e.x > CANVAS_W + 50) continue;
       if (circleRect(bm.x, bm.y, bm.radius, e.x - 16, e.y - 16, 32, 32)) {
         const newHP = e.hp - 1;
         if (newHP <= 0) {
