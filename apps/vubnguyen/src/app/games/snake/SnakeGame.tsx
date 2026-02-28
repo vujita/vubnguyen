@@ -60,7 +60,10 @@ export default function SnakeGame() {
 
       gameRef.current = game;
       game.scene.start("SnakeScene", { send });
-      sceneRef.current = game.scene.getScene("SnakeScene") as SnakeSceneInstance;
+      // Use the scene object directly — game.scene.getScene() returns null here
+      // because Phaser's SceneManager only moves scenes from _pending to the
+      // active list on the first requestAnimationFrame, which hasn't fired yet.
+      sceneRef.current = scene;
     })();
 
     return () => {
