@@ -19,6 +19,12 @@ const projects = [
     label: "Space Invaders",
     tags: ["XState", "Phaser 3", "TypeScript", "Mobile"],
   },
+  {
+    description: "Dragon Spirit tribute — vertical-scrolling dragon shooter across 9 stages. Dual-plane shooting (fireballs vs ground bombs), multi-head power-ups that widen your shot spread, stage bosses with HP bars, and scrolling terrain. Built with XState v5 and Phaser 3. Fully playable on mobile with D-pad controls.",
+    href: "/games/dragon-spirit",
+    label: "Dragon Spirit",
+    tags: ["XState", "Phaser 3", "TypeScript", "Mobile"],
+  },
 ] as const;
 
 export default function ProjectsPage() {
