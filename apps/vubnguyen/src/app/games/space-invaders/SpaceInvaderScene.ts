@@ -220,7 +220,7 @@ export class SpaceInvaderScene extends Phaser.Scene {
 
       // Select bitmap and colour by row
       let bitmap: [number[][], number[][]] = CRAB;
-      let color = C.invaderCrab;
+      let color: number = C.invaderCrab;
       if (inv.row === 0) {
         bitmap = SQUID;
         color = C.invaderSquid;
