@@ -17,17 +17,17 @@ test("capture console errors and verify snake renders", async ({ page }) => {
 
   // Log canvas info
   const canvasInfo = await page.evaluate(() => {
-    const canvas = document.querySelector("canvas") as HTMLCanvasElement | null;
+    const canvas = document.querySelector("canvas");
     if (!canvas) return "no canvas";
     return {
-      width: canvas.width,
-      height: canvas.height,
-      styleWidth: canvas.style.width,
-      styleHeight: canvas.style.height,
-      clientWidth: canvas.clientWidth,
       clientHeight: canvas.clientHeight,
-      offsetWidth: canvas.offsetWidth,
+      clientWidth: canvas.clientWidth,
+      height: canvas.height,
       offsetHeight: canvas.offsetHeight,
+      offsetWidth: canvas.offsetWidth,
+      styleHeight: canvas.style.height,
+      styleWidth: canvas.style.width,
+      width: canvas.width,
     };
   });
   console.log("Canvas info (idle):", JSON.stringify(canvasInfo));
@@ -41,7 +41,7 @@ test("capture console errors and verify snake renders", async ({ page }) => {
 
   // Check canvas pixel content — sample a few pixels where the snake should be
   const pixelData = await page.evaluate(() => {
-    const canvas = document.querySelector("canvas") as HTMLCanvasElement | null;
+    const canvas = document.querySelector("canvas");
     if (!canvas) return null;
     const ctx = canvas.getContext("2d");
     if (!ctx) return "no 2d context (likely WebGL)";
@@ -49,18 +49,18 @@ test("capture console errors and verify snake renders", async ({ page }) => {
     const x = 10 * 24 + 12; // center of cell
     const y = 10 * 24 + 12;
     const pixel = ctx.getImageData(x, y, 1, 1).data;
-    return { x, y, r: pixel[0], g: pixel[1], b: pixel[2], a: pixel[3] };
+    return { a: pixel[3], b: pixel[2], g: pixel[1], r: pixel[0], x, y };
   });
   console.log("Snake head pixel (10,10):", JSON.stringify(pixelData));
 
   // Check pixel at background (should be dark)
   const bgPixel = await page.evaluate(() => {
-    const canvas = document.querySelector("canvas") as HTMLCanvasElement | null;
+    const canvas = document.querySelector("canvas");
     if (!canvas) return null;
     const ctx = canvas.getContext("2d");
     if (!ctx) return "no 2d context (likely WebGL)";
     const pixel = ctx.getImageData(0, 0, 1, 1).data;
-    return { r: pixel[0], g: pixel[1], b: pixel[2], a: pixel[3] };
+    return { a: pixel[3], b: pixel[2], g: pixel[1], r: pixel[0] };
   });
   console.log("Background pixel (0,0):", JSON.stringify(bgPixel));
 
