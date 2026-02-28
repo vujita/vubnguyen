@@ -27,7 +27,7 @@ export interface SnakeContext {
   snake: Point[];
 }
 
-export type SnakeEvent = { type: "PAUSE" } | { type: "RESET" } | { type: "RESUME" } | { difficulty: Difficulty; type: "START" } | { direction: Direction; type: "STEER" };
+export type SnakeEvent = { type: "PAUSE" } | { type: "RESET" } | { type: "RESUME" } | { type: "TICK" } | { difficulty: Difficulty; type: "START" } | { direction: Direction; type: "STEER" };
 
 function nextHead(head: Point, dir: Direction): Point {
   const moves: Record<Direction, Point> = {
@@ -63,9 +63,6 @@ function randomFood(snake: Point[]): Point {
 }
 
 export const snakeMachine = setup({
-  delays: {
-    tickDelay: ({ context }: { context: SnakeContext }) => DIFFICULTY_SPEEDS[context.difficulty],
-  },
   guards: {
     willCollide: ({ context }: { context: SnakeContext }) => {
       const head = context.snake[0];
@@ -124,8 +121,19 @@ export const snakeMachine = setup({
       },
     },
     playing: {
-      after: {
-        tickDelay: [
+      on: {
+        PAUSE: { target: "paused" },
+        RESET: { target: "idle" },
+        STEER: {
+          actions: assign({
+            pendingDirection: ({ context, event }: { context: SnakeContext; event: SnakeEvent }) => {
+              if (event.type !== "STEER") return context.pendingDirection;
+              if (areOpposite(context.direction, event.direction)) return context.pendingDirection;
+              return event.direction;
+            },
+          }),
+        },
+        TICK: [
           { guard: "willCollide", target: "dead" },
           {
             actions: assign(({ context }: { context: SnakeContext }) => {
@@ -142,22 +150,8 @@ export const snakeMachine = setup({
                 snake: newSnake,
               };
             }),
-            target: "playing",
           },
         ],
-      },
-      on: {
-        PAUSE: { target: "paused" },
-        RESET: { target: "idle" },
-        STEER: {
-          actions: assign({
-            pendingDirection: ({ context, event }: { context: SnakeContext; event: SnakeEvent }) => {
-              if (event.type !== "STEER") return context.pendingDirection;
-              if (areOpposite(context.direction, event.direction)) return context.pendingDirection;
-              return event.direction;
-            },
-          }),
-        },
       },
     },
   },

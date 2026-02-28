@@ -74,6 +74,19 @@ export default function SnakeGame() {
     };
   }, [send]);
 
+  // Game clock: drive the state machine forward while playing.
+  // Using setInterval here instead of XState's `after` to avoid a known
+  // interaction with React 18 StrictMode that silently drops the re-scheduled
+  // timer after the first tick.
+  useEffect(() => {
+    if (stateName !== "playing") return;
+    const delay = DIFFICULTY_SPEEDS[context.difficulty];
+    const id = setInterval(() => {
+      send({ type: "TICK" });
+    }, delay);
+    return () => clearInterval(id);
+  }, [stateName, context.difficulty, send]);
+
   // Sync every XState snapshot to the Phaser renderer.
   useEffect(() => {
     sceneRef.current?.updateFromSnapshot(context, stateName);

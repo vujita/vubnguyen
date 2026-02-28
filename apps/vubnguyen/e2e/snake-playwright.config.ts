@@ -33,6 +33,14 @@ export default defineConfig({
         launchOptions: LAUNCH_OPTS,
       },
     },
+    {
+      name: "movement",
+      testMatch: "**/snake-movement.spec.ts",
+      use: {
+        ...devices["Desktop Chrome"],
+        launchOptions: LAUNCH_OPTS,
+      },
+    },
   ],
   reporter: [["list"], ["json", { outputFile: "playwright-report/snake-results.json" }]],
   testDir: ".",
