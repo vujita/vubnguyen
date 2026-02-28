@@ -72,9 +72,7 @@ export default function StateMachineDiagram({ caption = DEFAULT_CAPTION, diagram
         className="mx-auto w-full max-w-[640px] overflow-x-auto [&_svg]:mx-auto [&_svg]:max-w-full"
         ref={containerRef}
       />
-      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">
-        {caption}
-      </figcaption>
+      <figcaption className="font-code mt-3 text-center text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{caption}</figcaption>
     </figure>
   );
 }

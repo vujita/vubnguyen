@@ -105,17 +105,7 @@ export interface SpaceInvadersContext {
   ufoTimer: number;
 }
 
-export type SpaceInvadersEvent =
-  | { type: "FIRE_PLAYER" }
-  | { type: "INPUT_LEFT_DOWN" }
-  | { type: "INPUT_LEFT_UP" }
-  | { type: "INPUT_RIGHT_DOWN" }
-  | { type: "INPUT_RIGHT_UP" }
-  | { type: "PAUSE" }
-  | { type: "RESET" }
-  | { type: "RESUME" }
-  | { type: "START" }
-  | { type: "TICK" };
+export type SpaceInvadersEvent = { type: "FIRE_PLAYER" } | { type: "INPUT_LEFT_DOWN" } | { type: "INPUT_LEFT_UP" } | { type: "INPUT_RIGHT_DOWN" } | { type: "INPUT_RIGHT_UP" } | { type: "PAUSE" } | { type: "RESET" } | { type: "RESUME" } | { type: "START" } | { type: "TICK" };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -306,8 +296,7 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
     if (shield.health <= 0) return shield;
     let health = shield.health;
 
-    const inShield = (bx: number, by: number): boolean =>
-      bx >= shield.x && bx <= shield.x + SHIELD_W && by >= SHIELD_TOP_Y && by <= SHIELD_TOP_Y + SHIELD_H;
+    const inShield = (bx: number, by: number): boolean => bx >= shield.x && bx <= shield.x + SHIELD_W && by >= SHIELD_TOP_Y && by <= SHIELD_TOP_Y + SHIELD_H;
 
     if (playerBullet) {
       const bullet = playerBullet;
@@ -364,14 +353,7 @@ export const spaceInvadersMachine = setup({
     },
     levelTimerDone: ({ context }: { context: SpaceInvadersContext }) => context.levelTimer <= 0,
     noLivesLeft: ({ context }: { context: SpaceInvadersContext }) => context.lives <= 0,
-    playerHit: ({ context }: { context: SpaceInvadersContext }) =>
-      context.invaderBullets.some(
-        (b) =>
-          b.x >= context.playerX - PLAYER_W / 2 &&
-          b.x <= context.playerX + PLAYER_W / 2 &&
-          b.y >= PLAYER_Y - PLAYER_H / 2 &&
-          b.y <= PLAYER_Y + PLAYER_H / 2,
-      ),
+    playerHit: ({ context }: { context: SpaceInvadersContext }) => context.invaderBullets.some((b) => b.x >= context.playerX - PLAYER_W / 2 && b.x <= context.playerX + PLAYER_W / 2 && b.y >= PLAYER_Y - PLAYER_H / 2 && b.y <= PLAYER_Y + PLAYER_H / 2),
   },
   types: {
     context: {} as SpaceInvadersContext,
@@ -421,8 +403,7 @@ export const spaceInvadersMachine = setup({
             },
             INPUT_LEFT_UP: {
               actions: assign({
-                playerMoving: ({ context }: { context: SpaceInvadersContext }) =>
-                  context.playerMoving === -1 ? (0 as const) : context.playerMoving,
+                playerMoving: ({ context }: { context: SpaceInvadersContext }) => (context.playerMoving === -1 ? (0 as const) : context.playerMoving),
               }),
             },
             INPUT_RIGHT_DOWN: {
@@ -430,8 +411,7 @@ export const spaceInvadersMachine = setup({
             },
             INPUT_RIGHT_UP: {
               actions: assign({
-                playerMoving: ({ context }: { context: SpaceInvadersContext }) =>
-                  context.playerMoving === 1 ? (0 as const) : context.playerMoving,
+                playerMoving: ({ context }: { context: SpaceInvadersContext }) => (context.playerMoving === 1 ? (0 as const) : context.playerMoving),
               }),
             },
             TICK: [
@@ -460,9 +440,7 @@ export const spaceInvadersMachine = setup({
           on: {
             TICK: [
               {
-                actions: assign(({ context }: { context: SpaceInvadersContext }) =>
-                  buildInitialContext(context.level + 1, context.score, context.hiScore, context.lives),
-                ),
+                actions: assign(({ context }: { context: SpaceInvadersContext }) => buildInitialContext(context.level + 1, context.score, context.hiScore, context.lives)),
                 guard: "levelTimerDone",
                 target: "active",
               },

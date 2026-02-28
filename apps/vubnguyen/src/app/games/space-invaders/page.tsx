@@ -1,5 +1,4 @@
 import { type Metadata } from "next";
-
 import SpaceInvadersLoader from "src/app/games/space-invaders/SpaceInvadersLoader";
 
 export const metadata: Metadata = {
