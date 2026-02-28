@@ -2,33 +2,14 @@
 // the static Phaser import is never evaluated on the server.
 import Phaser from "phaser";
 
-import {
-  CANVAS_H,
-  CANVAS_W,
-  COL_GAP,
-  COLS,
-  INVADER_H,
-  INVADER_W,
-  MAX_INVADER_BULLETS,
-  PLAYER_H,
-  PLAYER_W,
-  PLAYER_Y,
-  ROW_GAP,
-  ROWS,
-  SHIELD_H,
-  SHIELD_MAX_HEALTH,
-  SHIELD_TOP_Y,
-  SHIELD_W,
-  UFO_Y,
-  type SpaceInvadersContext,
-  type SpaceInvadersEvent,
-} from "@vujita/vubnguyen/src/app/games/space-invaders/spaceInvadersMachine";
+import { CANVAS_H, CANVAS_W, COL_GAP, COLS, INVADER_H, INVADER_W, MAX_INVADER_BULLETS, PLAYER_H, PLAYER_W, PLAYER_Y, ROW_GAP, ROWS, SHIELD_H, SHIELD_MAX_HEALTH, SHIELD_TOP_Y, SHIELD_W, UFO_Y, type SpaceInvadersContext, type SpaceInvadersEvent } from "@vujita/vubnguyen/src/app/games/space-invaders/spaceInvadersMachine";
 
 type SendFn = (event: SpaceInvadersEvent) => void;
 
 // ─── Colour palette ───────────────────────────────────────────────────────────
 const C = {
   bg: 0x0d0c0a,
+  enemyBullet: 0xc9a86c,
   invaderCrab: 0xa09080,
   invaderOctopus: 0xc9a86c,
   invaderSquid: 0xe6e0d4,
@@ -40,7 +21,6 @@ const C = {
   shieldMid: 0xddaa22,
   star: 0xffffff,
   ufo: 0xff4444,
-  enemyBullet: 0xc9a86c,
 } as const;
 
 // ─── Pixel-art invader bitmaps (8×8 grids, 2 frames each) ────────────────────

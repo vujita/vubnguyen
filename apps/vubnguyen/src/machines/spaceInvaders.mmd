@@ -1,0 +1,25 @@
+stateDiagram-v2
+  [*] --> idle
+  gameOver --> idle : RESET
+  idle --> playing : START
+  paused --> idle : RESET
+  paused --> playing.active : RESUME
+  state playing {
+    [*] --> active
+    active --> active : FIRE_PLAYER
+    active --> active : INPUT_LEFT_DOWN
+    active --> active : INPUT_LEFT_UP
+    active --> active : INPUT_RIGHT_DOWN
+    active --> active : INPUT_RIGHT_UP
+    active --> #spaceInvaders.gameOver : TICK
+    active --> playerDying : TICK
+    active --> levelComplete : TICK
+    active --> active : TICK
+    levelComplete --> active : TICK
+    levelComplete --> levelComplete : TICK
+    playerDying --> #spaceInvaders.gameOver : TICK
+    playerDying --> active : TICK
+    playerDying --> playerDying : TICK
+  }
+  playing --> paused : PAUSE
+  playing --> idle : RESET

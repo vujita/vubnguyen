@@ -5,11 +5,7 @@ import { useActor } from "@xstate/react";
 import { type Game as PhaserGame } from "phaser";
 
 import { type SpaceInvaderScene } from "@vujita/vubnguyen/src/app/games/space-invaders/SpaceInvaderScene";
-import {
-  CANVAS_H,
-  CANVAS_W,
-  spaceInvadersMachine,
-} from "@vujita/vubnguyen/src/app/games/space-invaders/spaceInvadersMachine";
+import { CANVAS_H, CANVAS_W, spaceInvadersMachine } from "@vujita/vubnguyen/src/app/games/space-invaders/spaceInvadersMachine";
 
 type SceneInstance = InstanceType<typeof SpaceInvaderScene>;
 
@@ -27,27 +23,44 @@ function getStateName(value: StateValue): string {
 
 // ─── Button styles ────────────────────────────────────────────────────────────
 
-const controlBtn =
-  "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-border)] text-lg text-[var(--site-muted)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
+const controlBtn = "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-border)] text-lg text-[var(--site-muted)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
 
-const fireBtn =
-  "font-code flex h-14 w-24 select-none items-center justify-center border border-[var(--site-accent)] text-xs uppercase tracking-widest text-[var(--site-accent)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
+const fireBtn = "font-code flex h-14 w-24 select-none items-center justify-center border border-[var(--site-accent)] text-xs uppercase tracking-widest text-[var(--site-accent)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
 
-const actionBtn =
-  "font-code border border-[var(--site-accent)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-accent)] transition-colors duration-150 hover:bg-[var(--site-accent)] hover:text-[var(--site-bg)]";
+const actionBtn = "font-code border border-[var(--site-accent)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-accent)] transition-colors duration-150 hover:bg-[var(--site-accent)] hover:text-[var(--site-bg)]";
 
-const muteBtn =
-  "font-code border border-[var(--site-border)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-muted)] transition-colors duration-150 hover:text-[var(--site-accent)]";
+const muteBtn = "font-code border border-[var(--site-border)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-muted)] transition-colors duration-150 hover:text-[var(--site-accent)]";
 
 // ─── Lives display ────────────────────────────────────────────────────────────
 function LivesDisplay({ lives }: { lives: number }) {
   return (
     <div className="flex items-center gap-1">
       {Array.from({ length: Math.max(0, lives) }, (_, i) => (
-        <svg fill="currentColor" height="14" key={i} viewBox="0 0 24 16" width="21">
-          <rect height="8" width="24" x="0" y="8" />
-          <rect height="4" width="12" x="6" y="4" />
-          <rect height="4" width="4" x="10" y="0" />
+        <svg
+          fill="currentColor"
+          height="14"
+          key={i}
+          viewBox="0 0 24 16"
+          width="21"
+        >
+          <rect
+            height="8"
+            width="24"
+            x="0"
+            y="8"
+          />
+          <rect
+            height="4"
+            width="12"
+            x="6"
+            y="4"
+          />
+          <rect
+            height="4"
+            width="4"
+            x="10"
+            y="0"
+          />
         </svg>
       ))}
     </div>
@@ -138,7 +151,6 @@ export default function SpaceInvadersGame() {
   // ─── Render ────────────────────────────────────────────────────────────────
   return (
     <div className="flex min-h-screen flex-col items-center bg-[var(--site-bg)] px-4 pb-12 pt-24 text-[var(--site-text)]">
-
       {/* HUD */}
       <div className="mb-3 flex w-full max-w-[480px] items-center justify-between">
         <div className="flex flex-col gap-0.5">
@@ -158,13 +170,13 @@ export default function SpaceInvadersGame() {
       </div>
 
       {/* Level badge */}
-      {isPlaying && (
+      {isPlaying ? (
         <p className="font-code mb-2 text-[9px] uppercase tracking-[0.3em] text-[var(--site-muted)]">
           {"Level "}
           {context.level}
-          {isLevelComplete && " — Wave Cleared!"}
+          {isLevelComplete ? " — Wave Cleared!" : null}
         </p>
-      )}
+      ) : null}
 
       {/* Canvas */}
       <div
@@ -172,23 +184,23 @@ export default function SpaceInvadersGame() {
         ref={containerRef}
       >
         {/* State overlays — rendered on top of the Phaser canvas */}
-        {isIdle && (
+        {isIdle ? (
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4">
             <p className="font-code text-xl uppercase tracking-[0.4em] text-[var(--site-accent)]">{"Space Invaders"}</p>
             <p className="font-code text-xs uppercase tracking-widest text-[var(--site-muted)]">{"Press Start"}</p>
           </div>
-        )}
-        {isPaused && (
+        ) : null}
+        {isPaused ? (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <p className="font-code text-sm uppercase tracking-[0.4em] text-[var(--site-muted)]">{"Paused"}</p>
           </div>
-        )}
-        {isDying && (
+        ) : null}
+        {isDying ? (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <p className="font-code text-sm uppercase tracking-[0.4em] text-red-500">{"Ship Destroyed"}</p>
           </div>
-        )}
-        {isGameOver && (
+        ) : null}
+        {isGameOver ? (
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3">
             <p className="font-code text-xl uppercase tracking-[0.4em] text-red-500">{"Game Over"}</p>
             <p className="font-code text-xs uppercase tracking-widest text-[var(--site-muted)]">
@@ -196,11 +208,11 @@ export default function SpaceInvadersGame() {
               {context.score}
             </p>
           </div>
-        )}
+        ) : null}
       </div>
 
       {/* Mobile controls */}
-      {(isActive || isPaused) && (
+      {isActive || isPaused ? (
         <div className="mt-5 flex items-center justify-center gap-3">
           <button
             className={controlBtn}
@@ -228,43 +240,60 @@ export default function SpaceInvadersGame() {
             {"▶"}
           </button>
         </div>
-      )}
+      ) : null}
 
       {/* Action buttons */}
       <div className="mt-5 flex w-full max-w-[480px] flex-col gap-4">
         <div className="flex flex-wrap gap-3">
-          {isIdle && (
-            <button className={actionBtn} onClick={() => send({ type: "START" })} type="button">
+          {isIdle ? (
+            <button
+              className={actionBtn}
+              onClick={() => send({ type: "START" })}
+              type="button"
+            >
               {"Start Game"}
             </button>
-          )}
-          {isActive && (
-            <button className={muteBtn} onClick={() => send({ type: "PAUSE" })} type="button">
+          ) : null}
+          {isActive ? (
+            <button
+              className={muteBtn}
+              onClick={() => send({ type: "PAUSE" })}
+              type="button"
+            >
               {"Pause"}
             </button>
-          )}
-          {isPaused && (
-            <button className={actionBtn} onClick={() => send({ type: "RESUME" })} type="button">
+          ) : null}
+          {isPaused ? (
+            <button
+              className={actionBtn}
+              onClick={() => send({ type: "RESUME" })}
+              type="button"
+            >
               {"Resume"}
             </button>
-          )}
-          {(isPaused || isGameOver) && (
-            <button className={muteBtn} onClick={() => send({ type: "RESET" })} type="button">
+          ) : null}
+          {isPaused || isGameOver ? (
+            <button
+              className={muteBtn}
+              onClick={() => send({ type: "RESET" })}
+              type="button"
+            >
               {"Reset"}
             </button>
-          )}
-          {isGameOver && (
-            <button className={actionBtn} onClick={() => send({ type: "START" })} type="button">
+          ) : null}
+          {isGameOver ? (
+            <button
+              className={actionBtn}
+              onClick={() => send({ type: "START" })}
+              type="button"
+            >
               {"Play Again"}
             </button>
-          )}
+          ) : null}
         </div>
 
-        <p className="font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">
-          {"← → or A D to move · Space to fire · Esc or P to pause"}
-        </p>
+        <p className="font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">{"← → or A D to move · Space to fire · Esc or P to pause"}</p>
       </div>
-
     </div>
   );
 }
