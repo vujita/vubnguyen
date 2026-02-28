@@ -3,6 +3,8 @@ import { expect, test } from "@playwright/test";
 const HOST = process.env.HOST ?? "http://localhost:3000";
 
 test.describe("Snake game — mobile", () => {
+  test.use({ hasTouch: true });
+
   test("page renders on mobile viewport", async ({ page }) => {
     await page.goto(`${HOST}/games/snake`);
     await expect(page.locator("canvas").first()).toBeVisible({ timeout: 15000 });
