@@ -31,10 +31,7 @@ const actionBtn = "font-code border border-[var(--site-accent)] px-6 py-2 text-x
 
 const muteBtn = "font-code border border-[var(--site-border)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-muted)] transition-colors duration-150 hover:text-[var(--site-accent)]";
 
-const rapidFireBtn = (active: boolean) =>
-  active
-    ? "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-accent)] bg-[var(--site-accent)] text-[var(--site-bg)] touch-manipulation transition-colors duration-150"
-    : "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-border)] text-[var(--site-muted)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
+const rapidFireBtn = (active: boolean) => (active ? "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-accent)] bg-[var(--site-accent)] text-[var(--site-bg)] touch-manipulation transition-colors duration-150" : "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-border)] text-[var(--site-muted)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]");
 
 // ─── Lives display ────────────────────────────────────────────────────────────
 function LivesDisplay({ lives }: { lives: number }) {
