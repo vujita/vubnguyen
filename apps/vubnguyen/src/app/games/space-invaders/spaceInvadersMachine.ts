@@ -13,6 +13,7 @@ export const PLAYER_Y = 508;
 // ─── Bullets ─────────────────────────────────────────────────────────────────
 const INVADER_BULLET_SPEED = 3;
 export const MAX_INVADER_BULLETS = 3;
+export const MAX_PLAYER_BULLETS = 3;
 const PLAYER_BULLET_SPEED = 9;
 
 // ─── Invader formation ───────────────────────────────────────────────────────
@@ -96,16 +97,17 @@ export interface SpaceInvadersContext {
   level: number;
   levelTimer: number;
   lives: number;
-  playerBullet: Bullet | null;
+  playerBullets: Bullet[];
   playerMoving: -1 | 0 | 1;
   playerX: number;
+  rapidFire: boolean;
   score: number;
   shields: Shield[];
   ufo: Ufo | null;
   ufoTimer: number;
 }
 
-export type SpaceInvadersEvent = { type: "FIRE_PLAYER" } | { type: "INPUT_LEFT_DOWN" } | { type: "INPUT_LEFT_UP" } | { type: "INPUT_RIGHT_DOWN" } | { type: "INPUT_RIGHT_UP" } | { type: "PAUSE" } | { type: "RESET" } | { type: "RESUME" } | { type: "START" } | { type: "TICK" };
+export type SpaceInvadersEvent = { type: "FIRE_PLAYER" } | { type: "INPUT_LEFT_DOWN" } | { type: "INPUT_LEFT_UP" } | { type: "INPUT_RIGHT_DOWN" } | { type: "INPUT_RIGHT_UP" } | { type: "PAUSE" } | { type: "RESET" } | { type: "RESUME" } | { type: "START" } | { type: "TICK" } | { type: "TOGGLE_RAPID_FIRE" };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -125,7 +127,7 @@ function createShields(): Shield[] {
   return SHIELD_POSITIONS.map((x) => ({ health: SHIELD_MAX_HEALTH, x }));
 }
 
-function buildInitialContext(level: number, score = 0, hiScore = 0, lives = INITIAL_LIVES): SpaceInvadersContext {
+function buildInitialContext(level: number, score = 0, hiScore = 0, lives = INITIAL_LIVES, rapidFire = false): SpaceInvadersContext {
   const invaders = createInvaders();
   const aliveCount = invaders.length;
   const moveRate = calcMoveRate(aliveCount, level);
@@ -148,9 +150,10 @@ function buildInitialContext(level: number, score = 0, hiScore = 0, lives = INIT
     level,
     levelTimer: 0,
     lives,
-    playerBullet: null,
+    playerBullets: [],
     playerMoving: 0,
     playerX: CANVAS_W / 2,
+    rapidFire,
     score,
     shields: createShields(),
     ufo: null,
@@ -172,7 +175,7 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
   let invaderMoveCounter = ctx.invaderMoveCounter - 1;
   let invaderMoveRate = ctx.invaderMoveRate;
   let invaders: Invader[] = ctx.invaders;
-  let playerBullet: Bullet | null = ctx.playerBullet;
+  let playerBullets: Bullet[] = [...ctx.playerBullets];
   let score = ctx.score;
   let shields: Shield[] = ctx.shields;
   let ufo: Ufo | null = ctx.ufo;
@@ -184,11 +187,8 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
   // 1. Move player
   const playerX = Math.max(PLAYER_W / 2, Math.min(CANVAS_W - PLAYER_W / 2, ctx.playerX + ctx.playerMoving * PLAYER_SPEED));
 
-  // 2. Move player bullet upward
-  if (playerBullet) {
-    playerBullet = { ...playerBullet, y: playerBullet.y - PLAYER_BULLET_SPEED };
-    if (playerBullet.y < 0) playerBullet = null;
-  }
+  // 2. Move player bullets upward, remove off-screen
+  playerBullets = playerBullets.map((b) => ({ ...b, y: b.y - PLAYER_BULLET_SPEED })).filter((b) => b.y >= 0);
 
   // 3. Move invader bullets downward, remove off-screen
   invaderBullets = invaderBullets.map((b) => ({ ...b, y: b.y + INVADER_BULLET_SPEED })).filter((b) => b.y < CANVAS_H);
@@ -258,9 +258,8 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
     }
   }
 
-  // 8. Collision: player bullet vs invaders
-  if (playerBullet) {
-    const bullet = playerBullet;
+  // 8. Collision: player bullets vs invaders
+  playerBullets = playerBullets.filter((bullet) => {
     let hit = false;
     invaders = invaders.map((inv) => {
       if (hit || !inv.alive) return inv;
@@ -269,42 +268,44 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
       if (bullet.x >= ix && bullet.x <= ix + INVADER_W && bullet.y >= iy && bullet.y <= iy + INVADER_H) {
         score += ROW_POINTS[inv.row] ?? 10;
         hiScore = Math.max(hiScore, score);
-        playerBullet = null;
         hit = true;
         return { ...inv, alive: false };
       }
       return inv;
     });
-  }
+    return !hit;
+  });
 
-  // 9. Collision: player bullet vs UFO
-  if (playerBullet && ufo) {
-    const bullet = playerBullet;
+  // 9. Collision: player bullets vs UFO
+  if (ufo) {
     const curUfo = ufo;
-    if (Math.abs(bullet.x - curUfo.x) <= 22 && Math.abs(bullet.y - UFO_Y) <= 12) {
-      const bonus = (Math.floor(Math.random() * 6) + 1) * 50; // 50–300
-      score += bonus;
-      hiScore = Math.max(hiScore, score);
-      ufo = null;
-      playerBullet = null;
-      ufoTimer = UFO_SPAWN_INTERVAL;
-    }
+    playerBullets = playerBullets.filter((bullet) => {
+      if (Math.abs(bullet.x - curUfo.x) <= 22 && Math.abs(bullet.y - UFO_Y) <= 12) {
+        const bonus = (Math.floor(Math.random() * 6) + 1) * 50; // 50–300
+        score += bonus;
+        hiScore = Math.max(hiScore, score);
+        ufo = null;
+        ufoTimer = UFO_SPAWN_INTERVAL;
+        return false;
+      }
+      return true;
+    });
   }
 
-  // 10–11. Shield collisions — player bullet and invader bullets vs shields
+  // 10–11. Shield collisions — player bullets and invader bullets vs shields
   shields = shields.map((shield) => {
     if (shield.health <= 0) return shield;
     let health = shield.health;
 
     const inShield = (bx: number, by: number): boolean => bx >= shield.x && bx <= shield.x + SHIELD_W && by >= SHIELD_TOP_Y && by <= SHIELD_TOP_Y + SHIELD_H;
 
-    if (playerBullet) {
-      const bullet = playerBullet;
-      if (inShield(bullet.x, bullet.y)) {
+    playerBullets = playerBullets.filter((bullet) => {
+      if (inShield(bullet.x, bullet.y) && health > 0) {
         health = Math.max(0, health - 2);
-        playerBullet = null;
+        return false;
       }
-    }
+      return true;
+    });
 
     invaderBullets = invaderBullets.filter((b) => {
       if (inShield(b.x, b.y) && health > 0) {
@@ -330,7 +331,7 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
     invaderMoveCounter,
     invaderMoveRate,
     invaders,
-    playerBullet,
+    playerBullets,
     playerX,
     score,
     shields,
@@ -394,9 +395,13 @@ export const spaceInvadersMachine = setup({
           on: {
             FIRE_PLAYER: {
               actions: assign(({ context }: { context: SpaceInvadersContext }) => {
-                if (context.playerBullet !== null) return {};
-                return { playerBullet: { x: context.playerX, y: PLAYER_Y - PLAYER_H } };
+                const maxBullets = context.rapidFire ? MAX_PLAYER_BULLETS : 1;
+                if (context.playerBullets.length >= maxBullets) return {};
+                return { playerBullets: [...context.playerBullets, { x: context.playerX, y: PLAYER_Y - PLAYER_H }] };
               }),
+            },
+            TOGGLE_RAPID_FIRE: {
+              actions: assign(({ context }: { context: SpaceInvadersContext }) => ({ rapidFire: !context.rapidFire })),
             },
             INPUT_LEFT_DOWN: {
               actions: assign({ playerMoving: () => -1 as const }),
@@ -421,7 +426,7 @@ export const spaceInvadersMachine = setup({
                   deathTimer: DEATH_TICKS,
                   invaderBullets: [],
                   lives: context.lives - 1,
-                  playerBullet: null,
+                  playerBullets: [],
                   playerMoving: 0 as const,
                 })),
                 guard: "playerHit",
@@ -440,7 +445,7 @@ export const spaceInvadersMachine = setup({
           on: {
             TICK: [
               {
-                actions: assign(({ context }: { context: SpaceInvadersContext }) => buildInitialContext(context.level + 1, context.score, context.hiScore, context.lives)),
+                actions: assign(({ context }: { context: SpaceInvadersContext }) => buildInitialContext(context.level + 1, context.score, context.hiScore, context.lives, context.rapidFire)),
                 guard: "levelTimerDone",
                 target: "active",
               },
@@ -463,7 +468,7 @@ export const spaceInvadersMachine = setup({
                 actions: assign(({ context }: { context: SpaceInvadersContext }) => ({
                   formationDir: 1 as const,
                   invaderMoveCounter: context.invaderMoveRate,
-                  playerBullet: null,
+                  playerBullets: [],
                   playerMoving: 0 as const,
                   playerX: CANVAS_W / 2,
                 })),
