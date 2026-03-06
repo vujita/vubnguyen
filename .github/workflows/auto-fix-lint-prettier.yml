@@ -1,0 +1,94 @@
+name: Auto-fix Lint & Prettier
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to check out and fix"
+        required: true
+        type: string
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  DATABASE_URL: ${{ secrets.DATABASE_PREVIEW_URL }}
+  CI: true
+  SKIP_ENV_VALIDATION: 1
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+        with:
+          ref: ${{ inputs.branch }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install deps (with cache)
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Run lint fix
+        run: pnpm lint:fix
+        continue-on-error: true
+
+      - name: Run prettier format
+        run: pnpm format
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push fix branch
+        if: steps.changes.outputs.changed == 'true'
+        id: push
+        run: |
+          FIX_BRANCH="auto-fix/lint-prettier-${{ github.run_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$FIX_BRANCH"
+          git add -A
+          git commit -m "chore: auto-fix lint and prettier errors"
+          git push origin "$FIX_BRANCH"
+          echo "fix_branch=$FIX_BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Create PR
+        if: steps.changes.outputs.changed == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_URL=$(gh pr create \
+            --base "${{ inputs.branch }}" \
+            --head "${{ steps.push.outputs.fix_branch }}" \
+            --title "chore: auto-fix lint and prettier errors" \
+            --body "Automated lint and Prettier fixes triggered by a CI failure on branch \`${{ inputs.branch }}\`." \
+          )
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Enable auto-merge (squash)
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge --auto --squash "${{ steps.pr.outputs.pr_url }}"
+
+      - name: No changes needed
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No lint or prettier issues found — nothing to fix."
