@@ -19,6 +19,12 @@ const projects = [
     label: "Space Invaders",
     tags: ["XState", "Phaser 3", "TypeScript", "Mobile"],
   },
+  {
+    description: "Super Mario clone built with a 4-level XState v5 child actor hierarchy and Phaser 3 arcade physics. Stomp Goombas and Koopas, collect coins, grab mushroom and fire flower power-ups, and reach the flagpole.",
+    href: "/games/mario",
+    label: "Super Mario Clone",
+    tags: ["XState", "Phaser 3", "TypeScript", "Child Actors"],
+  },
 ] as const;
 
 export default function ProjectsPage() {
