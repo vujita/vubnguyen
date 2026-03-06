@@ -184,7 +184,7 @@ export class SpaceInvaderScene extends Phaser.Scene {
     this.drawShields(ctx.shields);
     this.drawInvaders(ctx, isLevelComplete);
     if (ctx.ufo) this.drawUFO(ctx.ufo.x);
-    this.drawBullets(ctx.playerBullet, ctx.invaderBullets);
+    this.drawBullets(ctx.playerBullets, ctx.invaderBullets);
     this.drawPlayer(ctx.playerX, isDying);
   }
 
@@ -282,12 +282,12 @@ export class SpaceInvaderScene extends Phaser.Scene {
     g.fillRect(ux + 6, y, 4, 4);
   }
 
-  private drawBullets(playerBullet: SpaceInvadersContext["playerBullet"], invaderBullets: SpaceInvadersContext["invaderBullets"]): void {
+  private drawBullets(playerBullets: SpaceInvadersContext["playerBullets"], invaderBullets: SpaceInvadersContext["invaderBullets"]): void {
     const g = this.bulletGraphics;
 
-    if (playerBullet) {
-      g.fillStyle(C.playerBullet);
-      g.fillRect(playerBullet.x - 1, playerBullet.y - 4, 2, 8);
+    g.fillStyle(C.playerBullet);
+    for (const bullet of playerBullets) {
+      g.fillRect(bullet.x - 1, bullet.y - 4, 2, 8);
     }
 
     g.fillStyle(C.enemyBullet);
