@@ -30,7 +30,7 @@ catalog:
   "@storybook/blocks": 8.6.12
   "@storybook/react": 8.6.12
   "@storybook/react-webpack5": 10.2.10
-  "@storybook/test": 8.6.12
+  "@storybook/test": 8.6.15
   "@t3-oss/env-nextjs": 0.6.0
   "@tanstack/react-query": 5.90.21
   "@tanstack/react-query-devtools": 5.91.3
