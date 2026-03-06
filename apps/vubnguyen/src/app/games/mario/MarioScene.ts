@@ -599,9 +599,18 @@ export class MarioScene extends Phaser.Scene {
           this.cb.onScoreAdd(e.type === "koopa" ? 200 : 100);
         } else if (!e.stunned) {
           // Side collision — Mario gets hit
-          this.cb.onGetHit();
-          if (this.invincibleTimer <= 0) {
-            this.invincibleTimer = 180;
+          if (this.currentPower === "small") {
+            // Small Mario dies: Phaser owns the animation so the death
+            // sequence plays before XState processes PLAYER_DIED.
+            // onDie() fires at the end of deathAnimTimer, which then
+            // sends DIE → playerMachine → PLAYER_DIED → gameMachine.
+            if (!this.isDead) this.triggerDeath();
+          } else {
+            // Bigger Mario: downgrade power and grant invincibility frames.
+            this.cb.onGetHit();
+            if (this.invincibleTimer <= 0) {
+              this.invincibleTimer = 180;
+            }
           }
         }
       });
@@ -821,10 +830,11 @@ export class MarioScene extends Phaser.Scene {
       return;
     }
 
-    // Pit detection
+    // Pit detection — triggerDeath() sets a short timer; onDie() fires when
+    // the timer expires, sending DIE → playerMachine → PLAYER_DIED → gameMachine.
     if (this.mario.y > this.scale.height + 50 && !this.isDead) {
       this.triggerDeath();
-      this.cb.onDie();
+      this.deathAnimTimer = 30; // short wait before reporting pit death
     }
   }
 
