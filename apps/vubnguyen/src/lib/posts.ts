@@ -14,6 +14,13 @@ export function postHref(slug: string): Route<`/blog/${string}`> {
 
 export const allPosts: PostMeta[] = [
   {
+    date: "2026-02-26",
+    description: "I attend a lot of meetings. Without a system, they evaporate. Here's how I use Granola, Obsidian, Dataview, and Claude to make every meeting searchable, queryable, and actually useful.",
+    slug: "obsidian-granola-notes",
+    tags: ["productivity", "obsidian", "ai", "note-taking", "workflow"],
+    title: "My Granola + Obsidian Setup for Staying Organized",
+  },
+  {
     date: "2026-02-25",
     description: "LLM agents drift. They hold contradictory beliefs, wander into undefined transitions, and silently declare victory. State machines are how you stop that.",
     slug: "agentic-state-machines",
