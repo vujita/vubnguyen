@@ -641,9 +641,13 @@ export class MarioScene extends Phaser.Scene {
     const state = this.qBlockStates.get(block);
     if (!state || state === "empty") return;
 
-    // Only trigger when Mario is below and moving upward
-    if (this.mario.body.velocity.y >= 0) return;
-    if (this.mario.body.bottom > block.body.top + 20) return;
+    // By the time the collider callback fires, Phaser has already zeroed
+    // Mario's upward velocity, so we can't use velocity.y to detect direction.
+    // Instead, use body.blocked.up (set this frame when head hit something
+    // above) and verify positionally that it's *this* block being hit from
+    // below (not Mario standing on top or grazing it from the side).
+    if (!this.mario.body.blocked.up) return;
+    if (Math.abs(this.mario.body.top - block.body.bottom) > 8) return;
 
     this.qBlockStates.set(block, "empty");
     block.setTexture("tile_qblock_empty");
