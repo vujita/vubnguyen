@@ -13,6 +13,10 @@ const btnClass =
   "font-code border border-[var(--site-border)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-muted)] transition-colors duration-150 hover:text-[var(--site-accent)]";
 const btnAccentClass =
   "font-code border border-[var(--site-accent)] px-6 py-2 text-xs uppercase tracking-widest text-[var(--site-accent)] transition-colors duration-150 hover:bg-[var(--site-accent)] hover:text-[var(--site-bg)]";
+const dpadBtn =
+  "font-code flex h-14 w-16 select-none items-center justify-center border border-[var(--site-border)] text-xl text-[var(--site-muted)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
+const jumpBtn =
+  "font-code flex h-14 w-20 select-none items-center justify-center border border-[var(--site-accent)] text-xs uppercase tracking-widest text-[var(--site-accent)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
 
 export default function MarioGame() {
   const cancelledRef = useRef(false);
@@ -291,24 +295,56 @@ export default function MarioGame() {
         )}
       </div>
 
-      {/* Controls */}
-      <div className="mt-4 flex w-full max-w-[800px] flex-col gap-2">
-        {gameState === "playing" && (
-          <div className="flex gap-3">
+      {/* Mobile touch controls */}
+      {gameState === "playing" && (
+        <div className="mt-5 flex w-full max-w-[800px] items-center justify-between gap-3">
+          {/* D-pad: left / right */}
+          <div className="flex gap-2">
             <button
-              className={btnClass}
-              onClick={() => send({ type: "PAUSE" })}
+              className={dpadBtn}
+              onPointerDown={() => sceneRef.current?.setMobileLeft(true)}
+              onPointerLeave={() => sceneRef.current?.setMobileLeft(false)}
+              onPointerUp={() => sceneRef.current?.setMobileLeft(false)}
               type="button"
             >
-              {"Pause"}
+              {"◀"}
+            </button>
+            <button
+              className={dpadBtn}
+              onPointerDown={() => sceneRef.current?.setMobileRight(true)}
+              onPointerLeave={() => sceneRef.current?.setMobileRight(false)}
+              onPointerUp={() => sceneRef.current?.setMobileRight(false)}
+              type="button"
+            >
+              {"▶"}
             </button>
           </div>
-        )}
 
+          {/* Pause (centre) */}
+          <button
+            className={btnClass}
+            onClick={() => send({ type: "PAUSE" })}
+            type="button"
+          >
+            {"Pause"}
+          </button>
+
+          {/* Jump button */}
+          <button
+            className={jumpBtn}
+            onPointerDown={() => sceneRef.current?.queueMobileJump()}
+            type="button"
+          >
+            {"Jump"}
+          </button>
+        </div>
+      )}
+
+      {/* Keyboard hint + game tip */}
+      <div className="mt-3 flex w-full max-w-[800px] flex-col gap-1">
         <p className="font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">
-          {"← → Arrow keys or A/D to move · ↑ / W / Space to jump · ↓ / S to crouch · P or Esc to pause"}
+          {"← → / A D to move · ↑ / W / Space to jump · P or Esc to pause"}
         </p>
-
         <p className="font-code text-[10px] uppercase tracking-widest text-[var(--site-muted)]">
           {"Stomp enemies · Collect coins & power-ups · Reach the flagpole"}
         </p>

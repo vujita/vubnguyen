@@ -172,6 +172,11 @@ export class MarioScene extends Phaser.Scene {
     D: Phaser.Input.Keyboard.Key;
   };
 
+  // ── mobile input ──────────────────────────────────────────────────────────
+  private mobileLeft = false;
+  private mobileRight = false;
+  private mobileJumpQueued = false;
+
   // ── state mirror ──────────────────────────────────────────────────────────
   private currentPower: "small" | "big" | "fire" = "small";
   private paused = false;
@@ -707,18 +712,26 @@ export class MarioScene extends Phaser.Scene {
     }
   }
 
+  // ─── Mobile input API (called from React touch handlers) ─────────────────
+
+  setMobileLeft(pressed: boolean) { this.mobileLeft = pressed; }
+  setMobileRight(pressed: boolean) { this.mobileRight = pressed; }
+  queueMobileJump() { this.mobileJumpQueued = true; }
+
   // ─── Player input & physics ───────────────────────────────────────────────
 
   private handlePlayerInput() {
     if (this.isDead || this.flagReached || this.paused) return;
 
-    const left = this.cursors.left.isDown || this.wasdKeys.A.isDown;
-    const right = this.cursors.right.isDown || this.wasdKeys.D.isDown;
+    const left = this.cursors.left.isDown || this.wasdKeys.A.isDown || this.mobileLeft;
+    const right = this.cursors.right.isDown || this.wasdKeys.D.isDown || this.mobileRight;
     const jump =
       Phaser.Input.Keyboard.JustDown(this.cursors.up) ||
       Phaser.Input.Keyboard.JustDown(this.wasdKeys.W) ||
-      Phaser.Input.Keyboard.JustDown(this.cursors.space!);
+      Phaser.Input.Keyboard.JustDown(this.cursors.space!) ||
+      this.mobileJumpQueued;
     const down = this.cursors.down.isDown || this.wasdKeys.S.isDown;
+    this.mobileJumpQueued = false; // consume the queued jump each frame
 
     const grounded = this.mario.body.blocked.down;
     const speed = 200;
