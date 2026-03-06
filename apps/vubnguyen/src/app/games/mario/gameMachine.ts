@@ -54,6 +54,9 @@ export type GameEvent =
  *                stopped on `playing` exit.
  *
  * levelMachine itself spawns playerMachine + per-enemy enemyMachines.
+ *
+ * `paused` is a SUBSTATE of `playing` so that pausing never exits `playing`
+ * (which would stop the level actor and spawn a new one on resume).
  */
 export const gameMachine = setup({
   types: {
@@ -94,40 +97,49 @@ export const gameMachine = setup({
       // Spawn a fresh level actor on every entry; stop it on every exit.
       entry: "spawnLevel",
       exit: ["stopLevel", "clearLevel"],
+      initial: "active",
 
+      // These events are forwarded from the level child actor via sendParent.
+      // They are handled at the `playing` level so they apply in both
+      // `active` and `paused` substates.
       on: {
-        PAUSE: "paused",
-
         COIN_COLLECTED: { actions: "addCoinScore" },
-
         SCORE_ADD: {
           actions: assign({
             score: ({ context, event }) => context.score + event.amount,
           }),
         },
-
+        // Target "#game.playing" to force exit+re-entry of `playing`,
+        // which stops the old level and spawns a fresh one.
         LEVEL_COMPLETE: {
           actions: ["addLevelClearBonus", "advanceLevel"],
-          // Re-enter playing → exit stops old level, entry spawns next level
-          target: "playing",
+          target: "#game.playing",
         },
-
         PLAYER_DIED: [
           {
             guard: "hasLivesLeft",
             actions: "loseLife",
-            // Re-enter playing → same level, one fewer life
-            target: "playing",
+            target: "#game.playing",
           },
-          { target: "gameOver" },
+          { target: "#game.gameOver" },
         ],
       },
-    },
 
-    paused: {
-      on: {
-        RESUME: "playing",
-        RESTART: { actions: "resetGame", target: "menu" },
+      states: {
+        // ── Active gameplay ──────────────────────────────────────────────
+        active: {
+          on: {
+            PAUSE: "paused",
+          },
+        },
+
+        // ── Paused — stays inside `playing`, level actor keeps running ──
+        paused: {
+          on: {
+            RESUME: "active",
+            RESTART: { actions: "resetGame", target: "#game.menu" },
+          },
+        },
       },
     },
 

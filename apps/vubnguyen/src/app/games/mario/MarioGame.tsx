@@ -18,6 +18,17 @@ const dpadBtn =
 const jumpBtn =
   "font-code flex h-14 w-20 select-none items-center justify-center border border-[var(--site-accent)] text-xs uppercase tracking-widest text-[var(--site-accent)] touch-manipulation transition-colors duration-150 active:bg-[var(--site-accent)] active:text-[var(--site-bg)]";
 
+// snapshot.value is a string at the top level ("menu", "gameOver") or an object
+// ({ playing: "active" } / { playing: "paused" }) for nested states.
+function getGameState(value: unknown): string {
+  if (typeof value === "string") return value;
+  if (typeof value === "object" && value !== null) {
+    const [outer, inner] = Object.entries(value as Record<string, unknown>)[0] ?? [];
+    if (outer) return typeof inner === "string" ? `${outer}.${inner}` : outer;
+  }
+  return "menu";
+}
+
 export default function MarioGame() {
   const cancelledRef = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,7 +37,8 @@ export default function MarioGame() {
 
   const [snapshot, send] = useActor(gameMachine);
   const { context: gameCtx } = snapshot;
-  const gameState = typeof snapshot.value === "string" ? snapshot.value : "playing";
+  // snapshot.value is "menu"/"gameOver" (string) or { playing: "active"|"paused" } (object)
+  const gameState = getGameState(snapshot.value);
 
   // ─── Helpers to reach child actor refs ────────────────────────────────────
 
@@ -146,7 +158,7 @@ export default function MarioGame() {
   const prevLevelRef = useRef<typeof gameCtx.levelRef>(null);
 
   useEffect(() => {
-    if (gameState !== "playing") return;
+    if (!gameState.startsWith("playing")) return;
     if (gameCtx.levelRef === prevLevelRef.current) return;
     prevLevelRef.current = gameCtx.levelRef;
 
@@ -190,8 +202,8 @@ export default function MarioGame() {
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
       if (e.key !== "p" && e.key !== "P" && e.key !== "Escape") return;
-      if (gameState === "playing") send({ type: "PAUSE" });
-      if (gameState === "paused") send({ type: "RESUME" });
+      if (gameState === "playing.active") send({ type: "PAUSE" });
+      if (gameState === "playing.paused") send({ type: "RESUME" });
     };
     window.addEventListener("keydown", handle);
     return () => window.removeEventListener("keydown", handle);
@@ -224,7 +236,7 @@ export default function MarioGame() {
             {gameCtx.level}
           </span>
         </div>
-        {gameState === "paused" && (
+        {gameState === "playing.paused" && (
           <span className="font-code text-xs uppercase tracking-widest text-[var(--site-muted)]">
             {"Paused"}
           </span>
@@ -255,7 +267,7 @@ export default function MarioGame() {
           </div>
         )}
 
-        {gameState === "paused" && (
+        {gameState === "playing.paused" && (
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-black/60">
             <p className="font-code text-sm uppercase tracking-widest text-white">{"Paused"}</p>
             <div className="flex gap-3">
@@ -296,7 +308,7 @@ export default function MarioGame() {
       </div>
 
       {/* Mobile touch controls */}
-      {gameState === "playing" && (
+      {gameState === "playing.active" && (
         <div className="mt-5 flex w-full max-w-[800px] items-center justify-between gap-3">
           {/* D-pad: left / right */}
           <div className="flex gap-2">

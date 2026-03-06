@@ -435,6 +435,14 @@ export class MarioScene extends Phaser.Scene {
     this.physics.add.overlap(this.mario, this.powerUpGroup, (_m, pu) => {
       this.collectPowerUp(pu as Phaser.Physics.Arcade.Sprite);
     });
+
+    // Flagpole (wired here because this.mario must exist first)
+    this.physics.add.overlap(this.mario, this.flagpole, () => {
+      if (!this.flagReached && !this.isDead) {
+        this.flagReached = true;
+        this.cb.onFlagReached();
+      }
+    });
   }
 
   // ─── Level building helpers ───────────────────────────────────────────────
@@ -524,15 +532,9 @@ export class MarioScene extends Phaser.Scene {
     this.add.circle(FLAGPOLE_X, GROUND_Y - 192, 8, C.star).setDepth(5);
     // Flag
     this.add.image(FLAGPOLE_X + 4, GROUND_Y - 175, "flag").setDepth(5).setOrigin(0, 0.5);
-    // Invisible trigger zone
+    // Invisible trigger zone — overlap is wired up in create() after mario exists
     this.flagpole = this.add.rectangle(FLAGPOLE_X, GROUND_Y - 96, 40, 200, 0x000000, 0);
     this.physics.add.existing(this.flagpole, true);
-    this.physics.add.overlap(this.mario, this.flagpole, () => {
-      if (!this.flagReached && !this.isDead) {
-        this.flagReached = true;
-        this.cb.onFlagReached();
-      }
-    });
   }
 
   // ─── Enemy management ─────────────────────────────────────────────────────
@@ -783,6 +785,9 @@ export class MarioScene extends Phaser.Scene {
     this.invincibleTimer = 0;
     this.wasGrounded = true;
     this.wasMoving = false;
+    this.mobileLeft = false;
+    this.mobileRight = false;
+    this.mobileJumpQueued = false;
     this.mario.setPosition(80, GROUND_Y - 20);
     this.mario.setVelocity(0, 0);
     this.mario.setAlpha(1);
@@ -827,7 +832,7 @@ export class MarioScene extends Phaser.Scene {
 
   updateFromSnapshot(snap: MarioSnapshot) {
     const { playerCtx, playerMotion, enemyStates, gameState } = snap;
-    this.paused = gameState === "paused";
+    this.paused = gameState === "playing.paused";
 
     if (playerCtx) {
       // Update Mario sprite scale / texture for power state
