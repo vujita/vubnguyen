@@ -174,7 +174,9 @@ export default function MarioGame() {
     const enemyStates: MarioSnapshot["enemyStates"] = {};
 
     if (levelSnap) {
-      for (const [id, ref] of Object.entries(levelSnap.context.enemyRefs)) {
+      for (const [id, ref] of Object.entries(
+        levelSnap.context.enemyRefs as Record<string, { getSnapshot(): { value: unknown; context: MarioSnapshot["enemyStates"][string]["ctx"] } }>,
+      )) {
         const snap = ref.getSnapshot();
         enemyStates[id] = {
           ctx: snap.context,
