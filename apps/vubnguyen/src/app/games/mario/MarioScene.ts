@@ -176,6 +176,9 @@ export class MarioScene extends Phaser.Scene {
   private mobileLeft = false;
   private mobileRight = false;
   private mobileJumpQueued = false;
+  // Last horizontal direction pressed (-1 left, 1 right, 0 none).
+  // Used for "last key wins" when both directions are held simultaneously.
+  private lastHorizontalDir: -1 | 0 | 1 = 0;
 
   // ── state mirror ──────────────────────────────────────────────────────────
   private currentPower: "small" | "big" | "fire" = "small";
@@ -729,8 +732,14 @@ export class MarioScene extends Phaser.Scene {
 
   // ─── Mobile input API (called from React touch handlers) ─────────────────
 
-  setMobileLeft(pressed: boolean) { this.mobileLeft = pressed; }
-  setMobileRight(pressed: boolean) { this.mobileRight = pressed; }
+  setMobileLeft(pressed: boolean) {
+    this.mobileLeft = pressed;
+    if (pressed) this.lastHorizontalDir = -1;
+  }
+  setMobileRight(pressed: boolean) {
+    this.mobileRight = pressed;
+    if (pressed) this.lastHorizontalDir = 1;
+  }
   queueMobileJump() { this.mobileJumpQueued = true; }
 
   // ─── Player input & physics ───────────────────────────────────────────────
@@ -748,14 +757,26 @@ export class MarioScene extends Phaser.Scene {
     const down = this.cursors.down.isDown || this.wasdKeys.S.isDown;
     this.mobileJumpQueued = false; // consume the queued jump each frame
 
+    // Update last-pressed direction for keyboard (mobile updates via setMobileLeft/Right).
+    if (Phaser.Input.Keyboard.JustDown(this.cursors.left) || Phaser.Input.Keyboard.JustDown(this.wasdKeys.A)) {
+      this.lastHorizontalDir = -1;
+    } else if (Phaser.Input.Keyboard.JustDown(this.cursors.right) || Phaser.Input.Keyboard.JustDown(this.wasdKeys.D)) {
+      this.lastHorizontalDir = 1;
+    }
+
+    // "Last key wins": when both directions are held use the most recently
+    // pressed one so the player can change direction without releasing first.
+    const moveDir: -1 | 0 | 1 =
+      left && right ? this.lastHorizontalDir : left ? -1 : right ? 1 : 0;
+
     const grounded = this.mario.body.blocked.down;
     const speed = 200;
     const jumpVelocity = this.currentPower === "small" ? -480 : -520;
 
-    if (left) {
+    if (moveDir === -1) {
       this.mario.setVelocityX(-speed);
       this.mario.setFlipX(true);
-    } else if (right) {
+    } else if (moveDir === 1) {
       this.mario.setVelocityX(speed);
       this.mario.setFlipX(false);
     } else {
@@ -768,7 +789,7 @@ export class MarioScene extends Phaser.Scene {
     }
 
     // Notify XState of motion changes
-    const isMoving = left || right;
+    const isMoving = moveDir !== 0;
     if (isMoving && !this.wasMoving && grounded) this.cb.onRun();
     if (!isMoving && this.wasMoving && grounded) this.cb.onStop();
     if (grounded && !this.wasGrounded) this.cb.onLand();
@@ -801,6 +822,7 @@ export class MarioScene extends Phaser.Scene {
     this.mobileLeft = false;
     this.mobileRight = false;
     this.mobileJumpQueued = false;
+    this.lastHorizontalDir = 0;
     this.mario.setPosition(80, GROUND_Y - 20);
     this.mario.setVelocity(0, 0);
     this.mario.setAlpha(1);
