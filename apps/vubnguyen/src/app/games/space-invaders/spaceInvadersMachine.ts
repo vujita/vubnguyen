@@ -259,22 +259,24 @@ function tickActive(ctx: SpaceInvadersContext): Partial<SpaceInvadersContext> {
   }
 
   // 8. Collision: player bullets vs invaders
-  playerBullets = playerBullets.filter((bullet) => {
-    let hit = false;
-    invaders = invaders.map((inv) => {
-      if (hit || !inv.alive) return inv;
+  const remainingBullets: Bullet[] = [];
+  for (const bullet of playerBullets) {
+    const hitIdx = invaders.findIndex((inv) => {
+      if (!inv.alive) return false;
       const ix = formationX + inv.col * COL_GAP;
       const iy = formationY + inv.row * ROW_GAP;
-      if (bullet.x >= ix && bullet.x <= ix + INVADER_W && bullet.y >= iy && bullet.y <= iy + INVADER_H) {
-        score += ROW_POINTS[inv.row] ?? 10;
-        hiScore = Math.max(hiScore, score);
-        hit = true;
-        return { ...inv, alive: false };
-      }
-      return inv;
+      return bullet.x >= ix && bullet.x <= ix + INVADER_W && bullet.y >= iy && bullet.y <= iy + INVADER_H;
     });
-    return !hit;
-  });
+    if (hitIdx >= 0) {
+      const inv = invaders[hitIdx]!;
+      score += ROW_POINTS[inv.row] ?? 10;
+      hiScore = Math.max(hiScore, score);
+      invaders = invaders.map((v, i) => (i === hitIdx ? { ...v, alive: false } : v));
+    } else {
+      remainingBullets.push(bullet);
+    }
+  }
+  playerBullets = remainingBullets;
 
   // 9. Collision: player bullets vs UFO
   if (ufo) {
