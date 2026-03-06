@@ -1,0 +1,11 @@
+stateDiagram-v2
+  [*] --> idle
+  dead --> idle : RESET
+  idle --> playing : START
+  paused --> idle : RESET
+  paused --> playing : RESUME
+  playing --> paused : PAUSE
+  playing --> idle : RESET
+  playing --> playing : STEER
+  playing --> dead : TICK
+  playing --> playing : TICK
