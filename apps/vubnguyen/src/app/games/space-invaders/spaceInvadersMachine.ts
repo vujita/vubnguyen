@@ -400,9 +400,6 @@ export const spaceInvadersMachine = setup({
                 return { playerBullets: [...context.playerBullets, { x: context.playerX, y: PLAYER_Y - PLAYER_H }] };
               }),
             },
-            TOGGLE_RAPID_FIRE: {
-              actions: assign(({ context }: { context: SpaceInvadersContext }) => ({ rapidFire: !context.rapidFire })),
-            },
             INPUT_LEFT_DOWN: {
               actions: assign({ playerMoving: () => -1 as const }),
             },
@@ -439,6 +436,9 @@ export const spaceInvadersMachine = setup({
               },
               { actions: assign(({ context }: { context: SpaceInvadersContext }) => tickActive(context)) },
             ],
+            TOGGLE_RAPID_FIRE: {
+              actions: assign(({ context }: { context: SpaceInvadersContext }) => ({ rapidFire: !context.rapidFire })),
+            },
           },
         },
         levelComplete: {
