@@ -14,7 +14,7 @@
     "lint:fix": "xrun eslint:fix",
     "start": "pnpm with-env next start",
     "test": "jest",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsgo --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -69,6 +69,7 @@
     "postcss": "catalog:",
     "rimraf": "catalog:",
     "tailwindcss": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "typescript": "catalog:"
   }
 }

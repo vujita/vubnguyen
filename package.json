@@ -47,6 +47,7 @@
     "prettier-plugin-packagejson": "catalog:",
     "prettier-plugin-sort-json": "catalog:",
     "prettier-plugin-tailwindcss": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "turbo": "catalog:",
     "typescript": "catalog:"
   },

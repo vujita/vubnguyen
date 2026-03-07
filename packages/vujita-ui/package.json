@@ -54,7 +54,7 @@
     "lint:fix": "pnpm lint --fix",
     "prepare": "xrun -s build:clean build:lib",
     "test": "jest",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsgo --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -83,6 +83,7 @@
     "rimraf": "catalog:",
     "tailwindcss": "catalog:",
     "ts-node": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   },
