@@ -71,6 +71,7 @@
     "@babel/preset-typescript": "catalog:",
     "@types/jest": "catalog:",
     "@types/node": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@xarc/run": "catalog:",
     "babel-jest": "catalog:",
     "dotenv": "catalog:",
@@ -83,7 +84,6 @@
     "rimraf": "catalog:",
     "tailwindcss": "catalog:",
     "ts-node": "catalog:",
-    "@typescript/native-preview": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   },

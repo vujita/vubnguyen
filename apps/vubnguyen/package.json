@@ -58,6 +58,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@xarc/run": "catalog:",
     "autoprefixer": "catalog:",
     "babel-jest": "catalog:",
@@ -69,7 +70,6 @@
     "postcss": "catalog:",
     "rimraf": "catalog:",
     "tailwindcss": "catalog:",
-    "@typescript/native-preview": "catalog:",
     "typescript": "catalog:"
   }
 }
