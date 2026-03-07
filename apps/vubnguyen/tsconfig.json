@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "moduleResolution": "bundler",
+    "noUncheckedSideEffectImports": false,
     "paths": {
       "@vujita/vubnguyen/*": ["./*"],
       "src/*": ["./src/*"]
@@ -11,7 +11,8 @@
         "name": "next"
       }
     ],
-    "strict": true
+    "strict": true,
+    "types": ["jest", "node"]
   },
   "exclude": [".next/types/**/*.ts"],
   "extends": "../../tsconfig.json",

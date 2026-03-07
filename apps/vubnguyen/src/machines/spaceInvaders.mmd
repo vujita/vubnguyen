@@ -15,6 +15,7 @@ stateDiagram-v2
     active --> playerDying : TICK
     active --> levelComplete : TICK
     active --> active : TICK
+    active --> active : TOGGLE_RAPID_FIRE
     levelComplete --> active : TICK
     levelComplete --> levelComplete : TICK
     playerDying --> #spaceInvaders.gameOver : TICK

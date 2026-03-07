@@ -4,7 +4,7 @@
 > To regenerate: `pnpm tsx scripts/generate-state-diagrams.ts`
 > To add a machine: export it from `apps/vubnguyen/src/machines/index.ts`.
 >
-> _Last generated: 2026-02-28T09:06:29.673Z_
+> _Last generated: 2026-03-07T08:36:59.976Z_
 
 ## Contents
 
@@ -106,6 +106,7 @@ stateDiagram-v2
     active --> playerDying : TICK
     active --> levelComplete : TICK
     active --> active : TICK
+    active --> active : TOGGLE_RAPID_FIRE
     levelComplete --> active : TICK
     levelComplete --> levelComplete : TICK
     playerDying --> #spaceInvaders.gameOver : TICK
