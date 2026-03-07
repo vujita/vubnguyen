@@ -160,8 +160,8 @@ catalogs:
       specifier: 1.1.2
       version: 1.1.2
     eslint-plugin-typescript-sort-keys:
-      specifier: 3.2.0
-      version: 3.2.0
+      specifier: 3.3.0
+      version: 3.3.0
     framer-motion:
       specifier: 11.3.7
       version: 11.3.7
@@ -598,7 +598,7 @@ importers:
         version: 1.1.2
       eslint-plugin-typescript-sort-keys:
         specifier: 'catalog:'
-        version: 3.2.0(@typescript-eslint/parser@8.56.1(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc))(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc)
+        version: 3.3.0(@typescript-eslint/parser@8.56.1(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc))(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc)
     devDependencies:
       eslint:
         specifier: 'catalog:'
@@ -4160,11 +4160,11 @@ packages:
     resolution: {integrity: sha512-DNPHFGCA0/hZIsfODbeLZqaGY/+q3vgtshF85r+YWDNCQ2apd9PNs/zL6ttKm0nD1IFwvxyg3YOTI7FHl4unrw==}
     engines: {node: '>=0.10.0'}
 
-  eslint-plugin-typescript-sort-keys@3.2.0:
-    resolution: {integrity: sha512-GutszvriaVtwmn7pQjuj9/9o0iXhD7XZs0/424+zsozdRr/fdg5e8206t478Vnqnqi1GjuxcAolj1kf74KnhPA==}
+  eslint-plugin-typescript-sort-keys@3.3.0:
+    resolution: {integrity: sha512-bRW3Rc/VNdrSP9OoY5wgjjaXCOOkZKpzvl/Mk6l8Sg8CMehVIcg9K4y33l+ZcZiknpl0aR6rKusxuCJNGZWmVw==}
     engines: {node: '>= 16'}
     peerDependencies:
-      '@typescript-eslint/parser': ^6 || ^7
+      '@typescript-eslint/parser': '>=6'
       eslint: ^7 || ^8
       typescript: ^3 || ^4 || ^5
 
@@ -10487,7 +10487,7 @@ snapshots:
       natural-compare: 1.4.0
       requireindex: 1.2.0
 
-  eslint-plugin-typescript-sort-keys@3.2.0(@typescript-eslint/parser@8.56.1(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc))(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc):
+  eslint-plugin-typescript-sort-keys@3.3.0(@typescript-eslint/parser@8.56.1(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc))(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc):
     dependencies:
       '@typescript-eslint/experimental-utils': 5.62.0(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc)
       '@typescript-eslint/parser': 8.56.1(eslint@9.26.0(jiti@2.6.1))(typescript@6.0.1-rc)
