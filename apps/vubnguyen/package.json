@@ -14,7 +14,7 @@
     "lint:fix": "xrun eslint:fix",
     "start": "pnpm with-env next start",
     "test": "jest",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsgo --noEmit -p tsconfig.tsgo.json",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -58,6 +58,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@xarc/run": "catalog:",
     "autoprefixer": "catalog:",
     "babel-jest": "catalog:",

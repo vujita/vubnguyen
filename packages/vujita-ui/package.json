@@ -54,7 +54,7 @@
     "lint:fix": "pnpm lint --fix",
     "prepare": "xrun -s build:clean build:lib",
     "test": "jest",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsgo --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -71,6 +71,7 @@
     "@babel/preset-typescript": "catalog:",
     "@types/jest": "catalog:",
     "@types/node": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@xarc/run": "catalog:",
     "babel-jest": "catalog:",
     "dotenv": "catalog:",

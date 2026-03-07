@@ -1,0 +1,4 @@
+{
+  "exclude": [".next/types/**/*.ts", "e2e", "playwright.config.ts"],
+  "extends": "./tsconfig.json"
+}

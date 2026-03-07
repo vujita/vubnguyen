@@ -37,6 +37,7 @@
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@manypkg/cli": "catalog:",
     "@resvg/resvg-js": "catalog:",
+    "@typescript/native-preview": "catalog:",
     "@viz-js/viz": "catalog:",
     "@xarc/run": "catalog:",
     "eslint": "catalog:",

@@ -8,7 +8,7 @@
     "clean:modules": "(.*)",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsgo --noEmit"
   },
   "eslintConfig": {
     "extends": [
@@ -30,6 +30,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
     "eslint-config-vujita": "workspace:*",
     "rimraf": "catalog:",
