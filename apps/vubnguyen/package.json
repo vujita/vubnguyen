@@ -14,7 +14,7 @@
     "lint:fix": "xrun eslint:fix",
     "start": "pnpm with-env next start",
     "test": "jest",
-    "type-check": "tsgo --noEmit",
+    "type-check": "tsgo --noEmit -p tsconfig.tsgo.json",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
